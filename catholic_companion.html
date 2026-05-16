@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>My Catholic Companion</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{font-family:'Jost',sans-serif;background:#f5f0e8;color:#1a1208;font-size:15px;line-height:1.6;min-height:100vh}
+.app{max-width:820px;margin:0 auto;padding-bottom:3rem}
+.header{text-align:center;padding:2rem 1.5rem 1.25rem;border-bottom:2px solid #c9a84c;background:#1a1208}
+.header h1{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;color:#e8d08a;letter-spacing:.04em}
+.header p{font-size:13px;color:#c9a84c;margin-top:5px;letter-spacing:.06em;text-transform:uppercase}
+.nav{display:flex;background:#2a1f10;border-bottom:2px solid #c9a84c;flex-wrap:wrap}
+.nav-btn{flex:1;min-width:70px;padding:13px 4px;font-family:'Jost',sans-serif;font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;background:transparent;border:none;cursor:pointer;color:#c9a84c;border-bottom:3px solid transparent;transition:all .2s}
+.nav-btn.active{color:#fff;border-bottom-color:#c9a84c;background:#3a2c18}
+.nav-btn:hover:not(.active){background:#3a2c18;color:#e8d08a}
+.section{display:none;padding:1.5rem}
+.section.active{display:block}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;margin-bottom:14px;color:#1a1208;padding-bottom:8px;border-bottom:2px solid #c9a84c}
+.search-bar{width:100%;padding:10px 14px;border:2px solid #c9a84c;border-radius:4px;font-family:'Jost',sans-serif;font-size:14px;background:#fff;color:#1a1208;margin-bottom:10px}
+.search-bar::placeholder{color:#888}
+.filter-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.pill{background:#fff;border:2px solid #c9a84c;border-radius:20px;padding:4px 14px;font-size:12px;font-family:'Jost',sans-serif;cursor:pointer;color:#6b4e1a;font-weight:500;transition:all .15s}
+.pill.active{background:#c9a84c;border-color:#c9a84c;color:#fff;font-weight:600}
+.pill:hover:not(.active){background:#fef3dc}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.card{background:#fff;border:2px solid #d9cdb8;border-radius:6px;padding:1rem 1.1rem;transition:border-color .2s}
+.card:hover{border-color:#c9a84c}
+.term-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:#1a1208;line-height:1.2;margin-bottom:4px}
+.tag{display:inline-block;font-size:11px;letter-spacing:.05em;text-transform:uppercase;padding:2px 8px;border-radius:3px;font-weight:600;margin-bottom:8px}
+.tag-blue{background:#dbeafe;color:#1e3a8a}
+.tag-purple{background:#ede9fe;color:#4c1d95}
+.tag-teal{background:#d1fae5;color:#064e3b}
+.tag-amber{background:#fef3c7;color:#78350f}
+.tag-coral{background:#fee2e2;color:#7f1d1d}
+.tag-green{background:#dcfce7;color:#14532d}
+.card-desc{font-size:13px;color:#333;line-height:1.65}
+.analogy{font-size:12px;color:#555;margin-top:8px;padding:6px 10px;border-left:3px solid #c9a84c;background:#fefaf3;font-style:italic}
+.sub-info{font-size:12px;color:#888;margin-top:6px}
+.patron-line{font-size:12px;color:#6b4e1a;margin-bottom:6px;font-weight:500}
+.avatar{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;background:#fef3dc;color:#6b4e1a;border:2px solid #c9a84c;margin-bottom:8px}
+.empty{text-align:center;color:#888;padding:2rem;font-size:14px}
+.teacher-card{background:#fff;border:2px solid #d9cdb8;border-radius:8px;padding:1.25rem 1.4rem;margin-bottom:14px}
+.teacher-head{display:flex;align-items:center;gap:14px;margin-bottom:12px}
+.teacher-avatar{width:54px;height:54px;border-radius:50%;background:#fef3dc;border:2px solid #c9a84c;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:#6b4e1a;flex-shrink:0}
+.teacher-name{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:600;color:#1a1208}
+.teacher-role{font-size:12px;color:#6b4e1a;letter-spacing:.04em;margin-top:2px;font-weight:500}
+.teacher-desc{font-size:13px;color:#333;line-height:1.7;margin-bottom:10px}
+.teacher-why{background:#fefaf3;border-left:3px solid #c9a84c;padding:10px 12px;border-radius:0 4px 4px 0;margin-bottom:12px}
+.teacher-why strong{display:block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#c9a84c;margin-bottom:3px}
+.teacher-why span{font-size:13px;color:#333}
+.resource-list{display:flex;flex-wrap:wrap;gap:6px}
+.resource-chip{font-size:12px;padding:5px 12px;border-radius:20px;background:#fef3dc;border:1px solid #c9a84c;color:#6b4e1a;font-weight:500}
+.resource-chip a{color:#6b4e1a;text-decoration:none}
+.resource-chip a:hover{color:#c9a84c;text-decoration:underline}
+.rosary-intro{background:#fff;border:2px solid #c9a84c;border-radius:8px;padding:1.25rem 1.4rem;margin-bottom:16px}
+.rosary-intro h2{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:#1a1208;margin-bottom:8px}
+.rosary-intro p{font-size:13px;color:#444;line-height:1.7;margin-bottom:6px}
+.rosary-steps-box{background:#fff;border:2px solid #d9cdb8;border-radius:8px;padding:1rem 1.2rem;margin-bottom:16px}
+.rosary-steps-box h3{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:#1a1208;margin-bottom:10px}
+.r-step{display:flex;gap:12px;margin-bottom:8px;align-items:flex-start}
+.r-step-num{width:24px;height:24px;border-radius:50%;background:#c9a84c;color:#fff;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.r-step-text{font-size:13px;color:#333;line-height:1.6}
+.day-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.day-tab{background:#fff;border:2px solid #c9a84c;border-radius:20px;padding:5px 14px;font-size:12px;font-family:'Jost',sans-serif;cursor:pointer;color:#6b4e1a;font-weight:500;transition:all .15s}
+.day-tab.active{background:#c9a84c;border-color:#c9a84c;color:#fff;font-weight:600}
+.day-tab:hover:not(.active){background:#fef3dc}
+.mystery-set{display:none}
+.mystery-set.active{display:block}
+.mystery-set-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:#1a1208;margin-bottom:12px;padding:8px 12px;background:#fef3dc;border-left:4px solid #c9a84c;border-radius:0 4px 4px 0}
+.mystery-card{background:#fff;border:2px solid #d9cdb8;border-radius:8px;padding:1rem 1.2rem;margin-bottom:10px}
+.mystery-num{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#c9a84c;font-weight:600;margin-bottom:3px}
+.mystery-name{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:#1a1208;margin-bottom:5px}
+.mystery-desc{font-size:13px;color:#444;line-height:1.65}
+.mystery-prayers{font-size:12px;color:#888;margin-top:6px;font-style:italic;padding-top:6px;border-top:1px solid #f0e8d8}
+.prayers-section{margin-top:1.5rem}
+.prayers-section h3{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:#1a1208;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #c9a84c}
+.prayer-card{background:#fff;border:2px solid #d9cdb8;border-radius:8px;padding:1rem 1.2rem;margin-bottom:10px}
+.prayer-name{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:#1a1208;margin-bottom:10px}
+.prayer-text{font-size:13px;color:#333;line-height:2;white-space:pre-line}
+.prayer-note{font-size:12px;color:#888;margin-top:10px;font-style:italic;padding:6px 10px;border-left:3px solid #c9a84c;background:#fefaf3}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="header">
+    <h1>&#10022; My Catholic Companion</h1>
+    <p>Teachers &middot; Key Terms &middot; Saints &middot; The Rosary</p>
+  </div>
+  <nav class="nav">
+    <button class="nav-btn active" onclick="showTab('teachers')">Teachers</button>
+    <button class="nav-btn" onclick="showTab('terms')">Key Terms</button>
+    <button class="nav-btn" onclick="showTab('saints')">Saints</button>
+    <button class="nav-btn" onclick="showTab('rosary')">The Rosary</button>
+  </nav>
+
+  <div class="section active" id="tab-teachers">
+    <div class="section-title">Your Recommended Teachers</div>
+    <div id="teachers-list"></div>
+  </div>
+
+  <div class="section" id="tab-terms">
+    <div class="section-title">Key Catholic Terms</div>
+    <input class="search-bar" id="terms-search" placeholder="Search terms..." oninput="renderTerms()">
+    <div class="filter-row" id="terms-filters"></div>
+    <div class="cards" id="terms-cards"></div>
+  </div>
+
+  <div class="section" id="tab-saints">
+    <div class="section-title">Catholic Saints</div>
+    <input class="search-bar" id="saints-search" placeholder="Search saints or patronage..." oninput="renderSaints()">
+    <div class="filter-row" id="saints-filters"></div>
+    <div class="cards" id="saints-cards"></div>
+  </div>
+
+  <div class="section" id="tab-rosary">
+    <div class="rosary-intro">
+      <h2>How to Pray the Rosary</h2>
+      <p>The Rosary is a meditative prayer using beads as a guide. You pray a sequence of prayers while reflecting on key events called <strong>Mysteries</strong> from the lives of Jesus and Mary. The repeated prayers quiet the mind, freeing you to reflect on each Mystery.</p>
+      <p>A full Rosary takes about <strong>15&ndash;20 minutes</strong>. Beginners can start with just one Mystery &mdash; about 3&ndash;4 minutes. There is no wrong way to begin.</p>
+    </div>
+    <div class="rosary-steps-box">
+      <h3>The Order of Prayer</h3>
+      <div class="r-step"><div class="r-step-num">1</div><div class="r-step-text"><strong>Begin</strong> &mdash; Make the Sign of the Cross, then pray the Apostles' Creed on the crucifix</div></div>
+      <div class="r-step"><div class="r-step-num">2</div><div class="r-step-text"><strong>Opening beads</strong> &mdash; Pray 1 Our Father, then 3 Hail Marys, then 1 Glory Be</div></div>
+      <div class="r-step"><div class="r-step-num">3</div><div class="r-step-text"><strong>Announce the Mystery</strong> &mdash; Say which Mystery you are meditating on. Pause briefly to picture the scene.</div></div>
+      <div class="r-step"><div class="r-step-num">4</div><div class="r-step-text"><strong>One Decade</strong> &mdash; Pray 1 Our Father + 10 Hail Marys + 1 Glory Be. Repeat for all 5 Mysteries.</div></div>
+      <div class="r-step"><div class="r-step-num">5</div><div class="r-step-text"><strong>Close</strong> &mdash; Pray the Hail Holy Queen, then make the Sign of the Cross</div></div>
+    </div>
+    <div class="section-title">The Mysteries &mdash; by Day</div>
+    <div class="day-tabs" id="day-tabs"></div>
+    <div id="mystery-sets"></div>
+    <div class="prayers-section">
+      <h3>The Prayers &mdash; Word for Word</h3>
+      <div id="prayers-list"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const TEACHERS=[
+  {name:'Bishop Robert Barron',initials:'BB',role:'Bishop · Theologian · Founder of Word on Fire',desc:'Bishop of Winona-Rochester, Minnesota, and founder of Word on Fire Catholic Ministries. Known for making theology accessible and connecting faith with culture, philosophy, and the arts. His CATHOLICISM documentary aired on PBS and has introduced millions to the faith.',why:'He is the ideal starting point — engaging for beginners yet deep enough to hold your interest as you grow. Think of him as the on-ramp to Catholic intellectual life.',resources:[{label:'WordOnFire.org',url:'https://www.wordonfire.org'},{label:'YouTube: Bishop Barron',url:'https://www.youtube.com/@BishopBarron'},{label:'Podcast: Word on Fire Show',url:'https://podcasts.apple.com/us/podcast/the-word-on-fire-show-catholic-faith-and-culture/id1065019039'},{label:'Book: This Is My Body',url:'https://www.wordonfire.org/store'}]},
+  {name:'Dr. Edward Sri',initials:'ES',role:'Theologian · Author · Co-founder of FOCUS',desc:'A theologian, bestselling author, and co-founder of FOCUS. Holds a doctorate from the Pontifical University of St. Thomas Aquinas in Rome. His work focuses on Scripture, the Mass, and practical discipleship — always grounding theology in everyday life.',why:'He is the "how does this actually work?" teacher — especially brilliant on understanding the Mass biblically. His book A Biblical Walk Through the Mass is used in one in four US parishes.',resources:[{label:'EdwardSri.com',url:'https://www.edwardsri.com'},{label:'Podcast: All Things Catholic',url:'https://podcasts.apple.com/us/podcast/all-things-catholic-with-dr-edward-sri/id1437774683'},{label:'Book: Biblical Walk Through the Mass',url:'https://www.edwardsri.com'},{label:'FOCUS Equip',url:'https://focusequip.org/author/edwardsri/'}]},
+  {name:'Fr. John Riccardo',initials:'JR',role:'Priest · Missionary · Founder of Acts XXIX',desc:'Ordained a priest of the Archdiocese of Detroit in 1996, Fr. Riccardo founded Acts XXIX in 2019 to proclaim the Gospel compellingly. Host of You Were Born for This and Christ is the Answer. Known for pastoral warmth, directness, and deep grounding in Scripture.',why:'He is the "heart" teacher — pastoral, personal, and deeply relatable. If Bishop Barron is the intellect and Dr. Sri is the scholar, Fr. Riccardo is the shepherd who makes it feel real.',resources:[{label:'Acts XXIX Ministry',url:'https://www.actsxxix.org'},{label:'Podcast: You Were Born for This',url:'https://podcasts.apple.com/us/podcast/you-were-born-for-this-with-fr-john-riccardo/id1492145319'},{label:'Podcast: Christ is the Answer',url:'https://open.spotify.com/show/3qYxxibCfiWqtIppVMmpAB'},{label:'Book: Heaven Starts Now',url:'https://www.actsxxix.org'}]},
+];
+
+const TERMS=[
+  {term:'Eucharist',cat:'sacraments',desc:'The central sacrament — the bread and wine that become the body and blood of Christ during Mass.',analogy:'Like a family dinner that is not just symbolic, but a real nourishing encounter.'},
+  {term:'Transubstantiation',cat:'doctrine',desc:'During Mass, bread and wine truly become Christ\'s body and blood, while the physical appearance stays the same.',analogy:'Like ice turning to water — the substance changes even if it looks the same.'},
+  {term:'Catechism',cat:'doctrine',desc:'The official handbook of Catholic teaching — a comprehensive summary of beliefs, sacraments, morals, and prayer.',analogy:'The Catholic Church\'s instruction manual, or its constitution.'},
+  {term:'Sacrament',cat:'sacraments',desc:'A sacred ritual that conveys God\'s grace. There are seven: Baptism, Eucharist, Confirmation, Reconciliation, Anointing of the Sick, Holy Orders, and Matrimony.',analogy:'Like a physical handshake that seals a spiritual agreement.'},
+  {term:'Baptism',cat:'sacraments',desc:'The first sacrament — water is poured or the person immersed, washing away original sin and welcoming them into the Church.',analogy:'The entry ticket into the Catholic community.'},
+  {term:'Confirmation',cat:'sacraments',desc:'The sacrament where a person affirms their faith and receives the gifts of the Holy Spirit.',analogy:'Like graduating from apprentice to full member — confirming what began at Baptism.'},
+  {term:'Reconciliation',cat:'sacraments',desc:'Also called Confession — sins are confessed to a priest, who grants absolution in God\'s name.',analogy:'A spiritual reset button.'},
+  {term:'Anointing of the Sick',cat:'sacraments',desc:'A sacrament for those who are seriously ill or dying, involving anointing with oil and prayer.',analogy:'A pastoral care package for the seriously ill.'},
+  {term:'Holy Orders',cat:'sacraments',desc:'The sacrament by which men become deacons, priests, or bishops — ordained to serve the Church.',analogy:'The official commissioning ceremony, like a swearing-in for public office.'},
+  {term:'Matrimony',cat:'sacraments',desc:'The sacrament of marriage — a covenant between a man and woman, seen as a reflection of God\'s love.',analogy:'A legal and spiritual contract, like a founding charter for a new family.'},
+  {term:'Absolution',cat:'sacraments',desc:'The formal forgiveness of sins granted by a priest during Reconciliation.',analogy:'The judge officially dropping the charges.'},
+  {term:'Mass',cat:'worship',desc:'The central act of Catholic worship, combining Scripture readings and the Liturgy of the Eucharist.',analogy:'The weekly gathering where Catholics re-enact the Last Supper.'},
+  {term:'Liturgy',cat:'worship',desc:'The official, structured public worship of the Church — the order of prayers, readings, and rituals.',analogy:'The script and stage directions for a sacred performance.'},
+  {term:'Rosary',cat:'worship',desc:'A form of prayer using beads, meditating on key events in the lives of Jesus and Mary.',analogy:'A structured meditation playlist with a physical anchor for focus.'},
+  {term:'Advent',cat:'worship',desc:'The four-week season of preparation before Christmas, focused on waiting and anticipation.',analogy:'The Catholic equivalent of a countdown clock.'},
+  {term:'Lent',cat:'worship',desc:'A 40-day period of fasting, prayer, and repentance before Easter.',analogy:'A spiritual boot camp — a season of self-discipline and reflection.'},
+  {term:'Intercession',cat:'worship',desc:'Praying on behalf of someone else — asking God or the saints to help another person.',analogy:'Like asking a well-connected friend to put in a good word for you.'},
+  {term:'Novena',cat:'worship',desc:'A nine-day period of prayer, often for a specific intention or in devotion to a particular saint.',analogy:'A sustained petition — making the same ask sincerely over nine days.'},
+  {term:'Grace',cat:'doctrine',desc:'God\'s free, unearned gift of divine life and favor — what the sacraments are said to convey.',analogy:'Like a grant given not because you earned it, but because the giver is generous.'},
+  {term:'Original Sin',cat:'doctrine',desc:'The theological concept that humanity inherited a fallen nature from Adam and Eve\'s first disobedience.',analogy:'Like inheriting a debt from a distant ancestor — not your fault, but something you\'re born with.'},
+  {term:'Trinity',cat:'doctrine',desc:'The core doctrine that God is three persons in one being: Father, Son (Jesus), and Holy Spirit.',analogy:'Like water existing as liquid, ice, and steam — same substance, three forms.'},
+  {term:'Incarnation',cat:'doctrine',desc:'The doctrine that God became human in the person of Jesus Christ.',analogy:'The CEO stepping down to work the shop floor — fully divine, fully human.'},
+  {term:'Resurrection',cat:'doctrine',desc:'Jesus\'s rising from the dead three days after his crucifixion — the foundation of Christian faith.',analogy:'The central event everything else hinges on, like the keystone of an arch.'},
+  {term:'Purgatory',cat:'doctrine',desc:'A state of purification after death for souls destined for heaven but not yet fully cleansed.',analogy:'Like a final rinse cycle before the clothes are truly clean.'},
+  {term:'Magisterium',cat:'doctrine',desc:'The official teaching authority of the Church — the Pope and bishops defining doctrine together.',analogy:'The supreme court of Catholic teaching.'},
+  {term:'Dogma',cat:'doctrine',desc:'A formally defined, infallible teaching of the Church that all Catholics are required to believe.',analogy:'Like a constitutional amendment — once set, it\'s binding.'},
+  {term:'Indulgence',cat:'doctrine',desc:'A remission of temporal punishment for sins already forgiven — granted through prayer or works.',analogy:'Like a fine reduced after completing community service.'},
+  {term:'Creed',cat:'doctrine',desc:'A formal statement of belief — most commonly the Nicene Creed, recited at Mass.',analogy:'A pledge of allegiance — a communal public declaration of what the group stands for.'},
+  {term:'Scripture',cat:'scripture',desc:'The Bible — sacred texts of both Old and New Testaments, considered the inspired Word of God.',analogy:'The founding documents of the faith, like a constitution and historical record combined.'},
+  {term:'Tradition',cat:'scripture',desc:'The living transmission of the Church\'s faith through teaching, liturgy, and practice alongside Scripture.',analogy:'The unwritten customs and case law that flesh out a written constitution.'},
+  {term:'Gospels',cat:'scripture',desc:'The four books of the New Testament (Matthew, Mark, Luke, John) that tell the life, teachings, death, and resurrection of Jesus.',analogy:'Four eyewitness accounts of the same pivotal event, each with a different angle.'},
+  {term:'Epistles',cat:'scripture',desc:'Letters written by early apostles (especially Paul) to early Christian communities, forming much of the New Testament.',analogy:'The earliest memos from headquarters to branch offices.'},
+  {term:'Pope',cat:'people',desc:'The Bishop of Rome and head of the Catholic Church worldwide, considered the successor of St. Peter.',analogy:'The CEO of a global organization, with spiritual rather than corporate authority.'},
+  {term:'Bishop',cat:'people',desc:'A senior ordained minister who oversees a diocese, in the line of apostolic succession.',analogy:'Like a regional director, responsible for all churches in their territory.'},
+  {term:'Priest',cat:'people',desc:'An ordained minister who celebrates Mass, administers sacraments, and leads a parish.',analogy:'The local manager — the person parishioners interact with most.'},
+  {term:'Deacon',cat:'people',desc:'An ordained minister who assists priests and bishops, may baptize and preach but not celebrate Mass.',analogy:'A deputy with specific but limited authority.'},
+  {term:'Parish',cat:'people',desc:'A local Catholic community, typically centered on a specific church and led by a priest.',analogy:'Your neighborhood branch of the global Church.'},
+  {term:'Diocese',cat:'people',desc:'A geographic region of the Church under the authority of a bishop, made up of multiple parishes.',analogy:'Like a province or county — the bishop\'s administrative territory.'},
+  {term:'Vatican',cat:'people',desc:'The headquarters of the Catholic Church in Rome, where the Pope resides.',analogy:'Equivalent to a nation\'s capital and royal palace combined.'},
+  {term:'Sin',cat:'morality',desc:'An act, thought, or omission that violates God\'s law. Mortal sin breaks the relationship with God; venial sin weakens it.',analogy:'Mortal sin is tearing up the contract; venial sin is a minor infraction.'},
+  {term:'Conscience',cat:'morality',desc:'The inner moral sense that guides a person to judge actions as good or evil.',analogy:'The internal compass — it needs calibrating through education and prayer to point true.'},
+  {term:'Natural Law',cat:'morality',desc:'The idea that moral truth is built into human nature and accessible to all people through reason.',analogy:'Like the laws of physics for ethics — discoverable by reason, not just revelation.'},
+];
+
+const SAINTS=[
+  {name:'Virgin Mary',era:'biblical',initials:'VM',patron:'All humanity, mothers, the Church',feast:'Aug 15',desc:'The mother of Jesus and most revered of all saints. The ultimate model of faith, humility, and obedience to God.'},
+  {name:'St. Joseph',era:'biblical',initials:'SJ',patron:'Fathers, workers, happy death',feast:'Mar 19',desc:'Mary\'s husband and earthly father of Jesus. A carpenter — quietly faithful, trusted with the most important family in Christian history.'},
+  {name:'St. Peter',era:'biblical',initials:'SP',patron:'Fishermen, the Church, popes',feast:'Jun 29',desc:'The first pope. Denied Jesus three times, repented, and became a bold leader. A story of failure, forgiveness, and courage.'},
+  {name:'St. Paul',era:'biblical',initials:'SP',patron:'Missionaries, writers, theologians',feast:'Jun 29',desc:'Originally a persecutor of Christians, he converted dramatically and became the Church\'s greatest missionary. Most of the Epistles are his.'},
+  {name:'St. Mary Magdalene',era:'biblical',initials:'MM',patron:'Women, penitents, contemplatives',feast:'Jul 22',desc:'First to witness the Resurrection. Earned the title "Apostle to the Apostles."'},
+  {name:'St. Michael the Archangel',era:'biblical',initials:'MA',patron:'Protection, soldiers, police',feast:'Sep 29',desc:'A heavenly warrior who battles Satan. One of three named angels in the Bible.'},
+  {name:'St. Jude',era:'biblical',initials:'JU',patron:'Desperate and hopeless causes',feast:'Oct 28',desc:'One of the twelve apostles. The patron of last resorts.'},
+  {name:'St. John the Baptist',era:'biblical',initials:'JB',patron:'Baptism, converts',feast:'Jun 24',desc:'The prophet who prepared the way for Jesus. Baptized Jesus in the Jordan River.'},
+  {name:'St. Augustine',era:'early',initials:'AU',patron:'Theologians, scholars',feast:'Aug 28',desc:'One of the greatest thinkers in Church history. Lived a wild youth before converting in his 30s. His Confessions is still widely read.'},
+  {name:'St. Patrick',era:'early',initials:'PA',patron:'Ireland, excluded people',feast:'Mar 17',desc:'Captured as a teen and enslaved in Ireland, escaped, became a priest, and returned to convert the nation. Used the shamrock to explain the Trinity.'},
+  {name:'St. Nicholas',era:'early',initials:'NI',patron:'Children, sailors, the poor',feast:'Dec 6',desc:'A 4th-century bishop famous for extraordinary generosity — the historical origin of Santa Claus.'},
+  {name:'St. Benedict',era:'early',initials:'BE',patron:'Europe, monks, students',feast:'Jul 11',desc:'Father of Western monasticism. His Rule shaped European civilization for 1,500 years. Motto: "Pray and work."'},
+  {name:'St. Stephen',era:'early',initials:'SS',patron:'Deacons, stonemasons',feast:'Dec 26',desc:'The very first Christian martyr — stoned to death for preaching about Christ.'},
+  {name:'St. Cecilia',era:'early',initials:'CE',patron:'Musicians, composers, singers',feast:'Nov 22',desc:'A Roman martyr. Patron saint of musicians for centuries.'},
+  {name:'St. Christopher',era:'early',initials:'CH',patron:'Travelers, motorists, children',feast:'Jul 25',desc:'A legendary figure said to have carried the Christ child across a river. His medal is widely worn by travelers for protection.'},
+  {name:'St. Francis of Assisi',era:'medieval',initials:'FA',patron:'Animals, ecology, the poor',feast:'Oct 4',desc:'Gave up wealth to live in radical poverty. Founded the Franciscan Order. Beloved for his love of nature.'},
+  {name:'St. Thomas Aquinas',era:'medieval',initials:'TA',patron:'Students, scholars, theologians',feast:'Jan 28',desc:'One of the greatest philosophers in history. His Summa Theologica is the backbone of Catholic doctrine.'},
+  {name:'St. Anthony of Padua',era:'medieval',initials:'AP',patron:'Lost things, the poor, travelers',feast:'Jun 13',desc:'A Franciscan friar renowned for powerful preaching. Most popularly invoked for help finding lost objects.'},
+  {name:'St. Joan of Arc',era:'medieval',initials:'JA',patron:'France, soldiers, prisoners',feast:'May 30',desc:'A teenage peasant who led the French army to victory and was burned at the stake at 19. The ultimate symbol of courage.'},
+  {name:'St. Teresa of Avila',era:'medieval',initials:'TA',patron:'Spain, headache sufferers',feast:'Oct 15',desc:'A 16th-century Spanish mystic and reformer. One of only four women named a Doctor of the Church.'},
+  {name:'St. Ignatius of Loyola',era:'medieval',initials:'IG',patron:'Soldiers, Jesuits',feast:'Jul 31',desc:'A wounded soldier who turned to God during recovery. Founded the Jesuits and pioneered the Spiritual Exercises.'},
+  {name:'St. Vincent de Paul',era:'medieval',initials:'VV',patron:'Charitable societies, the poor',feast:'Sep 27',desc:'A French priest who dedicated his life to serving the poor. The St. Vincent de Paul Society is named after him.'},
+  {name:'St. Catherine of Siena',era:'medieval',initials:'CS',patron:'Italy, journalists, nursing',feast:'Apr 29',desc:'A 14th-century laywoman who boldly wrote letters to popes and political leaders. A Doctor of the Church.'},
+  {name:'St. Therese of Lisieux',era:'modern',initials:'TL',patron:'Missions, France, the sick',feast:'Oct 1',desc:'"The Little Flower" — a French Carmelite nun who died at 24. Her "Little Way" taught holiness through small acts of love.'},
+  {name:'Mother Teresa',era:'modern',initials:'MT',patron:'Missionaries of Charity',feast:'Sep 5',desc:'An Albanian-Indian nun who served the poorest of the poor in Calcutta. Canonized in 2016.'},
+  {name:'St. Padre Pio',era:'modern',initials:'PP',patron:'Confessors, the suffering',feast:'Sep 23',desc:'A 20th-century Italian friar who bore the stigmata for 50 years. Motto: "Pray, hope, and don\'t worry."'},
+  {name:'St. Kateri Tekakwitha',era:'modern',initials:'KT',patron:'Indigenous peoples, Canada',feast:'Jul 14',desc:'A 17th-century Mohawk woman who converted to Catholicism. The first Native American to be canonized.'},
+  {name:'St. John Paul II',era:'modern',initials:'JP',patron:'World Youth Day, families',feast:'Oct 22',desc:'Pope from 1978-2005. First Polish pope, key figure in ending communism in Europe, prolific writer on human dignity.'},
+];
+
+const MYSTERIES=[
+  {id:'joyful',name:'Joyful Mysteries',days:['Monday','Saturday'],list:[
+    {num:'First',name:'The Annunciation',desc:'The angel Gabriel announces to Mary that she will conceive the Son of God. She says "yes" — her fiat, the most consequential act of obedience in history.'},
+    {num:'Second',name:'The Visitation',desc:'Mary visits her cousin Elizabeth, who is pregnant with John the Baptist. Elizabeth cries out "Blessed are you among women" — the first recognition of Jesus before his birth.'},
+    {num:'Third',name:'The Nativity',desc:'Jesus is born in Bethlehem in a humble stable. God enters the world not in power and glory, but in poverty and vulnerability.'},
+    {num:'Fourth',name:'The Presentation',desc:'Mary and Joseph bring the infant Jesus to the Temple in Jerusalem to consecrate him to God, fulfilling Jewish law.'},
+    {num:'Fifth',name:'Finding Jesus in the Temple',desc:'When Jesus is 12, he is lost for three days. Mary and Joseph find him in the Temple, amazing the teachers with his understanding.'},
+  ]},
+  {id:'sorrowful',name:'Sorrowful Mysteries',days:['Tuesday','Friday'],list:[
+    {num:'First',name:'The Agony in the Garden',desc:'Jesus prays in Gethsemane the night before his death. In anguish he asks the Father to take the cup from him — yet submits: "not my will, but yours."'},
+    {num:'Second',name:'The Scourging at the Pillar',desc:'Jesus is bound to a pillar and brutally whipped by Roman soldiers. He endures the physical suffering in silence.'},
+    {num:'Third',name:'The Crowning with Thorns',desc:'The soldiers mock Jesus as "King of the Jews," placing a crown of thorns on his head and dressing him in a purple robe.'},
+    {num:'Fourth',name:'The Carrying of the Cross',desc:'Jesus carries his cross through the streets of Jerusalem to Golgotha. He falls three times yet continues forward.'},
+    {num:'Fifth',name:'The Crucifixion',desc:'Jesus is nailed to the cross and dies after three hours. His last words include "Father, forgive them" and "It is finished." This is the central event of Christianity.'},
+  ]},
+  {id:'glorious',name:'Glorious Mysteries',days:['Wednesday','Sunday'],list:[
+    {num:'First',name:'The Resurrection',desc:'Three days after his death, Jesus rises from the dead — the cornerstone of Christian faith. The tomb is empty. He appears first to Mary Magdalene.'},
+    {num:'Second',name:'The Ascension',desc:'Forty days after the Resurrection, Jesus ascends bodily into heaven before his disciples, promising to return.'},
+    {num:'Third',name:'Pentecost',desc:'Ten days after the Ascension, the Holy Spirit descends on Mary and the apostles with tongues of fire. This is the birthday of the Church.'},
+    {num:'Fourth',name:'The Assumption of Mary',desc:'At the end of her earthly life, Mary is taken up — body and soul — into heaven. This is a defined Catholic dogma.'},
+    {num:'Fifth',name:'The Coronation of Mary',desc:'Mary is crowned Queen of Heaven and Earth, interceding for all humanity as the greatest of all saints.'},
+  ]},
+  {id:'luminous',name:'Luminous Mysteries',days:['Thursday'],list:[
+    {num:'First',name:'The Baptism of Jesus',desc:'Jesus is baptized by John in the Jordan River. The Father\'s voice declares "This is my beloved Son" and the Holy Spirit descends as a dove — a revelation of the Trinity.'},
+    {num:'Second',name:'The Wedding at Cana',desc:'At Mary\'s request, Jesus performs his first miracle — turning water into wine. Mary\'s words to the servants: "Do whatever he tells you."'},
+    {num:'Third',name:'The Proclamation of the Kingdom',desc:'Jesus calls people to repentance and proclaims the Kingdom of God through his teaching and miracles throughout his ministry.'},
+    {num:'Fourth',name:'The Transfiguration',desc:'On a mountaintop, Jesus is transfigured before Peter, James, and John — his face shining like the sun, his clothes blazing white. Moses and Elijah appear beside him.'},
+    {num:'Fifth',name:'The Institution of the Eucharist',desc:'At the Last Supper, Jesus takes bread and wine, declaring them his body and blood — instituting the Eucharist and the priesthood.'},
+  ]},
+];
+
+const PRAYERS=[
+  {name:'The Sign of the Cross',text:'In the name of the Father,\nand of the Son,\nand of the Holy Spirit.\nAmen.',note:'Touch your forehead, then chest, then left shoulder, then right shoulder as you say each phrase.'},
+  {name:"The Apostles' Creed",text:"I believe in God, the Father almighty,\nCreator of heaven and earth,\nand in Jesus Christ, his only Son, our Lord,\nwho was conceived by the Holy Spirit,\nborn of the Virgin Mary,\nsuffered under Pontius Pilate,\nwas crucified, died and was buried;\nhe descended into hell;\non the third day he rose again from the dead;\nhe ascended into heaven,\nand is seated at the right hand of God the Father almighty;\nfrom there he will come to judge the living and the dead.\nI believe in the Holy Spirit,\nthe holy catholic Church,\nthe communion of saints,\nthe forgiveness of sins,\nthe resurrection of the body,\nand life everlasting. Amen.",note:'Prayed on the crucifix at the very beginning of the Rosary.'},
+  {name:'The Our Father',text:'Our Father, who art in heaven,\nhallowed be thy name;\nthy kingdom come,\nthy will be done\non earth as it is in heaven.\nGive us this day our daily bread,\nand forgive us our trespasses,\nas we forgive those who trespass against us;\nand lead us not into temptation,\nbut deliver us from evil. Amen.',note:'Prayed once at the start of each decade (Mystery), and 3 times on the opening beads.'},
+  {name:'The Hail Mary',text:'Hail Mary, full of grace,\nthe Lord is with thee.\nBlessed art thou amongst women,\nand blessed is the fruit of thy womb, Jesus.\nHoly Mary, Mother of God,\npray for us sinners,\nnow and at the hour of our death. Amen.',note:'The core prayer of the Rosary — prayed 10 times per Mystery, 50 times in a full Rosary.'},
+  {name:'The Glory Be',text:'Glory be to the Father,\nand to the Son,\nand to the Holy Spirit,\nas it was in the beginning,\nis now, and ever shall be,\nworld without end. Amen.',note:'Prayed once at the end of each decade, after the 10 Hail Marys.'},
+  {name:'The Hail Holy Queen',text:'Hail, Holy Queen, Mother of Mercy,\nour life, our sweetness, and our hope.\nTo thee do we cry,\npoor banished children of Eve.\nTo thee do we send up our sighs,\nmourning and weeping in this valley of tears.\nTurn then, most gracious advocate,\nthine eyes of mercy toward us,\nand after this our exile,\nshow unto us the blessed fruit of thy womb, Jesus.\nO clement, O loving,\nO sweet Virgin Mary.',note:'Prayed once at the very end of the Rosary, after all five decades are complete.'},
+];
+
+// TABS
+function showTab(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  const map={teachers:0,terms:1,saints:2,rosary:3};
+  document.querySelectorAll('.nav-btn')[map[id]].classList.add('active');
+}
+
+// TEACHERS
+function initTeachers(){
+  document.getElementById('teachers-list').innerHTML=TEACHERS.map(t=>`
+    <div class="teacher-card">
+      <div class="teacher-head">
+        <div class="teacher-avatar">${t.initials}</div>
+        <div><div class="teacher-name">${t.name}</div><div class="teacher-role">${t.role}</div></div>
+      </div>
+      <div class="teacher-desc">${t.desc}</div>
+      <div class="teacher-why"><strong>Why your priest recommends them</strong><span>${t.why}</span></div>
+      <div class="resource-list">${t.resources.map(r=>`<div class="resource-chip"><a href="${r.url}" target="_blank">${r.label} &#8599;</a></div>`).join('')}</div>
+    </div>`).join('');
+}
+
+// TERMS
+const TC={all:'All',sacraments:'Sacraments',doctrine:'Doctrine',worship:'Worship',scripture:'Scripture',people:'People',morality:'Morality'};
+const TT={sacraments:'tag-blue',doctrine:'tag-purple',worship:'tag-teal',scripture:'tag-coral',people:'tag-amber',morality:'tag-green'};
+let activeTerm='all';
+function initTerms(){
+  const f=document.getElementById('terms-filters');
+  Object.entries(TC).forEach(([k,v])=>{
+    const b=document.createElement('button');
+    b.className='pill'+(k==='all'?' active':'');b.textContent=v;
+    b.onclick=()=>{activeTerm=k;f.querySelectorAll('.pill').forEach(p=>p.classList.remove('active'));b.classList.add('active');renderTerms();};
+    f.appendChild(b);
+  });renderTerms();
+}
+function renderTerms(){
+  const q=document.getElementById('terms-search').value.toLowerCase();
+  const list=TERMS.filter(t=>(activeTerm==='all'||t.cat===activeTerm)&&(!q||t.term.toLowerCase().includes(q)||t.desc.toLowerCase().includes(q)));
+  document.getElementById('terms-cards').innerHTML=list.length?list.map(t=>`
+    <div class="card">
+      <div class="term-name">${t.term}</div>
+      <span class="tag ${TT[t.cat]}">${TC[t.cat]}</span>
+      <div class="card-desc">${t.desc}</div>
+      ${t.analogy?`<div class="analogy">${t.analogy}</div>`:''}
+    </div>`).join(''):'<div class="empty">No terms found.</div>';
+}
+
+// SAINTS
+const SE={all:'All',biblical:'Biblical Era',early:'Early Church',medieval:'Medieval',modern:'Modern'};
+const ST2={biblical:'tag-purple',early:'tag-coral',medieval:'tag-teal',modern:'tag-amber'};
+let activeEra='all';
+function initSaints(){
+  const f=document.getElementById('saints-filters');
+  Object.entries(SE).forEach(([k,v])=>{
+    const b=document.createElement('button');
+    b.className='pill'+(k==='all'?' active':'');b.textContent=v;
+    b.onclick=()=>{activeEra=k;f.querySelectorAll('.pill').forEach(p=>p.classList.remove('active'));b.classList.add('active');renderSaints();};
+    f.appendChild(b);
+  });renderSaints();
+}
+function renderSaints(){
+  const q=document.getElementById('saints-search').value.toLowerCase();
+  const list=SAINTS.filter(s=>(activeEra==='all'||s.era===activeEra)&&(!q||s.name.toLowerCase().includes(q)||s.patron.toLowerCase().includes(q)||s.desc.toLowerCase().includes(q)));
+  document.getElementById('saints-cards').innerHTML=list.length?list.map(s=>`
+    <div class="card">
+      <div class="avatar">${s.initials}</div>
+      <div class="term-name">${s.name}</div>
+      <span class="tag ${ST2[s.era]}">${SE[s.era]}</span>
+      <div class="patron-line">&#128737; ${s.patron}</div>
+      <div class="card-desc">${s.desc}</div>
+      ${s.feast?`<div class="sub-info">Feast day: ${s.feast}</div>`:''}
+    </div>`).join(''):'<div class="empty">No saints found.</div>';
+}
+
+// ROSARY
+function initRosary(){
+  const today=new Date().toLocaleDateString('en-US',{weekday:'long'});
+  const dayTabs=document.getElementById('day-tabs');
+  const mysteryDiv=document.getElementById('mystery-sets');
+  let firstActive=null;
+  MYSTERIES.forEach(m=>{
+    const isToday=m.days.includes(today);
+    if(isToday&&!firstActive)firstActive=m.id;
+    const b=document.createElement('button');
+    b.className='day-tab';b.id='dtab-'+m.id;
+    b.textContent=m.name+(isToday?' &#10022;':'');
+    b.onclick=()=>{
+      document.querySelectorAll('.day-tab').forEach(t=>t.classList.remove('active'));
+      b.classList.add('active');
+      document.querySelectorAll('.mystery-set').forEach(s=>s.classList.remove('active'));
+      document.getElementById('mset-'+m.id).classList.add('active');
+    };
+    dayTabs.appendChild(b);
+    const div=document.createElement('div');
+    div.className='mystery-set';div.id='mset-'+m.id;
+    div.innerHTML=`<div class="mystery-set-title">${m.name} &mdash; Prayed on ${m.days.join(' &amp; ')}</div>`+
+      m.list.map(my=>`<div class="mystery-card">
+        <div class="mystery-num">${my.num} Mystery</div>
+        <div class="mystery-name">${my.name}</div>
+        <div class="mystery-desc">${my.desc}</div>
+        <div class="mystery-prayers">1 Our Father &nbsp;&middot;&nbsp; 10 Hail Marys &nbsp;&middot;&nbsp; 1 Glory Be</div>
+      </div>`).join('');
+    mysteryDiv.appendChild(div);
+  });
+  const startId=firstActive||'joyful';
+  document.getElementById('dtab-'+startId).classList.add('active');
+  document.getElementById('mset-'+startId).classList.add('active');
+  document.getElementById('prayers-list').innerHTML=PRAYERS.map(p=>`
+    <div class="prayer-card">
+      <div class="prayer-name">${p.name}</div>
+      <div class="prayer-text">${p.text}</div>
+      ${p.note?`<div class="prayer-note">${p.note}</div>`:''}
+    </div>`).join('');
+}
+
+initTeachers();initTerms();initSaints();initRosary();
+</script>
+</body>
+</html>
