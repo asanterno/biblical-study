@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Understanding the Catholic Mass</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{font-family:'Jost',sans-serif;background:#f5f0e8;color:#1a1208;font-size:15px;line-height:1.6;min-height:100vh}
+.app{max-width:680px;margin:0 auto;padding-bottom:3rem}
+.header{text-align:center;padding:2rem 1.5rem 1.25rem;border-bottom:2px solid #c9a84c;background:#1a1208}
+.header h1{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;color:#e8d08a;letter-spacing:.04em}
+.header p{font-size:13px;color:#c9a84c;margin-top:5px;letter-spacing:.06em;text-transform:uppercase}
+.nav{display:flex;background:#2a1f10;border-bottom:2px solid #c9a84c;flex-wrap:wrap}
+.nav-btn{flex:1;min-width:60px;padding:12px 4px;font-family:'Jost',sans-serif;font-size:10px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;background:transparent;border:none;cursor:pointer;color:#c9a84c;border-bottom:3px solid transparent;transition:all .2s}
+.nav-btn.active{color:#fff;border-bottom-color:#c9a84c;background:#3a2c18}
+.nav-btn:hover:not(.active){background:#3a2c18;color:#e8d08a}
+.section{display:none;padding:1.5rem}
+.section.active{display:block}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;margin-bottom:6px;color:#1a1208}
+.section-sub{font-size:13px;color:#888;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid #c9a84c}
+
+/* INTRO */
+.intro-card{background:#fff;border:2px solid #c9a84c;border-radius:10px;padding:1.25rem 1.4rem;margin-bottom:14px}
+.intro-card h2{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:#1a1208;margin-bottom:8px}
+.intro-card p{font-size:13px;color:#333;line-height:1.8;margin-bottom:8px}
+.intro-card p:last-child{margin-bottom:0}
+.two-parts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.part-box{background:#fff;border:2px solid #d9cdb8;border-radius:8px;padding:1rem;text-align:center}
+.part-box.highlight{border-color:#c9a84c}
+.part-box h3{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:#1a1208;margin-bottom:6px}
+.part-box p{font-size:12px;color:#555;line-height:1.6}
+.part-num{display:inline-block;background:#c9a84c;color:#fff;font-size:11px;font-weight:600;padding:2px 8px;border-radius:10px;margin-bottom:6px;letter-spacing:.05em}
+
+/* WALKTHROUGH */
+.phase-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:#fff;background:#c9a84c;padding:4px 12px;border-radius:4px;display:inline-block;margin-bottom:12px;margin-top:6px}
+.mass-step{background:#fff;border:2px solid #d9cdb8;border-radius:8px;padding:1rem 1.2rem;margin-bottom:10px}
+.mass-step.key{border-color:#c9a84c}
+.step-header{display:flex;align-items:flex-start;gap:10px;margin-bottom:6px}
+.step-icon{width:32px;height:32px;border-radius:50%;background:#fef3dc;border:2px solid #c9a84c;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.step-name{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:#1a1208;line-height:1.2}
+.step-posture{font-size:11px;color:#c9a84c;font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-top:2px}
+.step-desc{font-size:13px;color:#333;line-height:1.7}
+.response-box{background:#fef3dc;border-left:3px solid #c9a84c;padding:8px 12px;border-radius:0 6px 6px 0;margin-top:8px;font-size:13px;color:#1a1208}
+.response-box .label{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#c9a84c;font-weight:600;margin-bottom:4px}
+.priest-line{color:#555;margin-bottom:3px}
+.people-line{color:#1a1208;font-weight:600}
+.tip-box{background:#fefaf3;border:1px solid #d9cdb8;border-radius:6px;padding:8px 12px;margin-top:8px;font-size:12px;color:#555;font-style:italic}
+.tip-box strong{color:#c9a84c;font-style:normal}
+
+/* POSTURES */
+.posture-grid{display:grid;grid-template-columns:1fr;gap:10px}
+.posture-card{background:#fff;border:2px solid #d9cdb8;border-radius:8px;padding:1rem 1.2rem}
+.posture-name{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:#1a1208;margin-bottom:4px}
+.posture-badge{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:10px;margin-bottom:8px;letter-spacing:.04em}
+.badge-stand{background:#d1fae5;color:#065f46}
+.badge-sit{background:#dbeafe;color:#1e3a8a}
+.badge-kneel{background:#ede9fe;color:#4c1d95}
+.posture-desc{font-size:13px;color:#333;line-height:1.7}
+.posture-when{font-size:12px;color:#888;margin-top:6px;font-style:italic}
+
+/* RESPONSES */
+.response-section{margin-bottom:20px}
+.response-section h3{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:#1a1208;margin-bottom:10px;padding-left:10px;border-left:4px solid #c9a84c}
+.exchange{background:#fff;border:2px solid #d9cdb8;border-radius:8px;padding:1rem 1.2rem;margin-bottom:8px}
+.exchange-priest{font-size:13px;color:#555;margin-bottom:4px}
+.exchange-people{font-size:14px;color:#1a1208;font-weight:600;font-family:'Cormorant Garamond',serif}
+.exchange-note{font-size:12px;color:#888;margin-top:6px;font-style:italic}
+
+/* SPACE */
+.space-card{background:#fff;border:2px solid #d9cdb8;border-radius:8px;padding:1rem 1.2rem;margin-bottom:10px}
+.space-name{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:#1a1208;margin-bottom:4px}
+.space-desc{font-size:13px;color:#333;line-height:1.7}
+.space-note{font-size:12px;color:#c9a84c;margin-top:6px;font-weight:500}
+
+/* COMMUNION */
+.comm-step{background:#fff;border:2px solid #d9cdb8;border-radius:8px;padding:1rem 1.2rem;margin-bottom:10px;display:flex;gap:12px;align-items:flex-start}
+.comm-num{width:28px;height:28px;border-radius:50%;background:#c9a84c;color:#fff;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.comm-body{flex:1}
+.comm-title{font-weight:600;font-size:14px;color:#1a1208;margin-bottom:3px}
+.comm-desc{font-size:13px;color:#333;line-height:1.65}
+.not-receiving{background:#fef3dc;border:2px solid #c9a84c;border-radius:8px;padding:1rem 1.2rem;margin-bottom:10px}
+.not-receiving h3{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:#1a1208;margin-bottom:8px}
+.not-receiving p{font-size:13px;color:#333;line-height:1.7;margin-bottom:6px}
+.not-receiving p:last-child{margin-bottom:0}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="header">
+    <h1>&#10022; Understanding the Mass</h1>
+    <p>A beginner's guide to Catholic worship</p>
+  </div>
+  <nav class="nav">
+    <button class="nav-btn active" onclick="showTab('overview')">Overview</button>
+    <button class="nav-btn" onclick="showTab('walkthrough')">Walkthrough</button>
+    <button class="nav-btn" onclick="showTab('postures')">Postures</button>
+    <button class="nav-btn" onclick="showTab('responses')">Responses</button>
+    <button class="nav-btn" onclick="showTab('space')">The Church</button>
+    <button class="nav-btn" onclick="showTab('communion')">Communion</button>
+  </nav>
+
+  <!-- OVERVIEW -->
+  <div class="section active" id="tab-overview">
+    <div class="section-title">What is the Mass?</div>
+    <div class="section-sub">The central act of Catholic worship, celebrated every Sunday and daily</div>
+
+    <div class="intro-card">
+      <h2>The short answer</h2>
+      <p>The Mass is the weekly (or daily) gathering of Catholics to worship God, hear Scripture, and receive the Eucharist — the body and blood of Christ. It lasts about one hour.</p>
+      <p>Catholics believe the Mass is not just a memorial of the Last Supper — it is a re-presentation of it. When the priest consecrates the bread and wine, they truly become Christ. This is why Mass is considered the most important thing a Catholic does all week.</p>
+      <p>Think of it like this: if the Rosary is a conversation with God, Mass is a meal with him.</p>
+    </div>
+
+    <div class="intro-card">
+      <h2>The two main parts</h2>
+      <p style="margin-bottom:12px">Every Mass has the same structure, built around two pillars:</p>
+      <div class="two-parts">
+        <div class="part-box highlight">
+          <div class="part-num">Part 1</div>
+          <h3>Liturgy of the Word</h3>
+          <p>Scripture is read aloud. The priest gives a homily (sermon). You are fed with God's word.</p>
+        </div>
+        <div class="part-box highlight">
+          <div class="part-num">Part 2</div>
+          <h3>Liturgy of the Eucharist</h3>
+          <p>Bread and wine become the body and blood of Christ. Those who are ready receive Communion.</p>
+        </div>
+      </div>
+      <p>These two parts are bookended by <strong>Introductory Rites</strong> at the start and <strong>Concluding Rites</strong> at the end.</p>
+    </div>
+
+    <div class="intro-card">
+      <h2>What to expect as a beginner</h2>
+      <p>&#8226; Mass lasts about <strong>60 minutes</strong> on Sundays, sometimes less on weekdays.</p>
+      <p>&#8226; You will <strong>stand, sit, and kneel</strong> at various points. Just follow what everyone around you does — no one expects you to know it all on day one.</p>
+      <p>&#8226; The congregation <strong>speaks aloud together</strong> at several points — responses to the priest, prayers, the Creed. These are in the Responses tab.</p>
+      <p>&#8226; <strong>If you are not yet Catholic</strong>, you do not receive Communion. This is normal and expected — see the Communion tab for exactly what to do.</p>
+      <p>&#8226; Your priest knows you are new. <strong>You cannot do this wrong.</strong> Simply show up, pay attention, and let it wash over you.</p>
+    </div>
+  </div>
+
+  <!-- WALKTHROUGH -->
+  <div class="section" id="tab-walkthrough">
+    <div class="section-title">The Order of Mass</div>
+    <div class="section-sub">Every step, from beginning to end, explained in plain language</div>
+
+    <div class="phase-label">Introductory Rites</div>
+
+    <div class="mass-step">
+      <div class="step-header">
+        <div class="step-icon">&#9654;</div>
+        <div><div class="step-name">Entrance Procession</div><div class="step-posture">Stand</div></div>
+      </div>
+      <div class="step-desc">The priest, altar servers, and deacon (if present) process from the back of the church to the altar while a hymn is sung. The priest bows and kisses the altar as a sign of reverence — the altar represents Christ himself.</div>
+      <div class="tip-box"><strong>Tip:</strong> When you enter the church, you'll see people dipping their fingers in a small basin of water near the door (the holy water font) and making the Sign of the Cross. This is a reminder of Baptism. You are welcome to do the same.</div>
+    </div>
+
+    <div class="mass-step">
+      <div class="step-header">
+        <div class="step-icon">&#43;</div>
+        <div><div class="step-name">Sign of the Cross & Greeting</div><div class="step-posture">Stand</div></div>
+      </div>
+      <div class="step-desc">The priest makes the Sign of the Cross and greets the congregation. This begins the formal worship.</div>
+      <div class="response-box">
+        <div class="label">Exchange</div>
+        <div class="priest-line">Priest: "The Lord be with you."</div>
+        <div class="people-line">People: "And with your spirit."</div>
+      </div>
+      <div class="tip-box"><strong>What this means:</strong> "And with your spirit" is not just a greeting. It is a prayer for the priest's soul — acknowledging that through ordination, the Holy Spirit works through him in a special way.</div>
+    </div>
+
+    <div class="mass-step">
+      <div class="step-header">
+        <div class="step-icon">&#128591;</div>
+        <div><div class="step-name">Penitential Act</div><div class="step-posture">Stand</div></div>
+      </div>
+      <div class="step-desc">The congregation briefly acknowledges its sins and asks for God's mercy before worship begins. The most common form is the Confiteor — "I confess to Almighty God..." — spoken together. This is not a replacement for Confession, but a humble opening of the heart.</div>
+      <div class="response-box">
+        <div class="label">Response after</div>
+        <div class="priest-line">Priest: "Lord, have mercy." / "Christ, have mercy." / "Lord, have mercy."</div>
+        <div class="people-line">People repeat each line after the priest.</div>
+      </div>
+    </div>
+
+    <div class="mass-step">
+      <div class="step-header">
+        <div class="step-icon">&#9733;</div>
+        <div><div class="step-name">Gloria</div><div class="step-posture">Stand</div></div>
+      </div>
+      <div class="step-desc">A hymn of praise to God, sung or recited together. It begins "Glory to God in the highest..." It is used on Sundays and feast days, but not during Advent or Lent — those are more reflective seasons.</div>
+    </div>
+
+    <div class="mass-step">
+      <div class="step-header">
+        <div class="step-icon">&#128221;</div>
+        <div><div class="step-name">Collect (Opening Prayer)</div><div class="step-posture">Stand</div></div>
+      </div>
+      <div class="step-desc">The priest "collects" the prayers of the people into one prayer for the day. It changes every Mass depending on the liturgical season or feast day. The congregation responds "Amen" — meaning "I agree" or "So be it."</div>
+    </div>
+
+    <div class="phase-label" style="margin-top:8px">Liturgy of the Word</div>
+
+    <div class="mass-step">
+      <div class="step-header">
+        <div class="step-icon">&#128214;</div>
+        <div><div class="step-name">First Reading</div><div class="step-posture">Sit</div></div>
+      </div>
+      <div class="step-desc">A passage from the Old Testament is read by a lay minister (not the priest) from the ambo — the lectern. It ends with "The word of the Lord."</div>
+      <div class="response-box">
+        <div class="label">Response</div>
+        <div class="people-line">People: "Thanks be to God."</div>
+      </div>
+    </div>
+
+    <div class="mass-step">
+      <div class="step-header">
+        <div class="step-icon">&#127925;</div>
+        <div><div class="step-name">Responsorial Psalm</div><div class="step-posture">Sit</div></div>
+      </div>
+      <div class="step-desc">A psalm (a sacred poem from the Bible) is sung or recited, with the congregation repeating a response after each verse. This is a moment of gentle reflection between the readings.</div>
+    </div>
+
+    <div class="mass-step">
+      <div class="step-header">
+        <div class="step-icon">&#128214;</div>
+        <div><div class="step-name">Second Reading</div><div class="step-posture">Sit</div></div>
+      </div>
+      <div class="step-desc">On Sundays, a second reading from the New Testament (usually one of Paul's letters — the Epistles) is read. Same response at the end: "Thanks be to God."</div>
+    </div>
+
+    <div class="mass-step key">
+      <div class="step-header">
+        <div class="step-icon">&#10022;</div>
+        <div><div class="step-name">Gospel Acclamation & Gospel Reading</div><div class="step-posture">Stand</div></div>
+      </div>
+      <div class="step-desc">Everyone stands as the deacon or priest processes to the ambo carrying the Book of the Gospels. An "Alleluia" is sung — or during Lent a different acclamation — to welcome Christ's words. The Gospel reading is from one of the four Gospels: Matthew, Mark, Luke, or John.</div>
+      <div class="response-box">
+        <div class="label">Before the Gospel</div>
+        <div class="priest-line">Priest/Deacon: "The Lord be with you."</div>
+        <div class="people-line">People: "And with your spirit."</div>
+        <div class="priest-line" style="margin-top:4px">Priest/Deacon: "A reading from the holy Gospel according to [name]."</div>
+        <div class="people-line">People: "Glory to you, O Lord."</div>
+      </div>
+      <div class="response-box" style="margin-top:6px">
+        <div class="label">After the Gospel</div>
+        <div class="priest-line">Priest/Deacon: "The Gospel of the Lord."</div>
+        <div class="people-line">People: "Praise to you, Lord Jesus Christ."</div>
+      </div>
+      <div class="tip-box"><strong>What to do:</strong> At "A reading from the holy Gospel..." many Catholics make a small Sign of the Cross on their forehead, lips, and heart. This is a gesture meaning "May this word be in my mind, on my lips, and in my heart." You are welcome to do the same.</div>
+    </div>
+
+    <div class="mass-step">
+      <div class="step-header">
+        <div class="step-icon">&#127908;</div>
+        <div><div class="step-name">Homily (Sermon)</div><div class="step-posture">Sit</div></div>
+      </div>
+      <div class="step-desc">The priest or deacon explains and applies the Scripture readings to daily life. This is his personal reflection — it varies in length and style. A good homily connects the ancient text to where you are right now.</div>
+    </div>
+
+    <div class="mass-step">
+      <div class="step-header">
+        <div class="step-icon">&#9997;</div>
+        <div><div class="step-name">Nicene Creed</div><div class="step-posture">Stand</div></div>
+      </div>
+      <div class="step-desc">The congregation recites the Nicene Creed together — the formal statement of Catholic belief, established at the Council of Nicaea in 325 AD. It covers belief in the Trinity, the Incarnation, the Church, and eternal life. Everyone says it together as one voice.</div>
+      <div class="tip-box"><strong>If you don't know it yet:</strong> Just listen. Or follow along in the missal (the book in the pew). No one expects you to have it memorized.</div>
+    </div>
+
+    <div class="mass-step">
+      <div class="step-header">
+        <div class="step-icon">&#128591;</div>
+        <div><div class="step-name">Prayer of the Faithful</div><div class="step-posture">Stand</div></div>
+      </div>
+      <div class="step-desc">A series of short prayers for the Church, the world, the sick, and the dead. After each intention, the congregation responds together — usually "Lord, hear our prayer." This is the congregation's moment to bring the needs of the world to God.</div>
+    </div>
+
+    <div class="phase-label" style="margin-top:8px">Liturgy of the Eucharist</div>
+
+    <div class="mass-step">
+      <div class="step-header">
+        <div class="step-icon">&#127869;</div>
+        <div><div class="step-name">Offertory</div><div class="step-posture">Sit</div></div>
+      </div>
+      <div class="step-desc">The bread and wine are brought to the altar — along with a collection basket for the parish. A hymn is usually sung. The priest prepares the gifts with quiet prayers, then washes his hands — a symbol of the desire for purity before the Eucharistic Prayer.</div>
+    </div>
+
+    <div class="mass-step key">
+      <div class="step-header">
+        <div class="step-icon">&#10022;</div>
+        <div><div class="step-name">Eucharistic Prayer</div><div class="step-posture">Stand then Kneel</div></div>
+      </div>
+      <div class="step-desc">This is the heart of the Mass — the most sacred moment. The priest begins standing, with the congregation, then after the Sanctus ("Holy, Holy, Holy") everyone kneels. The priest prays in the name of the Church, recalls the Last Supper, and speaks the words of consecration over the bread and wine. Catholics believe that at this moment, the bread and wine truly become the body and blood of Christ.</div>
+      <div class="response-box">
+        <div class="label">The Preface Dialogue (Stand)</div>
+        <div class="priest-line">Priest: "The Lord be with you."</div>
+        <div class="people-line">People: "And with your spirit."</div>
+        <div class="priest-line" style="margin-top:4px">Priest: "Lift up your hearts."</div>
+        <div class="people-line">People: "We lift them up to the Lord."</div>
+        <div class="priest-line" style="margin-top:4px">Priest: "Let us give thanks to the Lord our God."</div>
+        <div class="people-line">People: "It is right and just."</div>
+      </div>
+      <div class="response-box" style="margin-top:6px">
+        <div class="label">The Sanctus — sung or said together (Stand)</div>
+        <div class="people-line">"Holy, Holy, Holy Lord God of hosts. Heaven and earth are full of your glory. Hosanna in the highest. Blessed is he who comes in the name of the Lord. Hosanna in the highest."</div>
+      </div>
+      <div class="response-box" style="margin-top:6px">
+        <div class="label">Memorial Acclamation — after the consecration (Kneel)</div>
+        <div class="priest-line">Priest: "The mystery of faith."</div>
+        <div class="people-line">People: "We proclaim your Death, O Lord, and profess your Resurrection until you come again."</div>
+      </div>
+    </div>
+
+    <div class="phase-label" style="margin-top:8px">Communion Rite</div>
+
+    <div class="mass-step">
+      <div class="step-header">
+        <div class="step-icon">&#128591;</div>
+        <div><div class="step-name">The Lord's Prayer</div><div class="step-posture">Stand</div></div>
+      </div>
+      <div class="step-desc">Everyone stands and prays the Our Father together — the prayer Jesus himself taught. It is said slowly and deliberately. Some parishes hold hands; others don't. Follow the lead of those around you.</div>
+    </div>
+
+    <div class="mass-step">
+      <div class="step-header">
+        <div class="step-icon">&#9829;</div>
+        <div><div class="step-name">Sign of Peace</div><div class="step-posture">Stand</div></div>
+      </div>
+      <div class="step-desc">The priest offers peace to the congregation, who then share it with those around them — usually a handshake or nod, with the words "Peace be with you." It is a sign of reconciliation and unity before receiving Communion.</div>
+    </div>
+
+    <div class="mass-step">
+      <div class="step-header">
+        <div class="step-icon">&#127829;</div>
+        <div><div class="step-name">Lamb of God (Agnus Dei)</div><div class="step-posture">Kneel</div></div>
+      </div>
+      <div class="step-desc">While the priest breaks the consecrated bread, the congregation sings or recites the Agnus Dei — "Lamb of God, you take away the sins of the world, have mercy on us... grant us peace." This is followed by the priest showing the Eucharist and saying "Behold the Lamb of God..."</div>
+      <div class="response-box">
+        <div class="label">Response</div>
+        <div class="priest-line">Priest: "Behold the Lamb of God... Blessed are those called to the supper of the Lamb."</div>
+        <div class="people-line">People: "Lord, I am not worthy that you should enter under my roof, but only say the word and my soul shall be healed."</div>
+      </div>
+    </div>
+
+    <div class="mass-step key">
+      <div class="step-header">
+        <div class="step-icon">&#127891;</div>
+        <div><div class="step-name">Communion</div><div class="step-posture">Stand (in line)</div></div>
+      </div>
+      <div class="step-desc">Those who are properly prepared receive the Eucharist. See the Communion tab for full details on what to do — both if you are receiving and if you are not yet receiving.</div>
+    </div>
+
+    <div class="mass-step">
+      <div class="step-header">
+        <div class="step-icon">&#128337;</div>
+        <div><div class="step-name">Silent Prayer & Prayer after Communion</div><div class="step-posture">Sit / Kneel</div></div>
+      </div>
+      <div class="step-desc">After Communion there is a period of quiet — one of the most sacred moments of Mass. This is personal time with God. Then the priest stands and prays the Prayer after Communion, to which everyone responds "Amen."</div>
+      <div class="tip-box"><strong>What to do:</strong> Use this silence. Speak to God in your own words. Thank him. Ask him something. Just be present. This is what the whole Mass has been building toward.</div>
+    </div>
+
+    <div class="phase-label" style="margin-top:8px">Concluding Rites</div>
+
+    <div class="mass-step">
+      <div class="step-header">
+        <div class="step-icon">&#127381;</div>
+        <div><div class="step-name">Announcements & Final Blessing</div><div class="step-posture">Stand</div></div>
+      </div>
+      <div class="step-desc">The priest may make brief parish announcements. He then gives the final blessing — making the Sign of the Cross over the congregation. Everyone makes the Sign of the Cross as he says "May almighty God bless you, the Father, and the Son, and the Holy Spirit."</div>
+      <div class="response-box">
+        <div class="label">Response</div>
+        <div class="people-line">People: "Amen."</div>
+      </div>
+    </div>
+
+    <div class="mass-step">
+      <div class="step-header">
+        <div class="step-icon">&#128522;</div>
+        <div><div class="step-name">Dismissal</div><div class="step-posture">Stand</div></div>
+      </div>
+      <div class="step-desc">The priest or deacon dismisses the congregation with one of several phrases. The most common: "Go forth, the Mass is ended." The word "Mass" itself comes from the Latin word for dismissal — missa — because we are sent out to live what we have received.</div>
+      <div class="response-box">
+        <div class="label">Response</div>
+        <div class="people-line">People: "Thanks be to God."</div>
+      </div>
+      <div class="tip-box"><strong>What happens next:</strong> The priest processes back down the aisle. People usually remain seated or kneeling for a moment of personal prayer before leaving. There is no rush.</div>
+    </div>
+  </div>
+
+  <!-- POSTURES -->
+  <div class="section" id="tab-postures">
+    <div class="section-title">Standing, Sitting & Kneeling</div>
+    <div class="section-sub">Why Catholics change posture — and when</div>
+
+    <div class="intro-card" style="margin-bottom:14px">
+      <h2>The simple rule</h2>
+      <p>When you arrive, just watch what the people around you do and follow along. No one will judge you for being a moment behind. After a few Masses it becomes completely natural.</p>
+    </div>
+
+    <div class="posture-grid">
+      <div class="posture-card">
+        <div class="posture-name">Standing</div>
+        <div><span class="posture-badge badge-stand">Stand</span></div>
+        <div class="posture-desc">Standing is the posture of resurrection — of a people who have been raised to new life. It expresses reverence, readiness, and joy. In the early Church, kneeling on Sundays was actually forbidden because Sunday celebrates the Resurrection.</div>
+        <div class="posture-when">When: Entrance, Gospel reading, Creed, Eucharistic Prayer (opening), Our Father, Communion line, Final Blessing, Dismissal.</div>
+      </div>
+      <div class="posture-card">
+        <div class="posture-name">Sitting</div>
+        <div><span class="posture-badge badge-sit">Sit</span></div>
+        <div class="posture-desc">Sitting is the posture of attentive listening — a student before a teacher. When we sit, we are receiving. It signals that we are ready to take in what is being offered.</div>
+        <div class="posture-when">When: First and Second Readings, Responsorial Psalm, Homily, Offertory, Prayer after Communion, Announcements.</div>
+      </div>
+      <div class="posture-card">
+        <div class="posture-name">Kneeling</div>
+        <div><span class="posture-badge badge-kneel">Kneel</span></div>
+        <div class="posture-desc">Kneeling is the posture of adoration — of a creature before its Creator. It expresses humility, reverence, and the acknowledgment that something holy is happening. Catholics kneel at the most sacred moments of the Mass.</div>
+        <div class="posture-when">When: After the Sanctus through the end of the Eucharistic Prayer (the consecration), Lamb of God, and during the silent prayer after Communion (in many parishes).</div>
+      </div>
+      <div class="posture-card">
+        <div class="posture-name">Genuflection</div>
+        <div><span class="posture-badge badge-kneel">One Knee</span></div>
+        <div class="posture-desc">When entering or leaving a pew, Catholics genuflect — briefly touching one knee to the ground — toward the tabernacle at the front of the church. This is a sign of adoration for Christ's presence in the Eucharist reserved in the tabernacle.</div>
+        <div class="posture-when">When: Any time you enter or pass in front of the tabernacle. If you are unsure, a simple bow is always appropriate.</div>
+      </div>
+      <div class="posture-card">
+        <div class="posture-name">Bowing</div>
+        <div><span class="posture-badge badge-stand">Bow</span></div>
+        <div class="posture-desc">A simple bow of the head is made at the name of Jesus, at the name of Mary, and during the Creed when the Incarnation is mentioned ("and by the Holy Spirit was incarnate of the Virgin Mary"). It is a small gesture of reverence.</div>
+        <div class="posture-when">When: At the Holy Name of Jesus, during the Creed, and as a general sign of respect before receiving Communion.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESPONSES -->
+  <div class="section" id="tab-responses">
+    <div class="section-title">What the People Say</div>
+    <div class="section-sub">The congregation's spoken responses during Mass</div>
+
+    <div class="intro-card" style="margin-bottom:16px">
+      <h2>A conversation, not a performance</h2>
+      <p>The Mass is not something that happens to you — it is something you participate in. The responses are your voice joining with the priest and with Catholics all over the world saying the same words at the same time. Don't worry about knowing them all at first. They sink in naturally over a few Masses.</p>
+    </div>
+
+    <div class="response-section">
+      <h3>Introductory Rites</h3>
+      <div class="exchange">
+        <div class="exchange-priest">Priest: "The Lord be with you."</div>
+        <div class="exchange-people">"And with your spirit."</div>
+        <div class="exchange-note">Said three times during Mass — at the greeting, before the Gospel, and before the final blessing.</div>
+      </div>
+      <div class="exchange">
+        <div class="exchange-priest">Priest: "Lord have mercy / Christ have mercy / Lord have mercy"</div>
+        <div class="exchange-people">People repeat each line after the priest.</div>
+      </div>
+    </div>
+
+    <div class="response-section">
+      <h3>Liturgy of the Word</h3>
+      <div class="exchange">
+        <div class="exchange-priest">Reader: "The word of the Lord."</div>
+        <div class="exchange-people">"Thanks be to God."</div>
+        <div class="exchange-note">Said after the First and Second Readings.</div>
+      </div>
+      <div class="exchange">
+        <div class="exchange-priest">Priest/Deacon: "A reading from the holy Gospel according to [name]."</div>
+        <div class="exchange-people">"Glory to you, O Lord."</div>
+      </div>
+      <div class="exchange">
+        <div class="exchange-priest">Priest/Deacon: "The Gospel of the Lord."</div>
+        <div class="exchange-people">"Praise to you, Lord Jesus Christ."</div>
+      </div>
+      <div class="exchange">
+        <div class="exchange-priest">After each intention in the Prayer of the Faithful:</div>
+        <div class="exchange-people">"Lord, hear our prayer."</div>
+        <div class="exchange-note">The specific wording varies by parish — your priest may use a different response. Just listen and follow along.</div>
+      </div>
+    </div>
+
+    <div class="response-section">
+      <h3>Liturgy of the Eucharist</h3>
+      <div class="exchange">
+        <div class="exchange-priest">Priest: "Pray, brethren, that my sacrifice and yours may be acceptable to God, the almighty Father."</div>
+        <div class="exchange-people">"May the Lord accept the sacrifice at your hands for the praise and glory of his name, for our good and the good of all his holy Church."</div>
+      </div>
+      <div class="exchange">
+        <div class="exchange-priest">Priest: "Lift up your hearts."</div>
+        <div class="exchange-people">"We lift them up to the Lord."</div>
+      </div>
+      <div class="exchange">
+        <div class="exchange-priest">Priest: "Let us give thanks to the Lord our God."</div>
+        <div class="exchange-people">"It is right and just."</div>
+      </div>
+      <div class="exchange">
+        <div class="exchange-priest">The Sanctus — said or sung together:</div>
+        <div class="exchange-people">"Holy, Holy, Holy Lord God of hosts. Heaven and earth are full of your glory. Hosanna in the highest. Blessed is he who comes in the name of the Lord. Hosanna in the highest."</div>
+      </div>
+      <div class="exchange">
+        <div class="exchange-priest">Priest: "The mystery of faith."</div>
+        <div class="exchange-people">"We proclaim your Death, O Lord, and profess your Resurrection until you come again."</div>
+        <div class="exchange-note">There are three options for this response. Your parish will use one consistently.</div>
+      </div>
+    </div>
+
+    <div class="response-section">
+      <h3>Communion Rite</h3>
+      <div class="exchange">
+        <div class="exchange-priest">Agnus Dei — said or sung together:</div>
+        <div class="exchange-people">"Lamb of God, you take away the sins of the world, have mercy on us. Lamb of God, you take away the sins of the world, have mercy on us. Lamb of God, you take away the sins of the world, grant us peace."</div>
+      </div>
+      <div class="exchange">
+        <div class="exchange-priest">Priest: "Behold the Lamb of God, behold him who takes away the sins of the world. Blessed are those called to the supper of the Lamb."</div>
+        <div class="exchange-people">"Lord, I am not worthy that you should enter under my roof, but only say the word and my soul shall be healed."</div>
+      </div>
+      <div class="exchange">
+        <div class="exchange-priest">Priest/minister: "The Body of Christ."</div>
+        <div class="exchange-people">"Amen."</div>
+        <div class="exchange-note">Said only by those receiving Communion. If you are not yet receiving, you will not be in this line.</div>
+      </div>
+    </div>
+
+    <div class="response-section">
+      <h3>Concluding Rites</h3>
+      <div class="exchange">
+        <div class="exchange-priest">Priest: "Go forth, the Mass is ended." (or similar)</div>
+        <div class="exchange-people">"Thanks be to God."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE CHURCH SPACE -->
+  <div class="section" id="tab-space">
+    <div class="section-title">The Church Building</div>
+    <div class="section-sub">What everything is called and what it means</div>
+
+    <div class="space-card">
+      <div class="space-name">The Nave</div>
+      <div class="space-desc">The main body of the church where the congregation sits. The word comes from the Latin navis — meaning "ship." The Church has long seen itself as a ship carrying people through the waters of life toward God.</div>
+    </div>
+    <div class="space-card">
+      <div class="space-name">The Altar</div>
+      <div class="space-desc">The central table at the front of the church where the Eucharist is celebrated. It is not merely a table — it represents Christ himself, which is why the priest bows and kisses it at the beginning and end of Mass. Nothing is placed on the altar carelessly.</div>
+      <div class="space-note">The most sacred object in the building.</div>
+    </div>
+    <div class="space-card">
+      <div class="space-name">The Tabernacle</div>
+      <div class="space-desc">A secure, ornate box — usually gold — where consecrated hosts (Communion) are reserved after Mass for the sick and dying, and for ongoing adoration. A candle or lamp burning nearby indicates Christ is present inside. This is why Catholics genuflect (touch one knee to the ground) when passing in front of it.</div>
+      <div class="space-note">When you see a burning lamp near the front — Christ is there.</div>
+    </div>
+    <div class="space-card">
+      <div class="space-name">The Ambo (Lectern)</div>
+      <div class="space-desc">The raised platform from which Scripture is read and the homily is preached. Only Scripture and preaching happen here — it is the place of God's word. The word ambo comes from the Greek word for "raised place."</div>
+    </div>
+    <div class="space-card">
+      <div class="space-name">The Sanctuary</div>
+      <div class="space-desc">The elevated area at the front of the church where the altar, ambo, and priest's chair are located. It is set apart from the nave as a sign that something different happens here — a holy space within the holy space.</div>
+    </div>
+    <div class="space-card">
+      <div class="space-name">The Presider's Chair</div>
+      <div class="space-desc">The priest's chair in the sanctuary, from which he leads parts of the Mass that are not at the altar or ambo. It is called the cathedra in a cathedral — which is where the word "cathedral" comes from: the bishop's church, defined by his seat.</div>
+    </div>
+    <div class="space-card">
+      <div class="space-name">The Crucifix</div>
+      <div class="space-desc">A cross with the body of Christ on it, displayed prominently in every Catholic church. Unlike a plain cross (common in Protestant churches), the crucifix emphasizes the sacrifice — the reality of what happened. Catholics do not shy away from the suffering; they believe it is where redemption happened.</div>
+    </div>
+    <div class="space-card">
+      <div class="space-name">Stained Glass Windows</div>
+      <div class="space-desc">Not merely decoration. Before widespread literacy, stained glass windows told the stories of Scripture and the lives of the saints to ordinary people who could not read. They are a visual catechism — the faith made visible in light.</div>
+    </div>
+    <div class="space-card">
+      <div class="space-name">The Holy Water Font</div>
+      <div class="space-desc">A basin of blessed water near the entrance of the church. Catholics dip their fingers and make the Sign of the Cross when entering — a reminder of their Baptism and a small act of purification before worship. You are welcome to do the same.</div>
+    </div>
+    <div class="space-card">
+      <div class="space-name">Votive Candles</div>
+      <div class="space-desc">Small candles, often near a statue of Mary or a saint, that people light as a sign of prayer. Lighting a candle is a way of saying: "I am placing this intention before God, and I ask for this saint's intercession." The candle continues to burn — and to pray — even after you leave.</div>
+    </div>
+  </div>
+
+  <!-- COMMUNION -->
+  <div class="section" id="tab-communion">
+    <div class="section-title">Holy Communion</div>
+    <div class="section-sub">What it is, who receives it, and what to do if you don't</div>
+
+    <div class="intro-card" style="margin-bottom:14px">
+      <h2>What is Communion?</h2>
+      <p>Holy Communion is receiving the Eucharist — the consecrated bread (and sometimes wine) that Catholics believe is the true body and blood of Jesus Christ. It is the most intimate act of Catholic worship: God literally entering the person who receives him.</p>
+      <p style="margin-top:8px">Because of this belief, the Church asks that only those who are properly prepared receive it. This is not exclusion — it is reverence.</p>
+    </div>
+
+    <div class="not-receiving">
+      <h3>If you are not yet receiving Communion</h3>
+      <p>If you have not yet been baptized, confirmed, or made your First Communion in the Catholic Church — or if you are still in the process of preparing — you do not receive Communion at this stage. This is completely normal and expected.</p>
+      <p>When the congregation goes up to receive, you have two options:</p>
+      <p><strong>Option 1 — Remain seated.</strong> Simply stay in your pew and pray quietly while others receive. No one will think less of you.</p>
+      <p><strong>Option 2 — Join the line for a blessing.</strong> You may join the Communion line and when you reach the priest or minister, cross your arms over your chest (right hand on left shoulder, left hand on right shoulder). This signals that you are not receiving Communion but would welcome a blessing. The priest will place his hand on your head or make the Sign of the Cross over you. This is a beautiful option and your priest will likely have already told you about it.</p>
+    </div>
+
+    <div class="section-title" style="margin-top:1rem;margin-bottom:10px;font-size:18px">If you ARE receiving Communion</div>
+
+    <div class="comm-step">
+      <div class="comm-num">1</div>
+      <div class="comm-body">
+        <div class="comm-title">Join the line</div>
+        <div class="comm-desc">When your section of the church is invited forward, join the line walking toward the front. Walk at a normal pace — this is a solemn procession, not a rush.</div>
+      </div>
+    </div>
+    <div class="comm-step">
+      <div class="comm-num">2</div>
+      <div class="comm-body">
+        <div class="comm-title">Make a small bow</div>
+        <div class="comm-desc">Just before you reach the minister, make a small bow of the head as a sign of reverence. This is done while the person ahead of you is receiving.</div>
+      </div>
+    </div>
+    <div class="comm-step">
+      <div class="comm-num">3</div>
+      <div class="comm-body">
+        <div class="comm-title">Receive on the hand or tongue</div>
+        <div class="comm-desc">You may receive on the hand (most common) or on the tongue. If receiving on the hand: extend your dominant hand flat, with your other hand beneath it as a throne. The minister places the host in your palm. Step to the side, place the host in your mouth yourself. Never walk away with it in your hand.</div>
+      </div>
+    </div>
+    <div class="comm-step">
+      <div class="comm-num">4</div>
+      <div class="comm-body">
+        <div class="comm-title">Say "Amen"</div>
+        <div class="comm-desc">When the minister says "The Body of Christ" — respond "Amen." This is your personal act of faith. You are saying: I believe this is truly Christ.</div>
+      </div>
+    </div>
+    <div class="comm-step">
+      <div class="comm-num">5</div>
+      <div class="comm-body">
+        <div class="comm-title">Return to your pew and pray</div>
+        <div class="comm-desc">Return to your seat and kneel or sit. This moment of silence after receiving is one of the most precious in Catholic spiritual life. Speak to God directly. Thank him. Ask him something. Simply be present with him.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function showTab(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  const map={overview:0,walkthrough:1,postures:2,responses:3,space:4,communion:5};
+  document.querySelectorAll('.nav-btn')[map[id]].classList.add('active');
+  window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>
