@@ -9,22 +9,17 @@
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 body{font-family:'Jost',sans-serif;background:#f5f0e8;color:#222;font-size:15px;line-height:1.6;min-height:100vh}
 .app{max-width:480px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column}
-
 .header{background:#1a1208;padding:1.25rem 1.2rem 1rem;text-align:center;flex-shrink:0}
 .header h1{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:#e8d08a;letter-spacing:.03em}
 .header .sub{font-size:11px;color:#c9a84c;letter-spacing:.1em;text-transform:uppercase;margin-top:4px}
 .week-badge{display:inline-block;background:#c9a84c;color:#1a1208;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:12px;margin-top:8px}
-
 .tabs{display:flex;background:#2a1f10;border-bottom:2px solid #c9a84c}
 .tab{flex:1;padding:11px 4px;font-family:'Jost',sans-serif;font-size:11px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;background:transparent;border:none;cursor:pointer;color:#c9a84c;border-bottom:3px solid transparent}
 .tab.active{color:#fff;border-bottom-color:#c9a84c;background:#3a2c18}
-
 .screen{display:none;flex:1;overflow-y:auto;padding:1.2rem}
 .screen.active{display:block}
-
 .day-label{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#c9a84c;font-weight:600;margin-bottom:4px}
 .day-title{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:#1a1208;margin-bottom:1rem;line-height:1.2}
-
 .step-card{background:#fff;border:2px solid #d9cdb8;border-radius:10px;padding:1rem 1.1rem;margin-bottom:12px}
 .step-card.highlight{border-color:#c9a84c}
 .step-num{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#c9a84c;font-weight:600;margin-bottom:3px}
@@ -37,9 +32,17 @@ body{font-family:'Jost',sans-serif;background:#f5f0e8;color:#222;font-size:15px;
 .evening-q{background:#fef3dc;border-radius:8px;padding:12px 14px;margin-top:8px}
 .evening-q p{font-size:13px;color:#1a1208;line-height:1.8}
 
+/* DAY NAV */
+.day-nav{display:flex;gap:10px;padding:1rem 1.2rem 0;background:#f5f0e8}
+.day-nav-btn{flex:1;padding:11px;border-radius:8px;font-family:'Jost',sans-serif;font-size:13px;font-weight:600;border:none;cursor:pointer;letter-spacing:.04em}
+.btn-prev{background:#fff;border:2px solid #d9cdb8;color:#4a3520}
+.btn-prev:disabled{opacity:.35;cursor:default}
+.btn-next{background:#c9a84c;color:#fff}
+.btn-next:disabled{opacity:.35;cursor:default}
+
 /* ROSARY */
 .rosary-progress{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:16px;justify-content:center}
-.r-dot{width:11px;height:11px;border-radius:50%;background:#d9cdb8;transition:background .3s;flex-shrink:0}
+.r-dot{width:11px;height:11px;border-radius:50%;background:#d9cdb8;flex-shrink:0}
 .r-dot.done{background:#c9a84c}
 .r-dot.current{background:#c9a84c;box-shadow:0 0 0 3px #fef3dc}
 .rosary-step{background:#fff;border:2px solid #c9a84c;border-radius:12px;padding:1.25rem}
@@ -63,18 +66,13 @@ body{font-family:'Jost',sans-serif;background:#f5f0e8;color:#222;font-size:15px;
 .info-note{background:#fef3dc;border:1px solid #c9a84c;border-radius:8px;padding:10px 14px;font-size:12px;color:#4a3520;margin-bottom:14px;line-height:1.6}
 .browse-card{background:#fff;border:2px solid #d9cdb8;border-radius:8px;padding:.9rem 1.1rem;margin-bottom:10px;cursor:pointer}
 .browse-card:active{border-color:#c9a84c}
-.browse-card .step-num{margin-bottom:2px}
-.browse-card .step-title{font-size:15px;margin-bottom:2px}
-.browse-card .step-body{font-size:12px}
-.completed-badge{display:inline-block;font-size:10px;background:#d1fae5;color:#065f46;border-radius:10px;padding:1px 7px;font-weight:600;margin-left:6px;vertical-align:middle}
-.future-badge{display:inline-block;font-size:10px;background:#f3f4f6;color:#6b7280;border-radius:10px;padding:1px 7px;font-weight:600;margin-left:6px;vertical-align:middle}
-.today-badge{display:inline-block;font-size:10px;background:#fef3dc;color:#92400e;border-radius:10px;padding:1px 7px;font-weight:600;margin-left:6px;vertical-align:middle}
+.current-badge{display:inline-block;font-size:10px;background:#fef3dc;color:#92400e;border-radius:10px;padding:1px 7px;font-weight:600;margin-left:6px;vertical-align:middle}
 </style>
 </head>
 <body>
 <div class="app">
   <div class="header">
-    <h1>✦ My Catholic Start</h1>
+    <h1>&#10022; My Catholic Start</h1>
     <div class="sub">Your daily beginner guide</div>
     <div id="header-badge" class="week-badge"></div>
   </div>
@@ -83,33 +81,24 @@ body{font-family:'Jost',sans-serif;background:#f5f0e8;color:#222;font-size:15px;
     <button class="tab" onclick="showMain('rosary')">Rosary</button>
     <button class="tab" onclick="showMain('browse')">Browse</button>
   </div>
+
+  <div class="day-nav" id="day-nav">
+    <button class="day-nav-btn btn-prev" id="btn-prev" onclick="changeDay(-1)">&#8592; Previous</button>
+    <button class="day-nav-btn btn-next" id="btn-next" onclick="changeDay(1)">Next &#8594;</button>
+  </div>
+
   <div class="screen active" id="screen-today"><div id="today-content"></div></div>
   <div class="screen" id="screen-rosary"><div id="rosary-content"></div></div>
   <div class="screen" id="screen-browse">
-    <div class="info-note">&#128197; Browse all 28 days. Tap any day to read it.</div>
+    <div class="info-note">&#128197; Browse all 28 days. Tap any day to view it.</div>
     <div class="week-picker" id="week-picker"></div>
     <div id="browse-days"></div>
   </div>
 </div>
 
 <script>
-// ─── FIXED START DATE — Day 1 = May 16 2026 ───────────────────────────────
-const START_DATE = new Date('2026-05-16T00:00:00');
-
-function getDayNum() {
-  const today = new Date();
-  const todayMidnight = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-  const startMidnight = new Date(START_DATE.getFullYear(), START_DATE.getMonth(), START_DATE.getDate());
-  const diff = Math.floor((todayMidnight - startMidnight) / (1000*60*60*24));
-  return Math.min(Math.max(diff + 1, 1), 28);
-}
-
-function getDayName() {
-  return new Date().toLocaleDateString('en-US', {weekday:'long'});
-}
-
-// ─── PLAN ─────────────────────────────────────────────────────────────────
-const PLAN = [
+// ── PLAN ──────────────────────────────────────────────────────────────────
+const PLAN=[
   {day:1,week:1,theme:"Who is God?",teacher:"Bishop Barron",
    content:"Watch this short video where Bishop Barron explains who God actually is — not a distant judge, but a loving Creator. This is the single best place to start.",
    link:"https://www.youtube.com/watch?v=GbmiXwh6rsg",linkLabel:"Watch: Who Is God? (14 min)",
@@ -280,8 +269,8 @@ const PLAN = [
    evening:"Write a letter to yourself tonight — what has changed in 28 days? What do you want to remember? What do you want to ask your priest?"},
 ];
 
-// ─── ROSARY ───────────────────────────────────────────────────────────────
-const MYSTERIES = {
+// ── ROSARY ────────────────────────────────────────────────────────────────
+const MYSTERIES={
   Monday:   {name:'Joyful',   list:['The Annunciation','The Visitation','The Nativity','The Presentation','Finding Jesus in the Temple']},
   Tuesday:  {name:'Sorrowful',list:['The Agony in the Garden','The Scourging at the Pillar','The Crowning with Thorns','The Carrying of the Cross','The Crucifixion']},
   Wednesday:{name:'Glorious', list:['The Resurrection','The Ascension','Pentecost','The Assumption of Mary','The Coronation of Mary']},
@@ -290,7 +279,7 @@ const MYSTERIES = {
   Saturday: {name:'Joyful',   list:['The Annunciation','The Visitation','The Nativity','The Presentation','Finding Jesus in the Temple']},
   Sunday:   {name:'Glorious', list:['The Resurrection','The Ascension','Pentecost','The Assumption of Mary','The Coronation of Mary']},
 };
-const PR = {
+const PR={
   cross:"In the name of the Father,\nand of the Son,\nand of the Holy Spirit.\nAmen.",
   creed:"I believe in God, the Father almighty,\nCreator of heaven and earth,\nand in Jesus Christ, his only Son, our Lord,\nwho was conceived by the Holy Spirit,\nborn of the Virgin Mary,\nsuffered under Pontius Pilate,\nwas crucified, died and was buried;\nhe descended into hell;\non the third day he rose again from the dead;\nhe ascended into heaven,\nand is seated at the right hand of God the Father almighty;\nfrom there he will come to judge the living and the dead.\nI believe in the Holy Spirit,\nthe holy catholic Church,\nthe communion of saints,\nthe forgiveness of sins,\nthe resurrection of the body,\nand life everlasting. Amen.",
   ourFather:"Our Father, who art in heaven,\nhallowed be thy name;\nthy kingdom come,\nthy will be done\non earth as it is in heaven.\nGive us this day our daily bread,\nand forgive us our trespasses,\nas we forgive those who trespass against us;\nand lead us not into temptation,\nbut deliver us from evil. Amen.",
@@ -300,7 +289,7 @@ const PR = {
 };
 
 function buildRosarySteps(dayName){
-  const m = MYSTERIES[dayName]||MYSTERIES['Sunday'];
+  const m=MYSTERIES[dayName]||MYSTERIES['Sunday'];
   const steps=[
     {label:'Begin',title:'Sign of the Cross',body:'Hold your hands together and pray the Sign of the Cross.',prayer:PR.cross},
     {label:'Begin',title:"Apostles' Creed",body:"Pray the Apostles' Creed — your statement of what you believe.",prayer:PR.creed},
@@ -308,53 +297,31 @@ function buildRosarySteps(dayName){
     {label:'Opening',title:'3 Hail Marys',body:'Pray the Hail Mary three times. Take your time.',prayer:PR.hailMary+'\n\n'+PR.hailMary+'\n\n'+PR.hailMary},
     {label:'Opening',title:'Glory Be',body:'Pray the Glory Be to close the opening.',prayer:PR.gloryBe},
   ];
-  // Just the FIRST Mystery for beginners
-  const mystery = m.list[0];
-  steps.push({label:`Today's Mystery`,title:`${m.name} Mystery:\n${mystery}`,body:`Close your eyes for a moment. Picture this scene from the life of Jesus and Mary. Then pray the Our Father.`,prayer:PR.ourFather});
-  steps.push({label:`10 Hail Marys`,title:`Hail Mary × 10`,body:`Pray the Hail Mary ten times. Count on your fingers — 5 on one hand, 5 on the other. Let the words become a rhythm while you hold the Mystery in your heart.`,prayer:PR.hailMary,count:10});
-  steps.push({label:`Close the Mystery`,title:'Glory Be',body:`Close with the Glory Be.`,prayer:PR.gloryBe});
+  const mystery=m.list[0];
+  steps.push({label:"Today's Mystery",title:`${m.name} Mystery:\n${mystery}`,body:'Close your eyes for a moment. Picture this scene from the life of Jesus and Mary. Then pray the Our Father.',prayer:PR.ourFather});
+  steps.push({label:'10 Hail Marys',title:'Hail Mary \u00d7 10',body:'Pray the Hail Mary ten times. Count on your fingers — 5 on one hand, 5 on the other. Let the words become a rhythm while you hold the Mystery in your heart.',prayer:PR.hailMary,count:10});
+  steps.push({label:'Close the Mystery',title:'Glory Be',body:'Close with the Glory Be.',prayer:PR.gloryBe});
   steps.push({label:'Finish',title:'Hail Holy Queen',body:'Pray the Hail Holy Queen to close the Rosary.',prayer:PR.salve});
   steps.push({label:'Finish',title:'Sign of the Cross',body:'Make the Sign of the Cross. Your Rosary is complete.',prayer:PR.cross,done:true});
   return steps;
 }
 
-let rosarySteps=[], rosaryIdx=0;
+// ── STATE ─────────────────────────────────────────────────────────────────
+// No timer — user controls which day they are on
+let currentDay = 1;
 
-function initRosary(){
-  rosarySteps=buildRosarySteps(getDayName());
-  rosaryIdx=0;
-  renderRosaryStep();
+function getDayName(){
+  return new Date().toLocaleDateString('en-US',{weekday:'long'});
 }
 
-function renderRosaryStep(){
-  const el=document.getElementById('rosary-content');
-  if(rosaryIdx>=rosarySteps.length||rosarySteps[rosaryIdx].done){
-    el.innerHTML=`<div class="done-screen"><div class="cross">&#10022;</div><h2>Rosary Complete</h2><p>Well done. You have prayed.</p><p style="margin-top:10px">Whatever it felt like — distracted, peaceful, uncertain — God received it.</p><button class="big-btn big-btn-outline" style="margin-top:20px" onclick="rosaryIdx=0;renderRosaryStep()">Pray Again</button></div>`;
-    return;
-  }
-  const s=rosarySteps[rosaryIdx];
-  const dots=rosarySteps.map((_,i)=>`<div class="r-dot ${i<rosaryIdx?'done':i===rosaryIdx?'current':''}"></div>`).join('');
-  el.innerHTML=`
-    <div class="rosary-progress">${dots}</div>
-    <div class="rosary-step">
-      <div class="rosary-step-label">${s.label}</div>
-      <div class="rosary-step-title">${s.title}</div>
-      <div class="rosary-step-body">${s.body}</div>
-      <div class="rosary-prayer">${s.prayer}</div>
-      ${s.count?`<div class="rosary-count">Say this ${s.count} times</div>`:''}
-      <button class="big-btn big-btn-gold" onclick="rosaryNext()">Done &#8212; Next Step</button>
-      ${rosaryIdx>0?`<button class="big-btn big-btn-outline" style="margin-top:8px" onclick="rosaryBack()">Go Back</button>`:''}
-    </div>`;
-}
-function rosaryNext(){rosaryIdx++;renderRosaryStep();}
-function rosaryBack(){if(rosaryIdx>0){rosaryIdx--;renderRosaryStep();}}
-
-// ─── TODAY ────────────────────────────────────────────────────────────────
-function renderDay(dayNum, targetId){
+// ── RENDER TODAY ──────────────────────────────────────────────────────────
+function renderDay(dayNum){
   const d=PLAN[dayNum-1];
-  const el=document.getElementById(targetId);
+  document.getElementById('header-badge').textContent=`Week ${d.week} \u00b7 Day ${d.day}`;
+  document.getElementById('btn-prev').disabled=(dayNum===1);
+  document.getElementById('btn-next').disabled=(dayNum===28);
   const isRest=!d.link;
-  el.innerHTML=`
+  document.getElementById('today-content').innerHTML=`
     <div class="day-label">Day ${d.day} of 28 &nbsp;&#183;&nbsp; Week ${d.week}</div>
     <div class="day-title">${d.theme}</div>
     ${!isRest?`
@@ -387,13 +354,45 @@ function renderDay(dayNum, targetId){
     </div>`;
 }
 
-function initToday(){
-  const dayNum=getDayNum();
-  document.getElementById('header-badge').textContent=`Week ${PLAN[dayNum-1].week} \u00b7 Day ${dayNum}`;
-  renderDay(dayNum,'today-content');
+function changeDay(delta){
+  const next=currentDay+delta;
+  if(next<1||next>28)return;
+  currentDay=next;
+  renderDay(currentDay);
+  window.scrollTo(0,0);
 }
 
-// ─── BROWSE ───────────────────────────────────────────────────────────────
+// ── ROSARY ────────────────────────────────────────────────────────────────
+let rosarySteps=[],rosaryIdx=0;
+function initRosary(){
+  rosarySteps=buildRosarySteps(getDayName());
+  rosaryIdx=0;
+  renderRosaryStep();
+}
+function renderRosaryStep(){
+  const el=document.getElementById('rosary-content');
+  if(rosaryIdx>=rosarySteps.length||rosarySteps[rosaryIdx].done){
+    el.innerHTML=`<div class="done-screen"><div class="cross">&#10022;</div><h2>Rosary Complete</h2><p>Well done. You have prayed.</p><p style="margin-top:10px">Whatever it felt like — distracted, peaceful, uncertain — God received it.</p><button class="big-btn big-btn-outline" style="margin-top:20px" onclick="rosaryIdx=0;renderRosaryStep()">Pray Again</button></div>`;
+    return;
+  }
+  const s=rosarySteps[rosaryIdx];
+  const dots=rosarySteps.map((_,i)=>`<div class="r-dot ${i<rosaryIdx?'done':i===rosaryIdx?'current':''}"></div>`).join('');
+  el.innerHTML=`
+    <div class="rosary-progress">${dots}</div>
+    <div class="rosary-step">
+      <div class="rosary-step-label">${s.label}</div>
+      <div class="rosary-step-title">${s.title}</div>
+      <div class="rosary-step-body">${s.body}</div>
+      <div class="rosary-prayer">${s.prayer}</div>
+      ${s.count?`<div class="rosary-count">Say this ${s.count} times</div>`:''}
+      <button class="big-btn big-btn-gold" onclick="rosaryNext()">Done &#8212; Next Step</button>
+      ${rosaryIdx>0?`<button class="big-btn big-btn-outline" style="margin-top:8px" onclick="rosaryBack()">Go Back</button>`:''}
+    </div>`;
+}
+function rosaryNext(){rosaryIdx++;renderRosaryStep();}
+function rosaryBack(){if(rosaryIdx>0){rosaryIdx--;renderRosaryStep();}}
+
+// ── BROWSE ────────────────────────────────────────────────────────────────
 let activeBrowseWeek=1;
 function initBrowse(){
   const wp=document.getElementById('week-picker');
@@ -406,39 +405,38 @@ function setBrowseWeek(w){
   renderBrowseDays();
 }
 function renderBrowseDays(){
-  const today=getDayNum();
   const days=PLAN.filter(d=>d.week===activeBrowseWeek);
   document.getElementById('browse-days').innerHTML=days.map(d=>{
-    const isToday=d.day===today;
-    const isPast=d.day<today;
-    const badge=isToday?`<span class="today-badge">Today</span>`:isPast?`<span class="completed-badge">Done</span>`:`<span class="future-badge">Upcoming</span>`;
+    const isCurrent=d.day===currentDay;
     return`<div class="browse-card" onclick="goToDay(${d.day})">
-      <div class="step-num">Day ${d.day} ${badge}</div>
-      <div class="step-title">${d.theme}</div>
-      <div class="step-body">${d.teacher}</div>
+      <div class="step-num">Day ${d.day}${isCurrent?'<span class="current-badge">Current</span>':''}</div>
+      <div class="step-title" style="font-family:Cormorant Garamond,serif;font-size:16px;color:#1a1208;margin-bottom:2px">${d.theme}</div>
+      <div class="step-body" style="font-size:12px;color:#888">${d.teacher}</div>
     </div>`;
   }).join('');
 }
 function goToDay(dayNum){
+  currentDay=dayNum;
   showMain('today');
-  renderDay(dayNum,'today-content');
-  document.getElementById('header-badge').textContent=`Week ${PLAN[dayNum-1].week} \u00b7 Day ${dayNum}`;
+  renderDay(currentDay);
 }
 
-// ─── TABS ──────────────────────────────────────────────────────────────────
+// ── TABS ──────────────────────────────────────────────────────────────────
 function showMain(id){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
   document.getElementById('screen-'+id).classList.add('active');
   const map={today:0,rosary:1,browse:2};
   document.querySelectorAll('.tab')[map[id]].classList.add('active');
+  const nav=document.getElementById('day-nav');
+  nav.style.display=(id==='today')?'flex':'none';
   if(id==='rosary')initRosary();
   if(id==='browse')initBrowse();
   window.scrollTo(0,0);
 }
 
-// ─── INIT ──────────────────────────────────────────────────────────────────
-initToday();
+// ── INIT ──────────────────────────────────────────────────────────────────
+renderDay(currentDay);
 </script>
 </body>
 </html>
