@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>The Church & Its Wounds</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{font-family:'Jost',sans-serif;background:#f5f0e8;color:#222;font-size:15px;line-height:1.6;min-height:100vh}
+.app{max-width:480px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column}
+.header{background:#1a1208;padding:1.25rem 1.2rem 1rem;text-align:center;flex-shrink:0}
+.header h1{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:#e8d08a;letter-spacing:.03em}
+.header .sub{font-size:11px;color:#c9a84c;letter-spacing:.1em;text-transform:uppercase;margin-top:4px}
+.header .sub2{font-size:12px;color:#a08050;margin-top:6px;line-height:1.5;font-style:italic;font-family:'Cormorant Garamond',serif}
+
+/* TABS */
+.tabs{display:flex;background:#2a1f10;border-bottom:2px solid #c9a84c}
+.tab{flex:1;padding:11px 4px;font-family:'Jost',sans-serif;font-size:11px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;background:transparent;border:none;cursor:pointer;color:#c9a84c;border-bottom:3px solid transparent}
+.tab.active{color:#fff;border-bottom-color:#c9a84c;background:#3a2c18}
+
+/* SCREENS */
+.screen{display:none;flex:1;overflow-y:auto;padding:1.2rem}
+.screen.active{display:block}
+
+/* INTRO BANNER */
+.intro-banner{background:#fff;border:2px solid #d9cdb8;border-radius:10px;padding:1rem 1.1rem;margin-bottom:14px}
+.intro-banner p{font-size:13px;color:#555;line-height:1.8}
+.intro-banner strong{color:#1a1208}
+.analogy-box{background:#fef3dc;border-left:4px solid #c9a84c;padding:10px 12px;border-radius:0 6px 6px 0;margin-top:8px;font-size:13px;color:#1a1208;font-family:'Cormorant Garamond',serif;font-style:italic;line-height:1.7}
+
+/* ERA FILTER */
+.era-filter{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
+.era-btn{padding:6px 12px;border-radius:20px;font-family:'Jost',sans-serif;font-size:11px;font-weight:500;border:2px solid #d9cdb8;background:#fff;color:#4a3520;cursor:pointer;letter-spacing:.04em}
+.era-btn.active{background:#c9a84c;border-color:#c9a84c;color:#fff;font-weight:600}
+
+/* SCANDAL CARDS */
+.scandal-card{background:#fff;border:2px solid #d9cdb8;border-radius:10px;margin-bottom:12px;overflow:hidden;cursor:pointer}
+.scandal-card.expanded{border-color:#c9a84c}
+.card-header{padding:.9rem 1.1rem;display:flex;align-items:flex-start;gap:10px}
+.card-era{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#c9a84c;font-weight:600;white-space:nowrap;margin-top:2px}
+.card-main{flex:1}
+.card-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:#1a1208;line-height:1.2;margin-bottom:3px}
+.card-date{font-size:11px;color:#888;letter-spacing:.04em}
+.card-chevron{font-size:16px;color:#c9a84c;transition:transform .25s;margin-top:3px}
+.scandal-card.expanded .card-chevron{transform:rotate(180deg)}
+.severity-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-top:6px}
+.sev-high{background:#b94040}
+.sev-med{background:#c9a84c}
+.sev-low{background:#6b9e6b}
+
+/* CARD BODY */
+.card-body{display:none;padding:0 1.1rem 1rem;border-top:1px solid #f0e8d8}
+.scandal-card.expanded .card-body{display:block}
+.section-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#c9a84c;font-weight:600;margin:12px 0 5px}
+.what-text{font-size:13px;color:#444;line-height:1.8}
+.response-box{background:#fef3dc;border-radius:8px;padding:10px 12px;margin-top:4px}
+.response-box p{font-size:13px;color:#1a1208;line-height:1.8}
+.status-tag{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:12px;margin-top:8px}
+.status-resolved{background:#e8f4e8;color:#2d6e2d}
+.status-ongoing{background:#fef3dc;color:#92400e}
+.status-partial{background:#f0e8f8;color:#5a2d8a}
+.apology-pill{display:inline-block;font-size:10px;background:#1a1208;color:#c9a84c;border-radius:12px;padding:3px 9px;font-weight:600;letter-spacing:.04em;margin-left:6px;vertical-align:middle}
+.scripture-note{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:#555;border-top:1px solid #ede4d0;margin-top:12px;padding-top:10px;line-height:1.7}
+
+/* FRAMEWORK SCREEN */
+.framework-card{background:#fff;border:2px solid #d9cdb8;border-radius:10px;padding:1rem 1.1rem;margin-bottom:12px}
+.fw-title{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600;color:#1a1208;margin-bottom:6px}
+.fw-body{font-size:13px;color:#444;line-height:1.8}
+.fw-verse{background:#fef3dc;border-left:4px solid #c9a84c;padding:9px 12px;border-radius:0 6px 6px 0;margin-top:10px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:#1a1208;line-height:1.7}
+.fw-ref{font-size:11px;color:#c9a84c;font-style:normal;font-family:'Jost',sans-serif;font-weight:600;display:block;margin-top:3px;letter-spacing:.04em}
+.objection-card{background:#fff;border:2px solid #d9cdb8;border-radius:10px;padding:1rem 1.1rem;margin-bottom:12px}
+.obj-q{font-size:14px;font-weight:600;color:#b94040;margin-bottom:8px;font-family:'Cormorant Garamond',serif;font-size:17px}
+.obj-a{font-size:13px;color:#444;line-height:1.8}
+
+/* BOTTOM NOTE */
+.bottom-note{background:#1a1208;padding:1rem 1.2rem;text-align:center}
+.bottom-note p{font-size:11px;color:#a08050;letter-spacing:.04em;line-height:1.7;font-family:'Cormorant Garamond',serif;font-style:italic}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <div class="header">
+    <h1>&#10022; The Church & Its Wounds</h1>
+    <div class="sub">Honest Formation — Scandals & Responses</div>
+    <div class="sub2">"The Church is holy, though she has sinners in her care." — St. Augustine</div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="showScreen('list')">Scandals</button>
+    <button class="tab" onclick="showScreen('framework')">Framework</button>
+    <button class="tab" onclick="showScreen('objections')">Objections</button>
+  </div>
+
+  <!-- SCANDALS LIST -->
+  <div class="screen active" id="screen-list">
+
+    <div class="intro-banner">
+      <p>Every scandal listed here is real. The Church does not ask you to look away from them. Honest faith requires honest history.</p>
+      <div class="analogy-box">Think of the Church as a hospital. Its purpose is to heal the sick — which means it is full of sick people, including some of the doctors. The hospital's failures do not disprove medicine. They demand accountability.</div>
+    </div>
+
+    <div class="era-filter">
+      <button class="era-btn active" onclick="filterEra('all',this)">All</button>
+      <button class="era-btn" onclick="filterEra('medieval',this)">Medieval</button>
+      <button class="era-btn" onclick="filterEra('early-modern',this)">Early Modern</button>
+      <button class="era-btn" onclick="filterEra('modern',this)">Modern</button>
+    </div>
+
+    <div id="cards-container"></div>
+  </div>
+
+  <!-- FRAMEWORK SCREEN -->
+  <div class="screen" id="screen-framework">
+
+    <div class="framework-card">
+      <div class="fw-title">The Wheat and Tares</div>
+      <div class="fw-body">Jesus himself predicted that the Church would contain both saints and sinners living side by side until the final judgment. This is not an excuse — it is a warning that applies to every generation.</div>
+      <div class="fw-verse">"The kingdom of heaven may be compared to a man who sowed good seed in his field; but while his men were sleeping, his enemy came and sowed weeds among the wheat."<span class="fw-ref">Matthew 13:24–25</span></div>
+    </div>
+
+    <div class="framework-card">
+      <div class="fw-title">Institution vs. Teaching</div>
+      <div class="fw-body">A scandal committed by a pope or priest does not invalidate the doctrines they were supposed to uphold — any more than a corrupt judge invalidates the law. The Church teaches that her <em>doctrine</em> is protected from error; her <em>members</em> are not protected from sin.</div>
+    </div>
+
+    <div class="framework-card">
+      <div class="fw-title">Reform Has Always Come From Within</div>
+      <div class="fw-body">The most powerful voices demanding reform in Church history have come from inside: St. Catherine of Siena told a pope to his face that he was acting like a coward. Francis of Assisi rebuilt the Church through radical poverty. The Council of Trent reformed abuses the Reformation was exposing.</div>
+      <div class="fw-verse">"Repentance is not weakness. It is the Church being the Church."</div>
+    </div>
+
+    <div class="framework-card">
+      <div class="fw-title">No Institution Is Clean</div>
+      <div class="fw-body">Every institution built by humans — Protestant denominations, governments, universities, charities — has its own history of abuse, cover-up, and corruption. The question honest faith must ask is not <em>"Is this institution perfect?"</em> but <em>"Are its truth claims true?"</em></div>
+    </div>
+
+    <div class="framework-card">
+      <div class="fw-title">The Pattern of Apology & Reform</div>
+      <div class="fw-body">Pope John Paul II's Great Jubilee in 2000 included the most comprehensive public confession of institutional sin in the history of any organization — asking forgiveness for the Inquisition, the Crusades, treatment of women, and more. It set a model for ongoing accountability.</div>
+      <div class="fw-verse">"We forgive and we ask forgiveness."<span class="fw-ref">Pope John Paul II, Day of Pardon, March 12, 2000</span></div>
+    </div>
+
+  </div>
+
+  <!-- OBJECTIONS SCREEN -->
+  <div class="screen" id="screen-objections">
+
+    <div style="background:#fff;border:2px solid #d9cdb8;border-radius:10px;padding:1rem 1.1rem;margin-bottom:14px">
+      <p style="font-size:13px;color:#555;line-height:1.8">These are the objections you are most likely to hear from Calvary Chapel contacts or other Protestants. Here is the honest Catholic response.</p>
+    </div>
+
+    <div class="objection-card">
+      <div class="obj-q">"How can you join a Church with that history?"</div>
+      <div class="obj-a">The question assumes the alternative is a church without scandal — but there is no such thing. Every denomination has its own history of abuse and failure. The question is not whether an institution has sinned, but whether its foundations are true. The Church's failures are arguments against clericalism and pride, not against the Eucharist or apostolic succession.</div>
+    </div>
+
+    <div class="objection-card">
+      <div class="obj-q">"The Inquisition proves the Church is evil."</div>
+      <div class="obj-a">The methods of the Inquisition were morally wrong — the Church has formally acknowledged this. But the historical death toll was far lower than popular mythology claims (scholars estimate ~3,000–5,000 over 350 years for the Spanish Inquisition). Comparison: the Thirty Years' War, fueled by Protestant-Catholic conflict on both sides, killed millions. Institutional evil exists across all traditions. The Church's error was real; so was its eventual reckoning.</div>
+    </div>
+
+    <div class="objection-card">
+      <div class="obj-q">"The abuse crisis proves the Church isn't led by the Holy Spirit."</div>
+      <div class="obj-a">The Holy Spirit's guidance does not make members sinless — it keeps the Church from formally teaching error and ensures she endures. The abuse crisis was a catastrophic institutional failure of individual bishops, not a failure of doctrine. The Holy Spirit has also raised up survivors, journalists, and reformers who exposed it. Reform and accountability are ongoing — imperfect but real.</div>
+    </div>
+
+    <div class="objection-card">
+      <div class="obj-q">"Selling indulgences shows the Church invented doctrines for money."</div>
+      <div class="obj-a">The abuse of indulgences was condemned — by the Church itself — at the Council of Trent. The doctrine of indulgences (rooted in Scripture and early Christian practice) is not the same thing as Tetzel's fundraising scheme. A corrupt application of a doctrine does not disprove the doctrine. Luther himself, initially, only wanted reform of the abuse — not rejection of the doctrine.</div>
+    </div>
+
+    <div class="objection-card">
+      <div class="obj-q">"The Vatican's financial scandals show it's just a worldly power."</div>
+      <div class="obj-a">True — and reformers inside the Church have said so for centuries. Pope Francis has pushed more financial transparency and accountability than most of his predecessors. The Vatican's worldly entanglements are a recurring temptation the Church constantly has to fight. Jesus warned about this too: "You cannot serve God and money" (Matthew 6:24). The answer is ongoing reform, not abandonment.</div>
+    </div>
+
+  </div>
+
+  <div class="bottom-note">
+    <p>The Church does not ask for blind trust — she asks for honest faith.<br>Honesty about her wounds is part of what makes her credible.</p>
+  </div>
+
+</div>
+
+<script>
+const SCANDALS = [
+  {
+    era: 'medieval',
+    eraLabel: 'Medieval',
+    title: 'The Great Schism',
+    date: '1054',
+    severity: 'high',
+    what: 'The East-West Schism split the Church into Roman Catholic and Eastern Orthodox — partly over the filioque (whether the Holy Spirit proceeds from the Father "and the Son") but heavily over political rivalry and competing claims of authority between Rome and Constantinople.',
+    response: 'The wounds of 1054 remain open. Ongoing ecumenical dialogue — especially under John Paul II and Francis — has produced joint declarations of goodwill and prayer for unity, but full communion has not been restored. The Western Schism (1378–1417), which produced three simultaneous claimants to the papacy, was resolved by the Council of Constance.',
+    status: 'ongoing',
+    statusLabel: 'Ongoing — ecumenical dialogue continues',
+    apology: false,
+    scripture: '"That they may all be one, as you, Father, are in me and I in you." — John 17:21. Jesus prayed for this. The division is a wound against that prayer.'
+  },
+  {
+    era: 'medieval',
+    eraLabel: 'Medieval',
+    title: 'The Crusades',
+    date: '1095–1291',
+    severity: 'high',
+    what: 'Military campaigns to reclaim the Holy Land involved the massacre of Muslims, Jews, and Eastern Christians. The Fourth Crusade (1204) notoriously sacked Constantinople — a Christian city — and never reached the Holy Land. Motives mixed genuine faith with land greed and political ambition.',
+    response: 'Pope John Paul II\'s Jubilee 2000 apology directly addressed the Crusades. The Church has theologically distinguished between the just-war tradition and the abuses committed under crusading ideology. No institutional mechanism existed at the time to stop the worst excesses.',
+    status: 'resolved',
+    statusLabel: 'Formally apologized — 2000 Jubilee',
+    apology: true,
+    scripture: '"Put your sword back into its sheath." — John 18:11. Christ refused violence in his own defense. This verse haunts every crusading theology.'
+  },
+  {
+    era: 'medieval',
+    eraLabel: 'Medieval',
+    title: 'The Inquisitions',
+    date: '12th–19th c.',
+    severity: 'high',
+    what: 'The Medieval, Spanish, and Roman Inquisitions used coercion, torture, and execution to suppress heresy. The Spanish Inquisition became deeply entangled with state power and targeted Jewish and Muslim converts (conversos). The methods were morally indefensible by any standard.',
+    response: 'Pope John Paul II apologized formally in 1994 and again at the 2000 Jubilee. The Vatican opened Inquisition archives in 1998 for scholarly review. The Vatican\'s own 2004 historical commission found ~3,000–5,000 executions by the Spanish Inquisition over 350 years — real and wrong, though far below popular mythology.',
+    status: 'resolved',
+    statusLabel: 'Formally apologized — 2000 Jubilee',
+    apology: true,
+    scripture: '"The truth will set you free." — John 8:32. Truth coerced by torture is not truth. The Church\'s own teaching on human dignity condemned these methods — eventually.'
+  },
+  {
+    era: 'early-modern',
+    eraLabel: 'Early Modern',
+    title: 'The Borgia Papacy & Renaissance Corruption',
+    date: 'Late 1400s–1500s',
+    severity: 'high',
+    what: 'Pope Alexander VI (Rodrigo Borgia) used the papacy for personal enrichment, nepotism, and political manipulation. He fathered children and installed relatives as cardinals. Simony (buying and selling church offices) was rampant across this era. It was among the worst periods of papal moral failure in history.',
+    response: 'The Council of Trent (1545–1563), convened largely in response to the Reformation but also to internal corruption, produced sweeping reforms of clerical discipline, mandatory seminary training, and doctrinal clarity. The Catholic Reformation — saints like Teresa of Ávila, John of the Cross, Ignatius of Loyola — emerged from this same period.',
+    status: 'resolved',
+    statusLabel: 'Reformed — Council of Trent (1545–1563)',
+    apology: false,
+    scripture: '"Not everyone who says to me, Lord, Lord, will enter the kingdom of heaven." — Matthew 7:21. Jesus anticipated leaders who used his name for power. The Borgias are a case study.'
+  },
+  {
+    era: 'early-modern',
+    eraLabel: 'Early Modern',
+    title: 'The Sale of Indulgences',
+    date: 'Pre-Reformation, 1500s',
+    severity: 'med',
+    what: 'The immediate trigger for Luther\'s 95 Theses: indulgences were being sold in ways that implied people could buy their way out of purgatory. Johann Tetzel\'s notorious pitch ("When the coin in the coffer rings, a soul from purgatory springs") was a genuine abuse of Catholic doctrine, not the doctrine itself.',
+    response: 'The Council of Trent explicitly condemned the sale of indulgences, clarified the actual doctrine, and abolished the position of indulgence salesman (quaestor). The Church acknowledged the abuse. The Reformation had already fractured Christendom by the time formal correction came.',
+    status: 'resolved',
+    statusLabel: 'Reformed — Council of Trent',
+    apology: false,
+    scripture: '"You received without paying; give without pay." — Matthew 10:8. Grace is not a commodity. The abuse violated this directly.'
+  },
+  {
+    era: 'early-modern',
+    eraLabel: 'Early Modern',
+    title: 'The Galileo Affair',
+    date: '1633',
+    severity: 'med',
+    what: 'Galileo was condemned by the Roman Inquisition for heliocentrism, placed under house arrest, and forced to recant. A mixture of theological overreach, scientific politics, and Galileo\'s own provocations contributed. The Church treated a scientific question as a matter of doctrinal authority — which it was not.',
+    response: 'Pope John Paul II formally acknowledged the error in 1992, after a commission studied the case for over a decade. He stated the Church had wrongly condemned Galileo and affirmed that faith and science are not in opposition — a position formalized in subsequent documents.',
+    status: 'resolved',
+    statusLabel: 'Formally acknowledged — 1992',
+    apology: true,
+    scripture: '"The heavens declare the glory of God." — Psalm 19:1. Created order points to God — Galileo was reading creation honestly. Suppressing him was suppressing that witness.'
+  },
+  {
+    era: 'modern',
+    eraLabel: 'Modern',
+    title: 'Treatment of Indigenous Peoples',
+    date: '15th–20th c.',
+    severity: 'high',
+    what: 'Catholic missionaries and institutions were complicit — sometimes actively, sometimes passively — in the conquest and cultural destruction of indigenous peoples in the Americas, Africa, and Asia. In Canada, Catholic religious orders ran residential schools where indigenous children were subjected to abuse and cultural erasure. This directly touches Al\'s Canadian context.',
+    response: 'Pope Francis apologized directly in Canada in July 2022, calling it a "cultural genocide" and asking forgiveness on behalf of those Church members who participated. Individual dioceses have issued apologies and contributed to survivor funds. Accountability and reparation are ongoing.',
+    status: 'ongoing',
+    statusLabel: 'Ongoing — apology given, reparations continuing',
+    apology: true,
+    scripture: '"Whatever you did to the least of these brothers of mine, you did to me." — Matthew 25:40. This verse is the judgment on what was done in mission schools.'
+  },
+  {
+    era: 'modern',
+    eraLabel: 'Modern',
+    title: 'Vatican Financial Scandals',
+    date: '1980s–present',
+    severity: 'med',
+    what: 'The Vatican Bank (IOR) has been implicated in money laundering and Mafia connections ("God\'s Banker" Roberto Calvi found hanged under Blackfriars Bridge, 1982). More recently, the Vatican\'s Secretariat of State was implicated in a corrupt London real estate deal involving misuse of Peter\'s Pence donations.',
+    response: 'Pope Francis established a Secretariat for the Economy, mandated external audits, and pursued the London property trial, which resulted in convictions in 2023 including of Cardinal Becciu — one of the most senior Vatican officials ever convicted. Financial reform is real but ongoing.',
+    status: 'ongoing',
+    statusLabel: 'Ongoing — reforms in progress',
+    apology: false,
+    scripture: '"You cannot serve God and money." — Matthew 6:24. The Vatican\'s entanglement with finance is a recurring temptation the Church must keep fighting.'
+  },
+  {
+    era: 'modern',
+    eraLabel: 'Modern',
+    title: 'Marcial Maciel & The Legionaries of Christ',
+    date: 'Revealed 2006–2010',
+    severity: 'high',
+    what: 'Maciel, founder of the Legionaries of Christ, was found to have sexually abused seminarians for decades, fathered multiple children, and lived a double life — while being protected by John Paul II\'s inner circle due to the order\'s financial influence and apparent orthodoxy. The spirituality of the order had been built around Maciel as an almost saintly authority figure.',
+    response: 'Pope Benedict XVI removed Maciel from public ministry in 2006 before his death. The Vatican conducted a full visitation of the Legionaries, replaced their leadership, and required them to rewrite their founding documents and spirituality that had been cult-like in its dependence on Maciel\'s personal authority.',
+    status: 'partial',
+    statusLabel: 'Reformed — order restructured',
+    apology: true,
+    scripture: '"Beware of false prophets, who come to you in sheep\'s clothing but inwardly are ravenous wolves." — Matthew 7:15. Maciel is a devastating case study in institutional failure to apply this warning.'
+  },
+  {
+    era: 'modern',
+    eraLabel: 'Modern',
+    title: 'The Clerical Sexual Abuse Crisis',
+    date: '1980s–present',
+    severity: 'high',
+    what: 'A global crisis involving the sexual abuse of minors by priests, and — critically — the systematic cover-up by bishops who moved abusive priests rather than removing or reporting them. The Boston Globe\'s 2002 Spotlight investigation broke it open in the U.S. Ireland, Australia, Germany, and many other countries conducted their own investigations with devastating findings. The pattern of cover-up was institutional, not incidental.',
+    response: 'John Paul II convened a U.S. cardinals summit (2002). Benedict XVI met with survivors, issued apologies, and removed abusers including Maciel. Francis established the Pontifical Commission for the Protection of Minors (2014), held a global bishops summit (2019), updated Church law to require mandatory reporting and remove the "pontifical secret" that had shielded abusers, and removed Cardinal McCarrick — the first cardinal defrocked in modern history. The U.S. Dallas Charter (2002) established zero-tolerance and lay review boards. Reforms are real. Critics rightly say accountability for cover-up bishops remains insufficient.',
+    status: 'ongoing',
+    statusLabel: 'Ongoing — reforms enacted, accountability incomplete',
+    apology: true,
+    scripture: '"Whoever causes one of these little ones who believe in me to sin, it would be better for him to have a great millstone fastened around his neck." — Matthew 18:6. Jesus was not ambiguous about the gravity of what happened.'
+  }
+];
+
+let currentFilter = 'all';
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('screen-' + id).classList.add('active');
+  const tabs = document.querySelectorAll('.tab');
+  const map = {list:0, framework:1, objections:2};
+  tabs[map[id]].classList.add('active');
+}
+
+function filterEra(era, btn) {
+  currentFilter = era;
+  document.querySelectorAll('.era-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderCards();
+}
+
+function toggleCard(id) {
+  const card = document.getElementById('card-' + id);
+  card.classList.toggle('expanded');
+}
+
+function renderCards() {
+  const container = document.getElementById('cards-container');
+  const filtered = currentFilter === 'all' ? SCANDALS : SCANDALS.filter(s => s.era === currentFilter);
+  container.innerHTML = filtered.map((s, i) => {
+    const realIdx = SCANDALS.indexOf(s);
+    const sevClass = s.severity === 'high' ? 'sev-high' : s.severity === 'med' ? 'sev-med' : 'sev-low';
+    const statusClass = s.status === 'resolved' ? 'status-resolved' : s.status === 'ongoing' ? 'status-ongoing' : 'status-partial';
+    return `
+    <div class="scandal-card" id="card-${realIdx}" onclick="toggleCard(${realIdx})">
+      <div class="card-header">
+        <div class="severity-dot ${sevClass}"></div>
+        <div class="card-main">
+          <div class="card-era">${s.eraLabel}</div>
+          <div class="card-title">${s.title}${s.apology ? '<span class="apology-pill">Apology Issued</span>' : ''}</div>
+          <div class="card-date">${s.date}</div>
+        </div>
+        <div class="card-chevron">▼</div>
+      </div>
+      <div class="card-body">
+        <div class="section-label">What Happened</div>
+        <div class="what-text">${s.what}</div>
+        <div class="section-label">Response & Reform</div>
+        <div class="response-box"><p>${s.response}</p></div>
+        <span class="status-tag ${statusClass}">${s.statusLabel}</span>
+        <div class="scripture-note">${s.scripture}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// Legend note
+const legendHtml = `<div style="display:flex;gap:14px;align-items:center;margin-bottom:14px;background:#fff;border:1px solid #d9cdb8;border-radius:8px;padding:9px 12px">
+  <span style="font-size:11px;color:#888;letter-spacing:.04em;text-transform:uppercase">Severity:</span>
+  <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:#555"><span style="width:9px;height:9px;border-radius:50%;background:#b94040;display:inline-block"></span>Severe</span>
+  <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:#555"><span style="width:9px;height:9px;border-radius:50%;background:#c9a84c;display:inline-block"></span>Significant</span>
+  <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:#555"><span style="width:9px;height:9px;border-radius:50%;background:#6b9e6b;display:inline-block"></span>Moderate</span>
+</div>`;
+
+document.getElementById('cards-container').insertAdjacentHTML('beforebegin', legendHtml);
+renderCards();
+</script>
+</body>
+</html>
