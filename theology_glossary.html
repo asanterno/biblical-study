@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Christian Theology Glossary</title>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1612;
+    --parchment: #f7f3ec;
+    --parchment-dark: #ede8df;
+    --gold: #b8860b;
+    --gold-light: #d4a017;
+    --gold-pale: #f5ead0;
+    --red-deep: #8b1a1a;
+    --blue-deep: #1a3a5c;
+    --green-deep: #1a4a2a;
+    --muted: #6b5e4e;
+    --border: #c8b89a;
+    --border-light: #e0d5c5;
+
+    --cat-soteriology: #8b1a1a;
+    --cat-sacraments: #1a3a5c;
+    --cat-ecclesiology: #1a4a2a;
+    --cat-scripture: #5c3d1a;
+    --cat-eschatology: #3d1a5c;
+    --cat-theology-proper: #1a4a4a;
+    --cat-anthropology: #4a3a1a;
+    --cat-mariology: #5c1a3d;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--parchment);
+    color: var(--ink);
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* Decorative top bar */
+  .top-bar {
+    height: 5px;
+    background: linear-gradient(90deg, var(--red-deep) 0%, var(--gold) 33%, var(--blue-deep) 66%, var(--green-deep) 100%);
+  }
+
+  /* Header */
+  header {
+    border-bottom: 1px solid var(--border);
+    padding: 2.5rem 2rem 2rem;
+    background: var(--parchment);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(247,243,236,0.97);
+    backdrop-filter: blur(8px);
+  }
+
+  .header-inner {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .site-title {
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    margin-bottom: 0.4rem;
+  }
+
+  h1 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 300;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .controls {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 1rem;
+  }
+
+  .search-wrap {
+    position: relative;
+    flex: 1;
+    min-width: 180px;
+    max-width: 300px;
+  }
+
+  .search-wrap input {
+    width: 100%;
+    padding: 7px 12px 7px 32px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    background: white;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--ink);
+    outline: none;
+  }
+  .search-wrap input:focus { border-color: var(--gold); }
+
+  .search-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted);
+    font-size: 13px;
+    pointer-events: none;
+  }
+
+  .filter-group {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    padding: 5px 10px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+
+  .filter-btn:hover { background: var(--parchment-dark); }
+
+  .filter-btn.active {
+    background: var(--ink);
+    color: var(--parchment);
+    border-color: var(--ink);
+  }
+
+  /* Main layout */
+  main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 2rem 2rem 4rem;
+  }
+
+  /* Category sections */
+  .category-section {
+    margin-bottom: 3rem;
+  }
+
+  .category-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+  }
+
+  .category-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .category-subtitle {
+    font-size: 15px;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--muted);
+  }
+
+  /* Term items */
+  .term-item {
+    border-bottom: 1px solid var(--border-light);
+    overflow: hidden;
+  }
+
+  .term-toggle {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.9rem 0;
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    justify-content: space-between;
+    font-family: 'Crimson Pro', Georgia, serif;
+  }
+
+  .term-toggle:hover .term-name { color: var(--gold); }
+
+  .term-name {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--ink);
+    transition: color 0.15s;
+  }
+
+  .term-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .tradition-tags {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    padding: 2px 6px;
+    border-radius: 2px;
+    border: 1px solid currentColor;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .tag-catholic    { color: #8b1a1a; background: #fff0f0; }
+  .tag-reformed    { color: #1a4a2a; background: #f0fff4; }
+  .tag-evangelical { color: #5c3d1a; background: #fffaf0; }
+  .tag-shared      { color: #1a3a5c; background: #f0f4ff; }
+  .tag-disputed    { color: #5c1a3d; background: #fff0f8; }
+
+  .arrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    color: var(--muted);
+    transition: transform 0.2s;
+    flex-shrink: 0;
+    margin-left: 8px;
+  }
+
+  .term-item.open .arrow { transform: rotate(90deg); }
+
+  .term-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.2s ease;
+  }
+
+  .term-item.open .term-body {
+    max-height: 400px;
+  }
+
+  .term-body-inner {
+    padding: 0.1rem 0 1.2rem 0;
+    font-size: 17px;
+    line-height: 1.75;
+    color: #3a3028;
+    border-left: 3px solid var(--border-light);
+    padding-left: 1rem;
+    margin-left: 0.1rem;
+  }
+
+  /* Accent line color per category */
+  .term-item.open[data-cat="soteriology"] .term-body-inner { border-color: var(--cat-soteriology); }
+  .term-item.open[data-cat="sacraments"] .term-body-inner { border-color: var(--cat-sacraments); }
+  .term-item.open[data-cat="ecclesiology"] .term-body-inner { border-color: var(--cat-ecclesiology); }
+  .term-item.open[data-cat="scripture"] .term-body-inner { border-color: var(--cat-scripture); }
+  .term-item.open[data-cat="eschatology"] .term-body-inner { border-color: var(--cat-eschatology); }
+  .term-item.open[data-cat="theology-proper"] .term-body-inner { border-color: var(--cat-theology-proper); }
+  .term-item.open[data-cat="anthropology"] .term-body-inner { border-color: var(--cat-anthropology); }
+  .term-item.open[data-cat="mariology"] .term-body-inner { border-color: var(--cat-mariology); }
+
+  /* Category color coding */
+  .cat-soteriology    { color: var(--cat-soteriology); border-color: var(--cat-soteriology); }
+  .cat-sacraments     { color: var(--cat-sacraments); border-color: var(--cat-sacraments); }
+  .cat-ecclesiology   { color: var(--cat-ecclesiology); border-color: var(--cat-ecclesiology); }
+  .cat-scripture      { color: var(--cat-scripture); border-color: var(--cat-scripture); }
+  .cat-eschatology    { color: var(--cat-eschatology); border-color: var(--cat-eschatology); }
+  .cat-theology-proper { color: var(--cat-theology-proper); border-color: var(--cat-theology-proper); }
+  .cat-anthropology   { color: var(--cat-anthropology); border-color: var(--cat-anthropology); }
+  .cat-mariology      { color: var(--cat-mariology); border-color: var(--cat-mariology); }
+
+  /* Hidden state */
+  .category-section.hidden,
+  .term-item.hidden {
+    display: none;
+  }
+
+  /* Count bar */
+  .count-bar {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    padding: 0.75rem 0 1.5rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* Empty state */
+  .empty-state {
+    font-style: italic;
+    color: var(--muted);
+    text-align: center;
+    padding: 3rem 0;
+  }
+
+  /* Legend */
+  .legend {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  footer {
+    text-align: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    padding: 2rem;
+    border-top: 1px solid var(--border-light);
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 600px) {
+    header { padding: 1.5rem 1rem 1rem; }
+    main { padding: 1.5rem 1rem 3rem; }
+    .tradition-tags { display: none; }
+    h1 { font-size: 1.6rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bar"></div>
+
+<header>
+  <div class="header-inner">
+    <div class="site-title">Formation Reference · RCIA Preparation</div>
+    <h1>Christian Theology<br><em>Glossary by Category</em></h1>
+    <div class="controls">
+      <div class="search-wrap">
+        <span class="search-icon">⌕</span>
+        <input type="text" id="search" placeholder="Search terms…" autocomplete="off" />
+      </div>
+      <div class="filter-group">
+        <button class="filter-btn active" data-trad="all">All</button>
+        <button class="filter-btn" data-trad="shared">Shared</button>
+        <button class="filter-btn" data-trad="catholic">Catholic</button>
+        <button class="filter-btn" data-trad="reformed">Reformed</button>
+        <button class="filter-btn" data-trad="evangelical">Evangelical</button>
+        <button class="filter-btn" data-trad="disputed">Disputed</button>
+      </div>
+    </div>
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot" style="background:#1a3a5c"></div>Shared by all</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#8b1a1a"></div>Catholic</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#1a4a2a"></div>Reformed</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#5c3d1a"></div>Evangelical</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#5c1a3d"></div>Disputed</div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="count-bar" id="count-bar"></div>
+  <div id="content"></div>
+  <div class="empty-state hidden" id="empty">No terms match your search.</div>
+</main>
+
+<footer>55 terms · 8 categories · Catholic · Reformed · Evangelical</footer>
+
+<script>
+const categories = [
+  {
+    id: "theology-proper",
+    title: "Theology Proper",
+    subtitle: "The nature of God and the Trinity",
+    terms: [
+      { name: "Trinity", trad: ["shared"], def: "One God in three Persons — Father, Son, and Holy Spirit. All orthodox Christian traditions affirm this. Defined at the Councils of Nicaea (325) and Constantinople (381). Non-Trinitarian groups (Jehovah's Witnesses, Mormons) are not considered orthodox Christians by Catholic, Reformed, or evangelical standards." },
+      { name: "Incarnation", trad: ["shared"], def: "God the Son becoming human in Jesus Christ — fully divine and fully human, two natures in one person. Defined at the Council of Chalcedon (451). Universal among orthodox Christian traditions." },
+      { name: "Hypostatic union", trad: ["shared"], def: "The technical term for the union of divine and human natures in the one person (hypostasis) of Christ. Christ is not half God and half human — he is 100% both, without confusion or division. The Council of Chalcedon defined this against Nestorianism (two persons) and Monophysitism (one nature)." },
+      { name: "Natural law", trad: ["catholic"], def: "The moral law inscribed in human nature and discernible by reason, independent of revelation. Central to Catholic moral theology via Aquinas. Allows Catholics to argue moral positions in public without requiring the other party to accept Scripture. Reformed and evangelical traditions also use natural law reasoning but often rely more heavily on scriptural commands." },
+      { name: "Soli Deo Gloria", trad: ["shared"], def: "'To God alone be the glory.' One of the five Reformation solas. All traditions affirm the sentiment; Catholics would say giving glory to God through honoring the saints and Mary does not diminish God's glory — it reflects it." },
+    ]
+  },
+  {
+    id: "anthropology",
+    title: "Theological Anthropology",
+    subtitle: "Human nature, sin, and the Fall",
+    terms: [
+      { name: "Original sin", trad: ["shared"], def: "The sin of Adam transmitted to all humanity, resulting in a fallen nature. Catholics and Protestants both affirm it. Catholics add that original sin involves both the loss of sanctifying grace and a disordered nature (concupiscence). Baptism removes the guilt of original sin for Catholics but leaves concupiscence." },
+      { name: "Total depravity", trad: ["reformed"], def: "Humanity is thoroughly corrupted by sin in every faculty — mind, will, affections. This doesn't mean people are as evil as possible, but that no part of us is untouched by sin. Catholics affirm original sin's damage but hold that human nature is 'wounded' rather than 'totally depraved' — reason and will remain, though weakened." },
+      { name: "Concupiscence", trad: ["catholic"], def: "The disordered inclination toward sin that remains after Baptism. Not itself sinful, but a tendency toward sin. Think of it as a bias in your nature — the scales are tilted toward selfishness even after your soul is restored by Baptism." },
+      { name: "Mortal sin / Venial sin", trad: ["catholic"], def: "Catholic distinction between sins that destroy the life of grace in the soul (mortal — serious matter, full knowledge, deliberate consent) and sins that wound but do not destroy grace (venial). Mortal sin requires Confession to restore grace. Most Protestant traditions don't use this distinction formally, though they acknowledge gradations of sin." },
+    ]
+  },
+  {
+    id: "soteriology",
+    title: "Soteriology",
+    subtitle: "Salvation, justification, and grace",
+    terms: [
+      { name: "Grace", trad: ["shared"], def: "God's unmerited favor toward humanity. All traditions affirm it. The debate is over how it works: Catholics see grace as a real internal transformation infused by God; Reformed theology sees it as God's sovereign favor that cannot be resisted; evangelicals often emphasize it as a free gift received through faith." },
+      { name: "Faith", trad: ["shared"], def: "Trust in and commitment to God and his revelation. Catholics define faith as assent of the intellect to revealed truth, animated by charity (love). Reformed theology sees saving faith as involving knowledge, assent, and personal trust (fiducia). Evangelicals often emphasize personal trust and decision." },
+      { name: "Salvation", trad: ["shared"], def: "Being saved from sin and its consequences, and restored to relationship with God. Catholics see salvation as a process (justification → sanctification → glorification). Reformed see it as secured entirely by God's sovereign election and Christ's work. Evangelicals vary, but often stress the moment of conversion." },
+      { name: "Justification", trad: ["disputed"], def: "Being declared or made right before God. One of the biggest dividing issues of the Reformation. Catholics teach that justification makes a person genuinely righteous through infused grace — it changes you. Reformed/Protestants teach that justification is forensic (legal) — God declares you righteous by imputing Christ's righteousness to you, without an actual change in your nature. Analogy: Catholic = a judge who transforms the criminal; Protestant = a judge who acquits the criminal because someone else served the sentence." },
+      { name: "Sanctification", trad: ["shared"], def: "The ongoing process of becoming holy. All traditions affirm it, but differ on its relationship to justification. For Catholics, sanctification is part of justification itself. For Reformed thinkers, justification is instantaneous and legal; sanctification is the lifelong process that follows." },
+      { name: "Imputation", trad: ["reformed", "evangelical"], def: "The crediting of Christ's righteousness to the believer's account. Central to Reformed and most evangelical theologies. Catholics reject imputation as the whole story — they insist grace actually transforms the person, not just changes their legal standing. Analogy: imputation is like a bank transfer of someone else's credit score to you; the Catholic view is like God actually improving your credit score." },
+      { name: "Infusion", trad: ["catholic"], def: "The Catholic counterpart to imputation. Grace is not merely credited to you — it is poured into your soul, making you genuinely righteous. Sanctifying grace is infused at Baptism and restored through Confession. Think of it like a blood transfusion: you actually receive something new, not just a declaration." },
+      { name: "Atonement", trad: ["shared"], def: "How Christ's death reconciles humanity to God. All traditions affirm it. The main Catholic understanding is satisfaction/sacrifice (Christ paying the debt owed to God's justice). Penal substitution — Christ bearing God's wrath in our place — is central to Reformed theology and most evangelical traditions." },
+      { name: "Penal substitution", trad: ["reformed", "evangelical"], def: "The doctrine that Christ bore the punishment (wrath of God) that sinners deserved. The dominant view in Reformed and evangelical circles. Catholics affirm substitutionary sacrifice but tend not to emphasize divine wrath as the primary thing Christ absorbed — the focus is on satisfaction of justice and the offering of a perfect sacrifice." },
+      { name: "Election / Predestination", trad: ["disputed"], def: "God's sovereign choice of who will be saved. Catholics and Arminian evangelicals affirm predestination based on God's foreknowledge of who will freely choose him (conditional election). Reformed theology (Calvinism) teaches unconditional election — God chose specific individuals before creation with no basis in foreseen merit. This is the core of the TULIP framework." },
+      { name: "TULIP", trad: ["reformed"], def: "The five points of Calvinism: Total depravity, Unconditional election, Limited atonement, Irresistible grace, Perseverance of the saints. A summary of the Reformed response to the Arminian Remonstrance (1610). Catholics reject all five points as stated, though they affirm human depravity and divine sovereignty in modified forms." },
+      { name: "Sola Fide", trad: ["reformed", "evangelical"], def: "'Faith alone' — the Reformation doctrine that justification is received through faith alone, not faith plus works. Luther called this the article by which the Church stands or falls. Catholics reject the 'alone' qualifier, affirming that faith working through love (Gal 5:6) is what justifies. James 2:24 ('not by faith alone') is the Catholic proof text." },
+      { name: "Sola Gratia", trad: ["shared"], def: "'Grace alone' — salvation is entirely a gift of God's grace, not human effort. All traditions affirm this in some sense, though they differ on what grace does and how it works. Catholics affirm sola gratia enthusiastically but deny sola fide." },
+      { name: "Sola Christus", trad: ["reformed", "evangelical"], def: "'Christ alone' — salvation is through Christ alone, not through Mary, saints, or any other mediator. One of the five Reformation solas. Catholics affirm Christ as the one mediator but argue that others (Mary, saints, priests) can be secondary or instrumental mediators participating in his mediation." },
+      { name: "Merit", trad: ["disputed"], def: "The idea that good works done in a state of grace have a real value before God. Catholics affirm merit — but always as a gift of God's grace, not something humanity achieves independently. Reformed theology is uncomfortable with merit language for human beings. The Catholic position: God rewards what he first gives — our merits are really his grace working through us." },
+      { name: "Works / Works-righteousness", trad: ["disputed"], def: "The role of good works in salvation. Catholics: works done in grace are meritorious and part of salvation. Reformed: works are the fruit and evidence of salvation, not its cause — 'faith alone saves, but saving faith is never alone.' The Catholic is often misrepresented as teaching 'earning' salvation — the actual teaching is cooperation with grace." },
+      { name: "Perseverance of the Saints / Eternal security", trad: ["disputed"], def: "The doctrine that those truly saved cannot lose their salvation. Reformed: God preserves the elect — they will certainly persevere. Catholics: salvation can be lost through mortal sin — no one should presume on their final salvation. Many Arminian evangelicals agree with Catholics here; Calvinist evangelicals affirm eternal security." },
+      { name: "Purgatory", trad: ["disputed"], def: "A state of purification after death for those who die in God's grace but still imperfectly purified. Catholics affirm it; Protestants universally reject it as unscriptural. Catholics ground it in Scripture (1 Cor 3:15, Matt 12:32, 2 Macc 12:46) and Tradition. The Reformation attacked indulgences tied to purgatory — the abuse, not necessarily the doctrine, was the initial flashpoint." },
+      { name: "Indulgences", trad: ["catholic"], def: "A remission of the temporal punishment due to sins already forgiven. Not a forgiveness of sins — that comes through Confession. Grounded in the Treasury of Merit (the superabundant merits of Christ and the saints). Abuse of indulgence-selling was one of Luther's original complaints (95 Theses, 1517)." },
+      { name: "Regeneration", trad: ["shared"], def: "Being 'born again' — a spiritual rebirth. Catholics locate this in Baptism. Reformed theology also often ties it to Baptism, but emphasizes it as the sovereign work of the Holy Spirit that precedes saving faith. Many evangelicals see it as occurring at the moment of personal faith/conversion." },
+    ]
+  },
+  {
+    id: "sacraments",
+    title: "Sacraments & Worship",
+    subtitle: "The rites and means of grace",
+    terms: [
+      { name: "Sacraments", trad: ["disputed"], def: "Outward signs that confer inward grace. Catholics have seven: Baptism, Eucharist, Confirmation, Confession, Anointing of the Sick, Holy Orders, Matrimony. Reformed traditions typically have two (Baptism and Lord's Supper) and see them as signs and seals of grace, not means that actually convey it. Many evangelicals call them 'ordinances' — symbolic acts, not grace-conferring rites." },
+      { name: "Ordinances", trad: ["evangelical"], def: "The evangelical/Baptist term for what Catholics and Reformed call sacraments. Baptism and the Lord's Supper are ordinances — things Christ ordained us to do — but they don't convey grace in themselves. They are outward declarations of inward realities already received." },
+      { name: "Eucharist / Lord's Supper / Communion", trad: ["disputed"], def: "The sacramental meal instituted by Christ. Catholics: the bread and wine truly become the body and blood of Christ (transubstantiation) — the Mass is a re-presentation of Calvary. Reformed: Christ is spiritually present in the Supper (real spiritual presence, not physical). Memorialists (many evangelicals): it is purely a memorial — symbolic only, with no special presence of Christ." },
+      { name: "Transubstantiation", trad: ["catholic"], def: "The Catholic doctrine that the bread and wine at Mass truly become the body and blood of Christ — the substance changes, though the appearance (accidents) remains. This is not a metaphor. The Council of Trent defined this against Protestant rejection. The Westminster Confession calls it 'repugnant to Scripture, common sense, and reason.'" },
+      { name: "Consubstantiation", trad: ["shared"], def: "Often wrongly attributed to Luther — the idea that Christ's body is present 'in, with, and under' the bread and wine. Luther himself never used this term; he held to the Real Presence but rejected transubstantiation. Still commonly used in ecumenical discussions." },
+      { name: "Real Presence", trad: ["catholic", "reformed"], def: "The belief that Christ is truly present in the Eucharist. Catholics affirm it as bodily/physical presence via transubstantiation. Reformed theology affirms a real spiritual presence. Most Baptists/memorialists deny any special presence beyond Christ's ordinary omnipresence." },
+      { name: "Baptism", trad: ["disputed"], def: "Initiation into the Christian community through water. Catholics: baptism removes original sin, infuses grace, and makes one a member of the Church — valid for infants. Reformed: baptism is a covenant sign, analogous to circumcision — also valid for infants of believers. Baptists and most evangelicals: baptism is for believers only (credobaptism), done after a profession of faith, and is symbolic." },
+      { name: "Paedobaptism", trad: ["catholic", "reformed"], def: "Infant baptism. Practiced by Catholics, Orthodox, Lutheran, Anglican, and Reformed traditions. Justified on covenant grounds — the child of a believer is part of the covenant community and receives the covenant sign. Opposed by Baptists and most evangelicals who require a profession of faith first." },
+      { name: "Credobaptism", trad: ["evangelical"], def: "Believer's baptism — baptism only for those who have personally professed faith. The Baptist and most evangelical position. Baptism follows conversion; it doesn't cause it." },
+      { name: "Holy Orders", trad: ["catholic"], def: "The sacrament by which men are ordained as deacons, priests, and bishops. In Catholic theology, ordination confers a permanent ontological change — the priest is configured to Christ in a new way. Most Protestant traditions do not recognize ordination as a sacrament, though they do ordain ministers." },
+      { name: "Confession / Reconciliation", trad: ["disputed"], def: "The sacrament by which sins committed after Baptism are forgiven through priestly absolution. Catholics see the priest as acting in persona Christi (in the person of Christ), granting forgiveness Christ promised (John 20:23). Protestants see confession as optional, between the believer and God directly, with no need for a priest as mediator." },
+      { name: "Anointing of the Sick", trad: ["catholic"], def: "The sacrament (James 5:14-15) in which a priest anoints the seriously ill with oil, praying for healing of body and soul. Formerly called 'Extreme Unction.' Most Protestants practice prayer and anointing but do not consider it a sacrament." },
+      { name: "Lex orandi, lex credendi", trad: ["catholic"], def: "Latin: 'The law of praying is the law of believing.' The principle that the Church's liturgy expresses and shapes its theology — how we worship reflects and forms what we believe. Central to Catholic (and Orthodox) theological method. Less emphasized in traditions where worship is informal and variable." },
+      { name: "Baptism in the Spirit", trad: ["evangelical"], def: "In Pentecostal and charismatic Christianity, a distinct experience of the Holy Spirit subsequent to conversion, often evidenced by speaking in tongues (glossolalia). Catholics affirm the Spirit is fully given in Baptism and Confirmation — no second blessing is needed. Reformed theology holds the Spirit is given at regeneration." },
+      { name: "Celibacy", trad: ["catholic"], def: "The discipline (not dogma) of the Latin Rite requiring priests to remain unmarried. Eastern Catholic rites allow married priests. Protestants rejected this at the Reformation. The Catholic rationale: celibacy is a sign of the Kingdom and enables total availability to God's service." },
+    ]
+  },
+  {
+    id: "ecclesiology",
+    title: "Ecclesiology",
+    subtitle: "The nature and structure of the Church",
+    terms: [
+      { name: "Ecclesiology", trad: ["shared"], def: "The doctrine of the Church — its nature, structure, and mission. Catholics hold to a visible, hierarchical Church with the Pope as head. Reformed traditions emphasize the invisible Church of true believers and a plurality of elders. Many evangelicals de-emphasize institutional structure and focus on the gathered community of believers." },
+      { name: "Apostolic succession", trad: ["catholic"], def: "The unbroken chain of ordination from the Apostles to today's bishops. For Catholics (and Orthodox), valid sacraments depend on a validly ordained priest in this succession. Most Protestant churches reject this as necessary, though Anglican and Lutheran churches have varying claims to it." },
+      { name: "Papal infallibility", trad: ["catholic"], def: "The doctrine that when the Pope speaks ex cathedra — formally defining a matter of faith or morals for the whole Church — he is preserved from error by the Holy Spirit. Defined at Vatican I (1870). Much narrower than people think — used only twice (Immaculate Conception, 1854; Assumption of Mary, 1950)." },
+      { name: "Magisterium", trad: ["catholic"], def: "The teaching authority of the Catholic Church, exercised by the Pope and bishops in union with him. The Magisterium interprets Scripture and Tradition authentically. Think of it as the Church's 'official interpretation office' — no individual gets to override it privately." },
+      { name: "The Four Marks of the Church", trad: ["catholic"], def: "One, Holy, Catholic, Apostolic — from the Nicene Creed. Catholics see these marks as fully realized only in the Catholic Church. Reformed theologians identify the true Church by right preaching of the Word and right administration of the sacraments (sometimes adding church discipline as a third mark)." },
+      { name: "Priesthood of all believers", trad: ["reformed", "evangelical"], def: "The Protestant doctrine that all Christians have direct access to God and are priests in their own right (1 Pet 2:9), requiring no human mediator beyond Christ. Catholics affirm the common priesthood of the baptized but also maintain a distinct ministerial priesthood — two participations in Christ's one priesthood, not two competing offices." },
+      { name: "Intercession of the Saints", trad: ["disputed"], def: "Asking those who have died in Christ to pray for us. Catholics affirm it robustly — the saints are alive in Christ and their prayers are effective. Protestants typically reject it as unscriptural and potentially idolatrous — Christ alone is the one mediator (1 Tim 2:5). Catholics distinguish between Christ as the one mediator and saints as subordinate intercessors participating in his mediation." },
+      { name: "Covenant theology", trad: ["reformed"], def: "A Reformed framework for reading Scripture through a series of divine covenants (works, grace, redemption). It emphasizes the unity of the Old and New Testaments and is used to defend infant baptism (as the covenant sign, analogous to circumcision). Distinct from dispensationalism." },
+    ]
+  },
+  {
+    id: "scripture",
+    title: "Scripture & Authority",
+    subtitle: "The sources and interpretation of divine revelation",
+    terms: [
+      { name: "Scripture / Sola Scriptura", trad: ["disputed"], def: "Sola Scriptura ('Scripture alone') is the Reformation principle that Scripture is the sole infallible rule of faith. Catholics reject this: Scripture and Sacred Tradition together constitute the one source of divine revelation, interpreted authoritatively by the Magisterium. The Catholic view is that the Church preceded the New Testament and produced the canon — so the Church's authority is logically prior." },
+      { name: "Sacred Tradition", trad: ["catholic"], def: "The living transmission of divine revelation through the Church — distinct from human traditions. For Catholics, Sacred Tradition is not merely customs or practices but the ongoing handing on of what the Apostles received from Christ. Together with Scripture, it forms the single deposit of faith (Dei Verbum)." },
+      { name: "Canon of Scripture", trad: ["disputed"], def: "Which books belong in the Bible. Catholics include the deuterocanonical books (Tobit, Judith, 1-2 Maccabees, Wisdom, Sirach, Baruch) — what Protestants call the Apocrypha. The Protestant canon (66 books) follows the Jewish Palestinian canon. Catholics ground their canon in the councils of Hippo (393) and Carthage (397) — the same councils Protestants cite for the New Testament." },
+      { name: "Inerrancy", trad: ["shared"], def: "Scripture is without error in all it affirms. Strict inerrancy (every detail including historical and scientific matters) is common among conservative evangelicals; Catholics affirm inerrancy in matters pertaining to salvation but allow that Scripture uses human literary forms with their conventions and limitations." },
+      { name: "Inspiration", trad: ["shared"], def: "Scripture was 'breathed out' by God (2 Tim 3:16) — the human authors wrote truly, but under divine guidance. All orthodox traditions affirm this. Verbal-plenary inspiration (every word is God-breathed) is common among Reformed and evangelical conservatives; Catholics affirm the same while emphasizing the human authors wrote freely." },
+      { name: "Authority / Magisterium vs. Scripture", trad: ["disputed"], def: "Where final doctrinal authority lies. Catholics: Scripture + Tradition + Magisterium. Reformed: Scripture alone, interpreted by the individual guided by the Spirit (but confessions and church courts help). Many evangelicals: Scripture alone, often with an individual 'me and my Bible' reading. The Catholic critique of sola scriptura is that it produces endless fragmentation — Protestantism has thousands of denominations." },
+    ]
+  },
+  {
+    id: "mariology",
+    title: "Mariology",
+    subtitle: "The person and role of Mary",
+    terms: [
+      { name: "Veneration of Mary", trad: ["disputed"], def: "Honoring Mary with a high form of respect (hyperdulia) distinct from worship (latria, which belongs to God alone). Catholics: Mary is the Mother of God (Theotokos), perpetual virgin, assumed bodily into heaven, and a powerful intercessor. Most Protestants: Marian dogmas go beyond Scripture and risk idolatry. The accusation of Mary-worship is the standard Protestant objection; the Catholic response is that honoring the mother honors the Son." },
+      { name: "Theotokos", trad: ["catholic"], def: "Greek for 'God-bearer' or 'Mother of God.' Defined at the Council of Ephesus (431 AD). Not that Mary pre-existed or is the source of God, but that the person she bore is truly God the Son. This is a statement about Christ's identity, not primarily about Mary." },
+    ]
+  },
+  {
+    id: "eschatology",
+    title: "Eschatology",
+    subtitle: "Death, judgment, and the last things",
+    terms: [
+      { name: "Eschatology", trad: ["shared"], def: "The study of last things — death, judgment, heaven, hell, and the end of history. All traditions affirm Christ's Second Coming, final judgment, and bodily resurrection. They differ on the millennium, the rapture, and the role of Israel in end-times events." },
+      { name: "Millennium", trad: ["disputed"], def: "The 1000-year reign of Christ mentioned in Revelation 20. Premillennialists (many evangelicals): Christ returns before the millennium, a literal future reign on earth. Postmillennialists: Christ returns after the Church brings the world to faith. Amillennialists (Catholics, Reformed, many others): the millennium is symbolic — the current church age between Christ's resurrection and return." },
+      { name: "Rapture", trad: ["evangelical"], def: "The idea (from 1 Thess 4:17) that believers will be 'caught up' to meet Christ. Pretribulation rapture (Left Behind theology) holds this will happen before a 7-year tribulation. Catholics, Orthodox, and most Reformed theologians do not hold this view — seeing 1 Thess 4 as describing the final resurrection at Christ's Second Coming, not a separate event." },
+      { name: "Dispensationalism", trad: ["evangelical"], def: "A framework, popular among many evangelicals and fundamentalists, that divides redemptive history into distinct 'dispensations' — eras in which God relates to humanity differently. Associated with a literal interpretation of prophecy, a pretribulation rapture, and a future for national Israel distinct from the Church. Not held by Catholics, Orthodox, or most Reformed Christians." },
+    ]
+  }
+];
+
+function tagHTML(trad) {
+  return trad.map(t => {
+    const labels = { catholic: 'Catholic', reformed: 'Reformed', evangelical: 'Evangelical', shared: 'All traditions', disputed: 'Disputed' };
+    return `<span class="tag tag-${t}">${labels[t]}</span>`;
+  }).join('');
+}
+
+function buildContent(filterTrad, searchText) {
+  const content = document.getElementById('content');
+  const empty = document.getElementById('empty');
+  const countBar = document.getElementById('count-bar');
+  content.innerHTML = '';
+  let totalVisible = 0;
+
+  categories.forEach(cat => {
+    const filtered = cat.terms.filter(term => {
+      const tradMatch = filterTrad === 'all' || term.trad.includes(filterTrad);
+      const search = searchText.toLowerCase();
+      const searchMatch = !search || term.name.toLowerCase().includes(search) || term.def.toLowerCase().includes(search);
+      return tradMatch && searchMatch;
+    });
+
+    if (filtered.length === 0) return;
+    totalVisible += filtered.length;
+
+    const section = document.createElement('section');
+    section.className = 'category-section';
+
+    section.innerHTML = `
+      <div class="category-header cat-${cat.id}">
+        <span class="category-title">${cat.title}</span>
+        <span class="category-subtitle">${cat.subtitle}</span>
+      </div>
+    `;
+
+    filtered.forEach(term => {
+      const item = document.createElement('div');
+      item.className = 'term-item';
+      item.dataset.cat = cat.id;
+      item.innerHTML = `
+        <button class="term-toggle" aria-expanded="false">
+          <span class="term-name">${term.name}</span>
+          <span class="term-meta">
+            <span class="tradition-tags">${tagHTML(term.trad)}</span>
+            <span class="arrow">›</span>
+          </span>
+        </button>
+        <div class="term-body" role="region">
+          <div class="term-body-inner">${term.def}</div>
+        </div>
+      `;
+      item.querySelector('.term-toggle').addEventListener('click', () => {
+        const isOpen = item.classList.toggle('open');
+        item.querySelector('.term-toggle').setAttribute('aria-expanded', isOpen);
+      });
+      section.appendChild(item);
+    });
+
+    content.appendChild(section);
+  });
+
+  empty.classList.toggle('hidden', totalVisible > 0);
+  countBar.textContent = totalVisible + ' term' + (totalVisible !== 1 ? 's' : '');
+}
+
+let activeTrad = 'all';
+let searchVal = '';
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    activeTrad = btn.dataset.trad;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b === btn));
+    buildContent(activeTrad, searchVal);
+  });
+});
+
+document.getElementById('search').addEventListener('input', e => {
+  searchVal = e.target.value;
+  buildContent(activeTrad, searchVal);
+});
+
+buildContent('all', '');
+</script>
+</body>
+</html>
