@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Covenant Theology — A Reference</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel:wght@400;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:        #1a1208;
+    --vellum:     #f5f0e4;
+    --vellum-mid: #ede5ce;
+    --vellum-dark:#d9cdb0;
+    --gold:       #9a7a2e;
+    --gold-light: #c4a24a;
+    --gold-pale:  #e8d98a22;
+    --crimson:    #7a1f2e;
+    --crimson-soft:#9e3244;
+    --blue-deep:  #1e3556;
+    --blue-mid:   #2e4f7a;
+    --text-body:  #2a1f0f;
+    --text-muted: #6b5a3e;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--vellum);
+    color: var(--text-body);
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.75;
+    min-height: 100vh;
+  }
+
+  /* ── ILLUMINATED BORDER MOTIF ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    border: 6px solid var(--gold);
+    box-shadow: inset 0 0 0 2px var(--gold-light), inset 0 0 0 8px var(--vellum);
+    pointer-events: none;
+    z-index: 100;
+  }
+
+  /* ── HEADER ── */
+  header {
+    text-align: center;
+    padding: 3.5rem 2rem 2rem;
+    border-bottom: 1px solid var(--vellum-dark);
+    position: relative;
+    background: linear-gradient(180deg, #ede5ce 0%, var(--vellum) 100%);
+  }
+
+  .eyebrow {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+
+  h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: 0.04em;
+    line-height: 1.15;
+    margin-bottom: 0.5rem;
+  }
+
+  .header-rule {
+    width: 120px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 1rem auto;
+  }
+
+  .subtitle {
+    font-style: italic;
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  /* ── NAV ── */
+  nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    padding: 1.25rem 2rem;
+    background: var(--vellum-mid);
+    border-bottom: 1px solid var(--vellum-dark);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  .nav-btn {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    background: none;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    padding: 0.35rem 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .nav-btn:hover, .nav-btn.active {
+    color: var(--gold);
+    border-color: var(--gold);
+    background: var(--gold-pale);
+  }
+
+  /* ── MAIN LAYOUT ── */
+  main {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 2rem 6rem;
+  }
+
+  /* ── SECTION ── */
+  .section {
+    padding: 3.5rem 0 2.5rem;
+    border-bottom: 1px solid var(--vellum-dark);
+  }
+
+  .section:last-child { border-bottom: none; }
+
+  .section-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+
+  h2 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--crimson);
+    margin: 2rem 0 0.75rem;
+    letter-spacing: 0.02em;
+  }
+
+  p { margin-bottom: 1.1rem; }
+  p:last-child { margin-bottom: 0; }
+
+  /* ── PULL QUOTE ── */
+  blockquote {
+    margin: 2rem 0;
+    padding: 1.25rem 1.75rem;
+    border-left: 3px solid var(--gold);
+    background: var(--gold-pale);
+    font-style: italic;
+    font-size: 1.08rem;
+    color: var(--text-body);
+  }
+
+  blockquote cite {
+    display: block;
+    margin-top: 0.5rem;
+    font-style: normal;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ── ANALOGY CARD ── */
+  .analogy {
+    background: var(--blue-deep);
+    color: #e8dfc8;
+    border-radius: 3px;
+    padding: 1.5rem 1.75rem;
+    margin: 2rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .analogy::before {
+    content: '⚙';
+    position: absolute;
+    right: 1.25rem;
+    top: 0.75rem;
+    font-size: 3rem;
+    opacity: 0.08;
+    line-height: 1;
+  }
+
+  .analogy-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 0.5rem;
+  }
+
+  .analogy p {
+    font-size: 0.97rem;
+    line-height: 1.7;
+    margin-bottom: 0;
+    color: #ddd5be;
+  }
+
+  .analogy strong { color: #e8dfc8; }
+
+  /* ── SCRIPTURE SEED ── */
+  .seed-box {
+    border: 1px solid var(--crimson-soft);
+    border-radius: 3px;
+    padding: 1.25rem 1.5rem;
+    margin: 2rem 0;
+    background: #7a1f2e08;
+  }
+
+  .seed-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--crimson-soft);
+    margin-bottom: 0.75rem;
+  }
+
+  .seed-box ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .seed-box li {
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #7a1f2e18;
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--text-body);
+    padding-left: 1.25rem;
+    position: relative;
+  }
+
+  .seed-box li:last-child { border-bottom: none; }
+
+  .seed-box li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--crimson-soft);
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  /* ── COMPARISON TABLE ── */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    font-size: 0.9rem;
+  }
+
+  .compare-table th {
+    font-family: 'Cinzel', serif;
+    font-weight: 400;
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    text-align: left;
+    padding: 0.75rem 1rem;
+    background: var(--ink);
+    color: var(--gold-light);
+    border: 1px solid var(--ink);
+  }
+
+  .compare-table td {
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--vellum-dark);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  .compare-table tr:nth-child(even) td {
+    background: var(--vellum-mid);
+  }
+
+  .compare-table td:first-child {
+    font-family: 'Cinzel', serif;
+    font-size: 0.82rem;
+    color: var(--crimson);
+    font-weight: 400;
+  }
+
+  /* ── COVENANT FLOW DIAGRAM ── */
+  .covenant-flow {
+    margin: 2.5rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .flow-node {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--vellum-mid);
+    border: 1px solid var(--vellum-dark);
+    border-bottom: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    user-select: none;
+  }
+
+  .flow-node:first-child { border-radius: 3px 3px 0 0; }
+  .flow-node:last-child { border-bottom: 1px solid var(--vellum-dark); border-radius: 0 0 3px 3px; }
+  .flow-node:hover { background: #e8dfc8; }
+  .flow-node.open { background: #e2d9c4; }
+
+  .flow-icon {
+    width: 2.2rem;
+    height: 2.2rem;
+    min-width: 2.2rem;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--gold-light);
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.1rem;
+  }
+
+  .flow-header { flex: 1; }
+
+  .flow-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.95rem;
+    color: var(--ink);
+    letter-spacing: 0.03em;
+  }
+
+  .flow-ref {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.68rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-top: 0.1rem;
+  }
+
+  .flow-chevron {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    transition: transform 0.2s;
+    margin-top: 0.2rem;
+  }
+
+  .flow-node.open .flow-chevron { transform: rotate(90deg); }
+
+  .flow-body {
+    display: none;
+    padding: 0 1.5rem 1.25rem 4.7rem;
+    background: #e2d9c4;
+    border: 1px solid var(--vellum-dark);
+    border-top: none;
+    border-bottom: none;
+    font-size: 0.93rem;
+    line-height: 1.7;
+    color: var(--text-body);
+  }
+
+  .flow-body p { margin-bottom: 0.6rem; }
+  .flow-body p:last-child { margin-bottom: 0.5rem; }
+
+  .flow-node:last-child + .flow-body,
+  .flow-body:last-child {
+    border-bottom: 1px solid var(--vellum-dark);
+    border-radius: 0 0 3px 3px;
+  }
+
+  /* ── KEYWORD HIGHLIGHT ── */
+  .kw { color: var(--crimson); font-style: italic; }
+  .ref {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── MELCHIZEDEK DIAGRAM ── */
+  .mel-diagram {
+    margin: 2rem 0;
+    border: 1px solid var(--vellum-dark);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .mel-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--vellum-dark);
+  }
+
+  .mel-row:last-child { border-bottom: none; }
+
+  .mel-cell {
+    padding: 0.85rem 1.1rem;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    border-right: 1px solid var(--vellum-dark);
+  }
+
+  .mel-cell:last-child { border-right: none; }
+
+  .mel-header {
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    padding: 0.65rem 1.1rem;
+    border-right: 1px solid #3a5070;
+  }
+
+  .mel-header:last-child { border-right: none; }
+
+  .mel-head-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--blue-deep);
+    color: var(--gold-light);
+    border-bottom: 2px solid var(--blue-mid);
+  }
+
+  .mel-row:nth-child(even) .mel-cell { background: var(--vellum-mid); }
+
+  .mel-cell em { color: var(--crimson); font-style: italic; }
+
+  /* ── ABRAHAMIC PROMISES ── */
+  .promise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .promise-card {
+    border: 1px solid var(--vellum-dark);
+    border-top: 3px solid var(--gold);
+    padding: 1.1rem 1.2rem;
+    background: var(--vellum);
+    border-radius: 0 0 3px 3px;
+  }
+
+  .promise-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.82rem;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.04em;
+  }
+
+  .promise-mosaic {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+    font-style: italic;
+  }
+
+  .promise-fulfilled {
+    font-size: 0.82rem;
+    color: var(--crimson);
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  .promise-ref {
+    font-size: 0.7rem;
+    color: var(--gold);
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 0.35rem;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    body::before { border-width: 4px; }
+    h1 { font-size: 1.7rem; }
+    .mel-row, .mel-head-row { grid-template-columns: 1fr; }
+    .mel-cell, .mel-header { border-right: none; border-bottom: 1px solid var(--vellum-dark); }
+    .mel-header:last-child, .mel-cell:last-child { border-bottom: none; }
+    main { padding: 0 1.25rem 4rem; }
+    nav { gap: 0.15rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Catholic Covenant Theology · Reference</div>
+  <h1>From Sinai to the<br>New Covenant</h1>
+  <div class="header-rule"></div>
+  <p class="subtitle">The Mosaic Covenant, its fulfillment in Christ, and the threads of Hebrews, Melchizedek, and Abraham</p>
+</header>
+
+<nav>
+  <button class="nav-btn" data-target="mosaic">The Mosaic Covenant</button>
+  <button class="nav-btn" data-target="new-covenant">New Covenant</button>
+  <button class="nav-btn" data-target="hebrews">Hebrews</button>
+  <button class="nav-btn" data-target="melchizedek">Melchizedek</button>
+  <button class="nav-btn" data-target="abrahamic">Abrahamic</button>
+  <button class="nav-btn" data-target="seeds">Socratic Seeds</button>
+</nav>
+
+<main>
+
+  <!-- ── SECTION 1: MOSAIC COVENANT ── -->
+  <section class="section" id="mosaic">
+    <div class="section-label">Part I</div>
+    <h2>The Mosaic Covenant</h2>
+
+    <p>The Mosaic Covenant is the covenant God made with the nation of Israel through Moses at Sinai — not with an individual patriarch, but with an entire people. Its structure follows the ancient suzerainty treaty form: the great king identifies himself, recounts his deeds, and sets terms of loyalty.</p>
+
+    <blockquote>
+      "I am the Lord your God, who brought you out of the land of Egypt, out of the house of slavery. You shall have no other gods before me."
+      <cite>Exodus 20:2–3 — The treaty opens with identity and prior benevolence</cite>
+    </blockquote>
+
+    <h3>Key Elements</h3>
+
+    <div class="covenant-flow" id="mosaicFlow">
+
+      <div class="flow-node">
+        <div class="flow-icon">I</div>
+        <div class="flow-header">
+          <div class="flow-name">The Decalogue — Moral Law</div>
+          <div class="flow-ref">Exodus 20 · Deuteronomy 5</div>
+        </div>
+        <div class="flow-chevron">›</div>
+      </div>
+      <div class="flow-body">
+        <p>The Ten Commandments form the moral core of the covenant. Catholic theology holds that this moral law is <em>fulfilled and deepened</em> in Christ — not abolished. Jesus summarizes it as love of God and neighbor (Matthew 22:37–40) and internalizes it in the Sermon on the Mount.</p>
+        <p>Unlike the ceremonial and civil dimensions, the Decalogue's binding force continues in the New Covenant — now written on hearts (Jeremiah 31:33) rather than stone tablets.</p>
+      </div>
+
+      <div class="flow-node">
+        <div class="flow-icon">II</div>
+        <div class="flow-header">
+          <div class="flow-name">Ceremonial Law</div>
+          <div class="flow-ref">Leviticus · Numbers</div>
+        </div>
+        <div class="flow-chevron">›</div>
+      </div>
+      <div class="flow-body">
+        <p>Sacrifices, feasts, purity codes, the Tabernacle/Temple liturgy — these were <em class="kw">types</em> pointing forward to Christ. The Letter to the Hebrews argues at length that these were shadows of the coming reality. Once the reality arrives, the shadow is no longer needed.</p>
+        <p>The Passover is fulfilled in the Eucharist. The Levitical sacrifice is fulfilled in the one offering of Christ. The Temple is fulfilled in the Body of Christ (John 2:19–21).</p>
+      </div>
+
+      <div class="flow-node">
+        <div class="flow-icon">III</div>
+        <div class="flow-header">
+          <div class="flow-name">Civil Law</div>
+          <div class="flow-ref">Exodus 21–23 · Deuteronomy</div>
+        </div>
+        <div class="flow-chevron">›</div>
+      </div>
+      <div class="flow-body">
+        <p>The civil law governed Israel specifically as a theocratic nation-state. These statutes — governing property disputes, social penalties, land sabbaths — were particular to the covenant community as a political entity.</p>
+        <p>With the Church becoming a universal, multinational body rather than a nation-state, these civil provisions do not bind directly. Their underlying moral principles (equity, care for the vulnerable, sabbath rest) are retained, but not the specific legislation.</p>
+      </div>
+
+      <div class="flow-node">
+        <div class="flow-icon">IV</div>
+        <div class="flow-header">
+          <div class="flow-name">Blessings & Curses — The Bilateral Structure</div>
+          <div class="flow-ref">Deuteronomy 28</div>
+        </div>
+        <div class="flow-chevron">›</div>
+      </div>
+      <div class="flow-body">
+        <p>Unlike the Abrahamic Covenant (unilateral — God alone passed between the animals in Genesis 15), the Mosaic Covenant was <em class="kw">bilateral and conditional</em>. Obedience brought blessing; disobedience brought curse.</p>
+        <p>Israel did break this covenant — repeatedly. The Babylonian exile was the covenant curse enacted (Deuteronomy 28:64–68). This is why Jeremiah 31 promises a <em>new</em> covenant that will not be broken in the same way.</p>
+      </div>
+
+    </div>
+
+    <div class="analogy">
+      <div class="analogy-label">Analogy</div>
+      <p>The Mosaic Covenant is like a <strong>national constitution</strong> enacted once the people became a nation. The Abrahamic Covenant was the land grant deed — the promise of a people and place. Sinai was what happened when that people required governance as a kingdom, with God as their king.</p>
+    </div>
+
+  </section>
+
+  <!-- ── SECTION 2: NEW COVENANT ── -->
+  <section class="section" id="new-covenant">
+    <div class="section-label">Part II</div>
+    <h2>The New Covenant</h2>
+
+    <p>God promised through Jeremiah that he would make a <em>new</em> covenant with Israel — and pointedly contrasted it with the Mosaic:</p>
+
+    <blockquote>
+      "It will not be like the covenant I made with their ancestors when I took them by the hand to lead them out of Egypt, because they broke my covenant… I will put my law within them, and I will write it on their hearts."
+      <cite>Jeremiah 31:32–33 · Quoted in full in Hebrews 8</cite>
+    </blockquote>
+
+    <h3>What Changes, What Continues, What Transforms</h3>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Mosaic Element</th>
+          <th>New Covenant Status</th>
+          <th>Key Text</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Moral Law (Decalogue)</td>
+          <td>Fulfilled and <em>deepened</em> — internalized, not abolished</td>
+          <td><span class="ref">Matthew 5:17; Romans 3:31</span></td>
+        </tr>
+        <tr>
+          <td>Ceremonial Law</td>
+          <td>Fulfilled in Christ — the reality has arrived, the shadow ends</td>
+          <td><span class="ref">Colossians 2:16–17; Hebrews 10:1</span></td>
+        </tr>
+        <tr>
+          <td>Sacrificial System</td>
+          <td>One perfect sacrifice replaces continuous animal offerings</td>
+          <td><span class="ref">Hebrews 9:12; 10:14</span></td>
+        </tr>
+        <tr>
+          <td>Levitical Priesthood</td>
+          <td>Replaced by Christ's eternal Melchizedekian priesthood</td>
+          <td><span class="ref">Hebrews 7:11–17</span></td>
+        </tr>
+        <tr>
+          <td>Circumcision</td>
+          <td>Fulfilled in Baptism</td>
+          <td><span class="ref">Colossians 2:11–12</span></td>
+        </tr>
+        <tr>
+          <td>Passover</td>
+          <td>Fulfilled in the Eucharist</td>
+          <td><span class="ref">1 Corinthians 5:7; Luke 22:20</span></td>
+        </tr>
+        <tr>
+          <td>Temple</td>
+          <td>Fulfilled in the Body of Christ; now the Church is the Temple</td>
+          <td><span class="ref">John 2:19–21; 1 Corinthians 3:16</span></td>
+        </tr>
+        <tr>
+          <td>Israel as covenant people</td>
+          <td>Expanded to include Gentiles — one body, one olive tree</td>
+          <td><span class="ref">Romans 11:17–24; Galatians 3:28</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="analogy">
+      <div class="analogy-label">Analogy — Caterpillar & Butterfly</div>
+      <p>The Mosaic Covenant isn't discarded at the New Covenant — it's <strong>transformed into what it was always pointing toward</strong>. The scaffolding comes down not because it failed but because the cathedral is complete. The shadow disappears not because it was an error but because the sun has arrived.</p>
+    </div>
+
+  </section>
+
+  <!-- ── SECTION 3: HEBREWS ── -->
+  <section class="section" id="hebrews">
+    <div class="section-label">Part III</div>
+    <h2>The Letter to the Hebrews</h2>
+
+    <p>Hebrews was written to Jewish Christians tempted to revert to the Mosaic system under persecution. The author's argument is sustained and systematic: <em class="kw">going back would not be going home — it would be going backward past the destination.</em></p>
+
+    <h3>The Structure of the Argument</h3>
+
+    <div class="covenant-flow">
+
+      <div class="flow-node">
+        <div class="flow-icon">Ch<br>1–2</div>
+        <div class="flow-header">
+          <div class="flow-name">Christ Superior to Angels</div>
+          <div class="flow-ref">Hebrews 1–2</div>
+        </div>
+        <div class="flow-chevron">›</div>
+      </div>
+      <div class="flow-body">
+        <p>The Law was "spoken through angels" (Acts 7:53, Galatians 3:19). The author establishes Christ's supremacy over angels first, because if Christ is superior to the mediators of the Law, the Law itself cannot claim final authority.</p>
+      </div>
+
+      <div class="flow-node">
+        <div class="flow-icon">Ch<br>3</div>
+        <div class="flow-header">
+          <div class="flow-name">Christ Superior to Moses</div>
+          <div class="flow-ref">Hebrews 3</div>
+        </div>
+        <div class="flow-chevron">›</div>
+      </div>
+      <div class="flow-body">
+        <p>Moses was a <em>servant</em> in God's house; Christ is a <em>Son</em> over it. The builder of a house is greater than the house. Moses administered the covenant faithfully — but Christ is the covenant's author and goal.</p>
+      </div>
+
+      <div class="flow-node">
+        <div class="flow-icon">Ch<br>4–7</div>
+        <div class="flow-header">
+          <div class="flow-name">Christ Superior to the Levitical Priesthood</div>
+          <div class="flow-ref">Hebrews 4–7</div>
+        </div>
+        <div class="flow-chevron">›</div>
+      </div>
+      <div class="flow-body">
+        <p>The Levitical priests were mortal, multiply appointed, and offered sacrifices for their own sins before the people's. Christ is eternal, appointed once by divine oath, and himself sinless. His priesthood is of the order of Melchizedek — older and superior to the Levitical.</p>
+      </div>
+
+      <div class="flow-node">
+        <div class="flow-icon">Ch<br>8–10</div>
+        <div class="flow-header">
+          <div class="flow-name">The Better Covenant on Better Promises</div>
+          <div class="flow-ref">Hebrews 8–10 · Key passage</div>
+        </div>
+        <div class="flow-chevron">›</div>
+      </div>
+      <div class="flow-body">
+        <p><span class="ref">Hebrews 8:6–7:</span> "He is the mediator of a better covenant, enacted on better promises. For if that first covenant had been faultless, there would have been no occasion to look for a second."</p>
+        <p>The Mosaic Covenant was not evil — it was <em class="kw">insufficient by design</em>. Annual sacrifices could never actually remove sin (10:1–4); if they could, why would they need repeating? The repetition itself is evidence of incompleteness.</p>
+        <p>The word "obsolete" (8:13) means superseded by its own fulfillment — not discarded as a mistake. A map isn't flawed because it isn't the territory.</p>
+      </div>
+
+      <div class="flow-node">
+        <div class="flow-icon">Ch<br>11</div>
+        <div class="flow-header">
+          <div class="flow-name">The Heroes of Faith Looked Forward</div>
+          <div class="flow-ref">Hebrews 11</div>
+        </div>
+        <div class="flow-chevron">›</div>
+      </div>
+      <div class="flow-body">
+        <p>Abraham, Moses, David — all died without receiving what was promised (11:39). They were looking forward to a city "whose architect and builder is God" (11:10). This is key for the Abrahamic land promise: even Abraham understood the inheritance was not merely geopolitical Canaan.</p>
+      </div>
+
+    </div>
+
+    <blockquote>
+      "The law has but a shadow of the good things to come instead of the true form of these realities; it can never, by the same sacrifices that are continually offered every year, make perfect those who draw near."
+      <cite>Hebrews 10:1 — The purpose of the shadow is to point to the substance</cite>
+    </blockquote>
+
+    <p>This text is decisive against any future reinstatement of the Levitical sacrificial system. If animal sacrifice could not remove sin <em>before</em> Christ, it certainly cannot after his one perfect offering. To reinstate the system would not honor Christ's sacrifice — it would obscure it.</p>
+
+  </section>
+
+  <!-- ── SECTION 4: MELCHIZEDEK ── -->
+  <section class="section" id="melchizedek">
+    <div class="section-label">Part IV</div>
+    <h2>The Melchizedek Priesthood</h2>
+
+    <p>This is perhaps the most striking argument in Hebrews, built on a figure who appears in only two verses of Genesis — yet the author calls him the key to understanding the entire priesthood of Christ.</p>
+
+    <h3>Who Is Melchizedek?</h3>
+
+    <p><span class="ref">Genesis 14:18–20:</span> After Abraham defeats the kings to rescue Lot, a mysterious figure appears — <em class="kw">Melchizedek, king of Salem, priest of God Most High.</em> He brings out <strong>bread and wine</strong>, blesses Abraham, and receives a tithe of everything. Then he vanishes from the narrative entirely.</p>
+
+    <p><span class="ref">Psalm 110:4:</span> Centuries later, in a Messianic psalm, God swears an oath: <em>"You are a priest forever according to the order of Melchizedek."</em></p>
+
+    <div class="analogy">
+      <div class="analogy-label">Analogy — The Hidden Load-Bearing Beam</div>
+      <p>Melchizedek is like a <strong>load-bearing beam hidden inside a wall</strong>. The entire Levitical structure was built around something older and greater that it was only temporarily standing in for. When the wall comes down, the beam is revealed — and you realize it was the actual structure all along.</p>
+    </div>
+
+    <h3>Levitical vs. Melchizedekian: A Comparison</h3>
+
+    <div class="mel-diagram">
+      <div class="mel-head-row">
+        <div class="mel-header">Levitical Priesthood</div>
+        <div class="mel-header">Melchizedekian Priesthood (Christ)</div>
+      </div>
+      <div class="mel-row">
+        <div class="mel-cell">Descended from Aaron; tribe of Levi</div>
+        <div class="mel-cell">No recorded genealogy; "without father, without mother" <span class="ref">(Heb 7:3)</span></div>
+      </div>
+      <div class="mel-row">
+        <div class="mel-cell">Ended at death; passed to successors</div>
+        <div class="mel-cell">Eternal; "holds his priesthood permanently" <span class="ref">(Heb 7:24)</span></div>
+      </div>
+      <div class="mel-row">
+        <div class="mel-cell">Continuous animal sacrifices required</div>
+        <div class="mel-cell">One perfect, unrepeatable offering <span class="ref">(Heb 10:14)</span></div>
+      </div>
+      <div class="mel-row">
+        <div class="mel-cell">Offered for own sins first, then the people's</div>
+        <div class="mel-cell">Himself sinless; no prior offering needed <span class="ref">(Heb 7:27)</span></div>
+      </div>
+      <div class="mel-row">
+        <div class="mel-cell">Received tithes from the people</div>
+        <div class="mel-cell">Received tithes <em>from Abraham himself</em> — Levi was "in Abraham's loins" <span class="ref">(Heb 7:9–10)</span></div>
+      </div>
+      <div class="mel-row">
+        <div class="mel-cell">Appointed by hereditary descent</div>
+        <div class="mel-cell">Appointed by divine oath <span class="ref">(Ps 110:4; Heb 7:21)</span></div>
+      </div>
+      <div class="mel-row">
+        <div class="mel-cell">Tribe of Levi only</div>
+        <div class="mel-cell">Jesus is from Judah — no Levitical standing needed <span class="ref">(Heb 7:14)</span></div>
+      </div>
+    </div>
+
+    <h3>The Decisive Argument</h3>
+
+    <p>If the Levitical priesthood had been sufficient, why would God swear in Psalm 110 — written centuries <em>after</em> Aaron — that the Messiah would be a priest "of a different order"? The oath in Psalm 110 is itself proof that the Levitical system was provisional. The very existence of the prophecy indicts the system it supersedes.</p>
+
+    <p>And then there is this: Jesus has no Levitical credentials whatsoever. He is from Judah. Under a Levitical framework, he cannot be a priest at all. But that is the point. He doesn't operate under that framework — he operates under the older, higher, eternal order of Melchizedek.</p>
+
+    <blockquote>
+      "He is able to save to the uttermost those who draw near to God through him, since he always lives to make intercession for them."
+      <cite>Hebrews 7:25 — The eternal, uninterrupted priesthood</cite>
+    </blockquote>
+
+  </section>
+
+  <!-- ── SECTION 5: ABRAHAMIC ── -->
+  <section class="section" id="abrahamic">
+    <div class="section-label">Part V</div>
+    <h2>The Abrahamic Covenant &amp; Its Fulfillment</h2>
+
+    <p>This is where the Catholic and dispensationalist readings diverge most fundamentally — and where the Catholic position is actually <em class="kw">more</em> faithful to the literal text, particularly in Paul.</p>
+
+    <h3>The Structure of the Abrahamic Covenant</h3>
+
+    <p><span class="ref">Genesis 15 — The Key Scene:</span> God puts Abraham into a deep sleep and <em>God alone</em> passes between the divided animals. In ancient suzerainty treaty ratification, <em>both</em> parties walked between the animals: "may I be cut apart like these if I break this covenant." But Abraham doesn't walk. Only God does.</p>
+
+    <p>This means the Abrahamic Covenant is <em class="kw">unilateral and unconditional</em>. It cannot fail because of Israel's failure — only God is the obligated party. Contrast this with the Mosaic Covenant, which was bilateral. Israel <em>did</em> break the Mosaic Covenant, and suffered its curses. But the Abrahamic promise cannot be broken.</p>
+
+    <h3>The Promises and Their Fulfillment</h3>
+
+    <div class="promise-grid">
+
+      <div class="promise-card">
+        <div class="promise-title">The Seed Promise</div>
+        <div class="promise-mosaic">A great nation from Abraham's descendants</div>
+        <div class="promise-fulfilled">Fulfilled in Christ — the singular seed</div>
+        <div class="promise-ref">Galatians 3:16</div>
+      </div>
+
+      <div class="promise-card">
+        <div class="promise-title">The Nation Promise</div>
+        <div class="promise-mosaic">A people set apart</div>
+        <div class="promise-fulfilled">Fulfilled in the Church — the new Israel, Jew and Gentile</div>
+        <div class="promise-ref">Romans 9:6–8; Galatians 6:16</div>
+      </div>
+
+      <div class="promise-card">
+        <div class="promise-title">The Land Promise</div>
+        <div class="promise-mosaic">The land of Canaan</div>
+        <div class="promise-fulfilled">Expanded to the cosmos — "inherit the world" (Romans 4:13)</div>
+        <div class="promise-ref">Hebrews 11:10; Romans 4:13</div>
+      </div>
+
+      <div class="promise-card">
+        <div class="promise-title">Blessing of All Nations</div>
+        <div class="promise-mosaic">"In you all families of the earth shall be blessed"</div>
+        <div class="promise-fulfilled">Fulfilled in the universal mission of the Church</div>
+        <div class="promise-ref">Acts 1:8; Revelation 7:9</div>
+      </div>
+
+    </div>
+
+    <h3>Galatians 3 — Paul's Decisive Argument</h3>
+
+    <p><span class="ref">Galatians 3:15–18:</span> A covenant ratified by God cannot be annulled or altered by anything that came 430 years later. The Mosaic Covenant, therefore, did not replace or modify the Abrahamic promise. The Law "was added because of transgressions" (3:19) — it was a <em class="kw">paidagogos</em> (disciplinarian/guardian) to lead Israel to Christ.</p>
+
+    <p><span class="ref">Galatians 3:16:</span> Paul makes a striking grammatical argument — God said "to your seed" (singular), not "to your seeds" (plural). The singular is deliberate. The ultimate heir of the Abrahamic promise is Christ himself.</p>
+
+    <div class="analogy">
+      <div class="analogy-label">Analogy — The Will and the Estate Manager</div>
+      <p>The Abrahamic Covenant is like a <strong>last will and testament</strong>. The Mosaic Covenant is like the estate management rules put in place until the heir comes of age (Galatians 4:1–5). Once the heir arrives and takes possession, the estate management rules don't override the will — they were always <strong>in service of it.</strong></p>
+    </div>
+
+    <h3>The Land Promise — Catholic vs. Dispensationalist</h3>
+
+    <p><strong>Dispensationalist reading:</strong> The land promises are still outstanding and will be fulfilled literally to ethnic Israel in a future millennium — hence a rebuilt Temple, reinstated sacrifices, an earthly Jerusalem as world capital.</p>
+
+    <p><strong>Catholic covenant theology reading:</strong> This treats the types as if the antitypes haven't arrived. Consider the trajectory:</p>
+
+    <p>Abraham himself was "looking for the city which has foundations, whose architect and builder is God" <span class="ref">(Hebrews 11:10)</span>. He understood the inheritance was not merely Canaan. Paul expands the land promise from Canaan to <em>"the world"</em> in Romans 4:13. The inheritance was always cosmic in scope — the new creation, not a geopolitical restoration.</p>
+
+  </section>
+
+  <!-- ── SECTION 6: SEEDS ── -->
+  <section class="section" id="seeds">
+    <div class="section-label">Part VI</div>
+    <h2>Socratic Seeds</h2>
+    <p>Questions to plant gently — not to win debates, but to open the conversation to what the text itself demands.</p>
+
+    <div class="seed-box">
+      <div class="seed-label">On the Sacrificial System</div>
+      <ul>
+        <li>If Jesus is the Passover Lamb — which Paul says explicitly in 1 Corinthians 5:7 — what would it mean to reinstate the Passover sacrifice in a future Temple? Would that honor what Christ did, or obscure it?</li>
+        <li>Hebrews 10 says animal sacrifice could never actually remove sin. If it couldn't before Christ, how could it after?</li>
+      </ul>
+    </div>
+
+    <div class="seed-box">
+      <div class="seed-label">On the Melchizedek Priesthood</div>
+      <ul>
+        <li>Hebrews says the Melchizedekian priesthood is superior to the Levitical — and that Christ holds it permanently. Would reinstating the Levitical priesthood be a step forward or a step back in God's economy?</li>
+        <li>If the existence of Psalm 110 proves the Levitical system was provisional — because God promises a different order — what does that tell us about its current status?</li>
+      </ul>
+    </div>
+
+    <div class="seed-box">
+      <div class="seed-label">On the Abrahamic Land Promise</div>
+      <ul>
+        <li>Galatians 3:16 says the seed of Abraham is singular — Christ. If Christ is the ultimate heir, what land does he inherit? And where does his body, the Church, fit into that?</li>
+        <li>Hebrews 11 says Abraham was looking for a city "whose builder is God" — not an earthly city. If Abraham himself understood the promise as pointing beyond Canaan, what does that suggest about how we should read the land promise?</li>
+        <li>Romans 4:13 says Abraham would "inherit the world" — not just Canaan. Does a geopolitical restoration fulfill that, or does something larger need to happen?</li>
+      </ul>
+    </div>
+
+    <div class="seed-box">
+      <div class="seed-label">On the Two-Program Model</div>
+      <ul>
+        <li>If the Church age is an unexpected "parenthesis" inserted because Israel rejected Christ, does that make the Great Commission an afterthought? Or was the inclusion of the Gentiles always in view from Genesis 12:3?</li>
+        <li>Paul says in Romans 9:6 that "not all Israel who are descended from Israel are Israel." If Paul himself redefines Israel around faith in Christ, what does that do to a program built on ethnic continuity?</li>
+      </ul>
+    </div>
+
+  </section>
+
+</main>
+
+<footer>
+  Forged &amp; Faithful · Covenant Theology Reference · For catechesis and personal study
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+
+    // ── ACCORDION TOGGLE ──
+    document.querySelectorAll('.flow-node').forEach(function (node) {
+      node.addEventListener('click', function () {
+        var body = node.nextElementSibling;
+        if (!body || !body.classList.contains('flow-body')) return;
+        var isOpen = node.classList.contains('open');
+        node.classList.toggle('open', !isOpen);
+        body.style.display = isOpen ? 'none' : 'block';
+      });
+    });
+
+    // ── NAV BUTTON SCROLL ──
+    document.querySelectorAll('.nav-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var target = document.getElementById(btn.getAttribute('data-target'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // ── ACTIVE NAV ON SCROLL ──
+    var sections = document.querySelectorAll('.section');
+    var navBtns = document.querySelectorAll('.nav-btn');
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          navBtns.forEach(function (b) { b.classList.remove('active'); });
+          var id = entry.target.id;
+          var btn = document.querySelector('.nav-btn[data-target="' + id + '"]');
+          if (btn) btn.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-30% 0px -60% 0px' });
+
+    sections.forEach(function (s) { observer.observe(s); });
+
+  });
+</script>
+
+</body>
+</html>
