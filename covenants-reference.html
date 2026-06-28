@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Biblical Covenants — A Reference Guide</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&family=Courier+Prime:wght@400;700&display=swap');
+
+  :root {
+    --parchment:     #F2EDE3;
+    --ink:           #1C1A16;
+    --ash:           #6B6558;
+    --gold:          #A8863A;
+    --gold-light:    #D4AC60;
+    --red-seal:      #8B2E2E;
+    --rule:          #D6CEBC;
+
+    /* Denomination accent colors */
+    --catholic:      #1A3A5C;
+    --reformed:      #2C4A2E;
+    --baptist:       #5C3A1A;
+    --dispensational:#3A1A5C;
+
+    --catholic-light:    #E8EFF6;
+    --reformed-light:    #EBF0EB;
+    --baptist-light:     #F5EDE4;
+    --dispensational-light: #EDE4F5;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--parchment);
+    color: var(--ink);
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* ── HEADER ─────────────────────────────────────────── */
+  header {
+    background: var(--ink);
+    color: var(--parchment);
+    padding: 4rem 2rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 39px,
+      rgba(255,255,255,0.03) 39px,
+      rgba(255,255,255,0.03) 40px
+    );
+  }
+  .header-eyebrow {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    position: relative;
+  }
+  header h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+  .header-sub {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    color: rgba(242,237,227,0.6);
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .gold-rule {
+    width: 60px;
+    height: 2px;
+    background: var(--gold);
+    margin: 1.5rem auto 0;
+  }
+
+  /* ── NAV TABS ───────────────────────────────────────── */
+  .tab-nav {
+    display: flex;
+    background: var(--ink);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+  }
+  .tab-btn {
+    background: none;
+    border: none;
+    color: rgba(242,237,227,0.5);
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 0.9rem 1.8rem;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+  }
+  .tab-btn:hover { color: var(--gold-light); }
+  .tab-btn.active {
+    color: var(--gold-light);
+    border-bottom-color: var(--gold);
+  }
+
+  /* ── MAIN LAYOUT ────────────────────────────────────── */
+  main { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* ── SECTION TITLES ─────────────────────────────────── */
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+  .section-lead {
+    font-size: 0.9rem;
+    color: var(--ash);
+    margin-bottom: 2rem;
+    max-width: 650px;
+  }
+  hr.divider {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 2.5rem 0;
+  }
+
+  /* ── COVENANT CARDS ─────────────────────────────────── */
+  .covenant-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+  }
+  .covenant-card {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: box-shadow 0.2s, transform 0.15s;
+  }
+  .covenant-card:hover {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+  }
+  .card-header {
+    padding: 1rem 1.25rem 0.75rem;
+    border-bottom: 3px solid var(--gold);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .card-number {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--ash);
+    text-transform: uppercase;
+  }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-top: 0.2rem;
+  }
+  .card-parties {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin-top: 0.25rem;
+  }
+  .card-body { padding: 1rem 1.25rem 1.25rem; }
+  .card-reference {
+    font-size: 0.78rem;
+    color: var(--ash);
+    font-style: italic;
+    margin-bottom: 0.6rem;
+  }
+  .card-description { font-size: 0.9rem; line-height: 1.65; }
+
+  .card-expand {
+    display: none;
+    padding: 0 1.25rem 1.25rem;
+    border-top: 1px solid var(--rule);
+    margin-top: 0.5rem;
+  }
+  .card-expand.open { display: block; }
+
+  .detail-row {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+  }
+  .detail-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--ash);
+    text-transform: uppercase;
+    min-width: 90px;
+    padding-top: 0.1rem;
+  }
+  .detail-value { color: var(--ink); line-height: 1.5; }
+
+  .expand-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    background: none;
+    margin-top: 0.75rem;
+    padding: 0;
+  }
+  .expand-toggle .arrow { transition: transform 0.2s; }
+  .expand-toggle.open .arrow { transform: rotate(90deg); }
+
+  /* ── COMPARISON TABLE ───────────────────────────────── */
+  .denom-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .denom-pill {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  .denom-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+  }
+
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    margin-bottom: 2rem;
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .comparison-table thead tr {
+    background: var(--ink);
+    color: var(--parchment);
+  }
+  .comparison-table th {
+    padding: 0.85rem 1rem;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 400;
+    text-align: left;
+  }
+  .comparison-table th.question-col { min-width: 180px; }
+  .comparison-table td {
+    padding: 0.9rem 1rem;
+    vertical-align: top;
+    line-height: 1.5;
+    border-bottom: 1px solid var(--rule);
+  }
+  .comparison-table tr:last-child td { border-bottom: none; }
+  .comparison-table tbody tr:hover { background: rgba(168,134,58,0.04); }
+
+  .q-cell {
+    font-weight: 600;
+    font-size: 0.83rem;
+    color: var(--ink);
+  }
+  .catholic-cell { background: var(--catholic-light); border-left: 3px solid var(--catholic); }
+  .reformed-cell { background: var(--reformed-light); border-left: 3px solid var(--reformed); }
+  .baptist-cell  { background: var(--baptist-light);  border-left: 3px solid var(--baptist); }
+  .dispensational-cell { background: var(--dispensational-light); border-left: 3px solid var(--dispensational); }
+
+  /* ── DEEP DIVE ACCORDION ────────────────────────────── */
+  .deep-accordion { margin-top: 1.5rem; }
+  .denom-section {
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    background: white;
+  }
+  .denom-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    border-left: 4px solid currentColor;
+  }
+  .denom-header-inner { display: flex; align-items: center; gap: 1rem; }
+  .denom-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+  .denom-tagline {
+    font-size: 0.8rem;
+    color: var(--ash);
+    font-style: italic;
+  }
+  .denom-body {
+    display: none;
+    padding: 1.25rem;
+    border-top: 1px solid var(--rule);
+  }
+  .denom-body.open { display: block; }
+
+  .denom-body h4 {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ash);
+    margin: 1rem 0 0.4rem;
+  }
+  .denom-body h4:first-child { margin-top: 0; }
+  .denom-body p { font-size: 0.88rem; line-height: 1.65; margin-bottom: 0.5rem; }
+  .denom-body ul {
+    font-size: 0.88rem;
+    padding-left: 1.25rem;
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ── SEED QUESTIONS ─────────────────────────────────── */
+  .question-card {
+    background: white;
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--gold);
+    border-radius: 2px;
+    padding: 1.1rem 1.25rem;
+    margin-bottom: 0.9rem;
+  }
+  .question-card .q-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.35rem;
+  }
+  .question-card .q-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-style: italic;
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+  }
+  .question-card .q-context {
+    font-size: 0.82rem;
+    color: var(--ash);
+    line-height: 1.5;
+  }
+
+  /* ── FOOTER ─────────────────────────────────────────── */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.75rem;
+    color: var(--ash);
+    border-top: 1px solid var(--rule);
+    font-family: 'Courier Prime', monospace;
+    letter-spacing: 0.08em;
+  }
+
+  /* ── RESPONSIVE ─────────────────────────────────────── */
+  @media (max-width: 700px) {
+    .comparison-table { font-size: 0.78rem; }
+    .comparison-table th, .comparison-table td { padding: 0.65rem 0.6rem; }
+    .covenant-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="header-eyebrow">Biblical Theology Reference</p>
+  <h1>The Covenants of <em>Scripture</em></h1>
+  <p class="header-sub">A comparative reference across Catholic, Reformed, Baptist, and Dispensationalist traditions — each represented on its own terms.</p>
+  <div class="gold-rule"></div>
+</header>
+
+<nav class="tab-nav">
+  <button class="tab-btn active" onclick="switchTab('covenants')">The Seven Covenants</button>
+  <button class="tab-btn" onclick="switchTab('comparison')">Denominational Comparison</button>
+  <button class="tab-btn" onclick="switchTab('deepdive')">Each Tradition In Depth</button>
+  <button class="tab-btn" onclick="switchTab('questions')">Seed Questions</button>
+</nav>
+
+<main>
+
+<!-- ═══════════════════════════════════════════════════════
+     TAB 1 — THE SEVEN COVENANTS
+═══════════════════════════════════════════════════════ -->
+<div class="tab-panel active" id="tab-covenants">
+  <p class="section-title" style="margin-top:1.5rem">The Seven Biblical Covenants</p>
+  <p class="section-lead">Each covenant is a formal, binding relationship established by God — with a sign, parties, promises, and conditions. Click any card to expand its details.</p>
+
+  <div class="covenant-grid">
+
+    <!-- 1. Adamic / Covenant of Works -->
+    <div class="covenant-card">
+      <div class="card-header">
+        <div>
+          <div class="card-number">Covenant 01</div>
+          <div class="card-title">Adamic Covenant</div>
+          <div class="card-parties">God ↔ Adam & Eve</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-reference">Genesis 1:28–30; 2:15–17; 3:14–19</div>
+        <div class="card-description">God establishes humanity's vocation as image-bearers: to be fruitful, multiply, and have dominion. Obedience is required; the consequence of disobedience is death.</div>
+        <button class="expand-toggle" onclick="toggleCard(this)"><span class="arrow">▶</span> Details</button>
+      </div>
+      <div class="card-expand">
+        <div class="detail-row"><span class="detail-label">Sign</span><span class="detail-value">The Tree of Life (and the forbidden Tree of the Knowledge of Good and Evil)</span></div>
+        <div class="detail-row"><span class="detail-label">Promise</span><span class="detail-value">Life and blessing in the garden; stewardship of creation</span></div>
+        <div class="detail-row"><span class="detail-label">Condition</span><span class="detail-value">Obedience — do not eat of the forbidden tree</span></div>
+        <div class="detail-row"><span class="detail-label">Outcome</span><span class="detail-value">Broken through the Fall; expulsion from the garden, but immediately followed by a redemptive promise (the <em>Protoevangelium</em>, Gen 3:15)</span></div>
+        <div class="detail-row"><span class="detail-label">Note</span><span class="detail-value">Some traditions call a pre-Fall version the "Covenant of Works" and distinguish it from the post-Fall "Covenant of Grace." Others see it as a single narrative with no formal pre-Fall covenant.</span></div>
+      </div>
+    </div>
+
+    <!-- 2. Noahic -->
+    <div class="covenant-card">
+      <div class="card-header">
+        <div>
+          <div class="card-number">Covenant 02</div>
+          <div class="card-title">Noahic Covenant</div>
+          <div class="card-parties">God ↔ All Humanity & Creation</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-reference">Genesis 6:18; 9:8–17</div>
+        <div class="card-description">After the flood, God promises never to destroy the earth by water again. This is a <em>universal</em> covenant — it extends to every living creature, not just Israel.</div>
+        <button class="expand-toggle" onclick="toggleCard(this)"><span class="arrow">▶</span> Details</button>
+      </div>
+      <div class="card-expand">
+        <div class="detail-row"><span class="detail-label">Sign</span><span class="detail-value">The Rainbow</span></div>
+        <div class="detail-row"><span class="detail-label">Promise</span><span class="detail-value">No global flood will destroy the earth; seasons and natural order will continue</span></div>
+        <div class="detail-row"><span class="detail-label">Condition</span><span class="detail-value">Unconditional — God binds himself unilaterally</span></div>
+        <div class="detail-row"><span class="detail-label">Outcome</span><span class="detail-value">Still in effect — the natural order continues. Basis for universal human dignity (Gen 9:6) and the sanctity of life.</span></div>
+        <div class="detail-row"><span class="detail-label">Type / Fulfillment</span><span class="detail-value">Points forward to the New Covenant's permanence and the promise of a new creation where death is finally undone</span></div>
+      </div>
+    </div>
+
+    <!-- 3. Abrahamic -->
+    <div class="covenant-card">
+      <div class="card-header">
+        <div>
+          <div class="card-number">Covenant 03</div>
+          <div class="card-title">Abrahamic Covenant</div>
+          <div class="card-parties">God ↔ Abraham & His Seed</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-reference">Genesis 12:1–3; 15; 17; 22:15–18</div>
+        <div class="card-description">God calls Abraham and makes sweeping promises: land, a great nation, and that through his seed <em>all nations</em> will be blessed. This is the covenant that anchors all subsequent covenants.</div>
+        <button class="expand-toggle" onclick="toggleCard(this)"><span class="arrow">▶</span> Details</button>
+      </div>
+      <div class="card-expand">
+        <div class="detail-row"><span class="detail-label">Sign</span><span class="detail-value">Circumcision (Gen 17) — the covenant cut into the body</span></div>
+        <div class="detail-row"><span class="detail-label">Three Promises</span><span class="detail-value"><strong>Land</strong> (Canaan / the earth), <strong>Seed</strong> (innumerable descendants, culminating in Christ — Gal 3:16), <strong>Blessing</strong> (to all nations)</span></div>
+        <div class="detail-row"><span class="detail-label">Nature</span><span class="detail-value">The covenant in Gen 15 is a self-maledictory oath — God alone passes between the pieces, binding himself unconditionally</span></div>
+        <div class="detail-row"><span class="detail-label">Fulfillment</span><span class="detail-value">Paul in Galatians 3 explicitly identifies Christ as the singular "seed" of Abraham in whom all nations are blessed. The New Covenant is presented as the fulfillment of the Abrahamic promises.</span></div>
+      </div>
+    </div>
+
+    <!-- 4. Mosaic -->
+    <div class="covenant-card">
+      <div class="card-header">
+        <div>
+          <div class="card-number">Covenant 04</div>
+          <div class="card-title">Mosaic Covenant</div>
+          <div class="card-parties">God ↔ Israel at Sinai</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-reference">Exodus 19–24; Deuteronomy</div>
+        <div class="card-description">The Law given through Moses at Sinai — structurally similar to ancient suzerain-vassal treaties. Israel is constituted as God's covenant nation with a detailed law code governing worship, ethics, and civil life.</div>
+        <button class="expand-toggle" onclick="toggleCard(this)"><span class="arrow">▶</span> Details</button>
+      </div>
+      <div class="card-expand">
+        <div class="detail-row"><span class="detail-label">Sign</span><span class="detail-value">The Sabbath (Exod 31:13–17); The Tabernacle; later the Temple</span></div>
+        <div class="detail-row"><span class="detail-label">Three Divisions</span><span class="detail-value">Traditionally: <strong>Moral</strong> (Ten Commandments), <strong>Ceremonial</strong> (sacrificial/priestly law), <strong>Civil/Judicial</strong> (national law for Israel)</span></div>
+        <div class="detail-row"><span class="detail-label">Condition</span><span class="detail-value">Bilateral — blessings for obedience (Deut 28:1–14), curses for disobedience (Deut 28:15–68)</span></div>
+        <div class="detail-row"><span class="detail-label">Key Debate</span><span class="detail-value">How this covenant relates to Christians is the central theological question: Is it abrogated? Fulfilled and transformed? Still in force? Each tradition gives a distinct answer.</span></div>
+        <div class="detail-row"><span class="detail-label">Hebrews</span><span class="detail-value">Hebrews 8:13 calls the Mosaic covenant "obsolete" and "aging" in light of the New Covenant — a text heavily debated across traditions</span></div>
+      </div>
+    </div>
+
+    <!-- 5. Priestly / Phineas -->
+    <div class="covenant-card">
+      <div class="card-header">
+        <div>
+          <div class="card-number">Covenant 05</div>
+          <div class="card-title">Priestly Covenant</div>
+          <div class="card-parties">God ↔ Phinehas / Aaron's Line</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-reference">Numbers 25:10–13; Malachi 2:4–5; Psalm 110:4</div>
+        <div class="card-description">God grants a covenant of perpetual priesthood to Phinehas and his descendants in response to his zeal. This connects to the broader promise of an eternal priest — culminating in Melchizedek typology.</div>
+        <button class="expand-toggle" onclick="toggleCard(this)"><span class="arrow">▶</span> Details</button>
+      </div>
+      <div class="card-expand">
+        <div class="detail-row"><span class="detail-label">Sign</span><span class="detail-value">Ongoing priestly service; the sacrificial system</span></div>
+        <div class="detail-row"><span class="detail-label">Promise</span><span class="detail-value">Perpetual priesthood for Phinehas's line; atonement for Israel</span></div>
+        <div class="detail-row"><span class="detail-label">Fulfillment</span><span class="detail-value">In Christ as the eternal High Priest "after the order of Melchizedek" (Ps 110:4; Heb 4–7). The Aaronic/Levitical priesthood was a shadow; Christ is the substance.</span></div>
+        <div class="detail-row"><span class="detail-label">Note</span><span class="detail-value">Some treatments subsume this under the Mosaic covenant; others treat it as a distinct covenant emphasizing the priestly dimension</span></div>
+      </div>
+    </div>
+
+    <!-- 6. Davidic -->
+    <div class="covenant-card">
+      <div class="card-header">
+        <div>
+          <div class="card-number">Covenant 06</div>
+          <div class="card-title">Davidic Covenant</div>
+          <div class="card-parties">God ↔ David & His Royal House</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-reference">2 Samuel 7:8–16; Psalm 89; 132</div>
+        <div class="card-description">God promises David an eternal dynasty — a son who will build the temple, and whose throne will be established forever. This is the direct root of messianic expectation.</div>
+        <button class="expand-toggle" onclick="toggleCard(this)"><span class="arrow">▶</span> Details</button>
+      </div>
+      <div class="card-expand">
+        <div class="detail-row"><span class="detail-label">Sign</span><span class="detail-value">The Temple; the Davidic royal line</span></div>
+        <div class="detail-row"><span class="detail-label">Promise</span><span class="detail-value">David's son will reign on an eternal throne; God will be his Father, he will be God's Son (2 Sam 7:14 — Ps 2, Heb 1 apply this to Christ)</span></div>
+        <div class="detail-row"><span class="detail-label">Condition</span><span class="detail-value">Unconditional at the dynasty level — though individual kings can be disciplined, the dynasty itself will not fail</span></div>
+        <div class="detail-row"><span class="detail-label">Fulfillment</span><span class="detail-value">Jesus is explicitly identified as the Son of David throughout the Gospels, and his resurrection is presented as the definitive fulfillment of the Davidic promise (Acts 2:29–36; Rom 1:3–4)</span></div>
+      </div>
+    </div>
+
+    <!-- 7. New Covenant -->
+    <div class="covenant-card" style="border-top: 3px solid var(--red-seal);">
+      <div class="card-header" style="border-bottom-color: var(--red-seal);">
+        <div>
+          <div class="card-number">Covenant 07</div>
+          <div class="card-title">New Covenant</div>
+          <div class="card-parties">God ↔ His People (All Nations)</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-reference">Jeremiah 31:31–34; Ezekiel 36:26–27; Luke 22:20; Hebrews 8–10</div>
+        <div class="card-description">Promised through Jeremiah and inaugurated by Christ at the Last Supper. The law is written on hearts, not stone. The Spirit is poured out. Sins are forgiven once and for all. This covenant is "better" than the Mosaic (Heb 8:6).</div>
+        <button class="expand-toggle" onclick="toggleCard(this)"><span class="arrow">▶</span> Details</button>
+      </div>
+      <div class="card-expand">
+        <div class="detail-row"><span class="detail-label">Sign</span><span class="detail-value">Baptism and the Eucharist ("This cup is the new covenant in my blood" — 1 Cor 11:25)</span></div>
+        <div class="detail-row"><span class="detail-label">Promises</span><span class="detail-value">Inward law written on the heart; God's Spirit dwelling within; personal knowledge of God; complete forgiveness of sins</span></div>
+        <div class="detail-row"><span class="detail-label">Status</span><span class="detail-value">The most debated question across traditions: Is it <em>fully</em> inaugurated now, or are some elements awaiting future fulfillment?</span></div>
+        <div class="detail-row"><span class="detail-label">Scope</span><span class="detail-value">Explicitly made with "the house of Israel and the house of Judah" (Jer 31:31) — how Gentiles relate to this promise is a key theological question</span></div>
+        <div class="detail-row"><span class="detail-label">Hebrews</span><span class="detail-value">Hebrews presents the New Covenant as both the fulfillment and surpassing of all prior covenants — Christ is the mediator of a better covenant built on better promises (Heb 8:6)</span></div>
+      </div>
+    </div>
+
+  </div><!-- /grid -->
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     TAB 2 — COMPARISON TABLE
+═══════════════════════════════════════════════════════ -->
+<div class="tab-panel" id="tab-comparison">
+  <p class="section-title" style="margin-top:1.5rem">Denominational Comparison</p>
+  <p class="section-lead">Each tradition has internally consistent answers to these questions. The differences are real and significant — not just a matter of emphasis.</p>
+
+  <div class="denom-legend">
+    <div class="denom-pill"><div class="denom-dot" style="background:var(--catholic)"></div> Catholic</div>
+    <div class="denom-pill"><div class="denom-dot" style="background:var(--reformed)"></div> Reformed / Covenant Theology</div>
+    <div class="denom-pill"><div class="denom-dot" style="background:var(--baptist)"></div> 1689 Baptist / New Covenant Theology</div>
+    <div class="denom-pill"><div class="denom-dot" style="background:var(--dispensational)"></div> Classic / Progressive Dispensationalism</div>
+  </div>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th class="question-col">Question</th>
+        <th>Catholic</th>
+        <th>Reformed</th>
+        <th>Baptist / NCT</th>
+        <th>Dispensationalist</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td class="q-cell">Are all the covenants one unified story, or distinct programs?</td>
+        <td class="catholic-cell">One unified plan of salvation (<em>historia salutis</em>). All covenants find their telos in Christ and the Church. The Church is the definitive fulfillment of Israel's covenantal vocation.</td>
+        <td class="reformed-cell">One "Covenant of Grace" with Adam post-Fall, progressively unfolded through the Abrahamic, Mosaic, Davidic, and New Covenants. All point to Christ and are fulfilled in him.</td>
+        <td class="baptist-cell">A redemptive-historical unity, but the Mosaic Covenant is treated as a distinct administration that has been entirely superseded. The New Covenant is genuinely new, not a renewal.</td>
+        <td class="dispensational-cell">Distinct "dispensations" — God's different administrations of his program across different ages. Israel and the Church are two distinct peoples with two distinct programs, not merged into one.</td>
+      </tr>
+
+      <tr>
+        <td class="q-cell">What is the relationship between Israel and the Church?</td>
+        <td class="catholic-cell">The Church is the new Israel — the fulfillment and continuation of the covenant people. Ethnic Israel retains a special dignity; Paul (Rom 9–11) preserves hope for Israel's future conversion, but the Church is not a separate entity from Israel.</td>
+        <td class="reformed-cell">The Church and Israel are one covenant people of God across both Testaments. The OT Church was Israel; the NT Church is the same community of faith now including Gentiles. "Israel" in NT prophecy typically refers to the Church.</td>
+        <td class="baptist-cell">The Church is the eschatological Israel — but care is taken to maintain that the New Covenant community is genuinely new, not simply a relabeled Israel. OT prophecies to Israel are fulfilled spiritually in the Church without erasing Israel's historical particularity.</td>
+        <td class="dispensational-cell">Israel and the Church are two distinct programs that must not be conflated. God's promises to ethnic Israel remain for ethnic Israel; the Church is a parenthesis in God's prophetic plan, not the fulfillment of Israel's covenantal promises.</td>
+      </tr>
+
+      <tr>
+        <td class="q-cell">Is the Mosaic Law still binding on Christians?</td>
+        <td class="catholic-cell">The ceremonial and judicial laws of Moses are not binding as such, but their moral core is fulfilled and elevated in Christ. The natural moral law (which the Ten Commandments articulate) remains binding. The Church's magisterial authority interprets how the Law applies.</td>
+        <td class="reformed-cell">The Law has three uses: pedagogical (revealing sin), civil (restraining evil in society), and didactic (guiding the regenerate). The moral law — summarized in the Ten Commandments — remains normative for Christians. Ceremonial laws are abrogated; civil laws are not binding but are instructive.</td>
+        <td class="baptist-cell">The entire Mosaic Covenant as a covenant administration is abrogated. The moral law is not derived from Sinai but from creation and is now re-given and re-expressed in Christ's law (the "law of Christ," 1 Cor 9:21). Careful not to read the Ten Commandments as a standing code for Christians.</td>
+        <td class="dispensational-cell">The Mosaic Law was given specifically to national Israel and is not binding on the Church. Christians are "not under law but under grace" (Rom 6:14). Some elements of the Law may be re-issued in the NT; what applies to the Church is determined by explicit NT teaching.</td>
+      </tr>
+
+      <tr>
+        <td class="q-cell">Is the New Covenant fully inaugurated now, or partly future?</td>
+        <td class="catholic-cell">Fully inaugurated in Christ — the Mass is the ongoing participation in the one sacrifice of the New Covenant. The eschatological dimensions (resurrection, new creation) are still awaited, but the covenant itself is in force now.</td>
+        <td class="reformed-cell">Fully inaugurated at Pentecost. The "already / not yet" tension is about the consummation of the kingdom, not the inauguration of the covenant. All New Covenant blessings are available now to the people of God.</td>
+        <td class="baptist-cell">Fully inaugurated in Christ and applied at the individual level through regeneration and faith. Emphasis that every member of the New Covenant community is truly regenerate — unlike the mixed membership of the Mosaic covenant community.</td>
+        <td class="dispensational-cell">The New Covenant as promised in Jer 31 will be literally fulfilled with national Israel in the Millennium. The Church partakes in the <em>spiritual</em> benefits of the New Covenant now, but the full, literal fulfillment awaits the future restoration of Israel. (Classic dispensationalism posits two applications; progressive dispensationalism sees one New Covenant with present and future dimensions.)</td>
+      </tr>
+
+      <tr>
+        <td class="q-cell">Who are the members of the covenant community?</td>
+        <td class="catholic-cell">All baptized believers, including infants of believing families. Baptism is the new circumcision (Col 2:11–12) — the covenantal sign that initiates one into the visible covenant community. Regeneration is normatively conferred in baptism.</td>
+        <td class="reformed-cell">The visible covenant community includes believers and their children — hence infant baptism. This mirrors the OT structure where circumcision included infants. All in the visible church are in the external covenant, but only the elect are in the covenant inwardly.</td>
+        <td class="baptist-cell">Only professing, regenerate believers. The New Covenant is better than the Mosaic precisely because all its members truly know the Lord (Jer 31:34). Infant baptism confuses the covenant sign — baptism is only for those who have personally trusted Christ.</td>
+        <td class="dispensational-cell">During this Church age, the covenant community is made up of individuals who have trusted Christ. The boundaries of covenant community differ by dispensation — Israel was ethnically defined; the Church is defined by personal faith. Future Israel will be nationally constituted as a covenant people.</td>
+      </tr>
+
+      <tr>
+        <td class="q-cell">What is the sign of the New Covenant?</td>
+        <td class="catholic-cell">Baptism (initiatory) and the Eucharist (ongoing). The seven sacraments are the means by which New Covenant grace is administered. The Eucharist is the re-presentation of the New Covenant sacrifice.</td>
+        <td class="reformed-cell">Baptism and the Lord's Supper — "sacraments" (two in number, replacing circumcision and Passover). They are real means of grace, though grace is not automatically conferred; faith is required for efficacy.</td>
+        <td class="baptist-cell">Baptism (believer's baptism by immersion) and the Lord's Supper. These are "ordinances" — acts of obedience and proclamation, not means of saving grace. Baptism is a public declaration of what has already occurred inwardly.</td>
+        <td class="dispensational-cell">Believer's baptism and the Lord's Supper as ordinances for the Church age. In the Millennial Kingdom, the covenant signs for Israel may differ — some classic dispensationalists anticipate a restored temple and sacrificial system as memorial rather than atoning.</td>
+      </tr>
+
+      <tr>
+        <td class="q-cell">How does Sacred Tradition relate to covenant interpretation?</td>
+        <td class="catholic-cell">Scripture and Sacred Tradition together constitute the one deposit of faith. The Magisterium authentically interprets how the covenants are fulfilled in the Church. Patristic readings (typology, allegory) are legitimate and often normative.</td>
+        <td class="reformed-cell">Scripture alone (<em>sola Scriptura</em>) is the norming norm, but the Reformed tradition sees itself as the faithful expositor of Scripture. The Westminster Standards and Three Forms of Unity codify covenant theology's conclusions.</td>
+        <td class="baptist-cell"><em>Sola Scriptura</em>, with the 1689 London Baptist Confession as a confessional standard. New Covenant Theology pushes further than Reformed theology by deriving covenant structure more directly from the NT's own categories.</td>
+        <td class="dispensational-cell"><em>Sola Scriptura</em>, with a strong commitment to the grammatical-historical method and literal interpretation. The Scofield Reference Bible and later the Dallas Seminary tradition have been influential confessional touchstones.</td>
+      </tr>
+
+      <tr>
+        <td class="q-cell">Is there a future for ethnic/national Israel?</td>
+        <td class="catholic-cell">Romans 9–11 is read as indicating a future conversion of "all Israel" at the end of history — not a restoration of national institutions, but a grafting back into the olive tree of salvation through faith in Christ.</td>
+        <td class="reformed-cell">Most Reformed theologians affirm a future large-scale turning of ethnic Jews to Christ (Rom 11:25–26), but not a national restoration of the Mosaic or Davidic institutions. The promises are fulfilled in Christ and his Church, not in a rebuilt temple.</td>
+        <td class="baptist-cell">Similar to the Reformed position — a future conversion of many Jews is hoped for, but not a restoration of a separate national covenant program. Israel's promises are fulfilled in the New Covenant community.</td>
+        <td class="dispensational-cell">Yes — this is central. The land promises, national promises, and Davidic throne promises remain for ethnic Israel and will be literally fulfilled in the Millennial Kingdom. The current Church age is a "mystery" not fully revealed in the OT prophetic program.</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <p style="font-size:0.78rem; color:var(--ash); font-style:italic; margin-top:-1rem;">
+    * All traditions contain internal diversity. This table represents mainstream positions within each stream. Individual theologians may differ significantly from these summaries.
+  </p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     TAB 3 — DEEP DIVE
+═══════════════════════════════════════════════════════ -->
+<div class="tab-panel" id="tab-deepdive">
+  <p class="section-title" style="margin-top:1.5rem">Each Tradition In Depth</p>
+  <p class="section-lead">A fuller picture of how each tradition understands the covenants — its core logic, key texts, key theologians, and where it differs most sharply from the others.</p>
+
+  <div class="deep-accordion">
+
+    <!-- CATHOLIC -->
+    <div class="denom-section">
+      <button class="denom-header" style="color:var(--catholic)" onclick="toggleDenom(this)">
+        <div class="denom-header-inner">
+          <span class="denom-name">Catholic</span>
+          <span class="denom-tagline">Typological fulfillment; Scripture and Tradition; sacramental economy</span>
+        </div>
+        <span class="arrow">▶</span>
+      </button>
+      <div class="denom-body">
+        <h4>Core Logic</h4>
+        <p>Catholic covenant theology is rooted in the Patristic and medieval traditions, particularly the fourfold sense of Scripture (literal, allegorical, tropological, anagogical). The covenants form a single, divinely orchestrated <em>economia</em> — an unfolding "plan of salvation" (<em>historia salutis</em>) that moves from creation through the Fall, through the patriarchs, through Israel, and reaches its apex in Christ. The Church is not a replacement for Israel but the <em>eschatological</em> Israel — the community in which all the covenant promises find their definitive form.</p>
+
+        <h4>Key Principles</h4>
+        <ul>
+          <li>The Old Testament is read as <em>typologically</em> pointing to Christ and the Church. The Passover lamb → Christ; the Exodus → baptism; the Temple → Christ's body and then the Church.</li>
+          <li>The sacraments are the means by which New Covenant grace is concretely administered — not merely symbols.</li>
+          <li>Sacred Tradition (the living faith of the Church) and Scripture together constitute the one deposit of faith (<em>Dei Verbum</em>, Vatican II). Covenant interpretation is therefore not a purely private exercise.</li>
+          <li>The Magisterium — especially the Councils and papal teaching — authoritatively guides how covenant promises apply to the Church.</li>
+          <li>Romans 9–11 is taken seriously: God has not rejected Israel. A future conversion of "all Israel" is a genuine expectation, though not framed as a restoration of Mosaic institutions.</li>
+        </ul>
+
+        <h4>Key Covenant Moves</h4>
+        <p>The Mosaic Law is understood as <em>fulfilled</em> in Christ, not abolished. The ceremonial law (sacrifices, priesthood) is fulfilled sacramentally; the civil law was particular to Israel as a political nation; the moral law (natural law as codified in the Decalogue) continues, now elevated and interiorized through grace. This fulfillment-without-abolition is distinct from the Protestant frameworks.</p>
+
+        <h4>Key Figures</h4>
+        <p>Augustine of Hippo, Thomas Aquinas, the Council of Trent, Vatican II (<em>Dei Verbum</em>, <em>Lumen Gentium</em>), Scott Hahn (contemporary popularizer of the "covenant" reading of the Bible), Pope Benedict XVI (<em>Jesus of Nazareth</em>), Brant Pitre (<em>Jesus and the Jewish Roots of the Eucharist</em>).</p>
+
+        <h4>Sharpest Difference from Others</h4>
+        <p>Catholic covenant theology is unique in its sacramental realism — the New Covenant is not merely announced but <em>enacted</em> through the Church's sacramental life, especially the Eucharist. Also distinctive: the role of the Magisterium as an ongoing authoritative interpreter of covenant fulfillment.</p>
+      </div>
+    </div>
+
+    <!-- REFORMED -->
+    <div class="denom-section">
+      <button class="denom-header" style="color:var(--reformed)" onclick="toggleDenom(this)">
+        <div class="denom-header-inner">
+          <span class="denom-name">Reformed / Covenant Theology</span>
+          <span class="denom-tagline">One Covenant of Grace; paedobaptism; the moral law's continuing validity</span>
+        </div>
+        <span class="arrow">▶</span>
+      </button>
+      <div class="denom-body">
+        <h4>Core Logic</h4>
+        <p>Classical covenant theology, developed by Reformed Scholastics in the 16th–17th centuries, organizes all of Scripture under two or three overarching covenants: the <em>Covenant of Redemption</em> (an eternal intra-Trinitarian agreement), the <em>Covenant of Works</em> (with Adam before the Fall), and the <em>Covenant of Grace</em> (with the elect from Adam onwards). Every subsequent biblical covenant — Noahic, Abrahamic, Mosaic, Davidic, New — is an administration or unfolding of this single Covenant of Grace.</p>
+
+        <h4>Key Principles</h4>
+        <ul>
+          <li>The <em>Covenant of Grace</em> is one from Adam to the eschaton, though administered differently in each age. This is why Reformed theology emphasizes continuity between the Testaments.</li>
+          <li>The moral law — especially the Ten Commandments — remains binding on all people in all ages. The Sabbath commandment, for example, is not merely Mosaic but reflects creation order.</li>
+          <li>Because the Church is the same covenant community as OT Israel (same faith, same covenant, same promises), the covenant sign (circumcision → baptism) extends to covenant children.</li>
+          <li>Eschatology is often <em>amillennial</em> or <em>postmillennial</em> — OT prophecies about Israel's restoration are typically understood to be fulfilled in the Church and Christ's present reign.</li>
+        </ul>
+
+        <h4>Key Covenant Moves</h4>
+        <p>The Mosaic administration is a <em>subservient covenant</em> — it does not introduce a new basis of salvation (always faith/grace), but governs the national life of Israel as a type of the Kingdom. The ceremonial law is abrogated because it pointed to Christ who has come; the civil law is expired because Israel's national theocracy was a type; the moral law continues with full force because it expresses God's eternal character.</p>
+
+        <h4>Key Figures</h4>
+        <p>John Calvin, Heinrich Bullinger, Johannes Cocceius (systematizer of Federal Theology), Francis Turretin, the Westminster Confession of Faith (1647), Herman Bavinck, Geerhardus Vos (biblical theology), Michael Horton (<em>God of Promise</em>), O. Palmer Robertson (<em>The Christ of the Covenants</em>).</p>
+
+        <h4>Sharpest Difference from Others</h4>
+        <p>The Covenant of Works / Covenant of Grace framework is distinctly Reformed. The conclusion that infant baptism follows logically from covenant continuity is the most practically significant difference — not accepted by Baptists or Dispensationalists. Also unique: the continuing Sabbath as a moral obligation, not merely a Mosaic ceremonial law.</p>
+      </div>
+    </div>
+
+    <!-- BAPTIST / NCT -->
+    <div class="denom-section">
+      <button class="denom-header" style="color:var(--baptist)" onclick="toggleDenom(this)">
+        <div class="denom-header-inner">
+          <span class="denom-name">1689 Baptist / New Covenant Theology</span>
+          <span class="denom-tagline">Believer's baptism; the New Covenant is genuinely new; regenerate membership</span>
+        </div>
+        <span class="arrow">▶</span>
+      </button>
+      <div class="denom-body">
+        <h4>Core Logic</h4>
+        <p>Baptist covenant theology agrees with the Reformed on much — redemptive history, Christ as fulfillment, the unity of Scripture — but diverges sharply on two points: the nature of the New Covenant community (regenerate-only membership) and the status of the Mosaic Law. New Covenant Theology (NCT) is a more recent development that pushes these Baptist instincts further, insisting that the NT must be read on its own terms rather than through the grid of the Westminster Confession.</p>
+
+        <h4>Key Principles</h4>
+        <ul>
+          <li>The New Covenant is <em>genuinely new</em>, not merely a renewal or expansion of the Mosaic. Jeremiah 31:31 says "not like the covenant I made with their fathers."</li>
+          <li>Every member of the New Covenant truly knows the Lord (Jer 31:34) — which means the community is by definition regenerate. Mixed-membership (believers and their unbelieving children) is a feature of the old, not the new, administration.</li>
+          <li>Therefore, only those who confess faith and give evidence of regeneration should receive the covenant sign (baptism). Baptizing infants confuses the old covenant pattern with the new.</li>
+          <li>The Mosaic Covenant as a whole has been superseded. The Ten Commandments are not the standing moral code for Christians — though their moral content is re-expressed in Christ's law and the NT.</li>
+        </ul>
+
+        <h4>Key Covenant Moves</h4>
+        <p>1689 Baptists work within a broadly Reformed covenant framework but modify it: the Abrahamic covenant had two aspects — the physical/national (circumcision, land, nationhood — fulfilled and set aside) and the spiritual (justification by faith — fulfilled and continued in Christ). Only the spiritual dimension carries forward into the New Covenant. NCT proponents (Tom Wells, Fred Zaspel) go further, arguing for even less continuity with the Mosaic administration.</p>
+
+        <h4>Key Figures</h4>
+        <p>The 1689 London Baptist Confession, Charles Spurgeon, Nehemiah Coxe, Tom Wells and Fred Zaspel (<em>New Covenant Theology</em>), Tom Schreiner, Sam Renihan (<em>The Mystery of Christ, His Covenant, and His Kingdom</em>), Pascal Denault (<em>The Distinctiveness of Baptist Covenant Theology</em>).</p>
+
+        <h4>Sharpest Difference from Others</h4>
+        <p>The insistence on a <em>regenerate church membership</em> as a covenant principle — not merely a preference — is the defining Baptist distinctive. This flows directly from how they read Jeremiah 31. They disagree with the Reformed on paedobaptism and with NCT on the degree of Mosaic discontinuity. They differ from Dispensationalists by maintaining that the Church does fulfill Israel's prophetic hopes (in Christ), not that Israel's program runs separately.</p>
+      </div>
+    </div>
+
+    <!-- DISPENSATIONALIST -->
+    <div class="denom-section">
+      <button class="denom-header" style="color:var(--dispensational)" onclick="toggleDenom(this)">
+        <div class="denom-header-inner">
+          <span class="denom-name">Dispensationalism</span>
+          <span class="denom-tagline">Israel and the Church distinct; literal prophecy; a future for ethnic Israel</span>
+        </div>
+        <span class="arrow">▶</span>
+      </button>
+      <div class="denom-body">
+        <h4>Core Logic</h4>
+        <p>Dispensationalism organizes Scripture not primarily by covenants but by <em>dispensations</em> — successive ages in which God tests humanity under different administrations and man fails, requiring God to move to a new arrangement. The central hermeneutical principle is the <em>literal, grammatical-historical</em> reading of Scripture, with a sharp distinction between Israel (the earthly covenant people) and the Church (the heavenly people of God). God has two distinct peoples with two distinct programs that run in parallel and only fully converge at the end.</p>
+
+        <h4>Two Main Forms</h4>
+        <ul>
+          <li><strong>Classic / Revised Dispensationalism</strong> (Darby, Scofield, Ryrie): Seven dispensations; Israel and the Church are entirely separate. The Church is a "mystery" unrevealed in the OT. A future seven-year Tribulation and Millennial Kingdom will see the literal fulfillment of all OT promises to national Israel.</li>
+          <li><strong>Progressive Dispensationalism</strong> (Craig Blaising, Darrell Bock): Maintains the Israel/Church distinction but sees more <em>overlap</em> — Christ is already reigning on David's throne; the New Covenant has genuine present application to the Church, not merely anticipatory; a more unified hermeneutic without abandoning a literal future for Israel.</li>
+        </ul>
+
+        <h4>Key Principles</h4>
+        <ul>
+          <li>Literal interpretation of OT prophecy: when God promises land to Israel, he means geographic Israel. When he promises a rebuilt temple, he means a real temple. Spiritualizing these promises is a hermeneutical error.</li>
+          <li>The Church did not replace Israel and does not inherit Israel's national promises. Romans 9–11 is read as a guarantee of a literal national future for ethnic Israel.</li>
+          <li>The pre-tribulation rapture removes the Church before God resumes his program with Israel — this is the most popularly recognized distinctive, though it is a conclusion rather than a premise.</li>
+          <li>The New Covenant of Jeremiah 31 was made with Israel; the Church participates in its blessings but is not its primary recipient.</li>
+        </ul>
+
+        <h4>Key Figures</h4>
+        <p>John Nelson Darby (founder), C. I. Scofield (<em>Scofield Reference Bible</em>), Lewis Sperry Chafer, Charles Ryrie (<em>Dispensationalism Today</em>), John Walvoord, Craig Blaising and Darrell Bock (<em>Progressive Dispensationalism</em>), Thomas Ice, John MacArthur (modified dispensationalist), Tony Evans.</p>
+
+        <h4>Sharpest Difference from Others</h4>
+        <p>The Israel / Church distinction is non-negotiable for dispensationalism. This is not merely about eschatology — it shapes how every OT promise is read, who the New Covenant is "really for," and what God is doing in history right now. For dispensationalists, covenant theologians of all stripes have made the fundamental error of "spiritualizing" promises that were meant to be taken at face value.</p>
+
+        <h4>Common Misrepresentation to Avoid</h4>
+        <p>Dispensationalism is sometimes caricatured as teaching two ways of salvation. Mainstream dispensationalists are clear: salvation has always been by grace through faith in God's provision — the content of that faith is calibrated to what God has revealed in each age, but the basis (grace) and instrument (faith) are constant.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     TAB 4 — SEED QUESTIONS
+═══════════════════════════════════════════════════════ -->
+<div class="tab-panel" id="tab-questions">
+  <p class="section-title" style="margin-top:1.5rem">Seed Questions for Conversation</p>
+  <p class="section-lead">These questions are framed as genuine curiosity — an invitation to think together, not a declaration to defend. Best used with friends from a Calvary Chapel / Dispensationalist background.</p>
+
+  <hr class="divider" style="margin-top:0.5rem">
+
+  <div class="question-card">
+    <div class="q-label">On the Abrahamic Covenant</div>
+    <div class="q-text">"When Paul says in Galatians 3 that the 'seed' of Abraham is singular — meaning Christ — what do you think that does to how we read the land and nation promises? Are they fulfilled in him, or still waiting?"</div>
+    <div class="q-context">This opens the Israel/Church question without attacking it. Galatians 3:16 is exegetically precise and hard to sidestep — and it's Paul, not Catholic tradition, making the move.</div>
+  </div>
+
+  <div class="question-card">
+    <div class="q-label">On the New Covenant</div>
+    <div class="q-text">"Jeremiah 31 says the New Covenant will be 'not like' the Mosaic one. What do you think makes it genuinely different — and does that difference affect how we read the law today?"</div>
+    <div class="q-context">This invites the person to articulate their own view first. It works equally well with Reformed friends (who tend to emphasize continuity) and Dispensationalist friends (who emphasize discontinuity but may not have thought carefully about <em>what</em> is new).</div>
+  </div>
+
+  <div class="question-card">
+    <div class="q-label">On the Melchizedek Priesthood</div>
+    <div class="q-text">"Hebrews says Jesus is a priest 'forever after the order of Melchizedek' — not Levi. What do you think the author is saying about the relationship between the old priestly system and what Jesus does? Does that have any implications for the Lord's Supper?"</div>
+    <div class="q-context">Melchizedek is a powerful thread — he appears in Genesis 14, is echoed in Psalm 110 (which Jesus cites about himself), and is expounded at length in Hebrews 5–7. The connection to the Eucharist (bread and wine, not sacrifice) is exegetically defensible without requiring Catholic presuppositions.</div>
+  </div>
+
+  <div class="question-card">
+    <div class="q-label">On Covenant Membership</div>
+    <div class="q-text">"Jeremiah 31:34 says that in the New Covenant, no one will need to say 'know the Lord' to their neighbor, because they will all know him. What does that suggest about who is in the New Covenant community?"</div>
+    <div class="q-context">This is the Baptist / NCT question, but it's useful for Catholic apologetics too. It invites reflection on what it means to "be in the covenant" — and whether the Church is a mixed community or a community of the genuinely transformed.</div>
+  </div>
+
+  <div class="question-card">
+    <div class="q-label">On Typology and the Temple</div>
+    <div class="q-text">"When Jesus says 'destroy this temple and in three days I will raise it up' and John explains he meant his body — do you think that changes how we should read OT promises about a future temple?"</div>
+    <div class="q-context">John 2:19–22 is a compressed hermeneutical key. If Jesus's body is the temple, what does that do to a literal future Jerusalem temple? This question doesn't require an argument — it just asks the person to follow John's own logic.</div>
+  </div>
+
+  <div class="question-card">
+    <div class="q-label">On Acts 2 and the Davidic Covenant</div>
+    <div class="q-text">"In Peter's Pentecost sermon in Acts 2, he argues that David's tomb being among them proves David wasn't speaking about himself in Psalm 16 — and then says Jesus's resurrection is the fulfillment of the Davidic promise. Do you think David's throne is already occupied, or still waiting?"</div>
+    <div class="q-context">Acts 2:29–36 is Peter's explicit argument that the resurrection installed Jesus on David's throne <em>now</em>. Progressive Dispensationalists agree; Classic Dispensationalists often resist it. This is a key exegetical conversation point.</div>
+  </div>
+
+  <div class="question-card">
+    <div class="q-label">On Continuity and the Olive Tree</div>
+    <div class="q-text">"In Romans 11, Paul uses the image of one olive tree — with some branches broken off and Gentiles grafted in. What do you think that image says about whether Israel and the Church are one story or two separate programs?"</div>
+    <div class="q-context">The olive tree metaphor is Paul's own canonical image for the relationship between Israel and the Church. One tree (continuity) with different branches (Jew/Gentile) is a harder image to fit into a "two peoples / two programs" framework without significant qualification.</div>
+  </div>
+
+</div>
+
+</main>
+
+<footer>
+  Forged &amp; Faithful · Biblical Theology Reference · All traditions represented on their own terms
+</footer>
+
+<script>
+  function switchTab(name) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  function toggleCard(btn) {
+    const card = btn.closest('.covenant-card');
+    const expand = card.querySelector('.card-expand');
+    const isOpen = expand.classList.contains('open');
+    expand.classList.toggle('open', !isOpen);
+    btn.classList.toggle('open', !isOpen);
+  }
+
+  function toggleDenom(btn) {
+    const body = btn.nextElementSibling;
+    const arrow = btn.querySelector('.arrow');
+    const isOpen = body.classList.contains('open');
+    body.classList.toggle('open', !isOpen);
+    arrow.style.transform = isOpen ? '' : 'rotate(90deg)';
+  }
+</script>
+</body>
+</html>
