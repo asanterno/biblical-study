@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en" style="color-scheme: only light;">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="only light">
+<title>Jesus — The True Israel</title>
+<style>
+
+/* ── FORCE LIGHT MODE ── */
+:root, html, body { color-scheme: only light !important; }
+@media (prefers-color-scheme: dark) {
+  html, body, * { color-scheme: only light !important; }
+}
+
+:root {
+  --cream:      #f6f1e7;
+  --cream-mid:  #ede5d0;
+  --cream-deep: #e0d5b8;
+  --ink:        #1c1814;
+  --ink-mid:    #3c3428;
+  --ink-light:  #6a5f50;
+  --gold:       #8a6800;
+  --gold-lt:    #b89030;
+  --red:        #8a1c1c;
+  --blue:       #1a3558;
+  --green:      #1e4a1e;
+  --border:     #d0c0a0;
+  --border-lt:  #e4d8c0;
+  --israel-bg:  #edf4ff;
+  --israel-br:  #3a6aaa;
+  --jesus-bg:   #fff8ed;
+  --jesus-br:   #b89030;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { background: #f6f1e7 !important; }
+body {
+  background: #f6f1e7 !important;
+  color: #1c1814 !important;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 15px;
+  line-height: 1.75;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* ── HEADER ── */
+header {
+  background: #1c1814 !important;
+  border-bottom: 4px solid #8a6800;
+  padding: 2.5rem 1.5rem 2rem;
+  text-align: center;
+}
+.eyebrow {
+  font-family: 'Courier New', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #b89030 !important;
+  -webkit-text-fill-color: #b89030;
+  margin-bottom: 0.6rem;
+}
+header h1 {
+  font-size: clamp(1.5rem, 5vw, 2.4rem);
+  font-weight: normal;
+  color: #f6f1e7 !important;
+  -webkit-text-fill-color: #f6f1e7;
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.02em;
+}
+header .h1-sub {
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  font-weight: normal;
+  color: #b89030 !important;
+  -webkit-text-fill-color: #b89030;
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+header .sub {
+  font-style: italic;
+  font-size: 0.88rem;
+  color: #c0b090 !important;
+  -webkit-text-fill-color: #c0b090;
+}
+
+/* ── TAB NAV ── */
+.tab-nav {
+  background: #ede5d0 !important;
+  border-bottom: 2px solid #d0c0a0;
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.tab-nav::-webkit-scrollbar { display: none; }
+.tab-btn {
+  flex-shrink: 0;
+  padding: 0.8rem 1.1rem;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  cursor: pointer;
+  font-family: 'Courier New', monospace;
+  font-size: 0.62rem;
+  font-weight: bold;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #3c3428 !important;
+  -webkit-text-fill-color: #3c3428;
+  white-space: nowrap;
+}
+.tab-btn.active {
+  color: #8a6800 !important;
+  -webkit-text-fill-color: #8a6800;
+  border-bottom-color: #8a6800;
+}
+
+/* ── PANELS ── */
+.panel { display: none; background: #f6f1e7 !important; }
+.panel.active { display: block; }
+.inner {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 1.75rem 1.25rem 3.5rem;
+  background: #f6f1e7 !important;
+}
+
+/* ── TYPOGRAPHY ── */
+.inner h2 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #1c1814 !important;
+  -webkit-text-fill-color: #1c1814;
+  border-bottom: 2px solid #d0c0a0;
+  padding-bottom: 0.4rem;
+  margin: 2rem 0 1rem;
+}
+.inner h2:first-child { margin-top: 0; }
+.inner h3 {
+  font-family: 'Courier New', monospace;
+  font-size: 0.68rem;
+  font-weight: bold;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8a6800 !important;
+  -webkit-text-fill-color: #8a6800;
+  margin: 1.5rem 0 0.6rem;
+}
+.inner p {
+  font-size: 0.93rem;
+  color: #3c3428 !important;
+  -webkit-text-fill-color: #3c3428;
+  margin-bottom: 0.85rem;
+}
+.inner p strong { color: #1c1814 !important; -webkit-text-fill-color: #1c1814; }
+
+/* ── SECTION DIVIDER ── */
+.section-div {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 2rem 0 1.1rem;
+}
+.section-line { flex: 1; height: 1px; background: #d0c0a0; }
+.section-label {
+  font-family: 'Courier New', monospace;
+  font-size: 0.6rem;
+  font-weight: bold;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #8a6800 !important;
+  -webkit-text-fill-color: #8a6800;
+  white-space: nowrap;
+}
+
+/* ── PARALLEL CARD — the signature element ── */
+.parallel {
+  background: #ffffff !important;
+  border: 1px solid #e4d8c0;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+.parallel-header {
+  background: #1c1814 !important;
+  padding: 0.65rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.parallel-title {
+  font-family: 'Courier New', monospace;
+  font-size: 0.68rem;
+  font-weight: bold;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #b89030 !important;
+  -webkit-text-fill-color: #b89030;
+}
+.parallel-chevron {
+  color: #6a5f50 !important;
+  -webkit-text-fill-color: #6a5f50;
+  font-size: 0.75rem;
+  transition: transform 0.2s;
+}
+.parallel.open .parallel-chevron { transform: rotate(90deg); }
+
+.parallel-cols {
+  display: none;
+  grid-template-columns: 1fr 1fr;
+}
+.parallel.open .parallel-cols { display: grid; }
+
+.col-israel {
+  padding: 1rem;
+  border-right: 1px solid #e4d8c0;
+  background: #edf4ff !important;
+}
+.col-jesus {
+  padding: 1rem;
+  background: #fff8ed !important;
+}
+
+.col-label {
+  font-family: 'Courier New', monospace;
+  font-size: 0.58rem;
+  font-weight: bold;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.col-israel .col-label { color: #1a3558 !important; -webkit-text-fill-color: #1a3558; }
+.col-jesus .col-label  { color: #8a6800 !important; -webkit-text-fill-color: #8a6800; }
+
+.col-verse {
+  font-style: italic;
+  font-size: 0.85rem;
+  color: #1c1814 !important;
+  -webkit-text-fill-color: #1c1814;
+  margin-bottom: 0.5rem;
+  line-height: 1.55;
+  border-left: 3px solid;
+  padding-left: 0.6rem;
+}
+.col-israel .col-verse { border-color: #3a6aaa; }
+.col-jesus .col-verse  { border-color: #b89030; }
+
+.col-ref {
+  font-family: 'Courier New', monospace;
+  font-size: 0.62rem;
+  color: #8a6800 !important;
+  -webkit-text-fill-color: #8a6800;
+  margin-bottom: 0.5rem;
+}
+.col-note {
+  font-size: 0.82rem;
+  color: #3c3428 !important;
+  -webkit-text-fill-color: #3c3428;
+  line-height: 1.5;
+}
+.col-note strong { color: #1c1814 !important; -webkit-text-fill-color: #1c1814; }
+
+.parallel-insight {
+  border-top: 1px solid #e4d8c0;
+  padding: 0.75rem 1rem;
+  background: #f6f1e7 !important;
+  font-size: 0.85rem;
+  color: #3c3428 !important;
+  -webkit-text-fill-color: #3c3428;
+}
+.insight-label {
+  font-family: 'Courier New', monospace;
+  font-size: 0.58rem;
+  font-weight: bold;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8a1c1c !important;
+  -webkit-text-fill-color: #8a1c1c;
+  margin-bottom: 0.3rem;
+}
+.parallel-insight p { font-size: 0.85rem; margin: 0; }
+
+/* ── CALLOUT BOXES ── */
+.box {
+  border-radius: 3px;
+  padding: 1rem 1.1rem;
+  margin: 1rem 0;
+  border-left: 4px solid;
+}
+.box-gold  { background: #fff8ed !important; border-color: #b89030; }
+.box-red   { background: #fdf0f0 !important; border-color: #c05050; }
+.box-blue  { background: #edf4ff !important; border-color: #3a6aaa; }
+.box-green { background: #edf5ed !important; border-color: #3a6a3a; }
+.box-label {
+  font-family: 'Courier New', monospace;
+  font-size: 0.6rem;
+  font-weight: bold;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+.box-gold  .box-label { color: #8a6800 !important; -webkit-text-fill-color: #8a6800; }
+.box-red   .box-label { color: #8a1c1c !important; -webkit-text-fill-color: #8a1c1c; }
+.box-blue  .box-label { color: #1a3558 !important; -webkit-text-fill-color: #1a3558; }
+.box-green .box-label { color: #1e4a1e !important; -webkit-text-fill-color: #1e4a1e; }
+.box p { font-size: 0.9rem; color: #3c3428 !important; -webkit-text-fill-color: #3c3428; margin-bottom: 0.5rem; }
+.box p:last-child { margin-bottom: 0; }
+.box p strong { color: #1c1814 !important; -webkit-text-fill-color: #1c1814; }
+
+/* ── VERSE BLOCK ── */
+.verse-block {
+  background: #ede5d0 !important;
+  border: 1px solid #d0c0a0;
+  border-radius: 3px;
+  padding: 0.9rem 1rem;
+  margin: 0.9rem 0;
+}
+.verse-ref {
+  font-family: 'Courier New', monospace;
+  font-size: 0.65rem;
+  color: #8a6800 !important;
+  -webkit-text-fill-color: #8a6800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+.verse-text {
+  font-style: italic;
+  color: #1c1814 !important;
+  -webkit-text-fill-color: #1c1814;
+  font-size: 0.92rem;
+  margin-bottom: 0.4rem;
+  line-height: 1.6;
+}
+.verse-note {
+  font-size: 0.85rem;
+  color: #3c3428 !important;
+  -webkit-text-fill-color: #3c3428;
+}
+
+/* ── SERVANT SHIFT TABLE ── */
+.servant-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.86rem;
+  margin: 1rem 0;
+}
+.servant-table th {
+  background: #1c1814 !important;
+  color: #f6f1e7 !important;
+  -webkit-text-fill-color: #f6f1e7;
+  padding: 0.55rem 0.8rem;
+  text-align: left;
+  font-family: 'Courier New', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.servant-table td {
+  padding: 0.65rem 0.8rem;
+  border-bottom: 1px solid #e4d8c0;
+  vertical-align: top;
+  background: #ffffff !important;
+  color: #3c3428 !important;
+  -webkit-text-fill-color: #3c3428;
+}
+.servant-table tr:nth-child(even) td { background: #f6f1e7 !important; }
+.servant-table td strong { color: #1c1814 !important; -webkit-text-fill-color: #1c1814; }
+.servant-table td.ref-td {
+  font-family: 'Courier New', monospace;
+  font-size: 0.65rem;
+  color: #8a6800 !important;
+  -webkit-text-fill-color: #8a6800;
+  white-space: nowrap;
+}
+.servant-table td.who-td {
+  font-family: 'Courier New', monospace;
+  font-size: 0.68rem;
+  font-weight: bold;
+}
+.who-nation { color: #1a3558 !important; -webkit-text-fill-color: #1a3558; }
+.who-person { color: #8a6800 !important; -webkit-text-fill-color: #8a6800; }
+.who-both   { color: #1e4a1e !important; -webkit-text-fill-color: #1e4a1e; }
+
+/* ── TENSION TABLE ── */
+.tension-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.86rem;
+  margin: 1rem 0;
+}
+.tension-table th {
+  padding: 0.55rem 0.8rem;
+  text-align: left;
+  font-family: 'Courier New', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: #1c1814 !important;
+  color: #f6f1e7 !important;
+  -webkit-text-fill-color: #f6f1e7;
+}
+.tension-table td {
+  padding: 0.65rem 0.8rem;
+  border-bottom: 1px solid #e4d8c0;
+  vertical-align: top;
+  color: #3c3428 !important;
+  -webkit-text-fill-color: #3c3428;
+  background: #ffffff !important;
+}
+.tension-table tr:nth-child(even) td { background: #f6f1e7 !important; }
+.tension-table td strong { color: #1c1814 !important; -webkit-text-fill-color: #1c1814; }
+.tension-table td.disp-col { color: #1a3558 !important; -webkit-text-fill-color: #1a3558; }
+.tension-table td.nt-col   { color: #1e4a1e !important; -webkit-text-fill-color: #1e4a1e; }
+
+/* ── COLUMN HEADERS for parallel intro ── */
+.col-headers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin-bottom: 0.5rem;
+}
+.col-h {
+  text-align: center;
+  font-family: 'Courier New', monospace;
+  font-size: 0.65rem;
+  font-weight: bold;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.4rem;
+  border-radius: 2px;
+}
+.col-h-israel { background: #edf4ff !important; color: #1a3558 !important; -webkit-text-fill-color: #1a3558; }
+.col-h-jesus  { background: #fff8ed !important; color: #8a6800 !important; -webkit-text-fill-color: #8a6800; }
+
+@media (max-width: 520px) {
+  .parallel-cols { grid-template-columns: 1fr; }
+  .col-israel { border-right: none; border-bottom: 1px solid #e4d8c0; }
+  .col-headers { grid-template-columns: 1fr; gap: 0.3rem; }
+  .inner { padding: 1.5rem 0.9rem 3rem; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Catholic Formation · Reference Tool</div>
+  <h1>Jesus</h1>
+  <div class="h1-sub">The True Israel</div>
+  <p class="sub">Where the nation failed, the Son succeeded — doing in himself what Israel was always called to do</p>
+</header>
+
+<nav class="tab-nav">
+  <button class="tab-btn active" onclick="showTab('thesis')">The Thesis</button>
+  <button class="tab-btn" onclick="showTab('recapitulation')">Recapitulation</button>
+  <button class="tab-btn" onclick="showTab('wilderness')">Wilderness Test</button>
+  <button class="tab-btn" onclick="showTab('servant')">Servant of Isaiah</button>
+  <button class="tab-btn" onclick="showTab('priesthood')">The Priesthood</button>
+  <button class="tab-btn" onclick="showTab('disp')">Dispensationalism</button>
+</nav>
+
+<!-- ══════════════════════════════════
+     TAB 1 · THE THESIS
+══════════════════════════════════ -->
+<div id="thesis" class="panel active">
+<div class="inner">
+
+  <h2>The Central Claim</h2>
+  <p>The New Testament does not present Jesus as a figure who arrives alongside Israel's story — separate from it, running a parallel track. It presents him as the <strong>fulfillment and embodiment of Israel's story</strong>. He is the faithful Son who does what the nation was always called to do but consistently failed to do.</p>
+  <p>This is not a Catholic theological overlay applied to the text. It is the interpretive framework the New Testament authors themselves use — drawn from the way they quote, apply, and interpret the Old Testament.</p>
+
+  <div class="box box-gold">
+    <div class="box-label">The Key Text — Luke 24:27</div>
+    <p>"Beginning with Moses and all the Prophets, he interpreted to them in all the Scriptures the things concerning himself."</p>
+    <p>Jesus himself teaches that the entire Old Testament — Moses, the Prophets, the Writings — is about him. Not partially. Not in isolated predictions. In all of it. The whole narrative converges on his person.</p>
+  </div>
+
+  <h2>What Israel Was Called to Be</h2>
+  <p>God's call to Israel at Sinai was precise. Israel was to be:</p>
+
+  <div class="box box-blue">
+    <div class="box-label">Exodus 19:5–6 — The Covenant Calling</div>
+    <p>"You shall be my treasured possession among all peoples... you shall be to me a kingdom of priests and a holy nation."</p>
+    <p><strong>Kingdom of priests</strong> — mediating between God and the nations. <strong>Holy nation</strong> — set apart, reflecting God's character to the world. This is what Israel was created for. This is what Israel failed to be. This is what Jesus fulfills — perfectly, completely, and on behalf of all who are in him.</p>
+  </div>
+
+  <h2>Three Ways the New Testament Makes This Case</h2>
+
+  <h3>1. Hosea 11:1 Applied to Jesus — Matthew 2:15</h3>
+  <p>Hosea 11:1 — "Out of Egypt I called my son" — was written about the nation Israel leaving Egypt in the Exodus. Matthew quotes it as fulfilled when the infant Jesus returns from Egypt. Matthew is not misreading Hosea. He is showing that Jesus <strong>recapitulates Israel's story</strong> — living it again, this time faithfully. Jesus is the true Son whom the nation foreshadowed.</p>
+
+  <h3>2. Galatians 3:16 — The Promise to the One Offspring</h3>
+  <p>Paul argues that God's promise to Abraham was made to "his offspring" — singular, not plural — "who is Christ." The entire Abrahamic covenant finds its <strong>personal fulfillment in Jesus</strong>. He is the seed. He is the heir. Those who are in him inherit with him — not as a separate track, but by union with the one true heir.</p>
+
+  <h3>3. The Servant Songs — Isaiah's Narrowing</h3>
+  <p>Isaiah repeatedly calls Israel "my servant" — but then describes a Servant whose mission is to restore Israel and be a light to the Gentiles. The Servant cannot be the same as the nation he is sent to save. Isaiah is showing the nation <strong>compressed into one faithful person</strong>. That person is Jesus — as Philip explains to the Ethiopian eunuch reading Isaiah 53 (Acts 8:32–35).</p>
+
+  <div class="box box-green">
+    <div class="box-label">The Structural Argument</div>
+    <p>Israel was called to be God's son (Ex 4:22 — "Israel is my firstborn son"). Israel failed. Jesus is the Son of God who does not fail. Every role Israel held — son, servant, priest, king, prophet — Jesus holds perfectly. He is not a replacement for Israel. He is Israel-fulfilled. And those who are baptized into him become, by union with him, part of the true Israel (Gal 3:27–29).</p>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════
+     TAB 2 · RECAPITULATION
+══════════════════════════════════ -->
+<div id="recapitulation" class="panel">
+<div class="inner">
+
+  <h2>Recapitulation — Jesus Relives Israel's Story</h2>
+  <p>The word <em>recapitulation</em> comes from the Latin for "going back to the head." Jesus goes back to the beginning of Israel's story and walks through it again — this time as the faithful Son. Every major moment in Israel's narrative has a parallel in Jesus's life. This is not coincidence. Matthew especially constructs his Gospel to make this visible.</p>
+
+  <div class="box box-gold">
+    <div class="box-label">The Pattern</div>
+    <p>Israel fails a test → Jesus faces the same test → Jesus passes. Israel is a shadow; Jesus is the substance. Israel points forward; Jesus fulfills. The whole nation's story is a type of the one Man's story.</p>
+  </div>
+
+  <div class="col-headers">
+    <div class="col-h col-h-israel">Israel — The Shadow</div>
+    <div class="col-h col-h-jesus">Jesus — The Fulfillment</div>
+  </div>
+
+  <!-- PARALLEL 1 -->
+  <div class="parallel">
+    <div class="parallel-header" onclick="toggleParallel(this.parentElement)">
+      <div class="parallel-title">1 · Son of God</div>
+      <div class="parallel-chevron">▶</div>
+    </div>
+    <div class="parallel-cols">
+      <div class="col-israel">
+        <div class="col-label">Israel</div>
+        <div class="col-verse">"Israel is my firstborn son... Let my son go that he may serve me."</div>
+        <div class="col-ref">Exodus 4:22–23</div>
+        <div class="col-note">God calls the nation his son at the very beginning of the Exodus. But Israel repeatedly disobeys, complains, and worships idols — an unfaithful son.</div>
+      </div>
+      <div class="col-jesus">
+        <div class="col-label">Jesus</div>
+        <div class="col-verse">"This is my beloved Son, with whom I am well pleased."</div>
+        <div class="col-ref">Matthew 3:17 — at his baptism</div>
+        <div class="col-note">The Father declares Jesus his Son at the Jordan — just before the wilderness. Where Israel was an unfaithful son, Jesus is the perfectly obedient Son.</div>
+      </div>
+    </div>
+    <div class="parallel-insight">
+      <div class="insight-label">The Connection</div>
+      <p>The title "Son of God" applied to Israel in Exodus is applied to Jesus at his baptism. Immediately after, Jesus enters the wilderness — retracing Israel's 40 years in 40 days. Matthew is building a deliberate parallel from the opening of Jesus's ministry.</p>
+    </div>
+  </div>
+
+  <!-- PARALLEL 2 -->
+  <div class="parallel">
+    <div class="parallel-header" onclick="toggleParallel(this.parentElement)">
+      <div class="parallel-title">2 · Out of Egypt</div>
+      <div class="parallel-chevron">▶</div>
+    </div>
+    <div class="parallel-cols">
+      <div class="col-israel">
+        <div class="col-label">Israel</div>
+        <div class="col-verse">"When Israel was a child, I loved him, and out of Egypt I called my son."</div>
+        <div class="col-ref">Hosea 11:1</div>
+        <div class="col-note">The Exodus — God calls his son out of Egypt. The nation is born as God's people through this event. The rest of Israel's history is measured against whether they remain faithful to the God who called them out.</div>
+      </div>
+      <div class="col-jesus">
+        <div class="col-label">Jesus</div>
+        <div class="col-verse">"He rose and took the child and his mother by night and departed to Egypt... to fulfill what the Lord had spoken by the prophet, 'Out of Egypt I called my son.'"</div>
+        <div class="col-ref">Matthew 2:14–15</div>
+        <div class="col-note">Matthew quotes Hosea 11:1 directly as fulfilled in Jesus's return from Egypt. The infant Jesus reenacts the Exodus — he is the true Son called out of Egypt.</div>
+      </div>
+    </div>
+    <div class="parallel-insight">
+      <div class="insight-label">Why Matthew Does This</div>
+      <p>Matthew is not twisting Hosea. He is showing that the Exodus was always a type — it pointed to a greater Son being called out. Jesus is the true fulfillment of what the nation's Exodus foreshadowed.</p>
+    </div>
+  </div>
+
+  <!-- PARALLEL 3 -->
+  <div class="parallel">
+    <div class="parallel-header" onclick="toggleParallel(this.parentElement)">
+      <div class="parallel-title">3 · Through the Water</div>
+      <div class="parallel-chevron">▶</div>
+    </div>
+    <div class="parallel-cols">
+      <div class="col-israel">
+        <div class="col-label">Israel</div>
+        <div class="col-verse">"Our fathers were all under the cloud, and all passed through the sea, and all were baptized into Moses in the cloud and in the sea."</div>
+        <div class="col-ref">1 Corinthians 10:1–2</div>
+        <div class="col-note">Paul calls the Red Sea crossing a baptism. Israel passes through the water, is constituted as God's people, and begins the journey to the promised land.</div>
+      </div>
+      <div class="col-jesus">
+        <div class="col-label">Jesus</div>
+        <div class="col-verse">"Then Jesus came from Galilee to the Jordan to John, to be baptized by him."</div>
+        <div class="col-ref">Matthew 3:13</div>
+        <div class="col-note">Jesus enters the Jordan — the same river Israel crossed into the promised land under Joshua. His baptism marks the beginning of his public mission, just as the Red Sea crossing began Israel's wilderness journey.</div>
+      </div>
+    </div>
+    <div class="parallel-insight">
+      <div class="insight-label">The Connection</div>
+      <p>Water passage → wilderness → covenant mission. Israel: Red Sea → 40 years in the wilderness → entry to Canaan. Jesus: Jordan baptism → 40 days in the wilderness → public ministry. The structure is identical.</p>
+    </div>
+  </div>
+
+  <!-- PARALLEL 4 -->
+  <div class="parallel">
+    <div class="parallel-header" onclick="toggleParallel(this.parentElement)">
+      <div class="parallel-title">4 · Forty Years / Forty Days</div>
+      <div class="parallel-chevron">▶</div>
+    </div>
+    <div class="parallel-cols">
+      <div class="col-israel">
+        <div class="col-label">Israel</div>
+        <div class="col-verse">"Your sons shall be shepherds in the wilderness forty years and shall suffer for your faithlessness."</div>
+        <div class="col-ref">Numbers 14:33</div>
+        <div class="col-note">Forty years in the wilderness — a period of testing, failure, and discipline. Israel complains about food, tests God, and worships idols. The forty years ends in a new generation entering the land.</div>
+      </div>
+      <div class="col-jesus">
+        <div class="col-label">Jesus</div>
+        <div class="col-verse">"And Jesus, full of the Holy Spirit, returned from the Jordan and was led by the Spirit in the wilderness for forty days, being tempted by the devil."</div>
+        <div class="col-ref">Luke 4:1–2</div>
+        <div class="col-note">Forty days in the same wilderness — the same duration compressed. Jesus is tempted on the same three points Israel failed. He passes every test Israel failed.</div>
+      </div>
+    </div>
+    <div class="parallel-insight">
+      <div class="insight-label">The Connection</div>
+      <p>The forty is not coincidental — it is the typological signal that Jesus is reliving Israel's wilderness period. Years become days. The nation's failure becomes the Son's victory. See the Wilderness Test tab for the detailed breakdown of each temptation.</p>
+    </div>
+  </div>
+
+  <!-- PARALLEL 5 -->
+  <div class="parallel">
+    <div class="parallel-header" onclick="toggleParallel(this.parentElement)">
+      <div class="parallel-title">5 · The New Moses / New Law</div>
+      <div class="parallel-chevron">▶</div>
+    </div>
+    <div class="parallel-cols">
+      <div class="col-israel">
+        <div class="col-label">Israel — Moses</div>
+        <div class="col-verse">"Moses went up to God, and the LORD called to him out of the mountain."</div>
+        <div class="col-ref">Exodus 19:3</div>
+        <div class="col-note">Moses receives the Law on a mountain — Sinai. The Law defines Israel's covenant relationship with God. Israel is given commands from the mountain top.</div>
+      </div>
+      <div class="col-jesus">
+        <div class="col-label">Jesus</div>
+        <div class="col-verse">"Seeing the crowds, he went up on the mountain, and when he sat down, his disciples came to him. And he opened his mouth and taught them."</div>
+        <div class="col-ref">Matthew 5:1–2 — Sermon on the Mount</div>
+        <div class="col-note">"You have heard it was said... but I say to you." Jesus gives the new law from a new mountain. Not abolishing Moses — fulfilling him. He speaks with authority Moses never claimed.</div>
+      </div>
+    </div>
+    <div class="parallel-insight">
+      <div class="insight-label">The Connection</div>
+      <p>Matthew structures chapters 5–7 as a deliberate Sinai parallel. Jesus is the new Moses — but greater, because Moses said "God commands" while Jesus says "I say to you." Deut 18:15 — "The LORD will raise up a prophet like me" — is fulfilled here.</p>
+    </div>
+  </div>
+
+  <!-- PARALLEL 6 -->
+  <div class="parallel">
+    <div class="parallel-header" onclick="toggleParallel(this.parentElement)">
+      <div class="parallel-title">6 · Twelve Sons / Twelve Apostles</div>
+      <div class="parallel-chevron">▶</div>
+    </div>
+    <div class="parallel-cols">
+      <div class="col-israel">
+        <div class="col-label">Israel</div>
+        <div class="col-verse">"The sons of Israel were twelve."</div>
+        <div class="col-ref">Genesis 35:22</div>
+        <div class="col-note">Jacob had twelve sons who became the twelve tribes — the foundation of the nation Israel. Twelve is the number that constitutes God's people.</div>
+      </div>
+      <div class="col-jesus">
+        <div class="col-label">Jesus</div>
+        <div class="col-verse">"He called his twelve disciples to him and gave them authority."</div>
+        <div class="col-ref">Matthew 10:1</div>
+        <div class="col-note">Jesus deliberately chooses twelve — not eleven, not thirteen. He is reconstituting the twelve tribes around himself. The new Israel is being formed with him at the center.</div>
+      </div>
+    </div>
+    <div class="parallel-insight">
+      <div class="insight-label">The Connection</div>
+      <p>When Judas falls, the first act of the early Church is to restore the number to twelve (Acts 1:26). Revelation 21:14 shows the New Jerusalem with twelve foundations bearing the names of the twelve apostles — corresponding to the twelve tribes on the gates. The twelve is not left behind — it is fulfilled and carried forward.</p>
+    </div>
+  </div>
+
+  <!-- PARALLEL 7 -->
+  <div class="parallel">
+    <div class="parallel-header" onclick="toggleParallel(this.parentElement)">
+      <div class="parallel-title">7 · Passover Lamb</div>
+      <div class="parallel-chevron">▶</div>
+    </div>
+    <div class="parallel-cols">
+      <div class="col-israel">
+        <div class="col-label">Israel — Egypt</div>
+        <div class="col-verse">"The blood shall be a sign for you, on the houses where you are. And when I see the blood, I will pass over you."</div>
+        <div class="col-ref">Exodus 12:13</div>
+        <div class="col-note">The Passover lamb — unblemished, its blood applied to the doorposts, its death protecting the firstborn from the angel of death. The Exodus begins with this sacrifice.</div>
+      </div>
+      <div class="col-jesus">
+        <div class="col-label">Jesus</div>
+        <div class="col-verse">"Behold the Lamb of God, who takes away the sin of the world."</div>
+        <div class="col-ref">John 1:29</div>
+        <div class="col-note">John the Baptist identifies Jesus as the Passover Lamb. Paul confirms: "Christ, our Passover lamb, has been sacrificed." (1 Cor 5:7). Jesus dies at Passover, at the hour the lambs are being slaughtered in the Temple.</div>
+      </div>
+    </div>
+    <div class="parallel-insight">
+      <div class="insight-label">The Connection</div>
+      <p>John's Gospel times the crucifixion to coincide exactly with the slaughter of the Passover lambs in the Temple (John 19:14). The Passover was always a type. The true Lamb has arrived — and his blood on the doorpost of faith protects from eternal death, not merely physical death.</p>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════
+     TAB 3 · WILDERNESS TEST
+══════════════════════════════════ -->
+<div id="wilderness" class="panel">
+<div class="inner">
+
+  <h2>The Wilderness Test — Israel vs. Jesus</h2>
+  <p>This is the most detailed and precise parallel in the entire recapitulation pattern. Jesus faces three temptations in the wilderness. Each one maps exactly to a specific failure of Israel in the wilderness. And each time Jesus is tempted, he quotes the exact verse from Deuteronomy that Moses wrote about that specific failure.</p>
+  <p>This is not coincidence. Jesus is in the wilderness, under the same conditions, being tested on the same questions — and answering with the words God gave Israel through Moses. He is passing the test Israel failed.</p>
+
+  <div class="box box-blue">
+    <div class="box-label">The Setup — Matthew 4:1–2 / Luke 4:1–2</div>
+    <p>Immediately after his baptism — his "Red Sea crossing" — Jesus is led by the Spirit into the wilderness for forty days. Forty years compressed to forty days. He fasts the whole time. He is hungry. He is isolated. The conditions of Israel's wilderness are recreated in him.</p>
+  </div>
+
+  <div class="section-div">
+    <div class="section-line"></div>
+    <div class="section-label">Temptation 1 — Bread</div>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="col-headers">
+    <div class="col-h col-h-israel">Israel's Failure</div>
+    <div class="col-h col-h-jesus">Jesus's Victory</div>
+  </div>
+  <div class="parallel" style="margin-top:0.5rem;">
+    <div class="parallel-header" onclick="toggleParallel(this.parentElement)">
+      <div class="parallel-title">Make Bread — Food in the Wilderness</div>
+      <div class="parallel-chevron">▶</div>
+    </div>
+    <div class="parallel-cols">
+      <div class="col-israel">
+        <div class="col-label">Israel's Failure</div>
+        <div class="col-verse">"The whole congregation of the people of Israel grumbled against Moses and Aaron in the wilderness... 'Would that we had died by the hand of the LORD in the land of Egypt, when we sat by the meat pots and ate bread to the full.'"</div>
+        <div class="col-ref">Exodus 16:2–3</div>
+        <div class="col-note">Israel puts physical food above trust in God. They grumble, demand bread, and doubt whether God can provide. God provides manna — but the grumbling continues throughout their wilderness years.</div>
+      </div>
+      <div class="col-jesus">
+        <div class="col-label">Jesus's Answer</div>
+        <div class="col-verse">"If you are the Son of God, command these stones to become loaves of bread." But he answered, "It is written, 'Man shall not live by bread alone, but by every word that comes from the mouth of God.'"</div>
+        <div class="col-ref">Matthew 4:3–4</div>
+        <div class="col-note">Satan attacks on food — exactly where Israel failed. Jesus quotes Deuteronomy 8:3 — the verse Moses wrote specifically about the manna episode: "He humbled you and let you hunger and fed you with manna... that he might make you know that man does not live by bread alone."</div>
+      </div>
+    </div>
+    <div class="parallel-insight">
+      <div class="insight-label">The Precision</div>
+      <p>Jesus doesn't just resist the temptation. He quotes the verse Moses wrote about Israel's identical failure. He is consciously inhabiting Israel's story and answering it correctly. Deut 8:3 was written for this moment — not just for Israel in the wilderness, but for the true Son who would relive it.</p>
+    </div>
+  </div>
+
+  <div class="section-div">
+    <div class="section-line"></div>
+    <div class="section-label">Temptation 2 — Testing God</div>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="parallel">
+    <div class="parallel-header" onclick="toggleParallel(this.parentElement)">
+      <div class="parallel-title">Test God — Jump from the Temple</div>
+      <div class="parallel-chevron">▶</div>
+    </div>
+    <div class="parallel-cols">
+      <div class="col-israel">
+        <div class="col-label">Israel's Failure — Massah</div>
+        <div class="col-verse">"He called the name of the place Massah and Meribah, because of the quarreling of the people of Israel, and because they tested the LORD, saying, 'Is the LORD among us or not?'"</div>
+        <div class="col-ref">Exodus 17:7</div>
+        <div class="col-note">At Massah, Israel demands water and questions whether God is actually with them. They test God — demanding proof of his presence and protection. Moses names the place "Testing."</div>
+      </div>
+      <div class="col-jesus">
+        <div class="col-label">Jesus's Answer</div>
+        <div class="col-verse">"If you are the Son of God, throw yourself down, for he will command his angels concerning you." Jesus said, "Again it is written, 'You shall not put the Lord your God to the test.'"</div>
+        <div class="col-ref">Matthew 4:6–7</div>
+        <div class="col-note">Satan quotes Psalm 91 and tells Jesus to force God to prove he cares — the same demand Israel made at Massah. Jesus quotes Deuteronomy 6:16 — the verse written specifically about Massah: "You shall not put the LORD your God to the test, as you tested him at Massah."</div>
+      </div>
+    </div>
+    <div class="parallel-insight">
+      <div class="insight-label">The Precision</div>
+      <p>Deuteronomy 6:16 mentions Massah by name. Jesus quotes the exact verse about the exact failure. He does not need God to prove anything. He trusts without demanding demonstration — the opposite of Israel at Massah.</p>
+    </div>
+  </div>
+
+  <div class="section-div">
+    <div class="section-line"></div>
+    <div class="section-label">Temptation 3 — False Worship</div>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="parallel">
+    <div class="parallel-header" onclick="toggleParallel(this.parentElement)">
+      <div class="parallel-title">Bow Down — All the Kingdoms</div>
+      <div class="parallel-chevron">▶</div>
+    </div>
+    <div class="parallel-cols">
+      <div class="col-israel">
+        <div class="col-label">Israel's Failure — The Golden Calf</div>
+        <div class="col-verse">"When the people saw that Moses delayed to come down from the mountain, the people gathered themselves to Aaron and said... 'Make us gods who shall go before us.'"</div>
+        <div class="col-ref">Exodus 32:1</div>
+        <div class="col-note">The golden calf — Israel bows down to a false god when God seems distant. They worship something they can see rather than trust the God they cannot. This sin defines the northern kingdom for 200 years.</div>
+      </div>
+      <div class="col-jesus">
+        <div class="col-label">Jesus's Answer</div>
+        <div class="col-verse">"All these I will give you, if you will fall down and worship me." Then Jesus said, "Be gone, Satan! For it is written, 'You shall worship the Lord your God and him only shall you serve.'"</div>
+        <div class="col-ref">Matthew 4:9–10</div>
+        <div class="col-note">Satan offers Jesus the kingdoms — without the cross. Take the glory without the suffering. Bow to something other than God to get what you want. Jesus quotes Deuteronomy 6:13 — the verse written in response to Israel's idolatry.</div>
+      </div>
+    </div>
+    <div class="parallel-insight">
+      <div class="insight-label">The Precision</div>
+      <p>Deuteronomy 6:13 follows immediately after the Shema (Deut 6:4) and is Moses's direct command in response to the idolatry problem. Jesus quotes it verbatim. Where Israel fell into idolatry repeatedly across centuries, Jesus refuses the ultimate idolatrous offer — the kingdoms of the world in exchange for false worship.</p>
+    </div>
+  </div>
+
+  <div class="box box-green">
+    <div class="box-label">The Result — Matthew 4:11</div>
+    <p>"Then the devil left him, and behold, angels came and were ministering to him."</p>
+    <p>Angels came and fed him — as God fed Israel with manna after their wilderness wandering. The true Son passes the wilderness test. Israel's 40-year failure is undone in 40 days. The mission can now begin.</p>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════
+     TAB 4 · SERVANT OF ISAIAH
+══════════════════════════════════ -->
+<div id="servant" class="panel">
+<div class="inner">
+
+  <h2>The Servant of Isaiah — Israel Narrowing to One</h2>
+  <p>Isaiah's "Servant Songs" (chapters 42, 49, 50, 52–53) are among the most important passages in the Old Testament for understanding Jesus. But they contain a deliberate pattern that is easy to miss: the identity of "the Servant" <strong>shifts</strong> — starting as the nation Israel and narrowing down to a single individual who does what the nation failed to do.</p>
+
+  <div class="box box-gold">
+    <div class="box-label">The Pattern</div>
+    <p>Isaiah begins by calling the nation "my servant Israel." But as the songs develop, the Servant's mission is described as being <em>sent to</em> Israel — which means he cannot be the same as the nation. The Servant is Israel-compressed-to-one. He is the faithful remnant reduced to a single faithful person. That person is Jesus.</p>
+  </div>
+
+  <h3>Tracking the Shift — Isaiah's Servant</h3>
+
+  <table class="servant-table">
+    <tr>
+      <th>Passage</th>
+      <th>Who is the Servant?</th>
+      <th>What it Says</th>
+      <th>NT Application</th>
+    </tr>
+    <tr>
+      <td><strong>Isa 41:8</strong></td>
+      <td class="who-td who-nation">The Nation</td>
+      <td>"But you, Israel, my servant, Jacob, whom I have chosen, the offspring of Abraham, my friend."</td>
+      <td class="ref-td">Nation clearly named</td>
+    </tr>
+    <tr>
+      <td><strong>Isa 42:1–4</strong></td>
+      <td class="who-td who-both">Shifting</td>
+      <td>"Behold my servant, whom I uphold, my chosen, in whom my soul delights; I have put my Spirit upon him; he will bring forth justice to the nations." He will not break a bruised reed.</td>
+      <td class="ref-td">Matt 12:18–21 — applied to Jesus directly</td>
+    </tr>
+    <tr>
+      <td><strong>Isa 49:3</strong></td>
+      <td class="who-td who-nation">Nation Named</td>
+      <td>"You are my servant, Israel, in whom I will be glorified."</td>
+      <td class="ref-td">Still called Israel</td>
+    </tr>
+    <tr>
+      <td><strong>Isa 49:5–6</strong></td>
+      <td class="who-td who-person">Individual</td>
+      <td>"And now the LORD says, he who formed me from the womb to be his servant, to bring Jacob back to him; and that Israel might be gathered to him... I will make you as a light for the nations."</td>
+      <td class="ref-td">Acts 13:47 — Paul applies to the Gentile mission</td>
+    </tr>
+    <tr>
+      <td><strong>Isa 50:4–9</strong></td>
+      <td class="who-td who-person">Individual</td>
+      <td>"I gave my back to those who strike, and my cheeks to those who pull out the beard; I hid not my face from disgrace and spitting."</td>
+      <td class="ref-td">Fulfilled at the Passion — Matt 26:67, 27:26</td>
+    </tr>
+    <tr>
+      <td><strong>Isa 52:13–53:12</strong></td>
+      <td class="who-td who-person">Individual</td>
+      <td>"He was pierced for our transgressions; he was crushed for our iniquities... by his wounds we are healed. All we like sheep have gone astray... and the LORD has laid on him the iniquity of us all."</td>
+      <td class="ref-td">Acts 8:32–35 — Philip reads this to the Ethiopian eunuch and preaches Jesus</td>
+    </tr>
+  </table>
+
+  <div class="box box-red">
+    <div class="box-label">The Interpretive Key — Isaiah 49:6</div>
+    <p>"It is too light a thing that you should be my servant to raise up the tribes of Jacob and to bring back the preserved of Israel; I will make you a light for the nations, that my salvation may reach to the end of the earth."</p>
+    <p>The Servant's mission is to <strong>restore Israel</strong>. Therefore the Servant cannot be Israel — you cannot be sent to restore yourself. The Servant is a distinct individual, sent to and for the nation. He is the faithful one within Israel who does what the nation could not do.</p>
+  </div>
+
+  <h3>Isaiah 53 — The Suffering Servant in Detail</h3>
+  <p>Isaiah 53 is the passage the Ethiopian eunuch is reading when Philip meets him on the road (Acts 8). He asks: "About whom does the prophet say this, about himself or about someone else?" Philip opens his mouth and — beginning from this very passage — preaches Jesus.</p>
+
+  <div class="verse-block">
+    <div class="verse-ref">Isaiah 53:4–6</div>
+    <div class="verse-text">"Surely he has borne our griefs and carried our sorrows; yet we esteemed him stricken, smitten by God, and afflicted. But he was pierced for our transgressions; he was crushed for our iniquities; upon him was the chastisement that brought us peace, and with his wounds we are healed. All we like sheep have gone astray; we have turned — every one — to his own way; and the LORD has laid on him the iniquity of us all."</div>
+    <div class="verse-note">Written approximately 700 years before the crucifixion. The suffering servant bears the covenant punishment that Israel deserved — exile, curse, abandonment — so that those who are in him receive the covenant blessings instead.</div>
+  </div>
+
+  <div class="box box-green">
+    <div class="box-label">The Theological Point</div>
+    <p>Israel was supposed to be a light to the nations (Isa 42:6). Israel failed. The Servant — who is Israel-reduced-to-one, the faithful Son — becomes the light to the nations in Israel's place. And then, all who are in him by faith become what Israel was called to be: "a kingdom of priests and a holy nation" (1 Pet 2:9 — quoting Ex 19:6 and applying it to the Church).</p>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════
+     TAB 5 · THE PRIESTHOOD
+══════════════════════════════════ -->
+<div id="priesthood" class="panel">
+<div class="inner">
+
+  <h2>The Priesthood — Where Dispensationalism Fractures</h2>
+  <p>This is where the dispensationalist system runs into its deepest internal contradiction. They accept that Jesus is the High Priest — Hebrews is in their Bible. But their system requires the Levitical priesthood and animal sacrifices to be literally restored in the Millennial Temple (Ezek 40–48). These two claims cannot both be true.</p>
+
+  <h2>What Hebrews Says — No Ambiguity</h2>
+
+  <div class="verse-block">
+    <div class="verse-ref">Hebrews 7:11–12</div>
+    <div class="verse-text">"Now if perfection had been attainable through the Levitical priesthood (for under it the people received the law), what further need would there have been for another priest to arise after the order of Melchizedek, rather than one named after the order of Aaron? For when there is a change in the priesthood, there is necessarily a change in the law as well."</div>
+    <div class="verse-note">The Levitical priesthood is replaced — not supplemented, not paused. A new order has come. The law attached to it changes with it.</div>
+  </div>
+
+  <div class="verse-block">
+    <div class="verse-ref">Hebrews 8:13</div>
+    <div class="verse-text">"In speaking of a new covenant, he makes the first one obsolete. And what is becoming obsolete and growing old is ready to vanish away."</div>
+    <div class="verse-note">Written before the Temple was destroyed in AD 70 — Hebrews says the old covenant system is already obsolete. The destruction of the Temple in 70 AD was the physical sign of what was already spiritually true.</div>
+  </div>
+
+  <div class="verse-block">
+    <div class="verse-ref">Hebrews 10:10–14</div>
+    <div class="verse-text">"We have been sanctified through the offering of the body of Jesus Christ once for all. And every priest stands daily at his service, offering repeatedly the same sacrifices, which can never take away sins. But when Christ had offered for all time a single sacrifice for sins, he sat down at the right hand of God... For by a single offering he has perfected for all time those who are being sanctified."</div>
+    <div class="verse-note">"Once for all." "A single sacrifice." "He sat down" — the priestly work is finished. No further offerings are needed or valid. Animal sacrifices after the cross are not pointing forward to Christ — they are pointing backward to a shadow that the reality has replaced.</div>
+  </div>
+
+  <h2>The Melchizedek Priesthood — Greater Than Levi</h2>
+  <p>Jesus is not a Levitical priest. He cannot be — he is from the tribe of Judah, not Levi (Heb 7:14). Instead he holds a priesthood that is older and greater than the Levitical order: the order of Melchizedek.</p>
+
+  <div class="parallel">
+    <div class="parallel-header" onclick="toggleParallel(this.parentElement)">
+      <div class="parallel-title">Melchizedek → Jesus</div>
+      <div class="parallel-chevron">▶</div>
+    </div>
+    <div class="parallel-cols">
+      <div class="col-israel">
+        <div class="col-label">Melchizedek — Genesis 14</div>
+        <div class="col-verse">"Melchizedek king of Salem brought out bread and wine. He was priest of God Most High. And he blessed him..."</div>
+        <div class="col-ref">Genesis 14:18–19</div>
+        <div class="col-note">Melchizedek appears before the Levitical priesthood exists. He is king AND priest — a combination the Mosaic law later separates. He offers bread and wine. He has no recorded genealogy, no beginning or end of days in the text.</div>
+      </div>
+      <div class="col-jesus">
+        <div class="col-label">Jesus — Hebrews 7</div>
+        <div class="col-verse">"He is without father or mother or genealogy, having neither beginning of days nor end of life, but resembling the Son of God he continues a priest forever."</div>
+        <div class="col-ref">Hebrews 7:3</div>
+        <div class="col-note">Jesus is the Melchizedek figure — king and priest, eternal, offering bread and wine (the Eucharist echoes Melchizedek). Psalm 110:4 — "You are a priest forever after the order of Melchizedek" — is applied to Jesus in Acts 2 and Hebrews.</div>
+      </div>
+    </div>
+    <div class="parallel-insight">
+      <div class="insight-label">Why This Matters</div>
+      <p>Abraham paid tithes to Melchizedek — meaning Levi (still in Abraham's loins) paid tithes to him (Heb 7:9–10). The Melchizedek priesthood is therefore greater than the Levitical. Jesus holds the greater priesthood. There is no going back to the lesser.</p>
+    </div>
+  </div>
+
+  <h2>The Dispensationalist Tension — Laid Out Honestly</h2>
+
+  <table class="tension-table">
+    <tr>
+      <th>The Dispensationalist Position</th>
+      <th>What Hebrews Says</th>
+    </tr>
+    <tr>
+      <td class="disp-col">Ezekiel 40–48 describes a literal future Temple with Levitical priests and animal sacrifices in the Millennium</td>
+      <td class="nt-col">Hebrews 8:13 — the Levitical system is already obsolete. Heb 10:18 — "Where there is forgiveness, there is no longer any offering for sin."</td>
+    </tr>
+    <tr>
+      <td class="disp-col">The Millennial sacrifices are "memorial" — looking back to the cross the way communion looks back</td>
+      <td class="nt-col">Hebrews 10:1–4 — animal blood "can never take away sins." If they are memorial, why did God institute the Lord's Supper (bread and wine) for that purpose? Why return to a lesser form?</td>
+    </tr>
+    <tr>
+      <td class="disp-col">Jesus reigns from Jerusalem on a literal Davidic throne over ethnic Israel</td>
+      <td class="nt-col">Acts 2:30–36 — Peter says David "foresaw and spoke about the resurrection of the Christ," and Jesus is NOW exalted at God's right hand on David's throne. The throne is occupied.</td>
+    </tr>
+    <tr>
+      <td class="disp-col">The Church age is a parenthesis — God's real program is with ethnic Israel</td>
+      <td class="nt-col">Eph 2:14–16 — Christ "has made us both one and has broken down the dividing wall of hostility... that he might create in himself one new man in place of the two." One people. No wall.</td>
+    </tr>
+    <tr>
+      <td class="disp-col">Revelation 7's 144,000 from the twelve tribes is a literal future ethnic Israel</td>
+      <td class="nt-col">The list modifies the tribes — Dan removed, Manasseh added, Levi included. This is not a genealogical registry. It is a symbolic number (12 × 12 × 1000) representing the complete people of God.</td>
+    </tr>
+  </table>
+
+  <div class="box box-red">
+    <div class="box-label">The Core Contradiction</div>
+    <p>If Jesus is the once-for-all High Priest whose single offering has "perfected for all time those who are being sanctified" (Heb 10:14), then reinstating animal sacrifices — even as memorials — implies his sacrifice was incomplete or insufficient. Hebrews was written precisely to prevent Jewish Christians from returning to the old system. The author calls it a return to "weak and worthless elementary principles" (Gal 4:9).</p>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════
+     TAB 6 · DISPENSATIONALISM
+══════════════════════════════════ -->
+<div id="disp" class="panel">
+<div class="inner">
+
+  <h2>The True Israel Argument vs. Dispensationalism</h2>
+  <p>Dispensationalism requires keeping Israel and the Church as permanently separate categories — two peoples, two programs, two tracks. The "True Israel" argument, drawn from the New Testament itself, collapses that distinction. Here is the case laid out directly.</p>
+
+  <div class="box box-blue">
+    <div class="box-label">The Dispensationalist Requirement</div>
+    <p>For dispensationalism to work, "Israel" in prophecy must always mean ethnic, national, genealogical Israel — never the Church, never a spiritual community. The moment "Israel" can refer to the community of faith in Christ (Jew and Gentile), the two-track system fails. This is why they resist Galatians 6:16 ("the Israel of God") so strongly — and why the "True Israel" argument strikes at the foundation of the system.</p>
+  </div>
+
+  <h3>The Key Texts — What They Say</h3>
+
+  <div class="parallel">
+    <div class="parallel-header" onclick="toggleParallel(this.parentElement)">
+      <div class="parallel-title">Romans 9:6 — "Not All Israel is Israel"</div>
+      <div class="parallel-chevron">▶</div>
+    </div>
+    <div class="parallel-cols">
+      <div class="col-israel">
+        <div class="col-label">Dispensationalist Reading</div>
+        <div class="col-verse">"But it is not as though the word of God has failed."</div>
+        <div class="col-ref">Romans 9:6a</div>
+        <div class="col-note">They read this as Paul assuring his readers that God's promises to ethnic Israel haven't failed — they will be fulfilled in the future restoration of the nation. The "word of God" = the land and kingdom promises.</div>
+      </div>
+      <div class="col-jesus">
+        <div class="col-label">What Paul Actually Says Next</div>
+        <div class="col-verse">"For not all who are descended from Israel belong to Israel, and not all are children of Abraham because they are his offspring."</div>
+        <div class="col-ref">Romans 9:6b–7</div>
+        <div class="col-note">Paul immediately defines "Israel" as a covenant category, not a genealogical one. He traces this back to Isaac (not Ishmael) and Jacob (not Esau) — showing election within physical descent was always the principle.</div>
+      </div>
+    </div>
+    <div class="parallel-insight">
+      <div class="insight-label">The Point</div>
+      <p>Paul is not saying God's promises to ethnic Israel are delayed. He is saying the "Israel" that receives the promises was never defined by ethnicity alone. The election of grace was always the defining principle — and that election now includes Gentiles in Christ.</p>
+    </div>
+  </div>
+
+  <div class="parallel">
+    <div class="parallel-header" onclick="toggleParallel(this.parentElement)">
+      <div class="parallel-title">Galatians 3:16 — The Singular Offspring</div>
+      <div class="parallel-chevron">▶</div>
+    </div>
+    <div class="parallel-cols">
+      <div class="col-israel">
+        <div class="col-label">Dispensationalist Reading</div>
+        <div class="col-verse">"Now the promises were made to Abraham and to his offspring."</div>
+        <div class="col-ref">Genesis 12:7 / 13:15</div>
+        <div class="col-note">They read "offspring" as the nation Israel — the physical descendants of Abraham. The land promise, the covenant, the kingdom promises all belong to ethnic Israel because God made them to Abraham's physical seed.</div>
+      </div>
+      <div class="col-jesus">
+        <div class="col-label">What Paul Says</div>
+        <div class="col-verse">"It does not say, 'And to offsprings,' referring to many, but referring to one, 'And to your offspring,' who is Christ."</div>
+        <div class="col-ref">Galatians 3:16</div>
+        <div class="col-note">Paul makes a grammatical argument about the singular. The promise was made to the singular offspring — Christ. He is the heir. Those in him inherit with him. Not two tracks — one heir, and those united to him.</div>
+      </div>
+    </div>
+    <div class="parallel-insight">
+      <div class="insight-label">The Implication</div>
+      <p>If Christ is the singular offspring who inherits the Abrahamic promises, then the question is not whether ethnic Israel will inherit the land — it is whether you are in Christ, the heir. Galatians 3:29 follows: "If you are Christ's, then you are Abraham's offspring, heirs according to promise." Jew and Gentile, one heir, one inheritance.</p>
+    </div>
+  </div>
+
+  <div class="parallel">
+    <div class="parallel-header" onclick="toggleParallel(this.parentElement)">
+      <div class="parallel-title">Galatians 6:16 — "The Israel of God"</div>
+      <div class="parallel-chevron">▶</div>
+    </div>
+    <div class="parallel-cols">
+      <div class="col-israel">
+        <div class="col-label">Dispensationalist Reading</div>
+        <div class="col-verse">"Peace and mercy be upon all who walk by this rule, and upon the Israel of God."</div>
+        <div class="col-ref">Galatians 6:16</div>
+        <div class="col-note">They read "the Israel of God" as ethnic Jewish Christians — a subgroup within the Church who are biological Jews. The Church and Israel remain distinct even here.</div>
+      </div>
+      <div class="col-jesus">
+        <div class="col-label">The Natural Reading</div>
+        <div class="col-verse">Paul has just argued (Gal 3–5) that in Christ "there is neither Jew nor Greek." The "rule" he refers to is the new creation in Christ, not circumcision. "The Israel of God" is the community defined by this rule — those in Christ.</div>
+        <div class="col-ref">Galatians 6:15–16</div>
+        <div class="col-note">The Greek "kai" (and/even) connects "all who walk by this rule" with "the Israel of God" — they are the same group. The Church, constituted of Jew and Gentile in Christ, is the Israel of God.</div>
+      </div>
+    </div>
+    <div class="parallel-insight">
+      <div class="insight-label">Why This Matters</div>
+      <p>If "the Israel of God" can refer to the community of faith in Christ, then Old Testament prophecies addressed to "Israel" can find their fulfillment in that community — not in a future ethnic nation-state. This is the hermeneutical key the dispensationalist system cannot afford to grant.</p>
+    </div>
+  </div>
+
+  <h2>The Question That Cuts to the Heart</h2>
+
+  <div class="box box-gold">
+    <div class="box-label">For a Calvary Chapel Conversation</div>
+    <p>The question is not: "Does God keep his promises to Israel?" — of course he does, and both sides agree.</p>
+    <p>The question is: <strong>"Who is Israel?"</strong></p>
+    <p>Paul answers in Romans 9:6 — not all who are descended from Israel belong to Israel. Jesus answers in John 8:39 — "If you were Abraham's children, you would be doing the works Abraham did." John the Baptist answers in Matthew 3:9 — "God is able from these stones to raise up children for Abraham."</p>
+    <p>The New Testament consistently defines the true Israel by faith and covenant relationship — not genealogy. Jesus is the faithful Israel, the true Son, the singular offspring. And those who are baptized into him become, by union with him, what Israel was always called to be.</p>
+  </div>
+
+  <div class="verse-block">
+    <div class="verse-ref">1 Peter 2:9 — Addressed to the Church, Quoting Exodus 19:6</div>
+    <div class="verse-text">"But you are a chosen race, a royal priesthood, a holy nation, a people for his own possession, that you may proclaim the excellencies of him who called you out of darkness into his marvelous light."</div>
+    <div class="verse-note">Peter takes the exact words God spoke to Israel at Sinai — "kingdom of priests, holy nation" (Ex 19:6) — and applies them directly to the Church, composed of Jews and Gentiles. He is not saying Israel's calling is cancelled. He is saying it is fulfilled — in the community gathered around Jesus, the true Israel.</div>
+  </div>
+
+</div>
+</div>
+
+<script>
+function showTab(id) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.currentTarget.classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function toggleParallel(card) {
+  card.classList.toggle('open');
+}
+</script>
+
+</body>
+</html>

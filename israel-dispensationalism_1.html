@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en" style="color-scheme: only light;">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="only light">
+<title>Israel, the Kingdom & Dispensationalism</title>
+<style>
+:root, html, body {
+  color-scheme: only light !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root, html, body, * {
+    color-scheme: only light !important;
+    background-color: revert !important;
+    color: revert !important;
+  }
+}
+
+:root {
+  --cream: #f7f3eb;
+  --cream-mid: #f0ead8;
+  --cream-deep: #e8dfc8;
+  --ink: #1a1714;
+  --ink-mid: #3a3530;
+  --ink-light: #5a524a;
+  --gold: #8a6800;
+  --gold-light: #c4a020;
+  --red: #7a1c1c;
+  --blue: #1a3558;
+  --green: #1e4a1e;
+  --border: #c8b898;
+  --border-light: #ddd0b8;
+  --amber-bg: #fdf4dc;
+  --amber-border: #c8a030;
+  --red-bg: #fdf0f0;
+  --red-border: #c05050;
+  --blue-bg: #f0f4fa;
+  --blue-border: #3a5888;
+  --green-bg: #f0f7f0;
+  --green-border: #3a6a3a;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { background: #f7f3eb !important; }
+
+body {
+  background: #f7f3eb !important;
+  color: #1a1714 !important;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+/* ── HEADER ── */
+header {
+  background: var(--cream-deep);
+  border-bottom: 3px solid var(--gold);
+  padding: 2rem 1.5rem 1.75rem;
+  text-align: center;
+}
+.eyebrow {
+  font-family: 'Courier New', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+}
+header h1 {
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  font-weight: normal;
+  color: var(--ink);
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.02em;
+}
+header .subtitle {
+  font-style: italic;
+  color: var(--ink-light);
+  font-size: 0.92rem;
+}
+
+/* ── TAB NAV ── */
+.tab-nav {
+  display: flex;
+  background: #f0ead8 !important;
+  border-bottom: 2px solid #c8b898;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.tab-nav::-webkit-scrollbar { display: none; }
+.tab-btn {
+  flex-shrink: 0;
+  padding: 0.85rem 1rem;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  cursor: pointer;
+  font-family: 'Courier New', monospace;
+  font-size: 0.68rem;
+  font-weight: bold;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #3a3530 !important;
+  white-space: nowrap;
+  transition: color 0.15s;
+  -webkit-text-fill-color: #3a3530;
+}
+.tab-btn:hover { color: #1a1714 !important; -webkit-text-fill-color: #1a1714; }
+.tab-btn.active {
+  color: #8a6800 !important;
+  -webkit-text-fill-color: #8a6800;
+  border-bottom-color: #8a6800;
+  font-weight: bold;
+}
+
+/* ── PANELS ── */
+.panel { display: none; background: #f7f3eb !important; }
+.panel.active { display: block; background: #f7f3eb !important; }
+.panel-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3rem;
+  background: #f7f3eb !important;
+}
+
+/* ── TYPOGRAPHY ── */
+.panel-inner h2 {
+  font-size: 1.35rem;
+  font-weight: bold;
+  color: #1a1714 !important;
+  -webkit-text-fill-color: #1a1714;
+  border-bottom: 2px solid #c8b898;
+  padding-bottom: 0.45rem;
+  margin: 2rem 0 1rem;
+}
+.panel-inner h2:first-child { margin-top: 0; }
+.panel-inner h3 {
+  font-family: 'Courier New', monospace;
+  font-size: 0.72rem;
+  font-weight: bold;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8a6800 !important;
+  -webkit-text-fill-color: #8a6800;
+  margin: 1.5rem 0 0.6rem;
+}
+.panel-inner p {
+  color: #3a3530 !important;
+  -webkit-text-fill-color: #3a3530;
+  margin-bottom: 0.9rem;
+  font-size: 0.97rem;
+}
+.panel-inner p strong { color: #1a1714 !important; -webkit-text-fill-color: #1a1714; }
+.ref {
+  font-family: 'Courier New', monospace;
+  font-size: 0.75rem;
+  color: var(--gold);
+  font-style: normal;
+}
+
+/* ── CALLOUT BOXES (all light) ── */
+.box {
+  border-radius: 4px;
+  padding: 1.1rem 1.25rem;
+  margin: 1.1rem 0;
+  border-left: 4px solid;
+}
+.box-amber {
+  background: var(--amber-bg);
+  border-color: var(--amber-border);
+}
+.box-red {
+  background: var(--red-bg);
+  border-color: var(--red-border);
+}
+.box-blue {
+  background: var(--blue-bg);
+  border-color: var(--blue-border);
+}
+.box-green {
+  background: var(--green-bg);
+  border-color: var(--green-border);
+}
+.box-label {
+  font-family: 'Courier New', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 0.45rem;
+}
+.box-amber .box-label { color: var(--gold); }
+.box-red .box-label { color: var(--red); }
+.box-blue .box-label { color: var(--blue); }
+.box-green .box-label { color: var(--green); }
+.box p { margin-bottom: 0.5rem; color: var(--ink-mid); font-size: 0.93rem; }
+.box p:last-child { margin-bottom: 0; }
+.box p strong { color: var(--ink); }
+
+/* ── TIMELINE ── */
+.timeline { padding-left: 1.5rem; position: relative; margin: 1rem 0; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0.5rem;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 2px;
+  background: var(--border);
+}
+.t-event {
+  position: relative;
+  margin-bottom: 1.1rem;
+  background: white;
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  padding: 0.9rem 1rem;
+}
+.t-event::before {
+  content: '';
+  position: absolute;
+  left: -1.35rem;
+  top: 0.9rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--cream);
+  border: 2px solid var(--border);
+}
+.t-event.key::before { background: var(--gold); border-color: var(--gold); }
+.t-event.crisis::before { background: var(--red); border-color: var(--red); }
+.t-event.key { border-left: 3px solid var(--gold); }
+.t-event.crisis { border-left: 3px solid var(--red); }
+.t-date {
+  font-family: 'Courier New', monospace;
+  font-size: 0.68rem;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+}
+.t-event.crisis .t-date { color: var(--red); }
+.t-title { font-weight: bold; font-size: 0.97rem; color: var(--ink); margin-bottom: 0.25rem; }
+.t-body { font-size: 0.9rem; color: var(--ink-mid); margin: 0; }
+
+/* ── TRIBE GRID ── */
+.tribe-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+.tribe-card {
+  background: white;
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  padding: 0.6rem 0.7rem;
+  font-size: 0.82rem;
+}
+.tribe-name { font-weight: bold; color: var(--ink); font-size: 0.88rem; }
+.tribe-note { color: var(--ink-light); font-size: 0.78rem; margin-top: 0.1rem; }
+.tribe-card.north { border-top: 3px solid var(--blue); }
+.tribe-card.south { border-top: 3px solid var(--green); }
+.tribe-card.levi { border-top: 3px solid var(--gold); }
+
+/* ── COMPARISON TABLE ── */
+.comp-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  margin: 1rem 0;
+}
+.comp-table th {
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+  font-family: 'Courier New', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--cream-deep);
+  color: var(--ink);
+  border-bottom: 2px solid var(--border);
+}
+.comp-table td {
+  padding: 0.65rem 0.8rem;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--ink-mid);
+  vertical-align: top;
+}
+.comp-table tr:nth-child(even) td { background: var(--cream); }
+.comp-table td strong { color: var(--ink); }
+.comp-table td.ref-col {
+  font-family: 'Courier New', monospace;
+  font-size: 0.75rem;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+/* ── TWO-COL SPLIT ── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+.col-card {
+  background: white;
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  padding: 1rem;
+}
+.col-card.north-card { border-top: 3px solid var(--blue); }
+.col-card.south-card { border-top: 3px solid var(--green); }
+.col-card h4 {
+  font-family: 'Courier New', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+.col-card.north-card h4 { color: var(--blue); }
+.col-card.south-card h4 { color: var(--green); }
+.col-card .row { font-size: 0.85rem; color: var(--ink-mid); margin-bottom: 0.3rem; }
+.col-card .row strong { color: var(--ink); }
+
+/* ── VERSE BLOCK ── */
+.verse-block {
+  background: var(--cream-mid);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1rem 1.1rem;
+  margin: 0.9rem 0;
+}
+.verse-ref {
+  font-family: 'Courier New', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
+.verse-text {
+  font-style: italic;
+  color: var(--ink);
+  font-size: 0.93rem;
+  margin-bottom: 0.4rem;
+}
+.verse-note { font-size: 0.87rem; color: var(--ink-mid); }
+
+/* ── COUNTER-EVIDENCE ITEM ── */
+.counter-item {
+  background: white;
+  border: 1px solid var(--border-light);
+  border-left: 4px solid var(--red-border);
+  border-radius: 4px;
+  padding: 1rem 1.1rem;
+  margin-bottom: 0.9rem;
+}
+.counter-claim {
+  font-family: 'Courier New', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 0.3rem;
+}
+.counter-title { font-weight: bold; font-size: 0.97rem; color: var(--ink); margin-bottom: 0.4rem; }
+.counter-body { font-size: 0.9rem; color: var(--ink-mid); margin-bottom: 0.5rem; }
+.counter-verses { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.4rem; }
+.cv-tag {
+  font-family: 'Courier New', monospace;
+  font-size: 0.72rem;
+  background: var(--red-bg);
+  border: 1px solid var(--red-border);
+  color: var(--red);
+  padding: 0.1rem 0.45rem;
+  border-radius: 3px;
+}
+
+/* ── DISP CLAIM ITEM ── */
+.disp-item {
+  background: white;
+  border: 1px solid var(--border-light);
+  border-left: 4px solid var(--blue-border);
+  border-radius: 4px;
+  padding: 1rem 1.1rem;
+  margin-bottom: 0.9rem;
+}
+.disp-label {
+  font-family: 'Courier New', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 0.3rem;
+}
+.disp-title { font-weight: bold; font-size: 0.97rem; color: var(--ink); margin-bottom: 0.4rem; }
+.disp-body { font-size: 0.9rem; color: var(--ink-mid); margin-bottom: 0.5rem; }
+.disp-verses { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.4rem; }
+.dv-tag {
+  font-family: 'Courier New', monospace;
+  font-size: 0.72rem;
+  background: var(--blue-bg);
+  border: 1px solid var(--blue-border);
+  color: var(--blue);
+  padding: 0.1rem 0.45rem;
+  border-radius: 3px;
+}
+
+@media (max-width: 540px) {
+  .two-col { grid-template-columns: 1fr; }
+  .tribe-grid { grid-template-columns: repeat(2, 1fr); }
+  .panel-inner { padding: 1.5rem 1rem 2.5rem; }
+  .comp-table td.ref-col { display: none; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Catholic Formation · Reference Tool</div>
+  <h1>Israel, the Kingdom & Dispensationalism</h1>
+  <p class="subtitle">The full biblical narrative — from twelve tribes to modern debate</p>
+</header>
+
+<nav class="tab-nav">
+  <button class="tab-btn active" onclick="show('tribes')">1 · Tribes</button>
+  <button class="tab-btn" onclick="show('united')">2 · United Kingdom</button>
+  <button class="tab-btn" onclick="show('split')">3 · The Split</button>
+  <button class="tab-btn" onclick="show('north')">4 · North Falls</button>
+  <button class="tab-btn" onclick="show('judah')">5 · Judah & Babylon</button>
+  <button class="tab-btn" onclick="show('return')">6 · The Return</button>
+  <button class="tab-btn" onclick="show('disp')">7 · Dispensationalism</button>
+  <button class="tab-btn" onclick="show('counter')">8 · The Full Story</button>
+</nav>
+
+<!-- ══════════════════════════════════════════════
+     TAB 1 · THE TWELVE TRIBES
+══════════════════════════════════════════════ -->
+<div id="tribes" class="panel active">
+<div class="panel-inner">
+
+  <h2>The Twelve Tribes of Israel</h2>
+  <p>Everything in this story flows from one man: Jacob, renamed Israel by God (Gen 32:28). His twelve sons became twelve tribes — and their collective identity as "Israel" is a <strong>covenant category</strong>, not just an ethnic one. That distinction will matter enormously later.</p>
+
+  <div class="box box-amber">
+    <div class="box-label">Analogy</div>
+    <p>Think of the twelve tribes like the founding families of a nation. The nation has a name (Israel), a charter (the Mosaic covenant at Sinai), a capital city (eventually Jerusalem), and a central institution (the Temple). Each family holds a territory, but they are one people under one covenant. What holds them together is not just blood — it's the covenant. When they break the covenant, everything unravels.</p>
+  </div>
+
+  <h3>The Twelve Sons of Jacob <span class="ref">Gen 29–30, 35; Gen 49</span></h3>
+  <div class="tribe-grid">
+    <div class="tribe-card north">
+      <div class="tribe-name">Reuben</div>
+      <div class="tribe-note">Firstborn, lost blessing · North</div>
+    </div>
+    <div class="tribe-card north">
+      <div class="tribe-name">Simeon</div>
+      <div class="tribe-note">Absorbed into Judah later · North/South</div>
+    </div>
+    <div class="tribe-card levi">
+      <div class="tribe-name">Levi</div>
+      <div class="tribe-note">Priests — no land allotment · Gold</div>
+    </div>
+    <div class="tribe-card south">
+      <div class="tribe-name">Judah</div>
+      <div class="tribe-note">Royal line · David · Jesus · South</div>
+    </div>
+    <div class="tribe-card north">
+      <div class="tribe-name">Dan</div>
+      <div class="tribe-note">Far north · one of Jeroboam's calf sites</div>
+    </div>
+    <div class="tribe-card north">
+      <div class="tribe-name">Naphtali</div>
+      <div class="tribe-note">Northern Galilee region</div>
+    </div>
+    <div class="tribe-card north">
+      <div class="tribe-name">Gad</div>
+      <div class="tribe-note">East of Jordan · North</div>
+    </div>
+    <div class="tribe-card north">
+      <div class="tribe-name">Asher</div>
+      <div class="tribe-note">Coastal north · Anna the prophetess</div>
+    </div>
+    <div class="tribe-card north">
+      <div class="tribe-name">Issachar</div>
+      <div class="tribe-note">Jezreel Valley · North</div>
+    </div>
+    <div class="tribe-card north">
+      <div class="tribe-name">Zebulun</div>
+      <div class="tribe-note">Lower Galilee · North</div>
+    </div>
+    <div class="tribe-card north">
+      <div class="tribe-name">Joseph → Ephraim & Manasseh</div>
+      <div class="tribe-note">Split into 2 tribes · dominant in North</div>
+    </div>
+    <div class="tribe-card south">
+      <div class="tribe-name">Benjamin</div>
+      <div class="tribe-note">Stays with Judah · Paul's tribe · South</div>
+    </div>
+  </div>
+  <p style="font-size:0.83rem; color:var(--ink-light);">Blue top = Northern Kingdom after split · Green top = Southern Kingdom · Gold top = Levi (no territory, dispersed among all tribes as priests)</p>
+
+  <h3>Key Covenant Fact <span class="ref">Rom 9:6; Gen 17:7</span></h3>
+  <p>From the very beginning, physical descent from Jacob was never the whole story. The covenant had conditions. Circumcision was the sign, but faithfulness was the substance. Paul makes this explicit in Romans 9:6 — <em>"not all who are descended from Israel belong to Israel."</em> The true "Israel" was always defined by covenant faithfulness, not bloodline alone.</p>
+
+  <div class="verse-block">
+    <div class="verse-ref">Genesis 17:7</div>
+    <div class="verse-text">"I will establish my covenant between me and you and your offspring after you throughout their generations for an everlasting covenant, to be God to you and to your offspring after you."</div>
+    <div class="verse-note">The covenant is with Abraham's offspring — but Scripture will repeatedly qualify what "offspring" means. See Gal 3:16, Rom 4:13–16.</div>
+  </div>
+
+  <h3>The Land Allotments <span class="ref">Josh 13–19</span></h3>
+  <p>After the Exodus and conquest under Joshua, each tribe received a territorial allotment in Canaan. Levi received no land — they were distributed among all tribes as priests and teachers. This is why the later northern kingdom's rejection of the Levitical priesthood was such a dramatic covenant rupture.</p>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     TAB 2 · UNITED KINGDOM
+══════════════════════════════════════════════ -->
+<div id="united" class="panel">
+<div class="panel-inner">
+
+  <h2>The United Kingdom</h2>
+  <p>For roughly 120 years (Saul, David, Solomon — approximately 1050–930 BC), all twelve tribes were united under one crown. This is the golden era that all later Israelite hope looks back to — and which dispensationalists believe must be literally restored.</p>
+
+  <div class="timeline">
+    <div class="t-event">
+      <div class="t-date">~1050 BC</div>
+      <div class="t-title">Saul — the People's Choice <span class="ref" style="font-weight:normal;">1 Sam 8–15</span></div>
+      <div class="t-body">Israel demands a king "like the other nations" — God grants it as a concession, warning them what kingship will cost. Saul is tall, impressive, a failure. He disobeys God twice and is rejected. The kingdom begins with a warning about human kingship built in.</div>
+    </div>
+    <div class="t-event key">
+      <div class="t-date">~1010 BC</div>
+      <div class="t-title">David — the Covenant King <span class="ref" style="font-weight:normal;">2 Sam 7; Ps 89</span></div>
+      <div class="t-body">God makes an unconditional covenant with David: his throne will be established forever, and God will raise up his offspring. This is the Davidic Covenant — the backbone of messianic expectation for the rest of Scripture.</div>
+    </div>
+    <div class="t-event key">
+      <div class="t-date">~970 BC</div>
+      <div class="t-title">Solomon — Temple Built <span class="ref" style="font-weight:normal;">1 Kings 6–8</span></div>
+      <div class="t-body">The Temple is built. The Ark of the Covenant is installed. God's glory fills the house. This is the peak — all twelve tribes, one king, one Temple, one covenant. Solomon's prayer at the dedication (1 Kings 8) is one of the great covenant moments in Scripture.</div>
+    </div>
+    <div class="t-event crisis">
+      <div class="t-date">~930 BC — seeds of collapse</div>
+      <div class="t-title">Solomon's Apostasy <span class="ref" style="font-weight:normal;">1 Kings 11</span></div>
+      <div class="t-body">700 wives and 300 concubines. Solomon worships foreign gods — Ashtoreth, Molech, Chemosh. God tells him the kingdom will be torn from his son. The split is not a political accident; it is divine judgment for covenant breaking at the very top.</div>
+    </div>
+  </div>
+
+  <h3>The Davidic Covenant — What God Actually Promised <span class="ref">2 Sam 7:12–16</span></h3>
+
+  <div class="verse-block">
+    <div class="verse-ref">2 Samuel 7:12–13, 16</div>
+    <div class="verse-text">"When your days are fulfilled and you lie down with your fathers, I will raise up your offspring after you, who shall come from your body, and I will establish his kingdom. He shall build a house for my name, and I will establish the throne of his kingdom forever... Your throne shall be established forever."</div>
+    <div class="verse-note">Dispensationalists read "forever" as requiring a future literal earthly throne in Jerusalem. Covenant theologians and Catholics read it as fulfilled in Christ — the descendant of David who sits on an eternal throne (Acts 2:29–36, Luke 1:32–33). This is one of the central interpretive disagreements.</div>
+  </div>
+
+  <div class="box box-blue">
+    <div class="box-label">Why This Matters for the Dispensationalism Debate</div>
+    <p>The Davidic Covenant is the engine that drives dispensationalist eschatology. If "forever throne" means a literal political throne in Jerusalem over ethnic Israel, then history is incomplete until that happens. If "forever throne" is fulfilled in Christ's resurrection and reign at the right hand of the Father, then it is already accomplished. Everything downstream depends on which reading is right.</p>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     TAB 3 · THE SPLIT
+══════════════════════════════════════════════ -->
+<div id="split" class="panel">
+<div class="panel-inner">
+
+  <h2>The Kingdom Splits (930 BC)</h2>
+  <p>After Solomon dies, his son Rehoboam faces a choice that determines the next 400 years of Israel's history. He chooses wrong.</p>
+
+  <div class="timeline">
+    <div class="t-event crisis">
+      <div class="t-date">930 BC</div>
+      <div class="t-title">Rehoboam's Folly <span class="ref" style="font-weight:normal;">1 Kings 12:1–20</span></div>
+      <div class="t-body">The northern tribes ask Rehoboam to lighten their tax burden. His elders counsel mercy; his young friends counsel harshness. He chooses harshness: "My father disciplined you with whips, but I will discipline you with scorpions." Ten tribes immediately revolt.</div>
+    </div>
+    <div class="t-event key">
+      <div class="t-date">930 BC</div>
+      <div class="t-title">Jeroboam Crowned in the North <span class="ref" style="font-weight:normal;">1 Kings 12:20</span></div>
+      <div class="t-body">Jeroboam, an Ephraimite who had fled to Egypt, returns and is made king over the ten northern tribes. He rules from Shechem initially, then Tirzah. The north calls itself "Israel." The south (Judah + Benjamin) keeps Jerusalem and the Davidic line.</div>
+    </div>
+    <div class="t-event crisis">
+      <div class="t-date">930 BC — Immediate Rupture</div>
+      <div class="t-title">Jeroboam's Golden Calves <span class="ref" style="font-weight:normal;">1 Kings 12:26–33</span></div>
+      <div class="t-body">Jeroboam fears that if the northern people keep going to Jerusalem to worship, their loyalty will drift back to Rehoboam. His solution: set up two golden calves at Bethel (south of his kingdom) and Dan (far north). He announces: "Here are your gods, O Israel, who brought you up out of Egypt." This is an almost verbatim echo of Aaron's sin with the golden calf in Exodus 32. It is immediate, deliberate, covenant-breaking idolatry — installed as state religion.</div>
+    </div>
+  </div>
+
+  <div class="box box-red">
+    <div class="box-label">The Covenant Rupture in the North</div>
+    <p>Jeroboam doesn't just make a political split — he <strong>dismantles the entire worship system</strong>. He: (1) installs golden calves at rival sites, (2) appoints non-Levitical priests, (3) moves the feast calendar, and (4) offers sacrifices himself rather than through the Levitical priesthood. This violates Deuteronomy 12 (one central sanctuary), the Levitical priesthood laws, and the liturgical calendar of Leviticus 23. The northern kingdom breaks the covenant at its foundation on day one.</p>
+  </div>
+
+  <div class="verse-block">
+    <div class="verse-ref">1 Kings 12:30</div>
+    <div class="verse-text">"And this thing became a sin, for the people went as far as Dan to be before one."</div>
+    <div class="verse-note">Scripture's verdict is unambiguous. The phrase "the sin of Jeroboam" becomes a recurring refrain used to condemn every subsequent northern king — all 19 of them.</div>
+  </div>
+
+  <h3>What the Split Looked Like</h3>
+  <div class="two-col">
+    <div class="col-card north-card">
+      <h4>Northern Kingdom · Israel</h4>
+      <div class="row"><strong>Tribes:</strong> 10 (Ephraim dominant)</div>
+      <div class="row"><strong>Capital:</strong> Samaria (built by Omri, 1 Kgs 16)</div>
+      <div class="row"><strong>Kings:</strong> 19 total, zero faithful</div>
+      <div class="row"><strong>Worship:</strong> Golden calves, Baal, Asherah</div>
+      <div class="row"><strong>Prophets sent:</strong> Elijah, Elisha, Amos, Hosea</div>
+      <div class="row"><strong>Duration:</strong> 930–722 BC (208 years)</div>
+      <div class="row"><strong>End:</strong> Assyrian destruction</div>
+    </div>
+    <div class="col-card south-card">
+      <h4>Southern Kingdom · Judah</h4>
+      <div class="row"><strong>Tribes:</strong> Judah + Benjamin (+ Levi)</div>
+      <div class="row"><strong>Capital:</strong> Jerusalem (Temple intact)</div>
+      <div class="row"><strong>Kings:</strong> 20 total, 8 faithful</div>
+      <div class="row"><strong>Worship:</strong> Mixed — Temple maintained</div>
+      <div class="row"><strong>Prophets sent:</strong> Isaiah, Jeremiah, Micah, Zephaniah</div>
+      <div class="row"><strong>Duration:</strong> 930–586 BC (344 years)</div>
+      <div class="row"><strong>End:</strong> Babylonian destruction</div>
+    </div>
+  </div>
+
+  <div class="box box-amber">
+    <div class="box-label">Analogy</div>
+    <p>The split is like a church denomination fracturing — but the breakaway group doesn't just start a new church. They take the name, claim the heritage, but replace the altar, fire the ordained clergy, move the sacraments to a different building, and change the liturgical calendar. They still call themselves Christians. But the structure that made the worship valid is gone from day one.</p>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     TAB 4 · NORTHERN KINGDOM FALLS
+══════════════════════════════════════════════ -->
+<div id="north" class="panel">
+<div class="panel-inner">
+
+  <h2>The Northern Kingdom's Collapse (722 BC)</h2>
+  <p>Over 208 years, nineteen kings ruled the north. Not one of them is commended in Scripture. God sends prophet after prophet. The northern kingdom ignores every warning and deepens its idolatry until God delivers the judgment he promised.</p>
+
+  <h3>God's Patience — The Prophets <span class="ref">~850–750 BC</span></h3>
+
+  <div class="comp-table-wrap">
+  <table class="comp-table">
+    <tr>
+      <th>Prophet</th>
+      <th>Message to the North</th>
+      <th>Reference</th>
+    </tr>
+    <tr>
+      <td><strong>Elijah</strong></td>
+      <td>Confronts Ahab and Jezebel's Baal worship. Mt. Carmel showdown — YHWH or Baal. The north is at rock bottom.</td>
+      <td class="ref-col">1 Kgs 18–19</td>
+    </tr>
+    <tr>
+      <td><strong>Elisha</strong></td>
+      <td>Miracles and mercy — God still reaching toward the north. Heals Naaman the Syrian. Even foreigners respond.</td>
+      <td class="ref-col">2 Kgs 2–13</td>
+    </tr>
+    <tr>
+      <td><strong>Amos</strong></td>
+      <td>Thunders against social injustice and false worship in the north. "The day of the LORD" is coming — and it will not be what you expect. Sanctuary at Bethel will be destroyed.</td>
+      <td class="ref-col">Amos 3–9</td>
+    </tr>
+    <tr>
+      <td><strong>Hosea</strong></td>
+      <td>God's heartbreak personified. Hosea's unfaithful wife = Israel's unfaithfulness to God. "They have forsaken me to play the whore." Yet God's love persists.</td>
+      <td class="ref-col">Hos 1–3, 11</td>
+    </tr>
+  </table>
+  </div>
+
+  <h3>The Assyrian Conquest <span class="ref">2 Kings 17</span></h3>
+  <p>Shalmaneser V of Assyria besieges Samaria for three years (725–722 BC). The city falls. His successor Sargon II records deporting 27,290 Israelites. The Assyrian practice was systematic population transfer — remove the conquered people to prevent rebellion, import foreign peoples to fill the land.</p>
+
+  <div class="verse-block">
+    <div class="verse-ref">2 Kings 17:5–6</div>
+    <div class="verse-text">"Then the king of Assyria invaded all the land and came to Samaria, and for three years he besieged it. In the ninth year of Hoshea, the king of Assyria captured Samaria, and he carried the Israelites away to Assyria and placed them in Halah, and on the Habor, the river of Gozan, and in the cities of the Medes."</div>
+    <div class="verse-note">They are dispersed across the Assyrian empire — Mesopotamia and Media (northwestern Iran today). No single relocation. Scattered.</div>
+  </div>
+
+  <div class="verse-block">
+    <div class="verse-ref">2 Kings 17:24</div>
+    <div class="verse-text">"And the king of Assyria brought people from Babylon, Cuthah, Avva, Hamath, and Sepharvaim, and placed them in the cities of Samaria instead of the people of Israel."</div>
+    <div class="verse-note">This is the origin of the Samaritan people — a mixed population of imported foreigners and remaining Israelites, who then develop a syncretistic religion (2 Kgs 17:29–41).</div>
+  </div>
+
+  <h3>Scripture's Verdict on Why It Happened <span class="ref">2 Kings 17:7–23</span></h3>
+  <p>Second Kings 17 is one of the most theologically dense passages in the Old Testament. The author stops the narrative to deliver a long theological explanation. Key points:</p>
+
+  <div class="box box-red">
+    <div class="box-label">2 Kings 17:7–8, 18 — God's Own Explanation</div>
+    <p>"This occurred because the people of Israel had sinned against the LORD their God... and had feared other gods and walked in the customs of the nations whom the LORD drove out before the people of Israel... Therefore the LORD was very angry with Israel and removed them out of his sight. None was left but the tribe of Judah only."</p>
+    <p>The exile is not political misfortune. It is <strong>covenant judgment</strong>. God warned through Moses (Deut 28–29) exactly this: persistent covenant breaking results in exile from the land. The land itself was always a covenant gift, not an unconditional possession.</p>
+  </div>
+
+  <h3>The "Lost Ten Tribes" — What Actually Happened</h3>
+  <p>Dispensationalism often speaks of the "ten lost tribes" as a distinct group with a separate covenant future. Here is what the text shows:</p>
+
+  <table class="comp-table">
+    <tr>
+      <th>The Claim</th>
+      <th>What the Text Shows</th>
+      <th>Reference</th>
+    </tr>
+    <tr>
+      <td>"The ten tribes were lost"</td>
+      <td>They were <strong>scattered</strong>, not lost to God. Assyrian records show partial deportation, not total. Many Israelites fled south to Judah before and during the conquest.</td>
+      <td class="ref-col">2 Chr 30:6–11; 2 Chr 11:13–16</td>
+    </tr>
+    <tr>
+      <td>"They remain a distinct group awaiting restoration"</td>
+      <td>Intermarriage with Assyrian populations over generations dissolved distinct tribal identity. No biblical author after 722 BC treats them as a separable group awaiting return.</td>
+      <td class="ref-col">Ezra 2; Neh 7</td>
+    </tr>
+    <tr>
+      <td>"All twelve tribes must be literally restored"</td>
+      <td>Members of northern tribes ARE present in the New Testament (Anna, tribe of Asher; Paul says "our twelve tribes" Acts 26:7; James writes to "the twelve tribes in the Dispersion").</td>
+      <td class="ref-col">Luke 2:36; Acts 26:7; Jas 1:1</td>
+    </tr>
+  </table>
+
+  <div class="box box-amber">
+    <div class="box-label">Analogy</div>
+    <p>Imagine a family of 100 people is forcibly relocated across ten cities. Over two centuries, they marry locals, adopt local languages, blend into local culture. Their grandchildren's grandchildren still know their ancestry but cannot reconstitute the original family unit. Some cousins reconnect through the synagogue network. The "family" is not "lost" — it is dispersed and absorbed. This is what happened to the northern tribes.</p>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     TAB 5 · JUDAH & BABYLON
+══════════════════════════════════════════════ -->
+<div id="judah" class="panel">
+<div class="panel-inner">
+
+  <h2>Judah's Longer Run & the Babylonian Exile</h2>
+  <p>After the north fell in 722 BC, Judah survived another 136 years. Why? Because the Davidic line, the Temple, and at least some covenant faithfulness remained. But the south's reprieve was not permanent.</p>
+
+  <h3>The Good Kings — Covenant Renewal Attempts</h3>
+
+  <table class="comp-table">
+    <tr>
+      <th>King</th>
+      <th>What He Did</th>
+      <th>Reference</th>
+    </tr>
+    <tr>
+      <td><strong>Hezekiah</strong> (~715–686 BC)</td>
+      <td>Destroyed the high places and bronze serpent (which Israel had begun worshipping). Reopened the Temple. Invited northern survivors to a Passover in Jerusalem — some came. Trusted God against Assyria.</td>
+      <td class="ref-col">2 Kgs 18–20; 2 Chr 30</td>
+    </tr>
+    <tr>
+      <td><strong>Josiah</strong> (~640–609 BC)</td>
+      <td>Greatest reformer. The Book of the Law (Torah) was rediscovered in the Temple — it had been lost. National covenant renewal. Destroyed every high place, Asherah pole, and child-sacrifice site. Celebrated the greatest Passover since the judges.</td>
+      <td class="ref-col">2 Kgs 22–23; 2 Chr 34–35</td>
+    </tr>
+  </table>
+
+  <div class="box box-amber">
+    <div class="box-label">Key Detail — 2 Chronicles 30:6–11</div>
+    <p>Hezekiah sent letters throughout what had been the northern kingdom inviting survivors of Zebulun, Manasseh, Asher, and Issachar to come to Jerusalem for Passover. Some mocked. But <strong>some came</strong> — from Asher, Manasseh, and Zebulun. Northern Israelites were still identifiable and were joining the southern community. The tribes were not hermetically sealed off from each other.</p>
+  </div>
+
+  <h3>The Fall of Jerusalem (586 BC)</h3>
+
+  <div class="timeline">
+    <div class="t-event">
+      <div class="t-date">605 BC</div>
+      <div class="t-title">First Deportation <span class="ref" style="font-weight:normal;">Dan 1:1</span></div>
+      <div class="t-body">Nebuchadnezzar takes the first group of Judean nobility to Babylon, including Daniel and his three friends.</div>
+    </div>
+    <div class="t-event">
+      <div class="t-date">597 BC</div>
+      <div class="t-title">Second Deportation <span class="ref" style="font-weight:normal;">2 Kgs 24:14</span></div>
+      <div class="t-body">Nebuchadnezzar takes 10,000 more — craftsmen, soldiers, leaders. Ezekiel is among this group. King Jehoiachin surrenders.</div>
+    </div>
+    <div class="t-event crisis">
+      <div class="t-date">586 BC</div>
+      <div class="t-title">Jerusalem Falls — Temple Destroyed <span class="ref" style="font-weight:normal;">2 Kgs 25</span></div>
+      <div class="t-body">After a two-year siege, Jerusalem's walls are breached. The Temple is burned to the ground. The Ark of the Covenant disappears from history. King Zedekiah's sons are killed before his eyes, then his eyes are put out. The surviving population is marched to Babylon.</div>
+    </div>
+  </div>
+
+  <h3>What the Exile Meant Theologically</h3>
+  <p>The exile was not merely a military defeat. It was the fulfillment of the covenant curses Moses had warned about in Deuteronomy 28–29. Every element of covenant blessing — land, city, Temple, king — was stripped away.</p>
+
+  <div class="verse-block">
+    <div class="verse-ref">Jeremiah 29:4–7, 10–11 — Letter to the Exiles</div>
+    <div class="verse-text">"Build houses and live in them; plant gardens and eat their produce... seek the welfare of the city where I have sent you into exile... For thus says the LORD: When seventy years are completed for Babylon, I will visit you, and I will fulfill to you my promise and bring you back to this place."</div>
+    <div class="verse-note">God gives a specific timeline: 70 years. This becomes critical for how we understand the "restoration" promises — they have a defined, historical fulfillment. Daniel calculates from this prophecy (Dan 9:2).</div>
+  </div>
+
+  <h3>Isaiah's Servant Songs — A New Kind of Restoration</h3>
+  <p>Even as Isaiah warns of judgment, he sees a restoration that goes far beyond a political return to the land. The "Servant of the LORD" in Isaiah 40–55 will accomplish a new exodus, a new covenant, and a light to the Gentiles — not just to ethnic Israel.</p>
+
+  <div class="verse-block">
+    <div class="verse-ref">Isaiah 49:6</div>
+    <div class="verse-text">"It is too light a thing that you should be my servant to raise up the tribes of Jacob and to bring back the preserved of Israel; I will make you a light for the nations, that my salvation may reach to the end of the earth."</div>
+    <div class="verse-note">This verse is quoted in Acts 13:47 — Paul applies it to the Gentile mission. The restoration is bigger than ethnic Israel's return to Canaan.</div>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     TAB 6 · THE RETURN
+══════════════════════════════════════════════ -->
+<div id="return" class="panel">
+<div class="panel-inner">
+
+  <h2>The Return from Exile — Who Came Back?</h2>
+  <p>In 538 BC, Cyrus the Great of Persia issued a decree allowing the Jewish exiles to return and rebuild the Temple. This is a pivotal historical moment — and the details of <em>who</em> returned matter enormously for the dispensationalism debate.</p>
+
+  <div class="verse-block">
+    <div class="verse-ref">Isaiah 44:28 / 45:1 — Cyrus Prophesied by Name</div>
+    <div class="verse-text">"...who says of Cyrus, 'He is my shepherd, and he shall fulfill all my purpose'; saying of Jerusalem, 'She shall be built,' and of the temple, 'Your foundation shall be laid.'"</div>
+    <div class="verse-note">Isaiah names Cyrus by name roughly 150 years before his birth. The return from exile was not an accident — it was a specific act of God, prophesied and executed.</div>
+  </div>
+
+  <h3>Who Actually Returned <span class="ref">Ezra 1–2; Neh 7</span></h3>
+  <p>Ezra 2 gives a detailed census of returnees — approximately 50,000 people. They are identified by family name, by priestly and Levitical lineage, and by town of origin. Several things stand out:</p>
+
+  <div class="box box-blue">
+    <div class="box-label">The Critical Facts About the Return</div>
+    <p><strong>Not just Judah and Benjamin.</strong> While those two tribes are dominant, the text does not say only they returned. Priestly and Levitical families (tribe of Levi) returned. 2 Chronicles 11:13–16 shows Levites and those from all tribes who were faithful had already been gravitating to Jerusalem for generations.</p>
+    <p><strong>Northern survivors had joined Judah.</strong> During the Assyrian crisis, faithful northerners fled south (2 Chr 11:16). Their descendants would have been in the Babylonian exile with Judah and returned with them.</p>
+    <p><strong>"All Israel" is used of the returnees.</strong> Ezra 2:70 and Nehemiah 7 call the returnees "all Israel" — a covenant category, not a tribal headcount.</p>
+  </div>
+
+  <h3>The "Twelve Tribes" After the Return</h3>
+  <p>Here is where the dispensationalist claim that the ten tribes await a separate future restoration runs into direct biblical evidence:</p>
+
+  <table class="comp-table">
+    <tr>
+      <th>Person / Text</th>
+      <th>Northern Tribe Represented</th>
+      <th>Reference</th>
+    </tr>
+    <tr>
+      <td><strong>Anna the Prophetess</strong> — present at Jesus's presentation in the Temple</td>
+      <td>Tribe of <strong>Asher</strong> (far northern tribe)</td>
+      <td class="ref-col">Luke 2:36</td>
+    </tr>
+    <tr>
+      <td><strong>Paul</strong> — "our twelve tribes earnestly worship night and day"</td>
+      <td>Present tense. Twelve tribes exist and worship in Paul's time.</td>
+      <td class="ref-col">Acts 26:7</td>
+    </tr>
+    <tr>
+      <td><strong>James</strong> — addresses his letter</td>
+      <td>"To the twelve tribes in the Dispersion" — the Church</td>
+      <td class="ref-col">Jas 1:1</td>
+    </tr>
+    <tr>
+      <td><strong>Revelation 7</strong> — the 144,000</td>
+      <td>Twelve tribes listed — but the list is modified (Dan replaced by Manasseh; Levi included). Not a literal genealogical registry.</td>
+      <td class="ref-col">Rev 7:4–8</td>
+    </tr>
+  </table>
+
+  <div class="box box-green">
+    <div class="box-label">The Point</div>
+    <p>The New Testament writers did not believe the northern tribes were a lost group awaiting future physical restoration. Paul says "our twelve tribes" worship God right now. James writes to "the twelve tribes" — and he is writing to Jewish Christians. Anna from the tribe of Asher is in Jerusalem worshipping in the Temple. The tribes were dispersed and partially absorbed — but covenant-faithful members were present in the community of Israel and in the early Church.</p>
+  </div>
+
+  <h3>The Samaritans — The Gap Filled</h3>
+  <p>The people who were NOT part of this return — and who were explicitly rejected from helping rebuild the Temple (Ezra 4:1–3) — were the Samaritans. This rejection hardened into the 500-year rift that frames the story of Jesus at the well in John 4.</p>
+
+  <div class="verse-block">
+    <div class="verse-ref">Ezra 4:1–3</div>
+    <div class="verse-text">"Now when the adversaries of Judah and Benjamin heard that the returned exiles were building a temple to the LORD... they approached Zerubbabel and the heads of fathers' houses and said to them, 'Let us build with you, for we worship your God as you do.' But Zerubbabel, Jeshua, and the rest of the heads of fathers' houses in Israel said to them, 'You have nothing to do with us in building a house to our God.'"</div>
+    <div class="verse-note">The Samaritans are rejected. They respond by opposing the construction. The rift calcifies. They eventually build their own temple on Mt. Gerizim (~400 BC) — the mountain the woman at the well refers to in John 4:20.</div>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     TAB 7 · DISPENSATIONALISM
+══════════════════════════════════════════════ -->
+<div id="disp" class="panel">
+<div class="panel-inner">
+
+  <h2>The Dispensationalist Reading</h2>
+  <p>Dispensationalism is a serious theological system developed in the 19th century (John Nelson Darby, then popularized by C.I. Scofield's reference Bible and later Hal Lindsey, Tim LaHaye, and others). It has a coherent internal logic. Understanding it charitably is essential for meaningful conversation.</p>
+
+  <div class="box box-blue">
+    <div class="box-label">Core Conviction</div>
+    <p>God has two distinct peoples with two distinct programs: <strong>ethnic Israel</strong> and <strong>the Church</strong>. These tracks run in parallel, never merge, and God's unconditional covenant promises to ethnic Israel must be literally fulfilled in history — including the regathering of all twelve tribes to the land and a Davidic king reigning in Jerusalem. The Church is a parenthesis — not the fulfillment of Israel's promises, but a separate plan inserted while Israel's program is on pause.</p>
+  </div>
+
+  <h3>The Key Claims — Presented Fairly</h3>
+
+  <div class="disp-item">
+    <div class="disp-label">Claim 1 — The Two-Track Covenant</div>
+    <div class="disp-title">God's promises to Israel are unconditional and ethnic</div>
+    <div class="disp-body">The Abrahamic covenant (Gen 12, 15, 17) was unconditional — God alone passed between the animal pieces (Gen 15:17), so Israel cannot forfeit it by disobedience. Therefore exile doesn't cancel the land promise; it only delays it. The Church inherits spiritual blessings, but the land and kingdom promises belong specifically and permanently to ethnic Israel.</div>
+    <div class="disp-verses">
+      <span class="dv-tag">Gen 12:1–3</span>
+      <span class="dv-tag">Gen 15:18</span>
+      <span class="dv-tag">Gen 17:7–8</span>
+      <span class="dv-tag">Rom 11:29</span>
+    </div>
+  </div>
+
+  <div class="disp-item">
+    <div class="disp-label">Claim 2 — The Interrupted Kingdom</div>
+    <div class="disp-title">Jesus offered the kingdom to Israel; they rejected it; the Church age is the pause</div>
+    <div class="disp-body">When John the Baptist and Jesus announced "the kingdom of heaven is at hand," they were offering the prophesied Davidic kingdom to Israel. Israel's leadership rejected the Messiah. God then "paused" Israel's prophetic clock and inserted the Church age — an unforeseen parenthesis. When the Church is raptured, Israel's clock resumes for the final seven years (Daniel's 70th week — the Tribulation).</div>
+    <div class="disp-verses">
+      <span class="dv-tag">Matt 3:2</span>
+      <span class="dv-tag">Dan 9:24–27</span>
+      <span class="dv-tag">1 Thess 4:16–17</span>
+      <span class="dv-tag">Rev 7</span>
+    </div>
+  </div>
+
+  <div class="disp-item">
+    <div class="disp-label">Claim 3 — The Dry Bones Vision</div>
+    <div class="disp-title">Ezekiel 37 predicts a future physical restoration of all Israel to the land</div>
+    <div class="disp-body">The valley of dry bones (Ezek 37) represents the nation of Israel — scattered, dead, lifeless. God breathes life into them and brings them back to the land. Dispensationalists read this as predicting the modern State of Israel (1948) and a future gathering of all twelve tribes. The two sticks in Ezekiel 37:15–22 (one for Judah, one for Ephraim/north) joining into one means the divided kingdom will be physically reunited under one Davidic king.</div>
+    <div class="disp-verses">
+      <span class="dv-tag">Ezek 37:1–14</span>
+      <span class="dv-tag">Ezek 37:15–22</span>
+      <span class="dv-tag">Ezek 36:24</span>
+    </div>
+  </div>
+
+  <div class="disp-item">
+    <div class="disp-label">Claim 4 — Amos 9:11 and the Booth of David</div>
+    <div class="disp-title">The fallen booth of David must be literally rebuilt — a restored Davidic monarchy</div>
+    <div class="disp-body">"In that day I will raise up the booth of David that is fallen..." (Amos 9:11). Dispensationalists read this as a promise of a literal future Davidic dynasty restored in Jerusalem. This is paired with the regathering of Israel to the land (Amos 9:14–15) as evidence of a comprehensive future restoration of the physical nation.</div>
+    <div class="disp-verses">
+      <span class="dv-tag">Amos 9:11–15</span>
+      <span class="dv-tag">Ezek 34:23–24</span>
+      <span class="dv-tag">Jer 33:14–17</span>
+    </div>
+  </div>
+
+  <div class="disp-item">
+    <div class="disp-label">Claim 5 — Romans 11 and "All Israel Shall Be Saved"</div>
+    <div class="disp-title">A future mass conversion of ethnic Israel at the end of history</div>
+    <div class="disp-body">Paul says "all Israel will be saved" (Rom 11:26) after "the fullness of the Gentiles has come in." Dispensationalists read this as a future, end-time, mass conversion of the ethnic Jewish nation — confirming that God's covenant program with Israel is separate from and runs alongside the Gentile Church program. Israel's acceptance will be "life from the dead" (Rom 11:15).</div>
+    <div class="disp-verses">
+      <span class="dv-tag">Rom 11:25–26</span>
+      <span class="dv-tag">Rom 11:15</span>
+      <span class="dv-tag">Zech 12:10</span>
+    </div>
+  </div>
+
+  <div class="disp-item">
+    <div class="disp-label">Claim 6 — The Modern State of Israel</div>
+    <div class="disp-title">1948 is prophetic fulfillment — the regathering has begun</div>
+    <div class="disp-body">The establishment of the modern State of Israel in 1948 and the Jewish capture of Jerusalem in 1967 are seen as direct fulfillment of Old Testament prophecy (Ezek 36–37, Isa 11:11–12). The current regathering of Jewish people to the land from around the world is the beginning of the end-times restoration. The Temple will eventually be rebuilt, and a new Davidic kingdom will be established in Jerusalem during the Millennium.</div>
+    <div class="disp-verses">
+      <span class="dv-tag">Ezek 36:24</span>
+      <span class="dv-tag">Isa 11:11–12</span>
+      <span class="dv-tag">Zech 8:7–8</span>
+    </div>
+  </div>
+
+  <div class="box box-amber">
+    <div class="box-label">Why This View Is Compelling to Many</div>
+    <p>It takes the Old Testament prophecies with apparent literalism. It gives a clear map of future history. It seems to be "proven" by the existence of modern Israel. It maintains a strong sense that God keeps his promises. For people reading the Bible without a framework of typology and covenant fulfillment in Christ, this reading feels like the straightforward, face-value interpretation.</p>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     TAB 8 · THE FULL STORY
+══════════════════════════════════════════════ -->
+<div id="counter" class="panel">
+<div class="panel-inner">
+
+  <h2>The Full Story — What the Text Actually Shows</h2>
+  <p>These are not Catholic arguments against dispensationalism — they are what the biblical text itself says when read in context, in sequence, and with attention to how the New Testament authors interpret the Old Testament. Each point addresses a specific dispensationalist claim directly.</p>
+
+  <div class="counter-item">
+    <div class="counter-claim">Addresses Claim 1</div>
+    <div class="counter-title">"Not all who are descended from Israel belong to Israel" — Rom 9:6</div>
+    <div class="counter-body">Paul explicitly states that ethnic descent from Jacob does not automatically constitute membership in the covenant people. He traces this back to Genesis itself — Isaac, not Ishmael (both sons of Abraham). Jacob, not Esau (both sons of Isaac). The principle of election within physical descent is built into the Abrahamic covenant from the beginning. "Israel" was always a covenant category with a spiritual core, not a purely ethnic category.</div>
+    <div class="counter-verses">
+      <span class="cv-tag">Rom 9:6–8</span>
+      <span class="cv-tag">Rom 9:13</span>
+      <span class="cv-tag">Gal 3:7</span>
+      <span class="cv-tag">Gal 3:29</span>
+    </div>
+  </div>
+
+  <div class="counter-item">
+    <div class="counter-claim">Addresses Claim 1</div>
+    <div class="counter-title">The Abrahamic covenant was conditional — Lev 26 and Deut 28–29 make this plain</div>
+    <div class="counter-body">Dispensationalists argue the covenant is unconditional because God alone passed through the animals in Genesis 15. But Leviticus 26 and Deuteronomy 28–29 — also given to Israel by God — explicitly spell out covenant curses including exile and loss of the land for disobedience. These are not contradictions — they are the full covenant. The promise is eternal; possession of the land within history was always conditional. The exile happened exactly as Moses warned. God kept his covenant — including the warning clauses.</div>
+    <div class="counter-verses">
+      <span class="cv-tag">Lev 26:33–39</span>
+      <span class="cv-tag">Deut 28:63–68</span>
+      <span class="cv-tag">Deut 29:24–28</span>
+    </div>
+  </div>
+
+  <div class="counter-item">
+    <div class="counter-claim">Addresses Claim 2</div>
+    <div class="counter-title">The Davidic covenant is fulfilled in Christ's resurrection — Acts 2:29–36</div>
+    <div class="counter-body">Peter's Pentecost sermon is an extended argument that David's promise of an everlasting throne is fulfilled in Jesus's resurrection and ascension — not in a future earthly reign. Peter says David "foresaw and spoke about the resurrection of the Christ, that he was not abandoned to Hades... Being therefore exalted at the right hand of God..." (Acts 2:31–33). Peter explicitly identifies the resurrection and session at God's right hand as the fulfillment of the Davidic covenant. The throne is real — it is in heaven, now occupied.</div>
+    <div class="counter-verses">
+      <span class="cv-tag">Acts 2:29–36</span>
+      <span class="cv-tag">Luke 1:32–33</span>
+      <span class="cv-tag">Heb 1:3–5</span>
+      <span class="cv-tag">Ps 110:1</span>
+    </div>
+  </div>
+
+  <div class="counter-item">
+    <div class="counter-claim">Addresses Claim 3</div>
+    <div class="counter-title">Ezekiel 37 is interpreted by Ezekiel himself as the return from Babylon — Ezek 37:21–22</div>
+    <div class="counter-body">Ezekiel does not leave the dry bones vision without an interpretation. He provides it immediately: "Thus says the Lord GOD: Behold, I will take the people of Israel from the nations among which they have gone, and will gather them from all around, and bring them to their own land." (37:21). In context, the "nations" are Assyria and Babylon. The "own land" is Canaan. This was fulfilled in the return under Cyrus (538 BC) and subsequent waves of return under Ezra and Nehemiah. Furthermore, Ezekiel 36 — the chapter immediately before — describes the same restoration and explicitly includes the gift of a new heart and the Spirit, which the New Testament applies to Pentecost (Ezek 36:26–27 / Acts 2).</div>
+    <div class="counter-verses">
+      <span class="cv-tag">Ezek 37:21–22</span>
+      <span class="cv-tag">Ezek 36:26–27</span>
+      <span class="cv-tag">Acts 2:17</span>
+      <span class="cv-tag">Ezra 1:1–4</span>
+    </div>
+  </div>
+
+  <div class="counter-item">
+    <div class="counter-claim">Addresses Claim 4</div>
+    <div class="counter-title">Amos 9:11 is quoted in Acts 15 — James applies it to the Gentile mission, right now</div>
+    <div class="counter-body">This is one of the most decisive passages in the entire debate. At the Jerusalem Council (Acts 15), the question is whether Gentiles need to be circumcised to be saved. James gives the decisive ruling and quotes Amos 9:11–12 as the scriptural justification: "After this I will return, and I will rebuild the tent of David that has fallen... so that the remnant of mankind may seek the Lord, and all the Gentiles who are called by my name." James says this prophecy is being fulfilled right now — in the Gentile mission. He does not say "this will be fulfilled in the future Millennium." He says "the words of the prophets agree" with what God is presently doing. If the apostolic council understood Amos 9 as present fulfillment, reading it as a future political promise requires overriding the New Testament's own interpretation.</div>
+    <div class="counter-verses">
+      <span class="cv-tag">Acts 15:13–18</span>
+      <span class="cv-tag">Amos 9:11–12</span>
+    </div>
+  </div>
+
+  <div class="counter-item">
+    <div class="counter-claim">Addresses Claim 5</div>
+    <div class="counter-title">"All Israel shall be saved" — Romans 11 in its actual context</div>
+    <div class="counter-body">Romans 9–11 is Paul's sustained argument about why Israel's rejection of Christ does not mean God's word has failed. The key is Paul's opening: "not all who are descended from Israel belong to Israel" (9:6). Throughout the argument, Paul defines the true Israel as those who receive the promise by faith. "All Israel will be saved" (11:26) must be read in light of 11:5 ("there is a remnant, chosen by grace") and 11:7 ("the elect obtained it"). Paul is arguing that the full number of elect Jews — across history — will be saved, as the full number of Gentiles comes in. He is not teaching two separate salvation tracks. He is showing one people of God, Jews and Gentiles, united in Christ. "All Israel" = the full elect community, not every ethnic Jew who ever lived.</div>
+    <div class="counter-verses">
+      <span class="cv-tag">Rom 9:6</span>
+      <span class="cv-tag">Rom 11:5–7</span>
+      <span class="cv-tag">Rom 11:25–26</span>
+      <span class="cv-tag">Gal 6:16</span>
+    </div>
+  </div>
+
+  <div class="counter-item">
+    <div class="counter-claim">Addresses Claim 6</div>
+    <div class="counter-title">The New Covenant (Jer 31) replaces the Mosaic — and it is already in force</div>
+    <div class="counter-body">Jeremiah 31:31–34 announces a New Covenant with "the house of Israel and the house of Judah." Dispensationalists note it is made with Israel and Judah, not the Church, arguing it must await a future fulfillment with ethnic Israel. But Hebrews 8 quotes this passage in full and says explicitly: "In speaking of a new covenant, he makes the first one obsolete. And what is becoming obsolete and growing old is ready to vanish away." (Heb 8:13). The author of Hebrews applies Jeremiah 31 to the Church community right now. Jesus himself says "This cup is the new covenant in my blood" at the Last Supper (Luke 22:20). The New Covenant is not waiting — it was ratified at Calvary.</div>
+    <div class="counter-verses">
+      <span class="cv-tag">Jer 31:31–34</span>
+      <span class="cv-tag">Heb 8:6–13</span>
+      <span class="cv-tag">Heb 9:15</span>
+      <span class="cv-tag">Luke 22:20</span>
+    </div>
+  </div>
+
+  <div class="counter-item">
+    <div class="counter-claim">Addresses Claim 6</div>
+    <div class="counter-title">The "ten lost tribes" were never lost — New Testament writers treat them as present</div>
+    <div class="counter-body">Anna the prophetess, who recognized the infant Jesus at the Temple, is explicitly identified as being from the tribe of Asher — one of the "lost" northern tribes (Luke 2:36). Paul tells Agrippa that "our twelve tribes" earnestly worship God — present tense (Acts 26:7). James addresses his letter to "the twelve tribes in the Dispersion" — a community that exists right now (Jas 1:1). Revelation 7 lists all twelve tribes in the 144,000 — but the list is modified (Dan omitted, Levi and Manasseh included), signaling it is a theological construct, not a literal genealogical census. The "lost tribes" as a distinct group awaiting physical restoration has no New Testament support.</div>
+    <div class="counter-verses">
+      <span class="cv-tag">Luke 2:36</span>
+      <span class="cv-tag">Acts 26:7</span>
+      <span class="cv-tag">Jas 1:1</span>
+      <span class="cv-tag">Rev 7:4–8</span>
+    </div>
+  </div>
+
+  <div class="counter-item">
+    <div class="counter-claim">The Hermeneutical Root</div>
+    <div class="counter-title">How you read prophecy determines everything</div>
+    <div class="counter-body">The deepest issue is not which verses you cite — it is the interpretive principle you bring. Dispensationalism insists on "literal where possible" — physical promises must have physical fulfillments. Covenant theology (and Catholic exegesis) reads the Old Testament through the lens the New Testament itself provides: typology, fulfillment in Christ, and the expansion of Israel's blessings to all nations through the Messiah. When the New Testament authors quote Old Testament prophecy, they consistently apply it to Christ, the Church, and the Gentile mission — not to a future Jewish nation-state. The question to ask a dispensationalist friend is not "do you believe God keeps his promises?" — of course they do. The question is: "When the apostles quote these prophecies, what do they say they mean?"</div>
+    <div class="counter-verses">
+      <span class="cv-tag">Acts 2:16–21</span>
+      <span class="cv-tag">Acts 13:47</span>
+      <span class="cv-tag">Acts 15:15–18</span>
+      <span class="cv-tag">Heb 8:8–13</span>
+      <span class="cv-tag">Gal 3:16</span>
+    </div>
+  </div>
+
+  <div class="box box-green">
+    <div class="box-label">The Bottom Line</div>
+    <p>God kept every promise he made to Israel. The northern kingdom was judged for covenant breaking — as Moses warned. The southern kingdom was exiled and restored — as the prophets promised. The Davidic king came — and sits on an eternal throne at the right hand of the Father. The New Covenant was ratified in Christ's blood. The twelve tribes are present in the New Testament community. The Gentiles are flowing to the mountain of the Lord. The question dispensationalism must answer is not whether God keeps promises — it is whether the New Testament's own interpretation of those promises is authoritative. For Catholics, it is. The apostles read their own scriptures, and they read them as fulfilled in Christ.</p>
+  </div>
+
+</div>
+</div>
+
+<script>
+function show(id) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.currentTarget.classList.add('active');
+  window.scrollTo(0, 0);
+}
+</script>
+</body>
+</html>
