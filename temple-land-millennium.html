@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Temple, Land &amp; Millennium — Weighing the Evidence</title>
+<style>
+  :root{
+    color-scheme: only light;
+    --navy: #0f1a2b;
+    --navy-deep: #0a1320;
+    --parchment: #f3ecdb;
+    --parchment-dim: #e6dcc2;
+    --gold: #c9a04e;
+    --gold-bright: #e0bd6e;
+    --green: #7fae7a;
+    --amber: #d4a544;
+  }
+  *{box-sizing:border-box;}
+  html{ background: #0f1a2b; }
+  body{
+    margin:0;
+    background: #0f1a2b;
+    color: #f3ecdb;
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+  .titlebar{
+    text-align:center;
+    padding: 56px 24px 36px 24px;
+    border-bottom: 1px solid #c9a04e55;
+    background: #0f1a2b;
+  }
+  .titlebar .eyebrow{
+    font-family: 'Cinzel', 'Times New Roman', serif;
+    letter-spacing: 0.25em;
+    font-size: 13px;
+    color: #e0bd6e;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  h1{
+    font-family: 'Cinzel', 'Times New Roman', serif;
+    font-weight: 600;
+    font-size: 36px;
+    color: #f3ecdb;
+    margin: 0 0 10px 0;
+    letter-spacing: 0.02em;
+  }
+  .subtitle{
+    font-style: italic;
+    color: #e6dcc2;
+    font-size: 17px;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .wrap{
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+  .intro{
+    margin-top: 40px;
+    padding: 22px 26px;
+    border-left: 3px solid var(--gold);
+    background: #0f1a2b;
+    font-size: 17px;
+  }
+  section{ margin-top: 56px; }
+  .tier-label{
+    display:inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 2px;
+    margin-bottom: 14px;
+  }
+  .tier-strong{ background: transparent; color:#9fcf9a; border:1px solid #7fae7a88; }
+  .tier-contested{ background: transparent; color:#e0bd6e; border:1px solid #d4a54488; }
+  .tier-method{ background: transparent; color:#a9c4e0; border:1px solid #8aa8c988; }
+
+  h2{
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    font-size: 26px;
+    color: #e0bd6e;
+    margin: 0 0 8px 0;
+  }
+  .section-sub{
+    font-style: italic;
+    color: #b7ad8c;
+    font-size: 15.5px;
+    margin-bottom: 22px;
+  }
+  p{ margin: 0 0 16px 0; }
+  .verse-ref{ color: #e0bd6e; font-weight: 600; }
+
+  details{
+    margin: 14px 0;
+    background: #0f1a2b;
+    border: 1px solid #c9a04e2e;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  summary{
+    cursor: pointer;
+    list-style: none;
+    padding: 16px 20px;
+    font-family: 'Cinzel', serif;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    color: #f3ecdb;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap: 12px;
+  }
+  summary::-webkit-details-marker{ display:none; }
+  summary .ref{
+    color: #e0bd6e;
+    font-size: 13px;
+    white-space:nowrap;
+    margin-left:auto;
+    margin-right: 14px;
+  }
+  summary::after{
+    content: '+';
+    font-size: 20px;
+    color: #c9a04e;
+    line-height:1;
+    flex-shrink:0;
+  }
+  details[open] summary::after{ content: '–'; }
+  details[open] summary{ border-bottom: 1px solid #c9a04e2e; }
+  .detail-body{
+    padding: 16px 20px 20px 20px;
+    font-size: 16.5px;
+    color: #e6dcc2;
+  }
+  .detail-body p:last-child{ margin-bottom:0; }
+
+  .callout{
+    margin: 22px 0;
+    padding: 18px 22px;
+    background: #0f1a2b;
+    border: 1px solid #c9a04e3d;
+    border-radius: 2px;
+  }
+  .callout.honest{
+    background: #0f1a2b;
+    border-color: #d4a54450;
+  }
+  .callout .label{
+    font-family:'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #e0bd6e;
+    margin-bottom: 8px;
+  }
+
+  .grid2{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .card{
+    background: #0f1a2b;
+    border: 1px solid #c9a04e2a;
+    padding: 16px 18px;
+    border-radius: 2px;
+  }
+  .card h3{
+    font-family:'Cinzel', serif;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    color: #e0bd6e;
+    margin: 0 0 8px 0;
+  }
+  .card p{ font-size: 15px; margin: 0; color: #e6dcc2; }
+
+  .method-step{
+    display:flex;
+    gap: 16px;
+    margin-bottom: 20px;
+    align-items:flex-start;
+  }
+  .method-num{
+    font-family:'Cinzel', serif;
+    font-size: 22px;
+    color: #c9a04e;
+    flex-shrink:0;
+    width: 32px;
+  }
+  .method-step p{ margin:0; font-size:16.5px; }
+  .method-step .step-title{
+    font-weight:600;
+    color: #f3ecdb;
+    display:block;
+    margin-bottom: 4px;
+    font-size: 16.5px;
+  }
+
+  .divider{
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #c9a04e88, transparent);
+    margin: 56px 0;
+  }
+  .footer-note{
+    text-align: center;
+    margin-top: 64px;
+    font-size: 14px;
+    color: #9b9479;
+    font-style: italic;
+  }
+  @media (max-width: 600px){
+    .grid2{ grid-template-columns: 1fr; }
+    h1{ font-size: 28px; }
+    summary{ flex-wrap: wrap; }
+    summary .ref{ margin-left:0; order:3; width:100%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="titlebar">
+  <div class="eyebrow">Reference Notes</div>
+  <h1>Temple, Land &amp; Millennium</h1>
+  <div class="subtitle">Weighing the evidence — what the text clearly says, and what remains genuinely contested</div>
+</div>
+
+<div class="wrap">
+
+  <p class="intro">Not every doctrinal question carries the same weight of evidence. Some claims are supported independently across multiple New Testament books, written by different authors, for different audiences — that convergence matters. Others rest on a single difficult passage, or on inferences added to a text rather than found within it. Honest study means treating these differently rather than flattening every conclusion into equal confidence.</p>
+
+  <section>
+    <span class="tier-label tier-strong">Well Supported</span>
+    <h2>The Temple Fulfilled in Christ</h2>
+    <p class="section-sub">Five independent New Testament authors converge on the same claim.</p>
+
+    <details>
+      <summary>Jesus identifies his body as the true temple <span class="ref">John 2:19-21</span></summary>
+      <div class="detail-body">
+        <p>Jesus says "destroy this temple, and in three days I will raise it up." John clarifies directly that Jesus "spoke of the temple of his body." This is the earliest and most direct claim — Jesus himself locates the true temple in his own resurrected body, not in a building.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Believers as God's dwelling, individually <span class="ref">1 Corinthians 3:16</span></summary>
+      <div class="detail-body">
+        <p>Paul tells the Corinthian church: "you are God's temple and that God's Spirit dwells in you." The indwelling of the Holy Spirit makes each believer a spiritual temple — a direct extension of what Jesus claimed about himself.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>The Church as a temple under construction <span class="ref">Ephesians 2:20-21</span></summary>
+      <div class="detail-body">
+        <p>Believers are "built on the foundation of the apostles and prophets, Christ Jesus himself being the cornerstone," growing into "a holy temple in the Lord." This is corporate and ongoing — the Church described as a single structure being built, not many separate ones.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Living stones <span class="ref">1 Peter 2:5</span></summary>
+      <div class="detail-body">
+        <p>Peter calls believers "living stones... being built up as a spiritual house," language that mirrors Ephesians 2 closely enough to suggest this was common apostolic teaching, not one writer's unique metaphor.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>No temple in the New Jerusalem <span class="ref">Revelation 21:22</span></summary>
+      <div class="detail-body">
+        <p>"I saw no temple in the city, for its temple is the Lord God the Almighty and the Lamb." This is the capstone text — describing the end-state of all things, John says explicitly there is no future temple-as-building, because God and the Lamb fill that role directly.</p>
+      </div>
+    </details>
+
+    <div class="callout">
+      <div class="label">Why This Tier Is Strong</div>
+      <p>Five different authors (John, Paul, Peter), writing to different audiences across different decades, independently land on the same conclusion without coordinating. That kind of convergence — rather than a single proof-text — is what makes a claim well-supported rather than merely possible.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <span class="tier-label tier-strong">Well Supported</span>
+    <h2>The Land Promise as the Whole World</h2>
+    <p class="section-sub">The New Testament's own reinterpretation of Abraham's inheritance.</p>
+
+    <details>
+      <summary>Heir of the world, not Canaan <span class="ref">Romans 4:13</span></summary>
+      <div class="detail-body">
+        <p>Paul states directly: the promise to Abraham and his offspring was that he would be "heir of the world" — not through the law, but through the righteousness of faith. This is Paul explicitly naming the inheritance's true scope.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>The promise already widening <span class="ref">Genesis 22:17-18</span></summary>
+      <div class="detail-body">
+        <p>Even within the Abraham narrative itself, the promise expands past a plot of land: his seed will possess "the gate of his enemies," and "in your seed shall all the nations of the earth be blessed." The blessing was tied to all nations from the start.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>The seed is one — and it is Christ <span class="ref">Galatians 3:16, 29</span></summary>
+      <div class="detail-body">
+        <p>Paul narrows the promise's line of descent to a single person: "he saith not, And to seeds, as of many; but as of one... which is Christ." Then he broadens participation in that promise to anyone in Christ: "if ye be Christ's, then are ye Abraham's seed, and heirs according to the promise" — with no territorial qualifier attached.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Looking for a better country <span class="ref">Hebrews 11:9-16</span></summary>
+      <div class="detail-body">
+        <p>Abraham, Isaac, and Jacob lived in the promised land "as in a foreign country," dwelling in tents — because they were looking for "a city which hath foundations, whose builder and maker is God." Verse 16 specifies they desired "a better country, that is, a heavenly" — not a better version of Canaan. The text's own word choice is doing the work here.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Patriarchs made perfect only together with us <span class="ref">Hebrews 11:39-40</span></summary>
+      <div class="detail-body">
+        <p>"These all... received not the promise: God having provided some better thing for us, that they without us should not be made perfect." Their fulfillment is explicitly tied to ours — one event, one body — not a separate future allotment received apart from the Church.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Gentiles as fellow heirs <span class="ref">Ephesians 3:6</span></summary>
+      <div class="detail-body">
+        <p>Gentiles are "fellow heirs" of the promise "in Christ" — no geographic qualifier attached. The inheritance Paul describes throughout his letters is consistently global, not territorial.</p>
+      </div>
+    </details>
+
+    <div class="callout">
+      <div class="label">Why This Tier Is Strong</div>
+      <p>The land was the down payment, not the deed — and that's not an outside theological imposition on the text. Paul and the writer of Hebrews say so themselves, in their own words, reinterpreting Abraham's promise as something the land only ever pointed toward.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <span class="tier-label tier-contested">Genuinely Contested</span>
+    <h2>The Millennium</h2>
+    <p class="section-sub">Revelation 20:1-10 — the single hardest passage in this whole area, and honest study has to say so.</p>
+
+    <p>Unlike the temple and land questions, the millennium does not have the same convergence of independent texts pointing one direction. It rests almost entirely on one difficult passage, written in apocalyptic genre, which serious and careful interpreters read in different ways.</p>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>Premillennial</h3>
+        <p>Christ returns before a literal thousand-year earthly reign, which precedes the final judgment and new creation.</p>
+      </div>
+      <div class="card">
+        <h3>Amillennial</h3>
+        <p>The thousand years symbolically describes Christ's present reign through the Church between his first and second comings — not a future earthly era.</p>
+      </div>
+      <div class="card">
+        <h3>Postmillennial</h3>
+        <p>The gospel gradually transforms the world over a long era of flourishing, after which Christ returns.</p>
+      </div>
+      <div class="card">
+        <h3>What Most Share</h3>
+        <p>All three affirm Christ's literal, visible, future return and final judgment — the disagreement is about the sequence and nature of the "thousand years," not whether Christ returns.</p>
+      </div>
+    </div>
+
+    <details>
+      <summary>The weak link: Ezekiel's sacrifices as "memorial" <span class="ref">Ezekiel 40-48</span></summary>
+      <div class="detail-body">
+        <p>Some readings extend the millennium into a future literal temple with reinstated animal sacrifice, explained as "memorial" rather than atoning. Worth noting plainly: Ezekiel's own text never uses that label. It's a gloss added later to resolve tension with Hebrews, not something the passage itself claims. That doesn't settle the millennium question, but it does mean this specific extension of it rests on weaker ground than the millennium debate as a whole.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>The tension with Hebrews 10 <span class="ref">Hebrews 10:1-18</span></summary>
+      <div class="detail-body">
+        <p>Hebrews says repeated sacrifices were "a reminder of sins" precisely because they couldn't remove them — and that Christ's one offering means "there is no longer any offering for sin." Any reading that reinstates sacrifice in any form has to reckon with this text directly, regardless of which millennial view one holds.</p>
+      </div>
+    </details>
+
+    <div class="callout honest">
+      <div class="label">Honest Assessment</div>
+      <p>This is the place to say plainly: the millennium is genuinely difficult, and faithful, careful readers of Scripture disagree. Unlike the temple and land questions — where multiple independent texts converge — this rests on one apocalyptic passage open to real interpretive difficulty. Confidence here should be lower than confidence on the other two questions, and that's not a failure of study. It's what honest study looks like when the evidence itself is thinner.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <span class="tier-label tier-method">Method</span>
+    <h2>How to Test a Claim</h2>
+    <p class="section-sub">The reusable part — not the conclusions, but how to get to them.</p>
+
+    <div class="method-step">
+      <div class="method-num">1</div>
+      <div>
+        <span class="step-title">Does the text say this itself, or was it added later?</span>
+        <p>Many claims feel textual but are actually interpretive glosses layered on top of a passage to resolve a tension. Ask: where exactly does the source text use this language, in its own words?</p>
+      </div>
+    </div>
+
+    <div class="method-step">
+      <div class="method-num">2</div>
+      <div>
+        <span class="step-title">Is this one proof-text, or independent convergence?</span>
+        <p>A claim supported by five different authors across different books and decades, landing on the same conclusion without coordinating, carries more weight than a claim resting on a single difficult verse.</p>
+      </div>
+    </div>
+
+    <div class="method-step">
+      <div class="method-num">3</div>
+      <div>
+        <span class="step-title">Does a later writer reinterpret an earlier promise — in their own words?</span>
+        <p>When Paul or the writer of Hebrews explicitly redefines the scope of an Old Testament promise (heir of the world, not Canaan; a heavenly country, not an earthly one), that's not someone imposing an outside system on the text — it's the text interpreting itself.</p>
+      </div>
+    </div>
+
+    <div class="method-step">
+      <div class="method-num">4</div>
+      <div>
+        <span class="step-title">Where the evidence is genuinely thin, say so.</span>
+        <p>Not every question resolves with the same confidence. Treating a contested passage as settled doctrine, just to keep the system tidy, is a worse outcome than admitting real interpretive difficulty.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="footer-note">Forged &amp; Faithful — Reference Notes</div>
+
+</body>
+</html>
