@@ -3,421 +3,219 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Catholic Start — Theology Reference Library</title>
+<meta name="color-scheme" content="light">
+<meta name="supported-color-schemes" content="light">
+<title>Catholic Start — Reference Library</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap');
-  :root {
-    --night: #111010;
-    --charcoal: #1E1C1A;
-    --ember: #C4622D;
-    --ember-dim: #7A3D1C;
-    --gold: #B8922A;
-    --parchment: #F0EAD9;
-    --ash: #8A8070;
-    --rule: #2E2B27;
-}
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    background: var(--night);
-    color: var(--parchment);
-    font-family: 'Inter', sans-serif;
-    font-weight: 300;
-    min-height: 100vh;
-}
-
-  /* ── HERO ── */
-.hero {
-    padding: 5rem 2rem 4rem;
+  :root{ color-scheme: only light; }
+  *{ box-sizing: border-box; }
+  html, body{
+    background-color: #0f1a2b;
+    margin: 0;
+    min-height: 100%;
+  }
+  body{
+    color: #f3ecdb;
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.6;
+    padding: 0 0 80px 0;
+  }
+  .titlebar{
     text-align: center;
-    position: relative;
-    border-bottom: 1px solid var(--rule);
-}
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 50%;
-    transform: translateX(-50%);
-    width: 1px;
-    height: 100%;
-    background: linear-gradient(to bottom, transparent, rgba(196,98,45,0.15), transparent);
-    pointer-events: none;
-}
-.hero::after {
-    content: '';
-    position: absolute;
-    top: 50%; left: 0;
-    transform: translateY(-50%);
-    width: 100%;
-    height: 1px;
-    background: linear-gradient(to right, transparent, rgba(196,98,45,0.12), transparent);
-    pointer-events: none;
-}
-.hero-eyebrow {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 500;
+    padding: 64px 24px 40px 24px;
+    border-bottom: 1px solid #c9a04e55;
+    background-color: #0f1a2b;
+  }
+  .titlebar .eyebrow{
+    font-family: 'Cinzel', 'Times New Roman', serif;
     letter-spacing: 0.3em;
+    font-size: 13px;
+    color: #e0bd6e;
     text-transform: uppercase;
-    color: var(--ember);
-    margin-bottom: 1.25rem;
-}
-.hero h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    font-weight: 400;
-    line-height: 1.1;
-    letter-spacing: -0.01em;
-    color: var(--parchment);
-    position: relative;
-}
-.hero h1 em {
+    margin-bottom: 16px;
+  }
+  h1{
+    font-family: 'Cinzel', 'Times New Roman', serif;
+    font-weight: 600;
+    font-size: 38px;
+    color: #f3ecdb;
+    margin: 0 0 12px 0;
+    letter-spacing: 0.02em;
+  }
+  .subtitle{
     font-style: italic;
-    color: var(--gold);
-}
-.hero-sub {
-    margin-top: 1.25rem;
-    font-size: 0.9rem;
-    color: var(--ash);
+    color: #e6dcc2;
+    font-size: 17px;
     max-width: 480px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.7;
-}
-.ember-rule {
-    width: 40px;
-    height: 1px;
-    background: var(--ember);
-    margin: 1.75rem auto 0;
-}
-
-  /* ── GRID ── */
-.library {
-    max-width: 960px;
     margin: 0 auto;
-    padding: 3rem 1.5rem 5rem;
-}
-.library-label {
-    font-size: 0.62rem;
-    font-weight: 500;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: var(--ash);
-    margin-bottom: 1.5rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 1px solid var(--rule);
-}
-.section-head {
-    font-size: 0.58rem;
-    font-weight: 500;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: var(--ember-dim);
-    margin: 2.5rem 0 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--rule);
-}
-.tool-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1px;
-    background: var(--rule);
-    border: 1px solid var(--rule);
-}
-.tool-card {
-    background: var(--charcoal);
-    padding: 1.75rem 1.5rem;
-    text-decoration: none;
-    color: inherit;
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-    transition: background 0.18s;
-    position: relative;
-    overflow: hidden;
-}
-.tool-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 3px;
-    height: 100%;
-    background: var(--ember);
-    transform: scaleY(0);
-    transform-origin: bottom;
-    transition: transform 0.22s ease;
-}
-.tool-card:hover { background: #252220; }
-.tool-card:hover::before { transform: scaleY(1); }
-.tool-tag {
-    font-size: 0.6rem;
-    font-weight: 500;
+  }
+  .wrap{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 28px;
+    background-color: #0f1a2b;
+  }
+  section{ margin-top: 56px; background-color: #0f1a2b; }
+  .cat-eyebrow{
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--ember);
-}
-.tool-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.35rem;
+    color: #c9a04e;
+    margin-bottom: 6px;
+  }
+  h2{
+    font-family: 'Cinzel', serif;
     font-weight: 600;
-    line-height: 1.25;
-    color: var(--parchment);
-}
-.tool-desc {
-    font-size: 0.82rem;
-    color: var(--ash);
-    line-height: 1.6;
-    flex: 1;
-}
-.tool-arrow {
-    font-size: 0.75rem;
-    color: var(--ember-dim);
-    margin-top: 0.25rem;
-    transition: color 0.18s, transform 0.18s;
-    display: inline-block;
-}
-.tool-card:hover .tool-arrow {
-    color: var(--ember);
-    transform: translateX(4px);
-}
-.card-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 0.25rem;
-}
-.copy-btn {
-    background: none;
-    border: 1px solid var(--rule);
-    color: var(--ash);
-    font-family: 'Inter', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 0.35rem 0.65rem;
-    cursor: pointer;
-    border-radius: 2px;
-    transition: border-color 0.18s, color 0.18s, background 0.18s;
-    position: relative;
-    z-index: 2;
-}
-.copy-btn:hover { border-color: var(--ember); color: var(--ember); }
-.copy-btn.copied { border-color: var(--gold); color: var(--gold); }
-
-  /* ── TOAST ── */
-.toast {
-    position: fixed;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%) translateY(20px);
-    background: var(--charcoal);
-    border: 1px solid var(--ember);
-    color: var(--parchment);
-    font-size: 0.78rem;
-    letter-spacing: 0.06em;
-    padding: 0.6rem 1.25rem;
-    border-radius: 2px;
-    opacity: 0;
-    transition: opacity 0.2s, transform 0.2s;
-    pointer-events: none;
-    white-space: nowrap;
-}
-.toast.show {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-}
-
-  /* ── FOOTER ── */
-  footer {
+    font-size: 24px;
+    color: #e0bd6e;
+    margin: 0 0 6px 0;
+  }
+  .cat-desc{
+    font-style: italic;
+    color: #b7ad8c;
+    font-size: 15.5px;
+    margin: 0 0 20px 0;
+  }
+  .links{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  a.tool{
+    display: block;
+    text-decoration: none;
+    border: 1px solid #c9a04e55;
+    border-radius: 3px;
+    padding: 18px 20px;
+    background-color: #0f1a2b;
+    color: #f3ecdb;
+    transition: border-color 0.15s ease;
+  }
+  a.tool:active{ border-color: #e0bd6e; }
+  a.tool .tool-title{
+    font-family: 'Cinzel', serif;
+    font-size: 15.5px;
+    letter-spacing: 0.01em;
+    color: #f3ecdb;
+    display: block;
+    margin-bottom: 6px;
+  }
+  a.tool .tool-desc{
+    font-size: 14.5px;
+    color: #b7ad8c;
+    font-style: italic;
+    line-height: 1.4;
+  }
+  .divider{
+    width: 100%;
+    height: 1px;
+    background-color: #c9a04e55;
+    margin: 56px 0;
+  }
+  .footer-note{
     text-align: center;
-    padding: 1.5rem 2rem 2.5rem;
-    font-size: 0.7rem;
-    color: var(--rule);
-    border-top: 1px solid var(--rule);
-    letter-spacing: 0.1em;
-    font-weight: 500;
-}
-  footer span { color: var(--ember-dim); }
-
-  @media (max-width: 600px) {
-    .tool-grid { grid-template-columns: 1fr; }
-    .hero { padding: 3.5rem 1.5rem 3rem; }
-}
+    margin-top: 64px;
+    font-size: 14px;
+    color: #9b9479;
+    font-style: italic;
+  }
+  @media (max-width: 600px){
+    .links{ grid-template-columns: 1fr; }
+    h1{ font-size: 30px; }
+  }
 </style>
 </head>
 <body>
 
-<header class="hero">
-  <p class="hero-eyebrow">Forged &amp; Faithful</p>
-  <h1>Theology <em>Reference</em> Library</h1>
-  <p class="hero-sub">A personal collection of Catholic reference tools — for study, apologetics, and formation.</p>
-  <div class="ember-rule"></div>
-</header>
+<div class="titlebar">
+  <div class="eyebrow">Reference Library</div>
+  <h1>Catholic Start</h1>
+  <div class="subtitle">A working library of apologetics tools, covenant theology references, and formation resources</div>
+</div>
 
-<main class="library">
-  <p class="library-label">All Tools</p>
+<div class="wrap">
 
-  <!-- ── FORMATION ── -->
-  <p class="section-head">Formation & Liturgy</p>
-  <div class="tool-grid">
+  <section>
+    <div class="cat-eyebrow">Foundations</div>
+    <h2>Getting Started</h2>
+    <p class="cat-desc">Entry points for the formation journey.</p>
+    <div class="links">
+      <a class="tool" href="my_catholic_start.html">
+        <span class="tool-title">My Catholic Start</span>
+        <span class="tool-desc">Personal formation home base.</span>
+      </a>
+      <a class="tool" href="catholic_companion.html">
+        <span class="tool-title">Catholic Companion</span>
+        <span class="tool-desc">A general reference companion.</span>
+      </a>
+      <a class="tool" href="catholic_mass_guide.html">
+        <span class="tool-title">Guide to the Mass</span>
+        <span class="tool-desc">Walking through the liturgy.</span>
+      </a>
+      <a class="tool" href="theology_glossary.html">
+        <span class="tool-title">Theology Glossary</span>
+        <span class="tool-desc">Key terms, defined plainly.</span>
+      </a>
+    </div>
+  </section>
 
-    <a class="tool-card" href="my_catholic_start.html">
-      <span class="tool-tag">Formation</span>
-      <span class="tool-name">Catholic Start</span>
-      <span class="tool-desc">A personal entry point into the Catholic faith — resources, roadmap, and orientation for the journey.</span>
-      <div class="card-footer">
-        <span class="tool-arrow">Open →</span>
-        <button class="copy-btn" onclick="copyLink(event, 'my_catholic_start.html')">Copy link</button>
-      </div>
-    </a>
+  <div class="divider"></div>
 
-    <a class="tool-card" href="catholic_mass_guide.html">
-      <span class="tool-tag">Liturgy</span>
-      <span class="tool-name">Mass Guide</span>
-      <span class="tool-desc">A walkthrough of the Mass — its structure, prayers, and meaning — for those new to Catholic worship or wanting to go deeper.</span>
-      <div class="card-footer">
-        <span class="tool-arrow">Open →</span>
-        <button class="copy-btn" onclick="copyLink(event, 'catholic_mass_guide.html')">Copy link</button>
-      </div>
-    </a>
+  <section>
+    <div class="cat-eyebrow">Covenant Theology</div>
+    <h2>Covenant &amp; Israel</h2>
+    <p class="cat-desc">Covenant theology vs. dispensationalism — the core of the apologetics work.</p>
+    <div class="links">
+      <a class="tool" href="covenant-theology.html">
+        <span class="tool-title">Covenant Theology vs. Dispensationalism</span>
+        <span class="tool-desc">The core framework comparison.</span>
+      </a>
+      <a class="tool" href="covenants-reference.html">
+        <span class="tool-title">The Seven Biblical Covenants</span>
+        <span class="tool-desc">A full reference across Scripture.</span>
+      </a>
+      <a class="tool" href="israel-dispensationalism.html">
+        <span class="tool-title">Israel &amp; Dispensationalism</span>
+        <span class="tool-desc">Israel, Judah, and Samaria in context.</span>
+      </a>
+      <a class="tool" href="israel-dispensationalism_1.html">
+        <span class="tool-title">Israel &amp; Dispensationalism — Part Two</span>
+        <span class="tool-desc">Continued study and detail.</span>
+      </a>
+      <a class="tool" href="jesus-true-israel.html">
+        <span class="tool-title">Jesus, the True Israel</span>
+        <span class="tool-desc">The fulfillment in Christ.</span>
+      </a>
+      <a class="tool" href="temple-land-millennium.html">
+        <span class="tool-title">Temple, Land &amp; Millennium</span>
+        <span class="tool-desc">Weighing the evidence, tier by tier.</span>
+      </a>
+      <a class="tool" href="jesus-and-the-future-summary.html">
+        <span class="tool-title">Jesus and the Future</span>
+        <span class="tool-desc">Notes on the Köstenberger study.</span>
+      </a>
+    </div>
+  </section>
 
-    <a class="tool-card" href="catholic_companion.html">
-      <span class="tool-tag">Reference</span>
-      <span class="tool-name">Catholic Companion</span>
-      <span class="tool-desc">A broad reference companion covering Catholic teaching, practice, and the rhythms of the faith.</span>
-      <div class="card-footer">
-        <span class="tool-arrow">Open →</span>
-        <button class="copy-btn" onclick="copyLink(event, 'catholic_companion.html')">Copy link</button>
-      </div>
-    </a>
+  <div class="divider"></div>
 
-    <a class="tool-card" href="theology_glossary.html">
-      <span class="tool-tag">Reference</span>
-      <span class="tool-name">Theology Glossary</span>
-      <span class="tool-desc">Key theological terms defined clearly — from apologetics vocabulary to doctrinal language used in Catholic and Protestant traditions.</span>
-      <div class="card-footer">
-        <span class="tool-arrow">Open →</span>
-        <button class="copy-btn" onclick="copyLink(event, 'theology_glossary.html')">Copy link</button>
-      </div>
-    </a>
+  <section>
+    <div class="cat-eyebrow">History &amp; Apologetics</div>
+    <h2>Hard Questions</h2>
+    <p class="cat-desc">Facing difficult history honestly.</p>
+    <div class="links">
+      <a class="tool" href="catholic_scandals.html">
+        <span class="tool-title">Catholic Scandals</span>
+        <span class="tool-desc">An honest historical reckoning.</span>
+      </a>
+    </div>
+  </section>
 
-  </div>
+</div>
 
-  <!-- ── COVENANT & APOLOGETICS ── -->
-  <p class="section-head">Covenant Theology & Apologetics</p>
-  <div class="tool-grid">
-
-    <a class="tool-card" href="covenant-theology.html">
-      <span class="tool-tag">Apologetics</span>
-      <span class="tool-name">Covenant Theology</span>
-      <span class="tool-desc">An exploration of covenant theology — its framework, key texts, and how it compares to dispensationalism.</span>
-      <div class="card-footer">
-        <span class="tool-arrow">Open →</span>
-        <button class="copy-btn" onclick="copyLink(event, 'covenant-theology.html')">Copy link</button>
-      </div>
-    </a>
-
-    <a class="tool-card" href="covenants-reference.html">
-      <span class="tool-tag">Apologetics</span>
-      <span class="tool-name">Biblical Covenants Reference</span>
-      <span class="tool-desc">All seven biblical covenants with a full denominational comparison across Catholic, Reformed, Baptist, and Dispensationalist traditions.</span>
-      <div class="card-footer">
-        <span class="tool-arrow">Open →</span>
-        <button class="copy-btn" onclick="copyLink(event, 'covenants-reference.html')">Copy link</button>
-      </div>
-    </a>
-
-    <a class="tool-card" href="catholic_scandals.html">
-      <span class="tool-tag">Apologetics</span>
-      <span class="tool-name">Catholic Scandals</span>
-      <span class="tool-desc">Honest engagement with the hardest objections to the Catholic Church — historical, moral, and institutional — with reasoned responses.</span>
-      <div class="card-footer">
-        <span class="tool-arrow">Open →</span>
-        <button class="copy-btn" onclick="copyLink(event, 'catholic_scandals.html')">Copy link</button>
-      </div>
-    </a>
-
-  </div>
-
-  <!-- ── ISRAEL & SALVATION HISTORY ── -->
-  <p class="section-head">Israel, Salvation History & Dispensationalism</p>
-  <div class="tool-grid">
-
-    <a class="tool-card" href="israel-dispensationalism.html">
-      <span class="tool-tag">Apologetics · History</span>
-      <span class="tool-name">Israel, the Kingdom & Dispensationalism</span>
-      <span class="tool-desc">The full biblical narrative from twelve tribes to modern debate — including the dispensationalist reading and the biblical counter-evidence, tab by tab.</span>
-      <div class="card-footer">
-        <span class="tool-arrow">Open →</span>
-        <button class="copy-btn" onclick="copyLink(event, 'israel-dispensationalism.html')">Copy link</button>
-      </div>
-    </a>
-
-    <a class="tool-card" href="moses-to-jesus-timeline.html">
-      <span class="tool-tag">History · Reference</span>
-      <span class="tool-name">Moses to Jesus — Key Figures</span>
-      <span class="tool-desc">Every major figure in salvation history from Moses to John the Baptist — with their role, scripture anchors, and how each points forward to Christ. Tap to expand each figure.</span>
-      <div class="card-footer">
-        <span class="tool-arrow">Open →</span>
-        <button class="copy-btn" onclick="copyLink(event, 'moses-to-jesus-timeline.html')">Copy link</button>
-      </div>
-    </a>
-
-    <a class="tool-card" href="covenant-scorecard.html">
-      <span class="tool-tag">History · Apologetics</span>
-      <span class="tool-name">The Covenant Scorecard</span>
-      <span class="tool-desc">How Israel kept and broke the law of Moses, king by king — with Moses's Deuteronomy warnings mapped to what actually happened, and every king's compliance grid.</span>
-      <div class="card-footer">
-        <span class="tool-arrow">Open →</span>
-        <button class="copy-btn" onclick="copyLink(event, 'covenant-scorecard.html')">Copy link</button>
-      </div>
-    </a>
-
-    <a class="tool-card" href="jesus-true-israel.html">
-      <span class="tool-tag">Theology · Apologetics</span>
-      <span class="tool-name">Jesus — The True Israel</span>
-      <span class="tool-desc">The full typological case: Jesus recapitulates Israel's story, passes the wilderness tests Israel failed, fulfills Isaiah's Servant, and replaces the Levitical priesthood. The heart of the covenant theology argument.</span>
-      <div class="card-footer">
-        <span class="tool-arrow">Open →</span>
-        <button class="copy-btn" onclick="copyLink(event, 'jesus-true-israel.html')">Copy link</button>
-      </div>
-    </a>
-
-  </div>
-
-</main>
-
-<footer>
-  <span>asanterno</span> · catholic-start · github.io
-</footer>
-
-<div class="toast" id="toast">Link copied to clipboard</div>
-
-<script>
-  const BASE = 'https://asanterno.github.io/catholic-start/';
-
-  function copyLink(e, filename) {
-    e.preventDefault();
-    e.stopPropagation();
-    const url = BASE + filename;
-    navigator.clipboard.writeText(url).then(() => {
-      const btn = e.currentTarget;
-      btn.textContent = 'Copied!';
-      btn.classList.add('copied');
-      showToast();
-      setTimeout(() => {
-        btn.textContent = 'Copy link';
-        btn.classList.remove('copied');
-      }, 2000);
-    });
-  }
-
-  function showToast() {
-    const toast = document.getElementById('toast');
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 2200);
-  }
-</script>
+<div class="footer-note">Forged &amp; Faithful — Catholic Start</div>
 
 </body>
 </html>
