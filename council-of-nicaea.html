@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Council of Nicaea, 325 AD</title>
+<style>
+  :root { color-scheme: only light; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0f1c2e;
+    color: #e8dfc8;
+    font-family: 'EB Garamond', Georgia, serif;
+    padding: 40px 20px;
+    line-height: 1.65;
+  }
+  @font-face { font-family: 'Cinzel'; src: local('Cinzel'); }
+  .wrap { max-width: 780px; margin: 0 auto; }
+  h1 {
+    font-family: 'Cinzel', Georgia, serif;
+    color: #d4af37;
+    text-align: center;
+    font-size: 2rem;
+    letter-spacing: 0.03em;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+  .subtitle {
+    text-align: center;
+    color: #a89968;
+    font-style: italic;
+    margin-bottom: 40px;
+    font-size: 1.05rem;
+  }
+  .section {
+    background: #17263c;
+    border: 1px solid #35486a;
+    border-radius: 6px;
+    margin-bottom: 22px;
+    overflow: hidden;
+  }
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .section-header:hover { background: #1c2e48; }
+  .section-title {
+    font-family: 'Cinzel', Georgia, serif;
+    color: #f0e6cc;
+    font-size: 1.15rem;
+    font-weight: 600;
+  }
+  .section-eyebrow {
+    font-family: 'Cinzel', Georgia, serif;
+    color: #d4af37;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .toggle-icon {
+    color: #d4af37;
+    font-size: 1.3rem;
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
+    margin-left: 16px;
+  }
+  .section.open .toggle-icon { transform: rotate(45deg); }
+  .section-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.35s ease;
+    padding: 0 20px;
+    font-size: 1.02rem;
+    color: #d8cba8;
+  }
+  .section.open .section-body {
+    max-height: 900px;
+    padding: 0 20px 20px 20px;
+  }
+  .section-body p { margin-bottom: 12px; }
+  .section-body p:last-child { margin-bottom: 0; }
+  .fact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 14px 0;
+  }
+  .fact {
+    background: #12203350;
+    border: 1px solid #2a3d5c;
+    border-radius: 4px;
+    padding: 10px 14px;
+  }
+  .fact-label {
+    font-family: 'Cinzel', Georgia, serif;
+    color: #d4af37;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .fact-value { color: #e8dfc8; font-size: 0.98rem; }
+  .analogy-box {
+    background: #1e1608;
+    border-left: 3px solid #d4af37;
+    padding: 14px 18px;
+    margin-top: 14px;
+    color: #c9b877;
+    font-size: 0.98rem;
+  }
+  .analogy-box strong {
+    font-style: normal;
+    color: #d4af37;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.03em;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .seed-question {
+    background: #2a3d5c40;
+    border: 1px solid #d4af3760;
+    border-radius: 4px;
+    padding: 14px 18px;
+    margin-top: 14px;
+    font-style: italic;
+    color: #f0e6cc;
+  }
+  .seed-question strong {
+    font-style: normal;
+    color: #d4af37;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .caution {
+    background: #2a1c12;
+    border-left: 3px solid #a06a3a;
+    padding: 12px 16px;
+    margin-top: 14px;
+    font-size: 0.95rem;
+    color: #d4b896;
+  }
+  .caution strong {
+    color: #d09a5c;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 4px;
+    font-style: normal;
+  }
+  .creed-text {
+    font-style: italic;
+    color: #f0e6cc;
+    border-left: 2px solid #d4af37;
+    padding-left: 16px;
+    margin: 8px 0;
+  }
+  footer {
+    text-align: center;
+    color: #6b7a94;
+    font-size: 0.85rem;
+    margin-top: 40px;
+    font-style: italic;
+  }
+  @media print {
+    body { background: white; color: #1a1a1a; }
+    .section { break-inside: avoid; border-color: #999; background: white; }
+    .section-body { max-height: none !important; padding: 0 20px 20px 20px !important; }
+    .toggle-icon { display: none; }
+    h1, .section-title, .section-eyebrow, .fact-label { color: #1a1a1a; }
+    .analogy-box, .seed-question, .caution { background: #f5f0e0; color: #333; }
+    .fact { background: #f0ece0; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>The Council of Nicaea</h1>
+  <p class="subtitle">325 AD — What It Was, Why It Matters for Apologetics</p>
+
+  <div class="section open">
+    <div class="section-header" onclick="toggle(this)">
+      <div>
+        <span class="section-eyebrow">Overview</span>
+        <span class="section-title">What Happened at Nicaea</span>
+      </div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p>Convened in 325 AD by Emperor Constantine in Nicaea (modern-day İznik, Turkey). It was the first ecumenical council of the Church — the first time bishops gathered from across the Christian world to settle a doctrinal dispute with binding, universal authority.</p>
+      <div class="fact-grid">
+        <div class="fact"><span class="fact-label">Called By</span><span class="fact-value">Emperor Constantine</span></div>
+        <div class="fact"><span class="fact-label">Attendees</span><span class="fact-value">~300 bishops</span></div>
+        <div class="fact"><span class="fact-label">Core Dispute</span><span class="fact-value">The Arian controversy</span></div>
+        <div class="fact"><span class="fact-label">Also Settled</span><span class="fact-value">Date of Easter</span></div>
+      </div>
+      <p>The immediate trigger was Arius, a priest teaching that Christ was a created being — the greatest of creatures, but not eternal or fully divine. This was gaining real traction and threatened to fracture the Church, so Constantine called the bishops together to settle it decisively.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <div>
+        <span class="section-eyebrow">The Core Tension</span>
+        <span class="section-title">A Sola Scriptura Problem in Disguise</span>
+      </div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p>The word the council landed on — <em>homoousios</em>, "of one substance" — doesn't appear anywhere in Scripture. It's a technical term the bishops used to close off a loophole Arius was exploiting in the biblical text itself.</p>
+      <p>Arius wasn't a bad-faith reader. He was quoting real verses — like John 14:28, "the Father is greater than I" — to support his position. Two sides, same open Bible, opposite conclusions on whether Christ is fully God.</p>
+      <div class="seed-question">
+        <strong>Seed Question</strong>
+        If Scripture alone was sufficient and self-interpreting, why did the Church need 300+ bishops, imperial convening authority, and a non-biblical technical term to settle what "the Son" meant?
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <div>
+        <span class="section-eyebrow">The Analogy</span>
+        <span class="section-title">Scripture and the Supreme Court</span>
+      </div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p>Think of Scripture like the U.S. Constitution — inspired, authoritative, foundational. But constitutions still need a Supreme Court to rule on what the text means when good-faith readers disagree.</p>
+      <div class="analogy-box">
+        <strong>How It Maps</strong>
+        Nicaea functioned as the "Supreme Court" moment — an authoritative body with the power to say "this reading is out of bounds," binding on the whole Church, not just one more persuasive commentary added to the pile.
+      </div>
+      <p>This is the same underlying argument as apostolic succession and the three-legged stool (Scripture, Tradition, Magisterium) — Nicaea is a historical case study of that structure operating in real time, not an abstract theological claim.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <div>
+        <span class="section-eyebrow">The Product</span>
+        <span class="section-title">The Original Nicene Creed</span>
+      </div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p>The council produced a creed affirming Christ as fully divine and co-eternal with the Father. The key phrase:</p>
+      <p class="creed-text">"...true God from true God, begotten, not made, consubstantial [homoousios] with the Father..."</p>
+      <p>Note: the 325 text focused almost entirely on the Father-Son relationship. Language on the Holy Spirit was minimal — that gap wasn't filled in until the Council of Constantinople in 381, which produced the fuller version recited today.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <div>
+        <span class="section-eyebrow">Important Caveat</span>
+        <span class="section-title">Where This Argument Doesn't Land</span>
+      </div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <div class="caution">
+        <strong>Know This Before the Conversation</strong>
+        Dispensationalists generally already affirm Nicene Christology — Trinity, full divinity of Christ. This isn't a wedge on doctrine itself; you'll both agree on the conclusion. It's a wedge on <em>authority and mechanism</em> — how doctrine gets settled and enforced.
+      </div>
+      <p>The sharper framing: "You already trust an extra-biblical council's ruling on this. The real question is why you'd trust that one but not the ones that came after it." That keeps the conversation on ecclesiology and authority, where the actual disagreement lives, instead of re-litigating the Trinity, which isn't in dispute.</p>
+    </div>
+  </div>
+
+  <footer>Forged &amp; Faithful — Catholic Apologetics Reference</footer>
+</div>
+
+<script>
+function toggle(header) {
+  const section = header.parentElement;
+  section.classList.toggle('open');
+  const icon = header.querySelector('.toggle-icon');
+  icon.textContent = section.classList.contains('open') ? '−' : '+';
+}
+</script>
+</body>
+</html>

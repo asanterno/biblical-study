@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Eucharist &amp; the Real Presence</title>
+<style>
+  :root { color-scheme: only light; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0f1c2e;
+    color: #e8dfc8;
+    font-family: 'EB Garamond', Georgia, serif;
+    padding: 40px 20px;
+    line-height: 1.65;
+  }
+  @font-face { font-family: 'Cinzel'; src: local('Cinzel'); }
+  .wrap { max-width: 780px; margin: 0 auto; }
+  h1 {
+    font-family: 'Cinzel', Georgia, serif;
+    color: #d4af37;
+    text-align: center;
+    font-size: 2rem;
+    letter-spacing: 0.03em;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+  .subtitle {
+    text-align: center;
+    color: #a89968;
+    font-style: italic;
+    margin-bottom: 36px;
+    font-size: 1.05rem;
+  }
+  .top-controls {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+  .ctrl-btn {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #d4af37;
+    background: #17263c;
+    border: 1px solid #d4af37;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+  .ctrl-btn:hover { background: #1c2e48; }
+  .category-label {
+    font-family: 'Cinzel', Georgia, serif;
+    color: #d4af37;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 32px 0 14px 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #35486a;
+  }
+  .category-label:first-of-type { margin-top: 0; }
+  .section {
+    background: #17263c;
+    border: 1px solid #35486a;
+    border-radius: 6px;
+    margin-bottom: 14px;
+    overflow: hidden;
+  }
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .section-header:hover { background: #1c2e48; }
+  .section-title {
+    font-family: 'Cinzel', Georgia, serif;
+    color: #f0e6cc;
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+  .toggle-icon {
+    color: #d4af37;
+    font-size: 1.3rem;
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
+    margin-left: 16px;
+  }
+  .section.open .toggle-icon { transform: rotate(45deg); }
+  .section-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    padding: 0 20px;
+    font-size: 0.98rem;
+    color: #d8cba8;
+  }
+  .section.open .section-body {
+    max-height: 1000px;
+    padding: 0 20px 18px 20px;
+  }
+  .section-body p { margin-bottom: 12px; }
+  .section-body p:last-child { margin-bottom: 0; }
+  .verse-quote {
+    font-style: italic;
+    color: #f0e6cc;
+    border-left: 2px solid #d4af37;
+    padding-left: 14px;
+    margin: 10px 0;
+  }
+  .father-quote {
+    font-style: italic;
+    color: #f0e6cc;
+    border-left: 2px solid #6b8fb0;
+    padding-left: 14px;
+    margin: 10px 0;
+  }
+  .father-quote .attribution {
+    display: block;
+    font-style: normal;
+    color: #a89968;
+    font-size: 0.85rem;
+    margin-top: 4px;
+  }
+  .seed-question {
+    background: #2a3d5c40;
+    border: 1px solid #d4af3760;
+    border-radius: 4px;
+    padding: 12px 16px;
+    margin-top: 12px;
+    font-style: italic;
+    color: #f0e6cc;
+  }
+  .seed-question strong {
+    font-style: normal;
+    color: #d4af37;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+  }
+  .caution {
+    background: #2a1c12;
+    border-left: 3px solid #a06a3a;
+    padding: 10px 16px;
+    margin-top: 12px;
+    font-size: 0.93rem;
+    color: #d4b896;
+  }
+  .caution strong {
+    color: #d09a5c;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+  }
+  footer {
+    text-align: center;
+    color: #6b7a94;
+    font-size: 0.85rem;
+    margin-top: 40px;
+    font-style: italic;
+  }
+  @media print {
+    body { background: white; color: #1a1a1a; }
+    .section { break-inside: avoid; border-color: #999; background: white; }
+    .section-body { max-height: none !important; padding: 0 20px 18px 20px !important; }
+    .toggle-icon, .top-controls { display: none; }
+    h1, .section-title, .category-label { color: #1a1a1a; }
+    .seed-question, .caution { background: #f5f0e0; color: #333; }
+    .verse-quote, .father-quote { color: #1a1a1a; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>The Eucharist</h1>
+  <p class="subtitle">The Real Presence: Symbol, or Substance?</p>
+
+  <div class="top-controls">
+    <button class="ctrl-btn" onclick="setAll(true)">Expand All</button>
+    <button class="ctrl-btn" onclick="setAll(false)">Collapse All</button>
+  </div>
+
+  <div class="category-label">The Hard Saying</div>
+
+  <div class="section open">
+    <div class="section-header" onclick="toggle(this)">
+      <div><span class="section-title">John 6 — The Bread of Life Discourse</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p class="verse-quote">"I am the living bread that came down from heaven. If anyone eats of this bread, he will live forever. And the bread that I will give for the life of the world is my flesh." — John 6:51</p>
+      <p>Jesus doesn't soften this. The crowd's reaction tells you how literally they took it:</p>
+      <p class="verse-quote">"The Jews then disputed among themselves, saying, 'How can this man give us his flesh to eat?'" — John 6:52</p>
+      <p>Jesus's response is the key move in the whole passage — he escalates rather than clarifies:</p>
+      <p class="verse-quote">"Truly, truly, I say to you, unless you eat the flesh of the Son of Man and drink his blood, you have no life in you... For my flesh is true food, and my blood is true drink." — John 6:53, 55</p>
+      <p>The Greek word for "eat" shifts here to <em>trogo</em> — a blunt, physical word closer to "gnaw" or "munch" than the more generic <em>phago</em> used earlier in the passage. It's the language of literal eating, not metaphor.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <div><span class="section-title">Why This Wasn't Read as Symbolic</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p>The strongest evidence Jesus meant this literally is what happens next — people leave over it:</p>
+      <p class="verse-quote">"After this many of his disciples turned back and no longer walked with him." — John 6:66</p>
+      <p>If this were merely symbolic language — as Jesus clarified elsewhere when he was misunderstood (e.g., "destroy this temple," John 2:19-21, or being "born again," John 3:3-4) — this was the moment to correct the record. Jesus routinely explained metaphors when people took him too literally. Here, he does the opposite: he doubles down, and lets people walk away rather than soften the claim.</p>
+      <div class="seed-question">
+        <strong>Seed Question</strong>
+        Every other time in John's Gospel that people misunderstand Jesus as speaking literally when he meant something symbolic, he corrects them. Why does he let his own disciples leave over this one, if it was just a metaphor they misread?
+      </div>
+    </div>
+  </div>
+
+  <div class="category-label">The Institution</div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <div><span class="section-title">The Last Supper — "This Is My Body"</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p class="verse-quote">"This is my body, which is given for you." — Luke 22:19</p>
+      <p>All three synoptic Gospels (Matthew 26:26, Mark 14:22, Luke 22:19) and Paul (1 Corinthians 11:24) record nearly identical wording at the Last Supper — striking uniformity across independent sources for a single sentence.</p>
+      <p>Paul adds a warning that only makes sense if something real, not symbolic, is at stake:</p>
+      <p class="verse-quote">"Whoever, therefore, eats the bread or drinks the cup of the Lord in an unworthy manner will be guilty concerning the body and blood of the Lord... For anyone who eats and drinks without discerning the body eats and drinks judgment on himself." — 1 Corinthians 11:27, 29</p>
+      <div class="seed-question">
+        <strong>Seed Question</strong>
+        Why would eating ordinary bread "unworthily" bring guilt concerning Christ's actual body and blood, and provoke sickness and death among the Corinthians (v. 30), if nothing about the bread had actually changed?
+      </div>
+    </div>
+  </div>
+
+  <div class="category-label">The Early Church's Reading</div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <div><span class="section-title">How the First Christians Understood It</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p>This isn't a later medieval invention — the earliest Christian writers outside Scripture describe the Eucharist in unmistakably literal terms, within a generation or two of the apostles.</p>
+      <p class="father-quote">"They abstain from Eucharist and prayer, because they do not confess that the Eucharist is the flesh of our Savior Jesus Christ."<span class="attribution">— Ignatius of Antioch, c. 110 AD, writing about a group he considered heretical for denying it</span></p>
+      <p class="father-quote">"We do not receive these as common bread and common drink... but as we have been taught, the food which is blessed... is the flesh and blood of that Jesus who was made flesh."<span class="attribution">— Justin Martyr, c. 150 AD</span></p>
+      <p>Ignatius is especially significant — he was a disciple of the Apostle John, writing within a decade or two of John's Gospel itself, and he treats belief in the literal Real Presence as the dividing line between orthodox and heretical Christians.</p>
+    </div>
+  </div>
+
+  <div class="category-label">Explaining the Mechanism</div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <div><span class="section-title">Transubstantiation — What the Word Actually Claims</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p>The word itself scares people before the concept does — it's worth simplifying. Catholic teaching, using Aristotelian categories, distinguishes between a thing's <em>substance</em> (what it fundamentally is) and its <em>accidents</em> (its outward properties — taste, texture, appearance, chemical composition).</p>
+      <p>The claim: at consecration, the substance changes completely — it becomes Christ's body and blood — while every accident remains bread and wine. It still tastes, digests, and behaves chemically exactly like bread and wine, because none of the accidents changed. Only what it fundamentally is has changed.</p>
+      <p>This is why Catholics don't claim any scientific test would detect a difference — the claim was never about the accidents. It's a metaphysical claim, not an empirical one.</p>
+    </div>
+  </div>
+
+  <div class="category-label">Where This Lands</div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <div><span class="section-title">The Steelman, and the Honest Caveat</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <div class="caution">
+        <strong>Know This Before the Conversation</strong>
+        The strongest Reformed/evangelical response doesn't deny John 6 sounds shocking — it points to John 6:63: "It is the Spirit who gives life; the flesh is no help at all. The words that I have spoken to you are spirit and life." This is read as Jesus reinterpreting his own hard saying as spiritual, not literal. A fair answer distinguishes "flesh" used two different ways in the passage — human effort/the merely physical (v. 63) versus his glorified flesh given as food (v. 51-56) — but this genuinely takes some unpacking, and it's the verse to be ready for.
+      </div>
+      <p>The cumulative case is strongest when the pieces are held together: the shocking literalism of John 6 that Jesus refuses to soften, the uniform wording at the Last Supper across four independent sources, Paul's warning that only makes sense if something real changed, and an unbroken line of early Christian testimony reading it the same way from the first generation onward.</p>
+    </div>
+  </div>
+
+  <footer>Forged &amp; Faithful — Catholic Apologetics Reference</footer>
+</div>
+
+<script>
+function toggle(header) {
+  const section = header.parentElement;
+  section.classList.toggle('open');
+  const icon = header.querySelector('.toggle-icon');
+  icon.textContent = section.classList.contains('open') ? '−' : '+';
+}
+function setAll(open) {
+  document.querySelectorAll('.section').forEach(s => {
+    s.classList.toggle('open', open);
+    s.querySelector('.toggle-icon').textContent = open ? '−' : '+';
+  });
+}
+</script>
+</body>
+</html>

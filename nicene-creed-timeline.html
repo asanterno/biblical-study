@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Nicene Creed: A Timeline of Authority</title>
+<style>
+  :root { color-scheme: only light; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0f1c2e;
+    color: #e8dfc8;
+    font-family: 'EB Garamond', Georgia, serif;
+    padding: 40px 20px;
+    line-height: 1.6;
+  }
+  @font-face {
+    font-family: 'Cinzel';
+    src: local('Cinzel');
+  }
+  .wrap { max-width: 820px; margin: 0 auto; }
+  h1 {
+    font-family: 'Cinzel', Georgia, serif;
+    color: #d4af37;
+    text-align: center;
+    font-size: 2rem;
+    letter-spacing: 0.03em;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+  .subtitle {
+    text-align: center;
+    color: #a89968;
+    font-style: italic;
+    margin-bottom: 40px;
+    font-size: 1.05rem;
+  }
+  .timeline {
+    position: relative;
+    padding-left: 30px;
+    border-left: 2px solid #d4af37;
+  }
+  .event {
+    position: relative;
+    margin-bottom: 28px;
+    background: #17263c;
+    border: 1px solid #35486a;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .event::before {
+    content: '';
+    position: absolute;
+    left: -37px;
+    top: 22px;
+    width: 14px;
+    height: 14px;
+    background: #d4af37;
+    border-radius: 50%;
+    border: 2px solid #0f1c2e;
+  }
+  .event-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .event-header:hover { background: #1c2e48; }
+  .event-year {
+    font-family: 'Cinzel', Georgia, serif;
+    color: #d4af37;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .event-title {
+    font-family: 'Cinzel', Georgia, serif;
+    color: #f0e6cc;
+    font-size: 1.15rem;
+    font-weight: 600;
+  }
+  .toggle-icon {
+    color: #d4af37;
+    font-size: 1.3rem;
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
+    margin-left: 16px;
+  }
+  .event.open .toggle-icon { transform: rotate(45deg); }
+  .event-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    padding: 0 20px;
+    font-size: 1.02rem;
+    color: #d8cba8;
+  }
+  .event.open .event-body {
+    max-height: 600px;
+    padding: 0 20px 20px 20px;
+  }
+  .event-body p { margin-bottom: 12px; }
+  .event-body p:last-child { margin-bottom: 0; }
+  .tag {
+    display: inline-block;
+    background: #2a3d5c;
+    color: #d4af37;
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-family: 'Cinzel', Georgia, serif;
+    letter-spacing: 0.03em;
+    margin-top: 10px;
+  }
+  .apologetic-note {
+    background: #1e1608;
+    border-left: 3px solid #d4af37;
+    padding: 12px 16px;
+    margin-top: 14px;
+    font-style: italic;
+    color: #c9b877;
+    font-size: 0.95rem;
+  }
+  .apologetic-note strong {
+    font-style: normal;
+    color: #d4af37;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.03em;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .schism-marker {
+    text-align: center;
+    color: #8a5a3a;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    margin: 20px 0 20px -30px;
+    padding-left: 30px;
+    border-left: 2px dashed #8a5a3a;
+  }
+  footer {
+    text-align: center;
+    color: #6b7a94;
+    font-size: 0.85rem;
+    margin-top: 40px;
+    font-style: italic;
+  }
+  @media print {
+    body { background: white; color: #1a1a1a; }
+    .event { break-inside: avoid; border-color: #999; background: white; }
+    .event-body { max-height: none !important; padding: 0 20px 20px 20px !important; }
+    .toggle-icon { display: none; }
+    h1, .event-title, .event-year { color: #1a1a1a; }
+    .apologetic-note { background: #f5f0e0; color: #333; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>The Nicene Creed</h1>
+  <p class="subtitle">A Timeline of Authority, Development, and Division</p>
+
+  <div class="timeline">
+
+    <div class="event open">
+      <div class="event-header" onclick="toggle(this)">
+        <div>
+          <span class="event-year">325 AD</span>
+          <span class="event-title">Council of Nicaea</span>
+        </div>
+        <span class="toggle-icon">+</span>
+      </div>
+      <div class="event-body">
+        <p>Convened by Emperor Constantine to resolve the Arian controversy — whether Christ was truly divine and co-eternal with the Father, or a created being. Roughly 300 bishops attended.</p>
+        <p>The council produced the original Nicene Creed, using the non-biblical term <em>homoousios</em> ("of one substance") to close off Arius's reading of texts like John 14:28.</p>
+        <p>Focused almost entirely on the Father-Son relationship; language on the Holy Spirit was minimal ("We believe in the Holy Spirit" — full stop).</p>
+        <div class="tag">First Ecumenical Council</div>
+        <div class="apologetic-note">
+          <strong>Seed Question</strong>
+          If Scripture alone was sufficient and self-clarifying, why did the Church need an authoritative council and a non-biblical term to settle what "the Son" meant?
+        </div>
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="event-header" onclick="toggle(this)">
+        <div>
+          <span class="event-year">381 AD</span>
+          <span class="event-title">Council of Constantinople</span>
+        </div>
+        <span class="toggle-icon">+</span>
+      </div>
+      <div class="event-body">
+        <p>Called to finish what Nicaea left unfinished. Expanded the creed's treatment of the Holy Spirit ("the Lord, the giver of life, who proceeds from the Father... who has spoken through the prophets") and added the closing article on the Church, baptism, and resurrection.</p>
+        <p>This expanded version — the Niceno-Constantinopolitan Creed — is what nearly all Christians recite today when they say "the Nicene Creed."</p>
+        <div class="tag">Second Ecumenical Council</div>
+        <div class="apologetic-note">
+          <strong>Seed Question</strong>
+          It took two councils, 56 years apart, to fully articulate the Trinity. Doctrine wasn't self-evident from an open Bible — it was worked out, ruled on, and settled by a body with binding authority.
+        </div>
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="event-header" onclick="toggle(this)">
+        <div>
+          <span class="event-year">431 AD</span>
+          <span class="event-title">Council of Ephesus</span>
+        </div>
+        <span class="toggle-icon">+</span>
+      </div>
+      <div class="event-body">
+        <p>Primarily addressed the Nestorian controversy (Christ's two natures, and Mary as <em>Theotokos</em>, "God-bearer"). In the process, the council explicitly forbade any further alteration to the Nicene-Constantinopolitan text.</p>
+        <p>From this point on, the creed's wording was formally closed — which makes the next entry on this timeline significant.</p>
+        <div class="tag">Third Ecumenical Council</div>
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="event-header" onclick="toggle(this)">
+        <div>
+          <span class="event-year">6th–11th c. AD</span>
+          <span class="event-title">The Filioque Clause</span>
+        </div>
+        <span class="toggle-icon">+</span>
+      </div>
+      <div class="event-body">
+        <p>The Western Church began adding "and the Son" (<em>filioque</em>) to the line on the Holy Spirit — changing "who proceeds from the Father" to "who proceeds from the Father <strong>and the Son</strong>."</p>
+        <p>It appeared first in regional councils in Spain (6th century) and spread gradually through the West, formally adopted in Rome by the 11th century — without an ecumenical council's approval, and in apparent tension with Ephesus's 431 ruling.</p>
+        <p>The Eastern Church never accepted it, viewing it as both theologically flawed and procedurally illegitimate — a unilateral change to a fixed, conciliar text.</p>
+        <div class="tag">Contested Addition</div>
+        <div class="apologetic-note">
+          <strong>Honest Caveat</strong>
+          This is real ammunition for the "even the Church disputes its own authority" objection. Worth knowing cold rather than being caught off guard by it — the honest answer involves distinguishing the East's procedural objection from an outright rejection of the underlying theology, which Rome holds is compatible with, not contrary to, Nicene Trinitarianism.
+        </div>
+      </div>
+    </div>
+
+    <div class="schism-marker">⟶ tension builds over three centuries ⟶</div>
+
+    <div class="event">
+      <div class="event-header" onclick="toggle(this)">
+        <div>
+          <span class="event-year">1054 AD</span>
+          <span class="event-title">The Great Schism</span>
+        </div>
+        <span class="toggle-icon">+</span>
+      </div>
+      <div class="event-body">
+        <p>Mutual excommunications between Rome and Constantinople formalized the East-West split. The filioque clause was one of several major factors, alongside disputes over papal authority, liturgical practice, and jurisdiction.</p>
+        <p>The Catholic and Eastern Orthodox Churches remain divided to this day, though both hold the pre-filioque Nicene-Constantinopolitan Creed as authoritative — they simply recite different versions of one clause.</p>
+        <div class="tag">East-West Division</div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>Forged &amp; Faithful — Catholic Apologetics Reference</footer>
+</div>
+
+<script>
+function toggle(header) {
+  const event = header.parentElement;
+  event.classList.toggle('open');
+  const icon = header.querySelector('.toggle-icon');
+  icon.textContent = event.classList.contains('open') ? '−' : '+';
+}
+</script>
+</body>
+</html>

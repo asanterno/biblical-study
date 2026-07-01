@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faith Alone vs. James 2</title>
+<style>
+  :root { color-scheme: only light; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0f1c2e;
+    color: #e8dfc8;
+    font-family: 'EB Garamond', Georgia, serif;
+    padding: 40px 20px;
+    line-height: 1.65;
+  }
+  @font-face { font-family: 'Cinzel'; src: local('Cinzel'); }
+  .wrap { max-width: 780px; margin: 0 auto; }
+  h1 {
+    font-family: 'Cinzel', Georgia, serif;
+    color: #d4af37;
+    text-align: center;
+    font-size: 2rem;
+    letter-spacing: 0.03em;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+  .subtitle {
+    text-align: center;
+    color: #a89968;
+    font-style: italic;
+    margin-bottom: 36px;
+    font-size: 1.05rem;
+  }
+  .top-controls {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+  .ctrl-btn {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #d4af37;
+    background: #17263c;
+    border: 1px solid #d4af37;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+  .ctrl-btn:hover { background: #1c2e48; }
+  .category-label {
+    font-family: 'Cinzel', Georgia, serif;
+    color: #d4af37;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 32px 0 14px 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #35486a;
+  }
+  .category-label:first-of-type { margin-top: 0; }
+  .versus-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+  @media (max-width: 600px) {
+    .versus-block { grid-template-columns: 1fr; }
+  }
+  .versus-card {
+    background: #17263c;
+    border: 1px solid #35486a;
+    border-radius: 6px;
+    padding: 18px 20px;
+  }
+  .versus-card.protestant { border-top: 3px solid #6b8fb0; }
+  .versus-card.catholic { border-top: 3px solid #d4af37; }
+  .versus-label {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: block;
+  }
+  .versus-card.protestant .versus-label { color: #6b8fb0; }
+  .versus-card.catholic .versus-label { color: #d4af37; }
+  .versus-verse {
+    font-style: italic;
+    color: #f0e6cc;
+    font-size: 1rem;
+    border-left: 2px solid;
+    padding-left: 12px;
+    margin-bottom: 10px;
+  }
+  .versus-card.protestant .versus-verse { border-color: #6b8fb0; }
+  .versus-card.catholic .versus-verse { border-color: #d4af37; }
+  .versus-body { color: #d8cba8; font-size: 0.95rem; }
+  .section {
+    background: #17263c;
+    border: 1px solid #35486a;
+    border-radius: 6px;
+    margin-bottom: 14px;
+    overflow: hidden;
+  }
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .section-header:hover { background: #1c2e48; }
+  .section-title {
+    font-family: 'Cinzel', Georgia, serif;
+    color: #f0e6cc;
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+  .toggle-icon {
+    color: #d4af37;
+    font-size: 1.3rem;
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
+    margin-left: 16px;
+  }
+  .section.open .toggle-icon { transform: rotate(45deg); }
+  .section-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    padding: 0 20px;
+    font-size: 0.98rem;
+    color: #d8cba8;
+  }
+  .section.open .section-body {
+    max-height: 900px;
+    padding: 0 20px 18px 20px;
+  }
+  .section-body p { margin-bottom: 12px; }
+  .section-body p:last-child { margin-bottom: 0; }
+  .verse-quote {
+    font-style: italic;
+    color: #f0e6cc;
+    border-left: 2px solid #d4af37;
+    padding-left: 14px;
+    margin: 10px 0;
+  }
+  .seed-question {
+    background: #2a3d5c40;
+    border: 1px solid #d4af3760;
+    border-radius: 4px;
+    padding: 12px 16px;
+    margin-top: 12px;
+    font-style: italic;
+    color: #f0e6cc;
+  }
+  .seed-question strong {
+    font-style: normal;
+    color: #d4af37;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+  }
+  .caution {
+    background: #2a1c12;
+    border-left: 3px solid #a06a3a;
+    padding: 10px 16px;
+    margin-top: 12px;
+    font-size: 0.93rem;
+    color: #d4b896;
+  }
+  .caution strong {
+    color: #d09a5c;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+  }
+  footer {
+    text-align: center;
+    color: #6b7a94;
+    font-size: 0.85rem;
+    margin-top: 40px;
+    font-style: italic;
+  }
+  @media print {
+    body { background: white; color: #1a1a1a; }
+    .section, .versus-card { break-inside: avoid; border-color: #999; background: white; }
+    .section-body { max-height: none !important; padding: 0 20px 18px 20px !important; }
+    .toggle-icon, .top-controls { display: none; }
+    h1, .section-title, .category-label, .versus-label { color: #1a1a1a; }
+    .seed-question, .caution { background: #f5f0e0; color: #333; }
+    .verse-quote, .versus-verse { color: #1a1a1a; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Faith Alone vs. James 2</h1>
+  <p class="subtitle">Sola Fide and the Justification Debate</p>
+
+  <div class="top-controls">
+    <button class="ctrl-btn" onclick="setAll(true)">Expand All</button>
+    <button class="ctrl-btn" onclick="setAll(false)">Collapse All</button>
+  </div>
+
+  <div class="category-label">The Two Texts, Side by Side</div>
+
+  <div class="versus-block">
+    <div class="versus-card protestant">
+      <span class="versus-label">The Sola Fide Text</span>
+      <p class="versus-verse">"For we hold that one is justified by faith apart from works of the law." — Romans 3:28</p>
+      <p class="versus-body">Paul's core claim in Romans: justification comes through faith, not through "works of the law" — read by Reformed theology as any human effort, moral or ceremonial.</p>
+    </div>
+    <div class="versus-card catholic">
+      <span class="versus-label">The Counter-Text</span>
+      <p class="versus-verse">"You see that a person is justified by works and not by faith alone." — James 2:24</p>
+      <p class="versus-body">James uses nearly identical vocabulary — faith, works, justified — and reaches what looks like the opposite conclusion. Same terms, same topic, different verdict.</p>
+    </div>
+  </div>
+
+  <div class="category-label">Working Through It</div>
+
+  <div class="section open">
+    <div class="section-header" onclick="toggle(this)">
+      <div><span class="section-title">What "Works of the Law" Meant to Paul</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p>Paul's target in Romans and Galatians is specifically the Mosaic ceremonial law — circumcision, dietary rules, temple sacrifice — not good works or moral obedience generally. He's arguing Gentiles don't need to become culturally Jewish to be justified.</p>
+      <p class="verse-quote">"For in Christ Jesus neither circumcision nor uncircumcision counts for anything, but only faith working through love." — Galatians 5:6</p>
+      <p>Notice the phrase: faith <em>working through love</em>. Not faith alone, sitting inert — faith that produces something. This is Paul's own qualifier, in the same letter that's often cited for sola fide.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <div><span class="section-title">What James Is Actually Arguing</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p>James isn't contradicting Paul on how a person first comes to God — he's addressing a different problem: people claiming to have faith while it produces nothing at all.</p>
+      <p class="verse-quote">"What good is it, my brothers, if someone says he has faith but does not have works? Can that faith save him?" — James 2:14</p>
+      <p class="verse-quote">"Even the demons believe—and shudder." — James 2:19</p>
+      <p>James's point: mere intellectual assent isn't the kind of faith that saves — even demons have that. He then uses Abraham as his proof case:</p>
+      <p class="verse-quote">"Was not Abraham our father justified by works when he offered up his son Isaac on the altar? You see that faith was active along with his works, and faith was completed by his works." — James 2:21-22</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <div><span class="section-title">The Abraham Problem</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p>This is the sharpest textual tension in the whole debate. Paul uses Abraham as his prime example of justification by faith alone — citing Genesis 15:6, before Isaac was ever born:</p>
+      <p class="verse-quote">"Abraham believed God, and it was counted to him as righteousness." — Romans 4:3</p>
+      <p>James uses the <em>same man</em>, but points to a different moment — the offering of Isaac in Genesis 22, decades later — as proof that works, not faith alone, justified him.</p>
+      <div class="seed-question">
+        <strong>Seed Question</strong>
+        Paul and James both cite Abraham as their proof text for opposite positions. If Scripture alone is sufficient and clear, why do two inspired authors use the same example to argue seemingly different points — and who has the authority to reconcile them?
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <div><span class="section-title">The Catholic Resolution</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p>Catholic teaching doesn't pick one apostle over the other — it reads them as describing two moments in the same process. Genesis 15 (faith credited as righteousness) is the beginning of justification; Genesis 22 (the offering of Isaac) is that same faith proven genuine and brought to completion decades later.</p>
+      <p class="verse-quote">"Faith was completed by his works." — James 2:22</p>
+      <p>Justification, on this reading, isn't a single legal transaction at the moment of belief — it's an ongoing, living relationship that faith initiates and works express and complete. Faith and works aren't competing causes; they're the root and the fruit of one thing.</p>
+      <div class="caution">
+        <strong>Know This Before the Conversation</strong>
+        Most Reformed apologists have a ready answer here: works are the necessary <em>evidence</em> of true faith, not a contributing <em>cause</em> of justification — faith alone justifies, but the faith that justifies is never alone. This is a real, coherent position (associated with figures like Calvin), not a dodge. The actual disagreement is narrower than it first looks: whether works are purely evidential/subsequent, or actually participate in justifying grace itself.
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <div><span class="section-title">Where the Real Disagreement Lives</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p>Once you get past the surface "faith vs. works" framing, the actual dividing line is narrower and more precise:</p>
+      <p><strong>Reformed view:</strong> Justification is a single, forensic declaration — God legally counts the believer righteous based on Christ's imputed righteousness. Sanctification (growing in holiness, doing good works) follows as evidence, but adds nothing to justification itself.</p>
+      <p><strong>Catholic view:</strong> Justification is the beginning of an actual transformation — God doesn't just declare you righteous, he makes you righteous, infusing grace that a person can then cooperate with or resist. Works done in grace genuinely participate in that ongoing justification, not just prove it happened.</p>
+      <div class="seed-question">
+        <strong>Seed Question</strong>
+        If justification is purely a legal declaration with zero ongoing stake in your works, how do you read passages like Matthew 25 or Romans 2:6-8, where judgment is explicitly rendered "according to what he has done"?
+      </div>
+    </div>
+  </div>
+
+  <footer>Forged &amp; Faithful — Catholic Apologetics Reference</footer>
+</div>
+
+<script>
+function toggle(header) {
+  const section = header.parentElement;
+  section.classList.toggle('open');
+  const icon = header.querySelector('.toggle-icon');
+  icon.textContent = section.classList.contains('open') ? '−' : '+';
+}
+function setAll(open) {
+  document.querySelectorAll('.section').forEach(s => {
+    s.classList.toggle('open', open);
+    s.querySelector('.toggle-icon').textContent = open ? '−' : '+';
+  });
+}
+</script>
+</body>
+</html>

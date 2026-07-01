@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Confession</title>
+<style>
+  :root { color-scheme: only light; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0f1c2e; color: #e8dfc8; font-family: 'EB Garamond', Georgia, serif; padding: 40px 20px; line-height: 1.65; }
+  @font-face { font-family: 'Cinzel'; src: local('Cinzel'); }
+  .wrap { max-width: 780px; margin: 0 auto; }
+  h1 { font-family: 'Cinzel', Georgia, serif; color: #d4af37; text-align: center; font-size: 2rem; letter-spacing: 0.03em; margin-bottom: 8px; text-transform: uppercase; }
+  .subtitle { text-align: center; color: #a89968; font-style: italic; margin-bottom: 36px; font-size: 1.05rem; }
+  .top-controls { display: flex; justify-content: center; gap: 12px; margin-bottom: 30px; }
+  .ctrl-btn { font-family: 'Cinzel', Georgia, serif; font-size: 0.75rem; letter-spacing: 0.05em; text-transform: uppercase; color: #d4af37; background: #17263c; border: 1px solid #d4af37; border-radius: 4px; padding: 8px 16px; cursor: pointer; }
+  .ctrl-btn:hover { background: #1c2e48; }
+  .category-label { font-family: 'Cinzel', Georgia, serif; color: #d4af37; font-size: 0.95rem; letter-spacing: 0.08em; text-transform: uppercase; margin: 32px 0 14px 0; padding-bottom: 8px; border-bottom: 1px solid #35486a; }
+  .category-label:first-of-type { margin-top: 0; }
+  .section { background: #17263c; border: 1px solid #35486a; border-radius: 6px; margin-bottom: 14px; overflow: hidden; }
+  .section-header { display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; cursor: pointer; user-select: none; }
+  .section-header:hover { background: #1c2e48; }
+  .section-title { font-family: 'Cinzel', Georgia, serif; color: #f0e6cc; font-size: 1.05rem; font-weight: 600; }
+  .toggle-icon { color: #d4af37; font-size: 1.3rem; transition: transform 0.25s ease; flex-shrink: 0; margin-left: 16px; }
+  .section.open .toggle-icon { transform: rotate(45deg); }
+  .section-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; padding: 0 20px; font-size: 0.98rem; color: #d8cba8; }
+  .section.open .section-body { max-height: 1000px; padding: 0 20px 18px 20px; }
+  .section-body p { margin-bottom: 12px; }
+  .section-body p:last-child { margin-bottom: 0; }
+  .verse-quote { font-style: italic; color: #f0e6cc; border-left: 2px solid #d4af37; padding-left: 14px; margin: 10px 0; }
+  .father-quote { font-style: italic; color: #f0e6cc; border-left: 2px solid #6b8fb0; padding-left: 14px; margin: 10px 0; }
+  .father-quote .attribution { display: block; font-style: normal; color: #a89968; font-size: 0.85rem; margin-top: 4px; }
+  .seed-question { background: #2a3d5c40; border: 1px solid #d4af3760; border-radius: 4px; padding: 12px 16px; margin-top: 12px; font-style: italic; color: #f0e6cc; }
+  .seed-question strong { font-style: normal; color: #d4af37; font-family: 'Cinzel', Georgia, serif; font-size: 0.72rem; letter-spacing: 0.05em; display: block; margin-bottom: 5px; text-transform: uppercase; }
+  .caution { background: #2a1c12; border-left: 3px solid #a06a3a; padding: 10px 16px; margin-top: 12px; font-size: 0.93rem; color: #d4b896; }
+  .caution strong { color: #d09a5c; font-family: 'Cinzel', Georgia, serif; font-size: 0.72rem; letter-spacing: 0.05em; display: block; margin-bottom: 4px; text-transform: uppercase; }
+  footer { text-align: center; color: #6b7a94; font-size: 0.85rem; margin-top: 40px; font-style: italic; }
+  @media print {
+    body { background: white; color: #1a1a1a; }
+    .section { break-inside: avoid; border-color: #999; background: white; }
+    .section-body { max-height: none !important; padding: 0 20px 18px 20px !important; }
+    .toggle-icon, .top-controls { display: none; }
+    h1, .section-title, .category-label { color: #1a1a1a; }
+    .seed-question, .caution { background: #f5f0e0; color: #333; }
+    .verse-quote, .father-quote { color: #1a1a1a; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Confession</h1>
+  <p class="subtitle">Why Go Through a Priest?</p>
+
+  <div class="top-controls">
+    <button class="ctrl-btn" onclick="setAll(true)">Expand All</button>
+    <button class="ctrl-btn" onclick="setAll(false)">Collapse All</button>
+  </div>
+
+  <div class="category-label">The Objection</div>
+
+  <div class="section open">
+    <div class="section-header" onclick="toggle(this)">
+      <div><span class="section-title">"Why Not Confess Directly to God?"</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p>Catholics agree completely that only God forgives sins in the ultimate sense — no priest has independent power to forgive apart from Christ. The question isn't whether God alone forgives, but whether he chose to exercise that forgiveness through a visible, instituted means, the way he chose visible, physical means for baptism and the Eucharist rather than leaving those purely private and internal too.</p>
+      <div class="seed-question">
+        <strong>Their Likely Opening</strong>
+        "1 John 1:9 says if we confess our sins to God, he is faithful to forgive. Why add a priest to that?"
+      </div>
+    </div>
+  </div>
+
+  <div class="category-label">The Institution</div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <div><span class="section-title">John 20:23 — The Direct Grant</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p class="verse-quote">"Jesus said to them again, 'Peace be with you. As the Father has sent me, even so I am sending you.' And when he had said this, he breathed on them and said to them, 'Receive the Holy Spirit. If you forgive the sins of any, they are forgiven them; if you withhold forgiveness from any, it is withheld.'" — John 20:21-23</p>
+      <p>This is the risen Christ, appearing to the apostles after the Resurrection, explicitly and deliberately conferring the authority to forgive — and just as deliberately, the authority to withhold forgiveness. That second half is the detail that's hardest to explain away: withholding forgiveness on someone's behalf requires actually hearing what's being forgiven or withheld. It presupposes a real act of confession to a real person making a real judgment.</p>
+      <div class="seed-question">
+        <strong>Seed Question</strong>
+        If this authority was symbolic or purely about proclaiming the general gospel message, what does "if you withhold forgiveness, it is withheld" mean in practice — withheld from whom, and based on what?
+      </div>
+    </div>
+  </div>
+
+  <div class="category-label">The Pattern</div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <div><span class="section-title">James 5 and Acts 19 — Confession Was Practiced Aloud</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p class="verse-quote">"Confess your sins to one another and pray for one another, that you may be healed." — James 5:16</p>
+      <p class="verse-quote">"Many also of those who were now believers came, confessing and divulging their practices." — Acts 19:18</p>
+      <p>Both texts describe vocal, external confession as an ordinary feature of early Christian life — not merely private, internal repentance. James 5 links it directly to the preceding verses about elders praying over the sick, situating confession within a specific, ordered church context rather than casual peer-to-peer disclosure.</p>
+    </div>
+  </div>
+
+  <div class="category-label">Early Church Practice</div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <div><span class="section-title">A Recognized Sacramental Practice Early On</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p class="father-quote">"[Some] confess their sins to the priests, and a course of penance is enjoined them proportioned to the nature and heinousness of the crime."<span class="attribution">— Origen, c. 244 AD</span></p>
+      <p>Public and later private confession to clergy, followed by assigned penance, developed as recognized Church practice within the first few centuries — well before any of the medieval institutional structures that critics sometimes assume were the origin point.</p>
+    </div>
+  </div>
+
+  <div class="category-label">Where This Lands</div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <div><span class="section-title">The Honest Steelman</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <div class="caution">
+        <strong>Know This Before the Conversation</strong>
+        A fair Protestant reading of John 20:23 doesn't deny the text — it argues this authority was given specifically and uniquely to the apostles as the founding generation, tied to their unrepeatable role establishing the Church and proclaiming the gospel with binding authority, not intended to transfer indefinitely to an ongoing priesthood. The Catholic response leans on the same apostolic succession case already built elsewhere in your library — if the office of apostle/overseer was designed to continue (which the biblical qualifications for bishops in the pastoral epistles suggest), there's no clear textual signal that this specific authority was the one exception carved out to not continue.
+      </div>
+    </div>
+  </div>
+
+  <footer>Forged &amp; Faithful — Catholic Apologetics Reference</footer>
+</div>
+
+<script>
+function toggle(header) {
+  const section = header.parentElement;
+  section.classList.toggle('open');
+  const icon = header.querySelector('.toggle-icon');
+  icon.textContent = section.classList.contains('open') ? '−' : '+';
+}
+function setAll(open) {
+  document.querySelectorAll('.section').forEach(s => {
+    s.classList.toggle('open', open);
+    s.querySelector('.toggle-icon').textContent = open ? '−' : '+';
+  });
+}
+</script>
+</body>
+</html>

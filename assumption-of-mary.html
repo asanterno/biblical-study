@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Assumption of Mary</title>
+<style>
+  :root { color-scheme: only light; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0f1c2e; color: #e8dfc8; font-family: 'EB Garamond', Georgia, serif; padding: 40px 20px; line-height: 1.65; }
+  @font-face { font-family: 'Cinzel'; src: local('Cinzel'); }
+  .wrap { max-width: 780px; margin: 0 auto; }
+  h1 { font-family: 'Cinzel', Georgia, serif; color: #d4af37; text-align: center; font-size: 2rem; letter-spacing: 0.03em; margin-bottom: 8px; text-transform: uppercase; }
+  .subtitle { text-align: center; color: #a89968; font-style: italic; margin-bottom: 36px; font-size: 1.05rem; }
+  .top-controls { display: flex; justify-content: center; gap: 12px; margin-bottom: 30px; }
+  .ctrl-btn { font-family: 'Cinzel', Georgia, serif; font-size: 0.75rem; letter-spacing: 0.05em; text-transform: uppercase; color: #d4af37; background: #17263c; border: 1px solid #d4af37; border-radius: 4px; padding: 8px 16px; cursor: pointer; }
+  .ctrl-btn:hover { background: #1c2e48; }
+  .category-label { font-family: 'Cinzel', Georgia, serif; color: #d4af37; font-size: 0.95rem; letter-spacing: 0.08em; text-transform: uppercase; margin: 32px 0 14px 0; padding-bottom: 8px; border-bottom: 1px solid #35486a; }
+  .category-label:first-of-type { margin-top: 0; }
+  .section { background: #17263c; border: 1px solid #35486a; border-radius: 6px; margin-bottom: 14px; overflow: hidden; }
+  .section-header { display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; cursor: pointer; user-select: none; }
+  .section-header:hover { background: #1c2e48; }
+  .section-title { font-family: 'Cinzel', Georgia, serif; color: #f0e6cc; font-size: 1.05rem; font-weight: 600; }
+  .toggle-icon { color: #d4af37; font-size: 1.3rem; transition: transform 0.25s ease; flex-shrink: 0; margin-left: 16px; }
+  .section.open .toggle-icon { transform: rotate(45deg); }
+  .section-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; padding: 0 20px; font-size: 0.98rem; color: #d8cba8; }
+  .section.open .section-body { max-height: 1000px; padding: 0 20px 18px 20px; }
+  .section-body p { margin-bottom: 12px; }
+  .section-body p:last-child { margin-bottom: 0; }
+  .verse-quote { font-style: italic; color: #f0e6cc; border-left: 2px solid #d4af37; padding-left: 14px; margin: 10px 0; }
+  .seed-question { background: #2a3d5c40; border: 1px solid #d4af3760; border-radius: 4px; padding: 12px 16px; margin-top: 12px; font-style: italic; color: #f0e6cc; }
+  .seed-question strong { font-style: normal; color: #d4af37; font-family: 'Cinzel', Georgia, serif; font-size: 0.72rem; letter-spacing: 0.05em; display: block; margin-bottom: 5px; text-transform: uppercase; }
+  .caution { background: #2a1c12; border-left: 3px solid #a06a3a; padding: 10px 16px; margin-top: 12px; font-size: 0.93rem; color: #d4b896; }
+  .caution strong { color: #d09a5c; font-family: 'Cinzel', Georgia, serif; font-size: 0.72rem; letter-spacing: 0.05em; display: block; margin-bottom: 4px; text-transform: uppercase; }
+  footer { text-align: center; color: #6b7a94; font-size: 0.85rem; margin-top: 40px; font-style: italic; }
+  @media print {
+    body { background: white; color: #1a1a1a; }
+    .section { break-inside: avoid; border-color: #999; background: white; }
+    .section-body { max-height: none !important; padding: 0 20px 18px 20px !important; }
+    .toggle-icon, .top-controls { display: none; }
+    h1, .section-title, .category-label { color: #1a1a1a; }
+    .seed-question, .caution { background: #f5f0e0; color: #333; }
+    .verse-quote { color: #1a1a1a; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>The Assumption of Mary</h1>
+  <p class="subtitle">The Weakest Text, the Strongest History</p>
+
+  <div class="top-controls">
+    <button class="ctrl-btn" onclick="setAll(true)">Expand All</button>
+    <button class="ctrl-btn" onclick="setAll(false)">Collapse All</button>
+  </div>
+
+  <div class="category-label">The Claim</div>
+
+  <div class="section open">
+    <div class="section-header" onclick="toggle(this)">
+      <div><span class="section-title">What Is Actually Being Claimed</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p>Defined dogmatically by Pope Pius XII in 1950 (<em>Munificentissimus Deus</em>): at the end of her earthly life, Mary was taken up body and soul into heavenly glory, rather than her body undergoing ordinary bodily corruption in the grave.</p>
+      <div class="caution">
+        <strong>Lead With This</strong>
+        This is, by a wide margin, the Marian dogma with the least direct scriptural support — it should be the one you're most upfront about rather than the one you oversell. The honest case rests almost entirely on typology and unbroken early liturgical practice, not a clear proof text. Overstating the biblical case here tends to undercut credibility on the stronger arguments elsewhere in the Marian cluster.
+      </div>
+    </div>
+  </div>
+
+  <div class="category-label">The Circumstantial Evidence</div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <div><span class="section-title">What's Conspicuously Absent</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p>No city in the ancient world ever claimed to possess Mary's bodily relics or tomb as a site of veneration — a striking silence given how aggressively the early Church venerated the bones and burial sites of far less prominent saints and martyrs. Compare this to Peter (relics claimed and venerated at Rome) or Stephen the first martyr (relics discovered and venerated with enormous fanfare in 415 AD).</p>
+      <div class="seed-question">
+        <strong>Seed Question</strong>
+        Given how important relic veneration was in the early Church, why does no city ever claim to have the body — or even contested burial site — of the most important woman in Christian history?
+      </div>
+    </div>
+  </div>
+
+  <div class="category-label">Typological Support</div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <div><span class="section-title">The Ark, Enoch, and Elijah</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p>As with the Immaculate Conception, the strongest thread ties back to Mary as the New Ark. The original Ark of the Covenant simply vanishes from the biblical record with no account of its destruction or decay (last mentioned 2 Chronicles 35:3, absent from the rebuilt Second Temple) — read typologically as pointing toward the New Ark's own fate.</p>
+      <p>There's also biblical precedent for bodily assumption itself, without claiming direct equivalence: Enoch (Genesis 5:24) and Elijah (2 Kings 2:11) are both taken up without dying an ordinary death. If God had already done this for two Old Testament figures, it removes any claim that such a thing is theologically impossible — it becomes a question of fittingness for Mary specifically, not a novel category of event.</p>
+      <p class="verse-quote">"A great sign appeared in heaven: a woman clothed with the sun, with the moon under her feet, and on her head a crown of twelve stars." — Revelation 12:1</p>
+      <p>This image is contested territory — Protestant readings typically identify the woman as Israel or the Church rather than Mary personally — but Catholic tradition has long read it with both senses simultaneously, Mary as both an individual and a figure of the covenant people.</p>
+    </div>
+  </div>
+
+  <div class="category-label">Liturgical Continuity</div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <div><span class="section-title">An Old, Unopposed Feast</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p>The Feast of the Dormition (in the East) or Assumption (in the West) was celebrated liturgically by both halves of Christendom well before the Great Schism of 1054 — meaning both the Catholic and Eastern Orthodox Churches, despite splitting over other matters including the papacy and the filioque, retained this belief on both sides of the divide.</p>
+      <p>Unlike disputed doctrines that show up on one side of the 1054 split and not the other, the Assumption is one of relatively few points of Marian doctrine both East and West affirm to this day, even while disagreeing sharply on how to define the exact mechanism (Rome uses "Assumption," implying she may have died first; Eastern tradition uses "Dormition," emphasizing a peaceful falling-asleep before being taken up).</p>
+    </div>
+  </div>
+
+  <footer>Forged &amp; Faithful — Catholic Apologetics Reference</footer>
+</div>
+
+<script>
+function toggle(header) {
+  const section = header.parentElement;
+  section.classList.toggle('open');
+  const icon = header.querySelector('.toggle-icon');
+  icon.textContent = section.classList.contains('open') ? '−' : '+';
+}
+function setAll(open) {
+  document.querySelectorAll('.section').forEach(s => {
+    s.classList.toggle('open', open);
+    s.querySelector('.toggle-icon').textContent = open ? '−' : '+';
+  });
+}
+</script>
+</body>
+</html>

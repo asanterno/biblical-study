@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Immaculate Conception</title>
+<style>
+  :root { color-scheme: only light; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0f1c2e; color: #e8dfc8; font-family: 'EB Garamond', Georgia, serif; padding: 40px 20px; line-height: 1.65; }
+  @font-face { font-family: 'Cinzel'; src: local('Cinzel'); }
+  .wrap { max-width: 780px; margin: 0 auto; }
+  h1 { font-family: 'Cinzel', Georgia, serif; color: #d4af37; text-align: center; font-size: 2rem; letter-spacing: 0.03em; margin-bottom: 8px; text-transform: uppercase; }
+  .subtitle { text-align: center; color: #a89968; font-style: italic; margin-bottom: 36px; font-size: 1.05rem; }
+  .top-controls { display: flex; justify-content: center; gap: 12px; margin-bottom: 30px; }
+  .ctrl-btn { font-family: 'Cinzel', Georgia, serif; font-size: 0.75rem; letter-spacing: 0.05em; text-transform: uppercase; color: #d4af37; background: #17263c; border: 1px solid #d4af37; border-radius: 4px; padding: 8px 16px; cursor: pointer; }
+  .ctrl-btn:hover { background: #1c2e48; }
+  .category-label { font-family: 'Cinzel', Georgia, serif; color: #d4af37; font-size: 0.95rem; letter-spacing: 0.08em; text-transform: uppercase; margin: 32px 0 14px 0; padding-bottom: 8px; border-bottom: 1px solid #35486a; }
+  .category-label:first-of-type { margin-top: 0; }
+  .section { background: #17263c; border: 1px solid #35486a; border-radius: 6px; margin-bottom: 14px; overflow: hidden; }
+  .section-header { display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; cursor: pointer; user-select: none; }
+  .section-header:hover { background: #1c2e48; }
+  .section-title { font-family: 'Cinzel', Georgia, serif; color: #f0e6cc; font-size: 1.05rem; font-weight: 600; }
+  .toggle-icon { color: #d4af37; font-size: 1.3rem; transition: transform 0.25s ease; flex-shrink: 0; margin-left: 16px; }
+  .section.open .toggle-icon { transform: rotate(45deg); }
+  .section-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; padding: 0 20px; font-size: 0.98rem; color: #d8cba8; }
+  .section.open .section-body { max-height: 1000px; padding: 0 20px 18px 20px; }
+  .section-body p { margin-bottom: 12px; }
+  .section-body p:last-child { margin-bottom: 0; }
+  .verse-quote { font-style: italic; color: #f0e6cc; border-left: 2px solid #d4af37; padding-left: 14px; margin: 10px 0; }
+  .seed-question { background: #2a3d5c40; border: 1px solid #d4af3760; border-radius: 4px; padding: 12px 16px; margin-top: 12px; font-style: italic; color: #f0e6cc; }
+  .seed-question strong { font-style: normal; color: #d4af37; font-family: 'Cinzel', Georgia, serif; font-size: 0.72rem; letter-spacing: 0.05em; display: block; margin-bottom: 5px; text-transform: uppercase; }
+  .caution { background: #2a1c12; border-left: 3px solid #a06a3a; padding: 10px 16px; margin-top: 12px; font-size: 0.93rem; color: #d4b896; }
+  .caution strong { color: #d09a5c; font-family: 'Cinzel', Georgia, serif; font-size: 0.72rem; letter-spacing: 0.05em; display: block; margin-bottom: 4px; text-transform: uppercase; }
+  footer { text-align: center; color: #6b7a94; font-size: 0.85rem; margin-top: 40px; font-style: italic; }
+  @media print {
+    body { background: white; color: #1a1a1a; }
+    .section { break-inside: avoid; border-color: #999; background: white; }
+    .section-body { max-height: none !important; padding: 0 20px 18px 20px !important; }
+    .toggle-icon, .top-controls { display: none; }
+    h1, .section-title, .category-label { color: #1a1a1a; }
+    .seed-question, .caution { background: #f5f0e0; color: #333; }
+    .verse-quote { color: #1a1a1a; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>The Immaculate Conception</h1>
+  <p class="subtitle">The Most Misunderstood Catholic Doctrine</p>
+
+  <div class="top-controls">
+    <button class="ctrl-btn" onclick="setAll(true)">Expand All</button>
+    <button class="ctrl-btn" onclick="setAll(false)">Collapse All</button>
+  </div>
+
+  <div class="category-label">Clearing Up the Confusion</div>
+
+  <div class="section open">
+    <div class="section-header" onclick="toggle(this)">
+      <div><span class="section-title">What This Doctrine Is NOT About</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p>This is the single most common misunderstanding, on both sides: the Immaculate Conception has nothing to do with the conception of Jesus. It refers to the conception of <strong>Mary</strong> in the womb of her mother, traditionally named Anne.</p>
+      <p>The claim: from the very first moment of her existence, Mary was preserved free from original sin, by a special grace applied in advance through the merits of Christ's future sacrifice on the cross.</p>
+      <div class="caution">
+        <strong>Clarify This First</strong>
+        Leading with this distinction defuses most of the initial reaction — a surprising number of objections dissolve once it's clear the doctrine isn't claiming Jesus was conceived asexually by some new mechanism, or that Mary's conception was itself virginal. It's about her freedom from original sin, nothing more.
+      </div>
+    </div>
+  </div>
+
+  <div class="category-label">The Biblical Case</div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <div><span class="section-title">"Full of Grace" — Luke 1:28</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p class="verse-quote">"And he came to her and said, 'Greetings, O favored one, the Lord is with you!'" — Luke 1:28</p>
+      <p>The Greek behind "favored one" is <em>kecharitomene</em> — a perfect passive participle of <em>charitoo</em>, meaning something closer to "you who have been, and remain, completely graced/favored." The grammatical form indicates a completed action with a continuing state — grace already fully present, not just beginning at that moment.</p>
+      <p>This is a unique title used nowhere else in the New Testament as a form of address — Gabriel uses it in place of her name, treating "full of grace" as something like her defining characteristic.</p>
+      <div class="seed-question">
+        <strong>Seed Question</strong>
+        If "full of grace" describes a completed, ongoing state rather than a future event, what would it mean for someone to be "full" of grace while still carrying the stain of original sin?
+      </div>
+    </div>
+  </div>
+
+  <div class="category-label">The Theological Logic</div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <div><span class="section-title">The New Ark, and the New Eve</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p>Two threads of typology converge here, both of which you've already built tools for. As the New Ark of the Covenant, Mary is the vessel that carries God's presence — and the Old Testament ark was built to exacting purity specifications, overlaid entirely in gold, nothing common allowed to touch it (Exodus 25:10-22).</p>
+      <p>As the New Eve — a title used by Church Fathers as early as Justin Martyr and Irenaeus in the 2nd century — Mary's "yes" at the Annunciation reverses Eve's "no" in the garden. The parallel has theological force only if Mary, like Eve before the Fall, begins in a state of original grace rather than inherited sin.</p>
+      <p class="verse-quote">"I will put enmity between you and the woman, and between your offspring and her offspring." — Genesis 3:15</p>
+      <p>This "woman" in complete enmity with the serpent — not partial, not compromised — is read by Catholic tradition as pointing to Mary's total freedom from sin's influence from the start.</p>
+    </div>
+  </div>
+
+  <div class="category-label">The Honest Difficulty</div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <div><span class="section-title">Where This Argument Is Genuinely Weakest</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <div class="caution">
+        <strong>Know This Before the Conversation</strong>
+        Unlike the Eucharist or the papacy, this doctrine has the thinnest direct biblical support in the whole Marian cluster — Luke 1:28 carries real weight but doesn't unambiguously demand this reading on its own, and it wasn't formally defined until 1854 (Pope Pius IX, <em>Ineffabilis Deus</em>), the latest of the major Marian dogmas. The honest case rests more heavily on theological fittingness (why the vessel of the Incarnation would be specially prepared) and continuous Church reflection over centuries than on a single clear proof text — that's worth acknowledging up front rather than overselling Luke 1:28 alone.
+      </div>
+      <p>Romans 3:23 ("all have sinned") is the common counter-verse. The standard response: Paul's statement describes the general rule for the human race post-Fall, and exceptions already exist even in Reformed readings — infants, for instance, who haven't personally sinned yet still fall under original sin's guilt in most Protestant theology too, showing "all" was never meant with zero possible exception even by the objector's own framework.</p>
+    </div>
+  </div>
+
+  <footer>Forged &amp; Faithful — Catholic Apologetics Reference</footer>
+</div>
+
+<script>
+function toggle(header) {
+  const section = header.parentElement;
+  section.classList.toggle('open');
+  const icon = header.querySelector('.toggle-icon');
+  icon.textContent = section.classList.contains('open') ? '−' : '+';
+}
+function setAll(open) {
+  document.querySelectorAll('.section').forEach(s => {
+    s.classList.toggle('open', open);
+    s.querySelector('.toggle-icon').textContent = open ? '−' : '+';
+  });
+}
+</script>
+</body>
+</html>

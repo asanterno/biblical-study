@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Timeline of the Reformation</title>
+<style>
+  :root { color-scheme: only light; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0f1c2e; color: #e8dfc8; font-family: 'EB Garamond', Georgia, serif; padding: 40px 20px; line-height: 1.6; }
+  @font-face { font-family: 'Cinzel'; src: local('Cinzel'); }
+  .wrap { max-width: 820px; margin: 0 auto; }
+  h1 { font-family: 'Cinzel', Georgia, serif; color: #d4af37; text-align: center; font-size: 2rem; letter-spacing: 0.03em; margin-bottom: 8px; text-transform: uppercase; }
+  .subtitle { text-align: center; color: #a89968; font-style: italic; margin-bottom: 40px; font-size: 1.05rem; }
+  .timeline { position: relative; padding-left: 30px; border-left: 2px solid #d4af37; }
+  .event { position: relative; margin-bottom: 28px; background: #17263c; border: 1px solid #35486a; border-radius: 6px; overflow: hidden; }
+  .event::before { content: ''; position: absolute; left: -37px; top: 22px; width: 14px; height: 14px; background: #d4af37; border-radius: 50%; border: 2px solid #0f1c2e; }
+  .event-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; cursor: pointer; user-select: none; }
+  .event-header:hover { background: #1c2e48; }
+  .event-year { font-family: 'Cinzel', Georgia, serif; color: #d4af37; font-size: 0.85rem; letter-spacing: 0.05em; display: block; margin-bottom: 4px; }
+  .event-title { font-family: 'Cinzel', Georgia, serif; color: #f0e6cc; font-size: 1.15rem; font-weight: 600; }
+  .toggle-icon { color: #d4af37; font-size: 1.3rem; transition: transform 0.25s ease; flex-shrink: 0; margin-left: 16px; }
+  .event.open .toggle-icon { transform: rotate(45deg); }
+  .event-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; padding: 0 20px; font-size: 1.02rem; color: #d8cba8; }
+  .event.open .event-body { max-height: 700px; padding: 0 20px 20px 20px; }
+  .event-body p { margin-bottom: 12px; }
+  .event-body p:last-child { margin-bottom: 0; }
+  .tag { display: inline-block; background: #2a3d5c; color: #d4af37; font-size: 0.75rem; padding: 3px 10px; border-radius: 12px; font-family: 'Cinzel', Georgia, serif; letter-spacing: 0.03em; margin-top: 10px; }
+  .apologetic-note { background: #1e1608; border-left: 3px solid #d4af37; padding: 12px 16px; margin-top: 14px; font-style: italic; color: #c9b877; font-size: 0.95rem; }
+  .apologetic-note strong { font-style: normal; color: #d4af37; font-family: 'Cinzel', Georgia, serif; font-size: 0.8rem; letter-spacing: 0.03em; display: block; margin-bottom: 4px; }
+  .top-controls { display: flex; justify-content: center; gap: 12px; margin-bottom: 30px; }
+  .ctrl-btn { font-family: 'Cinzel', Georgia, serif; font-size: 0.75rem; letter-spacing: 0.05em; text-transform: uppercase; color: #d4af37; background: #17263c; border: 1px solid #d4af37; border-radius: 4px; padding: 8px 16px; cursor: pointer; }
+  .ctrl-btn:hover { background: #1c2e48; }
+  footer { text-align: center; color: #6b7a94; font-size: 0.85rem; margin-top: 40px; font-style: italic; }
+  @media print {
+    body { background: white; color: #1a1a1a; }
+    .event { break-inside: avoid; border-color: #999; background: white; }
+    .event-body { max-height: none !important; padding: 0 20px 20px 20px !important; }
+    .toggle-icon, .top-controls { display: none; }
+    h1, .event-title, .event-year { color: #1a1a1a; }
+    .apologetic-note { background: #f5f0e0; color: #333; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>The Reformation</h1>
+  <p class="subtitle">Luther to Trent: A Timeline</p>
+
+  <div class="top-controls">
+    <button class="ctrl-btn" onclick="setAll(true)">Expand All</button>
+    <button class="ctrl-btn" onclick="setAll(false)">Collapse All</button>
+  </div>
+
+  <div class="timeline">
+
+    <div class="event open">
+      <div class="event-header" onclick="toggle(this)">
+        <div><span class="event-year">1517</span><span class="event-title">The Ninety-Five Theses</span></div>
+        <span class="toggle-icon">+</span>
+      </div>
+      <div class="event-body">
+        <p>Martin Luther, an Augustinian friar and theology professor, posts (or circulates) 95 theses challenging the sale of indulgences — the practice of offering remission of temporal punishment for sin in exchange for financial contributions, often marketed abusively by preachers like Johann Tetzel.</p>
+        <p>Luther's original intent was academic debate and reform from within, not schism. Many of his initial 95 points were legitimate critiques of real abuses the Church itself later acknowledged and corrected.</p>
+        <div class="tag">Wittenberg, Germany</div>
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="event-header" onclick="toggle(this)">
+        <div><span class="event-year">1519-1521</span><span class="event-title">Escalation and Excommunication</span></div>
+        <span class="toggle-icon">+</span>
+      </div>
+      <div class="event-body">
+        <p>The Leipzig Debate (1519) pushes Luther toward increasingly radical positions, including questioning papal authority itself and the authority of councils. His writings spread rapidly, aided by the printing press — a genuinely new variable in how fast religious controversy could travel.</p>
+        <p>Pope Leo X issues <em>Exsurge Domine</em> (1520) condemning 41 of Luther's propositions; Luther publicly burns the document. He is formally excommunicated in January 1521.</p>
+        <div class="tag">Point of No Return</div>
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="event-header" onclick="toggle(this)">
+        <div><span class="event-year">1521</span><span class="event-title">The Diet of Worms</span></div>
+        <span class="toggle-icon">+</span>
+      </div>
+      <div class="event-body">
+        <p>Summoned before Emperor Charles V and imperial authorities, Luther refuses to recant his writings, reportedly declaring his conscience was captive to the Word of God and he could not act against conscience. He is declared an outlaw of the Empire but is protected by Frederick the Wise, Elector of Saxony.</p>
+        <div class="tag">Sola Scriptura in Practice</div>
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="event-header" onclick="toggle(this)">
+        <div><span class="event-year">1525-1530</span><span class="event-title">Fragmentation Begins</span></div>
+        <span class="toggle-icon">+</span>
+      </div>
+      <div class="event-body">
+        <p>The movement Luther started immediately begins splintering. Ulrich Zwingli develops a competing Reformation in Zurich, disagreeing sharply with Luther on the nature of the Eucharist at the Marburg Colloquy (1529) — the two men cannot reach agreement even on this foundational point.</p>
+        <p>The Radical Reformation (Anabaptists) emerges with further disagreements on baptism itself. The Augsburg Confession (1530) becomes the foundational Lutheran statement of belief, formalizing a distinct communion.</p>
+        <div class="apologetic-note">
+          <strong>Seed Question</strong>
+          Within about a decade of "Scripture alone," the Reformation had already split into mutually disagreeing camps on baptism and the Eucharist. If Scripture is sufficiently clear on its own, why did removing an interpretive authority produce fragmentation rather than convergence?
+        </div>
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="event-header" onclick="toggle(this)">
+        <div><span class="event-year">1534</span><span class="event-title">The Act of Supremacy</span></div>
+        <span class="toggle-icon">+</span>
+      </div>
+      <div class="event-body">
+        <p>A separate, largely political break: Henry VIII of England, after Rome refuses to annul his marriage to Catherine of Aragon, has Parliament declare him "Supreme Head of the Church of England," severing ties with Rome and founding the Church of England (Anglicanism).</p>
+        <div class="tag">England Breaks Separately</div>
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="event-header" onclick="toggle(this)">
+        <div><span class="event-year">1536</span><span class="event-title">Calvin's Institutes</span></div>
+        <span class="toggle-icon">+</span>
+      </div>
+      <div class="event-body">
+        <p>John Calvin publishes the first edition of <em>Institutes of the Christian Religion</em>, systematizing Reformed theology with a distinct emphasis on God's sovereignty and predestination. Calvin's Geneva becomes a second major center of Reformation thought, distinct from Luther's Wittenberg — the movement now has multiple, sometimes competing, theological centers of gravity.</p>
+        <div class="tag">Reformed Tradition Founded</div>
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="event-header" onclick="toggle(this)">
+        <div><span class="event-year">1545-1563</span><span class="event-title">The Council of Trent</span></div>
+        <span class="toggle-icon">+</span>
+      </div>
+      <div class="event-body">
+        <p>The Catholic Church's formal, comprehensive response — meeting across three periods over nearly two decades. Trent addresses genuine abuses Luther had rightly identified (corrupt indulgence practices, clerical education, absenteeism) while also formally defining Catholic doctrine on justification, the seven sacraments, the canon of Scripture, and the relationship between Scripture and Tradition, directly answering the Reformers' core theological claims.</p>
+        <p>This is where the Deuterocanonical books are formally reaffirmed as canonical Scripture for Catholics, in direct response to their removal by Luther and subsequent Reformers.</p>
+        <div class="tag">The Counter-Reformation</div>
+        <div class="apologetic-note">
+          <strong>Useful Framing</strong>
+          Trent wasn't simply defensive — it was genuine, substantive internal reform (a seminary system, stricter clerical discipline, corrected liturgical abuses) alongside doctrinal clarification. The Reformation exposed real problems the Church needed to fix; Trent's existence is itself evidence the critique landed on something true, even where the Reformers' doctrinal solutions diverged from the Catholic response.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>Forged &amp; Faithful — Catholic Apologetics Reference</footer>
+</div>
+
+<script>
+function toggle(header) {
+  const event = header.parentElement;
+  event.classList.toggle('open');
+  const icon = header.querySelector('.toggle-icon');
+  icon.textContent = event.classList.contains('open') ? '−' : '+';
+}
+function setAll(open) {
+  document.querySelectorAll('.event').forEach(e => {
+    e.classList.toggle('open', open);
+    e.querySelector('.toggle-icon').textContent = open ? '−' : '+';
+  });
+}
+</script>
+</body>
+</html>

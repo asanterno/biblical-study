@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Papacy &amp; Petrine Primacy</title>
+<style>
+  :root { color-scheme: only light; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0f1c2e;
+    color: #e8dfc8;
+    font-family: 'EB Garamond', Georgia, serif;
+    padding: 40px 20px;
+    line-height: 1.65;
+  }
+  @font-face { font-family: 'Cinzel'; src: local('Cinzel'); }
+  .wrap { max-width: 780px; margin: 0 auto; }
+  h1 {
+    font-family: 'Cinzel', Georgia, serif;
+    color: #d4af37;
+    text-align: center;
+    font-size: 2rem;
+    letter-spacing: 0.03em;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+  .subtitle {
+    text-align: center;
+    color: #a89968;
+    font-style: italic;
+    margin-bottom: 36px;
+    font-size: 1.05rem;
+  }
+  .top-controls {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+  .ctrl-btn {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #d4af37;
+    background: #17263c;
+    border: 1px solid #d4af37;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+  .ctrl-btn:hover { background: #1c2e48; }
+  .category-label {
+    font-family: 'Cinzel', Georgia, serif;
+    color: #d4af37;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 32px 0 14px 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #35486a;
+  }
+  .category-label:first-of-type { margin-top: 0; }
+  .section {
+    background: #17263c;
+    border: 1px solid #35486a;
+    border-radius: 6px;
+    margin-bottom: 14px;
+    overflow: hidden;
+  }
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .section-header:hover { background: #1c2e48; }
+  .section-title {
+    font-family: 'Cinzel', Georgia, serif;
+    color: #f0e6cc;
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+  .toggle-icon {
+    color: #d4af37;
+    font-size: 1.3rem;
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
+    margin-left: 16px;
+  }
+  .section.open .toggle-icon { transform: rotate(45deg); }
+  .section-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    padding: 0 20px;
+    font-size: 0.98rem;
+    color: #d8cba8;
+  }
+  .section.open .section-body {
+    max-height: 1000px;
+    padding: 0 20px 18px 20px;
+  }
+  .section-body p { margin-bottom: 12px; }
+  .section-body p:last-child { margin-bottom: 0; }
+  .verse-quote {
+    font-style: italic;
+    color: #f0e6cc;
+    border-left: 2px solid #d4af37;
+    padding-left: 14px;
+    margin: 10px 0;
+  }
+  .seed-question {
+    background: #2a3d5c40;
+    border: 1px solid #d4af3760;
+    border-radius: 4px;
+    padding: 12px 16px;
+    margin-top: 12px;
+    font-style: italic;
+    color: #f0e6cc;
+  }
+  .seed-question strong {
+    font-style: normal;
+    color: #d4af37;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+  }
+  .caution {
+    background: #2a1c12;
+    border-left: 3px solid #a06a3a;
+    padding: 10px 16px;
+    margin-top: 12px;
+    font-size: 0.93rem;
+    color: #d4b896;
+  }
+  .caution strong {
+    color: #d09a5c;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+  }
+  .list-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 0.92rem;
+  }
+  .list-table th {
+    font-family: 'Cinzel', Georgia, serif;
+    color: #d4af37;
+    text-align: left;
+    padding: 6px 10px;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border-bottom: 1px solid #35486a;
+  }
+  .list-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid #2a3d5c;
+    color: #d8cba8;
+  }
+  footer {
+    text-align: center;
+    color: #6b7a94;
+    font-size: 0.85rem;
+    margin-top: 40px;
+    font-style: italic;
+  }
+  @media print {
+    body { background: white; color: #1a1a1a; }
+    .section { break-inside: avoid; border-color: #999; background: white; }
+    .section-body { max-height: none !important; padding: 0 20px 18px 20px !important; }
+    .toggle-icon, .top-controls { display: none; }
+    h1, .section-title, .category-label { color: #1a1a1a; }
+    .seed-question, .caution { background: #f5f0e0; color: #333; }
+    .verse-quote { color: #1a1a1a; }
+    .list-table td, .list-table th { color: #1a1a1a; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>The Papacy &amp; Petrine Primacy</h1>
+  <p class="subtitle">Was Peter Given Unique Authority?</p>
+
+  <div class="top-controls">
+    <button class="ctrl-btn" onclick="setAll(true)">Expand All</button>
+    <button class="ctrl-btn" onclick="setAll(false)">Collapse All</button>
+  </div>
+
+  <div class="category-label">The Key Text</div>
+
+  <div class="section open">
+    <div class="section-header" onclick="toggle(this)">
+      <div><span class="section-title">Matthew 16:18-19</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p class="verse-quote">"And I tell you, you are Peter, and on this rock I will build my church, and the gates of hell shall not prevail against it. I will give you the keys of the kingdom of heaven, and whatever you bind on earth shall be bound in heaven, and whatever you loose on earth shall be loosed in heaven." — Matthew 16:18-19</p>
+      <p>This exchange follows Peter's confession — "You are the Christ, the Son of the living God" — and Christ's response renames Simon as <em>Petros</em> (Peter, "Rock"), promises to build his Church on "this rock," and hands over "the keys of the kingdom."</p>
+      <p>Three distinct grants in two verses: a new name tied to a foundation, a promise of indestructibility, and the keys — each carries weight independently.</p>
+    </div>
+  </div>
+
+  <div class="category-label">The Wordplay Debate</div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <div><span class="section-title">"This Rock" — Peter, or Peter's Confession?</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p>The most common Protestant objection: Jesus used two different Greek words — <em>Petros</em> (Peter, meaning a small stone) and <em>petra</em> (a large rock or bedrock) — for "Peter" and "this rock." The argument is that Jesus built the Church not on Peter himself, but on Peter's confession of faith, or on Christ himself as the true rock (citing 1 Corinthians 10:4).</p>
+      <div class="caution">
+        <strong>Know This Cold</strong>
+        The Petros/petra distinction is real in Greek, but Jesus almost certainly spoke Aramaic, not Greek, in this exchange. In Aramaic there's only one word — <em>kepha</em> — used for both "Peter" and "rock." The wordplay only works if both words are the same term, which is exactly what Aramaic gives you. Paul himself calls Peter "Cephas" (a transliteration of kepha) nine times in his letters, confirming this was Peter's actual nickname in the language they spoke.
+      </div>
+      <p>The Greek text's minor Petros/petra distinction is best explained as a translation quirk — Greek has no common gender word that works as both a name and "rock," so the translator used the closest masculine form for the name.</p>
+    </div>
+  </div>
+
+  <div class="category-label">Old Testament Background</div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <div><span class="section-title">The Keys and the Royal Steward</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p>"The keys of the kingdom" is a direct echo of Isaiah 22:22, where God transfers authority in the Davidic kingdom to Eliakim, a royal steward, saying:</p>
+      <p class="verse-quote">"I will place on his shoulder the key of the house of David; he shall open, and none shall shut; he shall shut, and none shall open." — Isaiah 22:22</p>
+      <p>In the ancient Davidic court, the "keys" designated a specific office — the prime minister or chief steward who governed in the king's name while the king was away. It was a transferable position with named successors, not a personal honor that died with the man.</p>
+      <div class="seed-question">
+        <strong>Seed Question</strong>
+        If Jesus is deliberately invoking the Isaiah 22 steward office — a real, transferable governmental role with successors — why would the "keys" language stop functioning as an office the moment Peter died?
+      </div>
+    </div>
+  </div>
+
+  <div class="category-label">Peter's Distinct Role Elsewhere</div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <div><span class="section-title">Peter's Pattern in the Gospels and Acts</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p>Matthew 16 isn't isolated — Peter consistently appears in a distinct leadership role:</p>
+      <p class="verse-quote">"I have prayed for you [singular, Peter specifically] that your faith may not fail. And when you have turned again, strengthen your brothers." — Luke 22:32</p>
+      <p>Peter is listed first in every apostolic list in the Gospels, including once explicitly as "first" (Matthew 10:2). He speaks for the apostles at Pentecost (Acts 2), his shadow alone is sought for healing (Acts 5:15), and he presides over and delivers the ruling at the Council of Jerusalem (Acts 15:7-11) — the first major doctrinal dispute in Church history, resolved by apostolic authority rather than by each community deciding independently.</p>
+    </div>
+  </div>
+
+  <div class="category-label">Historical Continuity</div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <div><span class="section-title">Early Bishop Lists of Rome</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p>Multiple independent early sources — Irenaeus (c. 180 AD), the Liberian Catalogue, and others — record a continuous line of bishops of Rome beginning with Peter, understood from very early on as holding a unique position among the churches.</p>
+      <table class="list-table">
+        <tr><th>Bishop</th><th>Approx. Period</th></tr>
+        <tr><td>Peter</td><td>d. c. 64-68 AD</td></tr>
+        <tr><td>Linus</td><td>c. 68-79 AD</td></tr>
+        <tr><td>Anacletus</td><td>c. 79-92 AD</td></tr>
+        <tr><td>Clement I</td><td>c. 92-99 AD</td></tr>
+      </table>
+      <p>Clement of Rome — writing around 96 AD, within living memory of the apostles — intervened authoritatively in a dispute in the Corinthian church, a different city entirely, and his letter was read for centuries as carrying real weight. That's an early, concrete data point for a bishop of Rome exercising authority beyond his own local congregation.</p>
+    </div>
+  </div>
+
+  <div class="category-label">Where This Lands</div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <div><span class="section-title">Framing the Conversation</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p>The strongest version of this argument isn't "Matthew 16 alone proves the papacy" — it's cumulative: a distinct office language (keys, steward), a distinct pattern of Peter's behavior across four books, and a distinct, traceable historical succession that the early Church itself recognized and appealed to.</p>
+      <div class="caution">
+        <strong>Know This Before the Conversation</strong>
+        A fair Protestant response grants Peter had a unique, prominent role among the apostles but denies that role was designed to transfer to successors — pointing out Peter also failed publicly (Galatians 2:11-14, Paul rebuking Peter to his face) as evidence against unique, protected authority. Worth having ready: papal primacy has never meant personal impeccability — Catholic teaching has always held popes can sin and err personally; the claim is narrower and specific to formal teaching on faith and morals.
+      </div>
+      <div class="seed-question">
+        <strong>Seed Question</strong>
+        Someone had to preside over and issue the ruling at the Jerusalem Council in Acts 15 — the first major doctrinal dispute in Church history. If it wasn't a Peter-like office with real authority, what settled it, and why did the whole Church defer to that outcome?
+      </div>
+    </div>
+  </div>
+
+  <footer>Forged &amp; Faithful — Catholic Apologetics Reference</footer>
+</div>
+
+<script>
+function toggle(header) {
+  const section = header.parentElement;
+  section.classList.toggle('open');
+  const icon = header.querySelector('.toggle-icon');
+  icon.textContent = section.classList.contains('open') ? '−' : '+';
+}
+function setAll(open) {
+  document.querySelectorAll('.section').forEach(s => {
+    s.classList.toggle('open', open);
+    s.querySelector('.toggle-icon').textContent = open ? '−' : '+';
+  });
+}
+</script>
+</body>
+</html>

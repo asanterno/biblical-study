@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Nicene Creed — Full Text &amp; Annotations</title>
+<style>
+  :root { color-scheme: only light; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0f1c2e;
+    color: #e8dfc8;
+    font-family: 'EB Garamond', Georgia, serif;
+    padding: 40px 20px;
+    line-height: 1.65;
+  }
+  @font-face { font-family: 'Cinzel'; src: local('Cinzel'); }
+  .wrap { max-width: 780px; margin: 0 auto; }
+  h1 {
+    font-family: 'Cinzel', Georgia, serif;
+    color: #d4af37;
+    text-align: center;
+    font-size: 2rem;
+    letter-spacing: 0.03em;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+  .subtitle {
+    text-align: center;
+    color: #a89968;
+    font-style: italic;
+    margin-bottom: 40px;
+    font-size: 1.05rem;
+  }
+  .section {
+    background: #17263c;
+    border: 1px solid #35486a;
+    border-radius: 6px;
+    margin-bottom: 22px;
+    overflow: hidden;
+  }
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .section-header:hover { background: #1c2e48; }
+  .section-title {
+    font-family: 'Cinzel', Georgia, serif;
+    color: #f0e6cc;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  .section-eyebrow {
+    font-family: 'Cinzel', Georgia, serif;
+    color: #d4af37;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+  }
+  .toggle-icon {
+    color: #d4af37;
+    font-size: 1.3rem;
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
+    margin-left: 16px;
+  }
+  .section.open .toggle-icon { transform: rotate(45deg); }
+  .section-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.35s ease;
+    padding: 0 20px;
+  }
+  .section.open .section-body {
+    max-height: 900px;
+    padding: 0 20px 20px 20px;
+  }
+  .creed-text {
+    font-style: italic;
+    color: #f0e6cc;
+    border-left: 2px solid #d4af37;
+    padding: 4px 0 4px 16px;
+    margin-bottom: 14px;
+    font-size: 1.05rem;
+  }
+  .creed-text .filioque {
+    color: #d09a5c;
+    font-style: normal;
+    text-decoration: underline;
+    text-decoration-color: #a06a3a;
+  }
+  .annotation {
+    color: #d8cba8;
+    font-size: 0.97rem;
+    margin-bottom: 10px;
+  }
+  .annotation:last-child { margin-bottom: 0; }
+  .note-box {
+    background: #2a3d5c40;
+    border: 1px solid #d4af3760;
+    border-radius: 4px;
+    padding: 12px 16px;
+    margin-top: 10px;
+    font-size: 0.95rem;
+    color: #f0e6cc;
+  }
+  .note-box strong {
+    color: #d4af37;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+  }
+  .caution {
+    background: #2a1c12;
+    border-left: 3px solid #a06a3a;
+    padding: 10px 16px;
+    margin-top: 10px;
+    font-size: 0.93rem;
+    color: #d4b896;
+  }
+  .caution strong {
+    color: #d09a5c;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+  }
+  .full-text-block {
+    background: #12203350;
+    border: 1px solid #2a3d5c;
+    border-radius: 6px;
+    padding: 20px 22px;
+    margin-bottom: 22px;
+  }
+  .full-text-block .creed-text { margin-bottom: 16px; }
+  .full-text-block .creed-text:last-child { margin-bottom: 0; }
+  .legend {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #a89968;
+    margin: -8px 0 22px 0;
+    font-style: italic;
+  }
+  footer {
+    text-align: center;
+    color: #6b7a94;
+    font-size: 0.85rem;
+    margin-top: 40px;
+    font-style: italic;
+  }
+  @media print {
+    body { background: white; color: #1a1a1a; }
+    .section, .full-text-block { break-inside: avoid; border-color: #999; background: white; }
+    .section-body { max-height: none !important; padding: 0 20px 20px 20px !important; }
+    .toggle-icon { display: none; }
+    h1, .section-title, .section-eyebrow { color: #1a1a1a; }
+    .note-box, .caution { background: #f5f0e0; color: #333; }
+    .creed-text { color: #1a1a1a; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>The Nicene Creed</h1>
+  <p class="subtitle">Full Text (381 AD, Niceno-Constantinopolitan) with Structural Notes</p>
+
+  <div class="full-text-block">
+    <p class="creed-text">We believe in one God, the Father almighty, maker of heaven and earth, of all things visible and invisible.</p>
+    <p class="creed-text">We believe in one Lord Jesus Christ, the Only Begotten Son of God, born of the Father before all ages. God from God, Light from Light, true God from true God, begotten, not made, consubstantial with the Father; through him all things were made. For us men and for our salvation he came down from heaven, and by the Holy Spirit was incarnate of the Virgin Mary, and became man. For our sake he was crucified under Pontius Pilate, he suffered death and was buried, and rose again on the third day in accordance with the Scriptures. He ascended into heaven and is seated at the right hand of the Father. He will come again in glory to judge the living and the dead and his kingdom will have no end.</p>
+    <p class="creed-text">We believe in the Holy Spirit, the Lord, the giver of life, who proceeds from the Father<span class="filioque"> and the Son</span>, who with the Father and the Son is adored and glorified, who has spoken through the prophets.</p>
+    <p class="creed-text">We believe in one, holy, catholic and apostolic Church. We confess one Baptism for the forgiveness of sins and we look forward to the resurrection of the dead and the life of the world to come. Amen.</p>
+  </div>
+  <p class="legend">Underlined text marks the contested filioque clause — see notes below.</p>
+
+  <div class="section open">
+    <div class="section-header" onclick="toggle(this)">
+      <div>
+        <span class="section-eyebrow">Structure</span>
+        <span class="section-title">Three "We Believe" Sections</span>
+      </div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p class="annotation">The creed's three-part structure maps directly onto the Trinity: Father (creation), Son (incarnation and redemption), Holy Spirit (sanctification). It's essentially a Trinitarian outline of salvation history, not a random list of propositions.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <div>
+        <span class="section-eyebrow">Key Term</span>
+        <span class="section-title">"Consubstantial with the Father"</span>
+      </div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p class="annotation">This is <em>homoousios</em> — the actual battleground word from 325 AD. Arius rejected it because it asserted Christ shares the Father's very substance, not merely a similar or derived nature.</p>
+      <div class="note-box">
+        <strong>Why It Matters</strong>
+        The word appears nowhere in Scripture. It was chosen precisely because existing biblical vocabulary was being read two incompatible ways — a case study for how authoritative interpretation, not just the text alone, settled the dispute.
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <div>
+        <span class="section-eyebrow">Key Clause</span>
+        <span class="section-title">"Who Proceeds from the Father and the Son"</span>
+      </div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p class="annotation">This is the <em>filioque</em> clause ("and the Son") — added by the Western Church centuries after 381, never accepted by the Eastern Orthodox Church.</p>
+      <div class="caution">
+        <strong>Know This Cold</strong>
+        The Council of Ephesus (431) forbade further changes to the creed's text. The filioque's addition — without an ecumenical council — is a real point of tension, and a major factor in the 1054 East-West Schism. Worth having a ready answer rather than being surprised by it in conversation.
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <div>
+        <span class="section-eyebrow">Key Phrase</span>
+        <span class="section-title">"One, Holy, Catholic and Apostolic Church"</span>
+      </div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p class="annotation">"Catholic" here means <em>universal</em> — but the phrase does more than affirm a broad, invisible communion of believers. It attributes specific, visible marks — unity, holiness, apostolicity — to a real, identifiable Church.</p>
+      <div class="note-box">
+        <strong>Useful for Calvary Chapel Conversations</strong>
+        Dispensationalist ecclesiology tends to treat "the Church" as more invisible and individualized. This line in a creed both traditions recite is a good entry point for asking what "one... Church" was actually meant to describe in 381 — a scattered, invisible body, or a visible, identifiable one with marks you could point to.
+      </div>
+    </div>
+  </div>
+
+  <footer>Forged &amp; Faithful — Catholic Apologetics Reference</footer>
+</div>
+
+<script>
+function toggle(header) {
+  const section = header.parentElement;
+  section.classList.toggle('open');
+  const icon = header.querySelector('.toggle-icon');
+  icon.textContent = section.classList.contains('open') ? '−' : '+';
+}
+</script>
+</body>
+</html>

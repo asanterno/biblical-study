@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Confirmation</title>
+<style>
+  :root { color-scheme: only light; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0f1c2e; color: #e8dfc8; font-family: 'EB Garamond', Georgia, serif; padding: 40px 20px; line-height: 1.65; }
+  @font-face { font-family: 'Cinzel'; src: local('Cinzel'); }
+  .wrap { max-width: 780px; margin: 0 auto; }
+  h1 { font-family: 'Cinzel', Georgia, serif; color: #d4af37; text-align: center; font-size: 2rem; letter-spacing: 0.03em; margin-bottom: 8px; text-transform: uppercase; }
+  .subtitle { text-align: center; color: #a89968; font-style: italic; margin-bottom: 36px; font-size: 1.05rem; }
+  .top-controls { display: flex; justify-content: center; gap: 12px; margin-bottom: 30px; }
+  .ctrl-btn { font-family: 'Cinzel', Georgia, serif; font-size: 0.75rem; letter-spacing: 0.05em; text-transform: uppercase; color: #d4af37; background: #17263c; border: 1px solid #d4af37; border-radius: 4px; padding: 8px 16px; cursor: pointer; }
+  .ctrl-btn:hover { background: #1c2e48; }
+  .category-label { font-family: 'Cinzel', Georgia, serif; color: #d4af37; font-size: 0.95rem; letter-spacing: 0.08em; text-transform: uppercase; margin: 32px 0 14px 0; padding-bottom: 8px; border-bottom: 1px solid #35486a; }
+  .category-label:first-of-type { margin-top: 0; }
+  .section { background: #17263c; border: 1px solid #35486a; border-radius: 6px; margin-bottom: 14px; overflow: hidden; }
+  .section-header { display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; cursor: pointer; user-select: none; }
+  .section-header:hover { background: #1c2e48; }
+  .section-title { font-family: 'Cinzel', Georgia, serif; color: #f0e6cc; font-size: 1.05rem; font-weight: 600; }
+  .toggle-icon { color: #d4af37; font-size: 1.3rem; transition: transform 0.25s ease; flex-shrink: 0; margin-left: 16px; }
+  .section.open .toggle-icon { transform: rotate(45deg); }
+  .section-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; padding: 0 20px; font-size: 0.98rem; color: #d8cba8; }
+  .section.open .section-body { max-height: 1000px; padding: 0 20px 18px 20px; }
+  .section-body p { margin-bottom: 12px; }
+  .section-body p:last-child { margin-bottom: 0; }
+  .verse-quote { font-style: italic; color: #f0e6cc; border-left: 2px solid #d4af37; padding-left: 14px; margin: 10px 0; }
+  .seed-question { background: #2a3d5c40; border: 1px solid #d4af3760; border-radius: 4px; padding: 12px 16px; margin-top: 12px; font-style: italic; color: #f0e6cc; }
+  .seed-question strong { font-style: normal; color: #d4af37; font-family: 'Cinzel', Georgia, serif; font-size: 0.72rem; letter-spacing: 0.05em; display: block; margin-bottom: 5px; text-transform: uppercase; }
+  .caution { background: #2a1c12; border-left: 3px solid #a06a3a; padding: 10px 16px; margin-top: 12px; font-size: 0.93rem; color: #d4b896; }
+  .caution strong { color: #d09a5c; font-family: 'Cinzel', Georgia, serif; font-size: 0.72rem; letter-spacing: 0.05em; display: block; margin-bottom: 4px; text-transform: uppercase; }
+  .list-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.92rem; }
+  .list-table th { font-family: 'Cinzel', Georgia, serif; color: #d4af37; text-align: left; padding: 6px 10px; font-size: 0.75rem; letter-spacing: 0.04em; text-transform: uppercase; border-bottom: 1px solid #35486a; }
+  .list-table td { padding: 6px 10px; border-bottom: 1px solid #2a3d5c; color: #d8cba8; vertical-align: top; }
+  footer { text-align: center; color: #6b7a94; font-size: 0.85rem; margin-top: 40px; font-style: italic; }
+  @media print {
+    body { background: white; color: #1a1a1a; }
+    .section { break-inside: avoid; border-color: #999; background: white; }
+    .section-body { max-height: none !important; padding: 0 20px 18px 20px !important; }
+    .toggle-icon, .top-controls { display: none; }
+    h1, .section-title, .category-label { color: #1a1a1a; }
+    .seed-question, .caution { background: #f5f0e0; color: #333; }
+    .verse-quote { color: #1a1a1a; }
+    .list-table td, .list-table th { color: #1a1a1a; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Confirmation</h1>
+  <p class="subtitle">The Sealing Gift of the Spirit</p>
+
+  <div class="top-controls">
+    <button class="ctrl-btn" onclick="setAll(true)">Expand All</button>
+    <button class="ctrl-btn" onclick="setAll(false)">Collapse All</button>
+  </div>
+
+  <div class="category-label">What's Happening</div>
+
+  <div class="section open">
+    <div class="section-header" onclick="toggle(this)">
+      <div><span class="section-title">What Confirmation Actually Does</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p>Confirmation completes the grace begun at Baptism — it isn't a separate, unrelated sacrament, but the sealing and strengthening of what Baptism already started. Where Baptism washes away sin and gives new life, Confirmation strengthens the recipient with the Holy Spirit specifically for mission — for living and defending the faith as an adult member of the Church.</p>
+      <p>The bishop (or his delegate) anoints the forehead with sacred chrism, saying "Be sealed with the Gift of the Holy Spirit" — language deliberately echoing Ephesians 1:13, where believers are described as "sealed with the promised Holy Spirit."</p>
+    </div>
+  </div>
+
+  <div class="category-label">The Biblical Pattern</div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <div><span class="section-title">A Distinct Event from Baptism in Acts</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p class="verse-quote">"Now when the apostles at Jerusalem heard that Samaria had received the word of God, they sent to them Peter and John, who came down and prayed for them that they might receive the Holy Spirit, for he had not yet fallen on any of them, but they had only been baptized in the name of the Lord Jesus. Then they laid their hands on them and they received the Holy Spirit." — Acts 8:14-17</p>
+      <p>This is the clearest biblical pattern for Confirmation as a distinct rite: the Samaritans were already baptized — genuinely, validly, "in the name of the Lord Jesus" — yet a second, separate action (apostles specifically traveling to lay hands on them) was still needed for them to receive the Holy Spirit in this fuller sense.</p>
+      <p class="verse-quote">"And when Paul had laid his hands on them, the Holy Spirit came on them." — Acts 19:6</p>
+      <div class="seed-question">
+        <strong>Seed Question</strong>
+        If baptism alone always fully conferred the Spirit with nothing further needed, why does Acts 8 describe genuinely baptized believers who still lacked the Spirit until apostles specifically laid hands on them?
+      </div>
+    </div>
+  </div>
+
+  <div class="category-label">Old Testament Pattern</div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <div><span class="section-title">Anointing as Commissioning</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p>Anointing with oil has deep Old Testament roots as a rite of commissioning for a specific role — kings, priests, and prophets were all anointed, marking a real change in vocation and empowerment, not merely a ceremonial gesture.</p>
+      <p class="verse-quote">"Then Samuel took the horn of oil and anointed him in the midst of his brothers. And the Spirit of the Lord rushed upon David from that day forward." — 1 Samuel 16:13</p>
+      <p>This is the pattern Confirmation draws on: an anointing that marks and empowers someone for mission, distinct from the earlier reality of belonging to God's people. "Christian" itself derives from <em>Christos</em>, "anointed one" — every confirmed Christian shares, in a real if lesser sense, in Christ's own anointing.</p>
+    </div>
+  </div>
+
+  <div class="category-label">For Your Own Formation</div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <div><span class="section-title">The Seven Gifts, and What to Expect</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p>Confirmation is traditionally associated with the "seven gifts of the Holy Spirit," drawn from Isaiah 11:2-3 and developed in Catholic tradition:</p>
+      <table class="list-table">
+        <tr><th>Gift</th><th>What It Strengthens</th></tr>
+        <tr><td>Wisdom</td><td>Seeing life from God's perspective</td></tr>
+        <tr><td>Understanding</td><td>Grasping the truths of faith more deeply</td></tr>
+        <tr><td>Counsel (Right Judgment)</td><td>Discerning right action in specific situations</td></tr>
+        <tr><td>Fortitude (Courage)</td><td>Strength to act on faith despite fear or difficulty</td></tr>
+        <tr><td>Knowledge</td><td>Understanding of God's will and created purpose</td></tr>
+        <tr><td>Piety (Reverence)</td><td>Genuine love and devotion toward God</td></tr>
+        <tr><td>Fear of the Lord</td><td>Awe and right reverence before God's majesty</td></tr>
+      </table>
+      <p>You'll typically choose a Confirmation name (often a saint you feel drawn to) and a sponsor — distinct from a godparent, though the roles are similar — who presents you at the rite and continues supporting your faith afterward.</p>
+    </div>
+  </div>
+
+  <footer>Forged &amp; Faithful — Catholic Apologetics Reference</footer>
+</div>
+
+<script>
+function toggle(header) {
+  const section = header.parentElement;
+  section.classList.toggle('open');
+  const icon = header.querySelector('.toggle-icon');
+  icon.textContent = section.classList.contains('open') ? '−' : '+';
+}
+function setAll(open) {
+  document.querySelectorAll('.section').forEach(s => {
+    s.classList.toggle('open', open);
+    s.querySelector('.toggle-icon').textContent = open ? '−' : '+';
+  });
+}
+</script>
+</body>
+</html>

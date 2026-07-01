@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Early Church Fathers — Quote Reference</title>
+<style>
+  :root { color-scheme: only light; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0f1c2e; color: #e8dfc8; font-family: 'EB Garamond', Georgia, serif; padding: 40px 20px; line-height: 1.65; }
+  @font-face { font-family: 'Cinzel'; src: local('Cinzel'); }
+  .wrap { max-width: 800px; margin: 0 auto; }
+  h1 { font-family: 'Cinzel', Georgia, serif; color: #d4af37; text-align: center; font-size: 2rem; letter-spacing: 0.03em; margin-bottom: 8px; text-transform: uppercase; }
+  .subtitle { text-align: center; color: #a89968; font-style: italic; margin-bottom: 30px; font-size: 1.05rem; }
+  .filter-bar { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 34px; }
+  .filter-btn { font-family: 'Cinzel', Georgia, serif; font-size: 0.72rem; letter-spacing: 0.04em; text-transform: uppercase; color: #d4af37; background: #17263c; border: 1px solid #d4af37; border-radius: 14px; padding: 6px 14px; cursor: pointer; }
+  .filter-btn:hover { background: #1c2e48; }
+  .filter-btn.active { background: #d4af37; color: #0f1c2e; }
+  .category-label { font-family: 'Cinzel', Georgia, serif; color: #d4af37; font-size: 0.95rem; letter-spacing: 0.08em; text-transform: uppercase; margin: 32px 0 14px 0; padding-bottom: 8px; border-bottom: 1px solid #35486a; }
+  .category-label:first-of-type { margin-top: 0; }
+  .card {
+    background: #17263c; border: 1px solid #35486a; border-radius: 6px;
+    padding: 18px 20px; margin-bottom: 14px;
+  }
+  .card-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+  .father-name { font-family: 'Cinzel', Georgia, serif; color: #f0e6cc; font-size: 1.02rem; font-weight: 600; }
+  .father-date { color: #a89968; font-size: 0.82rem; font-style: italic; }
+  .father-quote { font-style: italic; color: #f0e6cc; border-left: 2px solid #d4af37; padding-left: 14px; font-size: 1rem; }
+  .father-source { color: #a89968; font-size: 0.82rem; margin-top: 8px; }
+  footer { text-align: center; color: #6b7a94; font-size: 0.85rem; margin-top: 40px; font-style: italic; }
+  @media print {
+    body { background: white; color: #1a1a1a; }
+    .card { break-inside: avoid; border-color: #999; background: white; }
+    .filter-bar { display: none; }
+    h1, .father-name, .category-label { color: #1a1a1a; }
+    .father-quote { color: #1a1a1a; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Early Church Fathers</h1>
+  <p class="subtitle">A Quote Reference, Organized by Topic</p>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterCat('all', this)">All</button>
+    <button class="filter-btn" onclick="filterCat('eucharist', this)">Eucharist</button>
+    <button class="filter-btn" onclick="filterCat('authority', this)">Church Authority</button>
+    <button class="filter-btn" onclick="filterCat('mary', this)">Mary</button>
+    <button class="filter-btn" onclick="filterCat('scripture', this)">Scripture &amp; Tradition</button>
+  </div>
+
+  <div class="category-label" data-cat="eucharist">The Eucharist</div>
+
+  <div class="card" data-cat="eucharist">
+    <div class="card-head"><span class="father-name">Ignatius of Antioch</span><span class="father-date">c. 110 AD</span></div>
+    <p class="father-quote">They abstain from Eucharist and prayer, because they do not confess that the Eucharist is the flesh of our Savior Jesus Christ.</p>
+    <p class="father-source">Letter to the Smyrnaeans, 7 — written on the way to his own martyrdom, as a disciple of the Apostle John.</p>
+  </div>
+
+  <div class="card" data-cat="eucharist">
+    <div class="card-head"><span class="father-name">Justin Martyr</span><span class="father-date">c. 150 AD</span></div>
+    <p class="father-quote">We do not receive these as common bread and common drink... the food which is blessed... is the flesh and blood of that Jesus who was made flesh.</p>
+    <p class="father-source">First Apology, 66</p>
+  </div>
+
+  <div class="card" data-cat="eucharist">
+    <div class="card-head"><span class="father-name">Irenaeus of Lyons</span><span class="father-date">c. 180 AD</span></div>
+    <p class="father-quote">The bread, receiving the invocation of God, is no longer common bread, but the Eucharist, consisting of two realities, earthly and heavenly.</p>
+    <p class="father-source">Against Heresies, IV.18.5</p>
+  </div>
+
+  <div class="category-label" data-cat="authority">Church Authority &amp; the Papacy</div>
+
+  <div class="card" data-cat="authority">
+    <div class="card-head"><span class="father-name">Clement of Rome</span><span class="father-date">c. 96 AD</span></div>
+    <p class="father-quote">If any disobey the things which have been said by him through us, let them know that they will involve themselves in transgression and no small danger.</p>
+    <p class="father-source">Letter to the Corinthians, 59 — a bishop of Rome intervening authoritatively in a dispute in a distant church.</p>
+  </div>
+
+  <div class="card" data-cat="authority">
+    <div class="card-head"><span class="father-name">Irenaeus of Lyons</span><span class="father-date">c. 180 AD</span></div>
+    <p class="father-quote">It is a matter of necessity that every Church should agree with this Church, on account of its preeminent authority.</p>
+    <p class="father-source">Against Heresies, III.3.2 — referring specifically to the Church at Rome, tracing its bishops back to Peter and Paul.</p>
+  </div>
+
+  <div class="card" data-cat="authority">
+    <div class="card-head"><span class="father-name">Cyprian of Carthage</span><span class="father-date">c. 251 AD</span></div>
+    <p class="father-quote">If a man does not hold to this unity of the Church, does he think that he holds the faith? If he deserts the chair of Peter, is he still confident that he is in the Church?</p>
+    <p class="father-source">On the Unity of the Catholic Church, 4</p>
+  </div>
+
+  <div class="category-label" data-cat="mary">Mary</div>
+
+  <div class="card" data-cat="mary">
+    <div class="card-head"><span class="father-name">Justin Martyr</span><span class="father-date">c. 155 AD</span></div>
+    <p class="father-quote">Eve, being a virgin and undefiled, brought forth disobedience and death; but the Virgin Mary conceived faith and joy.</p>
+    <p class="father-source">Dialogue with Trypho, 100 — an early statement of the Mary/New Eve typology.</p>
+  </div>
+
+  <div class="card" data-cat="mary">
+    <div class="card-head"><span class="father-name">Origen</span><span class="father-date">c. 244 AD</span></div>
+    <p class="father-quote">Mary had no other son but Jesus, according to those who think soundly concerning her.</p>
+    <p class="father-source">Commentary on Matthew, 10.17 — an early explicit statement affirming Mary's perpetual virginity.</p>
+  </div>
+
+  <div class="category-label" data-cat="scripture">Scripture &amp; Tradition</div>
+
+  <div class="card" data-cat="scripture">
+    <div class="card-head"><span class="father-name">Irenaeus of Lyons</span><span class="father-date">c. 180 AD</span></div>
+    <p class="father-quote">We should flee to the Church, and be brought up in her bosom, and be nourished with the Scriptures of the Lord... the Church has received this preaching and this faith, and, although scattered throughout the whole world, carefully preserves it.</p>
+    <p class="father-source">Against Heresies, III.4.1 &amp; III.24.1 — Scripture read within the Church's living Tradition, not apart from it.</p>
+  </div>
+
+  <div class="card" data-cat="scripture">
+    <div class="card-head"><span class="father-name">Basil the Great</span><span class="father-date">c. 375 AD</span></div>
+    <p class="father-quote">Of the beliefs and practices preserved in the Church, some we possess derived from written teaching; others we have received delivered to us secretly, from apostolic tradition.</p>
+    <p class="father-source">On the Holy Spirit, 27.66</p>
+  </div>
+
+  <div class="card" data-cat="scripture">
+    <div class="card-head"><span class="father-name">Augustine of Hippo</span><span class="father-date">c. 397 AD</span></div>
+    <p class="father-quote">I would not believe in the Gospel, had not the authority of the Catholic Church already moved me to do so.</p>
+    <p class="father-source">Against the Letter of Mani, 5.6 — on the Church's role in establishing the canon Protestants and Catholics both now share.</p>
+  </div>
+
+  <footer>Forged &amp; Faithful — Catholic Apologetics Reference</footer>
+</div>
+
+<script>
+function filterCat(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.card, .category-label').forEach(el => {
+    if (cat === 'all' || el.dataset.cat === cat) {
+      el.style.display = '';
+    } else {
+      el.style.display = 'none';
+    }
+  });
+}
+</script>
+</body>
+</html>

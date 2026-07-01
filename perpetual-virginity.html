@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Perpetual Virginity of Mary</title>
+<style>
+  :root { color-scheme: only light; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0f1c2e;
+    color: #e8dfc8;
+    font-family: 'EB Garamond', Georgia, serif;
+    padding: 40px 20px;
+    line-height: 1.65;
+  }
+  @font-face { font-family: 'Cinzel'; src: local('Cinzel'); }
+  .wrap { max-width: 780px; margin: 0 auto; }
+  h1 {
+    font-family: 'Cinzel', Georgia, serif;
+    color: #d4af37;
+    text-align: center;
+    font-size: 2rem;
+    letter-spacing: 0.03em;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+  .subtitle {
+    text-align: center;
+    color: #a89968;
+    font-style: italic;
+    margin-bottom: 36px;
+    font-size: 1.05rem;
+  }
+  .top-controls {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+  .ctrl-btn {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #d4af37;
+    background: #17263c;
+    border: 1px solid #d4af37;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+  .ctrl-btn:hover { background: #1c2e48; }
+  .category-label {
+    font-family: 'Cinzel', Georgia, serif;
+    color: #d4af37;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 32px 0 14px 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #35486a;
+  }
+  .category-label:first-of-type { margin-top: 0; }
+  .section {
+    background: #17263c;
+    border: 1px solid #35486a;
+    border-radius: 6px;
+    margin-bottom: 14px;
+    overflow: hidden;
+  }
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .section-header:hover { background: #1c2e48; }
+  .section-title {
+    font-family: 'Cinzel', Georgia, serif;
+    color: #f0e6cc;
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+  .toggle-icon {
+    color: #d4af37;
+    font-size: 1.3rem;
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
+    margin-left: 16px;
+  }
+  .section.open .toggle-icon { transform: rotate(45deg); }
+  .section-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    padding: 0 20px;
+    font-size: 0.98rem;
+    color: #d8cba8;
+  }
+  .section.open .section-body {
+    max-height: 1000px;
+    padding: 0 20px 18px 20px;
+  }
+  .section-body p { margin-bottom: 12px; }
+  .section-body p:last-child { margin-bottom: 0; }
+  .verse-quote {
+    font-style: italic;
+    color: #f0e6cc;
+    border-left: 2px solid #d4af37;
+    padding-left: 14px;
+    margin: 10px 0;
+  }
+  .seed-question {
+    background: #2a3d5c40;
+    border: 1px solid #d4af3760;
+    border-radius: 4px;
+    padding: 12px 16px;
+    margin-top: 12px;
+    font-style: italic;
+    color: #f0e6cc;
+  }
+  .seed-question strong {
+    font-style: normal;
+    color: #d4af37;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+  }
+  .caution {
+    background: #2a1c12;
+    border-left: 3px solid #a06a3a;
+    padding: 10px 16px;
+    margin-top: 12px;
+    font-size: 0.93rem;
+    color: #d4b896;
+  }
+  .caution strong {
+    color: #d09a5c;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+  }
+  .list-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 0.92rem;
+  }
+  .list-table th {
+    font-family: 'Cinzel', Georgia, serif;
+    color: #d4af37;
+    text-align: left;
+    padding: 6px 10px;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border-bottom: 1px solid #35486a;
+  }
+  .list-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid #2a3d5c;
+    color: #d8cba8;
+    vertical-align: top;
+  }
+  footer {
+    text-align: center;
+    color: #6b7a94;
+    font-size: 0.85rem;
+    margin-top: 40px;
+    font-style: italic;
+  }
+  @media print {
+    body { background: white; color: #1a1a1a; }
+    .section { break-inside: avoid; border-color: #999; background: white; }
+    .section-body { max-height: none !important; padding: 0 20px 18px 20px !important; }
+    .toggle-icon, .top-controls { display: none; }
+    h1, .section-title, .category-label { color: #1a1a1a; }
+    .seed-question, .caution { background: #f5f0e0; color: #333; }
+    .verse-quote { color: #1a1a1a; }
+    .list-table td, .list-table th { color: #1a1a1a; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Perpetual Virginity</h1>
+  <p class="subtitle">The "Brothers of Jesus" Objection</p>
+
+  <div class="top-controls">
+    <button class="ctrl-btn" onclick="setAll(true)">Expand All</button>
+    <button class="ctrl-btn" onclick="setAll(false)">Collapse All</button>
+  </div>
+
+  <div class="category-label">The Objection</div>
+
+  <div class="section open">
+    <div class="section-header" onclick="toggle(this)">
+      <div><span class="section-title">The Texts That Raise the Question</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p class="verse-quote">"Is not this the carpenter's son? Is not his mother called Mary? And are not his brothers James and Joseph and Simon and Judas? And are not all his sisters with us?" — Matthew 13:55-56</p>
+      <p>This is the strongest text for the objection, and it should be taken seriously rather than argued away too quickly. On a plain, modern English reading, "brothers and sisters" sounds like exactly what it says.</p>
+      <div class="seed-question">
+        <strong>Their Likely Opening</strong>
+        "The Bible plainly says Jesus had brothers and sisters. Why does the Catholic Church deny what Scripture says outright?"
+      </div>
+    </div>
+  </div>
+
+  <div class="category-label">The Linguistic Case</div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <div><span class="section-title">What "Brother" (Adelphos) Actually Covered</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p>The Gospels were written in Greek, but they record events, sayings, and family relationships from an Aramaic and Hebrew-speaking culture. Neither Aramaic nor Hebrew had a separate word for "cousin" or "kinsman" — the same word used for brother (Hebrew <em>ach</em>, Aramaic <em>aha</em>) covered a much wider range of family relationships, and this usage carried directly into the Greek of the New Testament.</p>
+      <p>The Old Testament shows this pattern clearly. Genesis 13:8 and 14:14 both call Lot "brother" to Abraham — but Genesis 11:27 identifies Lot as Abraham's nephew, son of his brother Haran. The word is doing real linguistic work as "kinsman," not a loose figure of speech.</p>
+      <div class="caution">
+        <strong>Know This Cold</strong>
+        The Septuagint (the Greek Old Testament the apostles used and quoted) translates Lot as Abraham's <em>adelphos</em> in Genesis 14:14 — the exact same Greek word used for Jesus's "brothers" in the Gospels — despite Lot clearly being his nephew. This is the single strongest piece of evidence: it shows adelphos already carrying this broader meaning in the very Greek text the apostles were steeped in.
+      </div>
+    </div>
+  </div>
+
+  <div class="category-label">Identifying "the Brothers"</div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <div><span class="section-title">Who James, Joseph, Simon, and Judas Actually Were</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p>Comparing Gospel texts closely, the "brothers" named in Matthew 13:55 appear to be identified elsewhere as children of a different Mary — not the mother of Jesus.</p>
+      <table class="list-table">
+        <tr><th>Reference</th><th>What It Says</th></tr>
+        <tr><td>Matthew 27:56</td><td>Names "Mary the mother of James and Joseph" standing at the crucifixion — a different Mary from Jesus's mother, who is named separately nearby (John 19:25).</td></tr>
+        <tr><td>John 19:25</td><td>Identifies this second Mary as "the wife of Clopas," present alongside Jesus's mother — two distinct women both named Mary.</td></tr>
+        <tr><td>Mark 6:3</td><td>Lists the same four "brothers" — James, Joses, Judas, Simon — matching the sons of this other Mary.</td></tr>
+      </table>
+      <p>If this identification holds, James and Joseph — two of the four "brothers" named in Matthew 13:55 — are the sons of a different Mary altogether, making them cousins or other close kin of Jesus, not siblings.</p>
+    </div>
+  </div>
+
+  <div class="category-label">Circumstantial Evidence</div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <div><span class="section-title">The Cross, and the Silence Elsewhere</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p class="verse-quote">"When Jesus saw his mother, and the disciple whom he loved standing nearby, he said to his mother, 'Woman, behold, your son!' Then he said to the disciple, 'Behold, your mother!' And from that hour the disciple took her to his own home." — John 19:26-27</p>
+      <p>This is a striking detail if Jesus had several living full brothers. In Jewish culture, care of a widowed mother fell to her sons as a matter of course — entrusting Mary to John, an unrelated disciple, is difficult to explain if she had other biological sons who could have taken her in.</p>
+      <div class="seed-question">
+        <strong>Seed Question</strong>
+        If Mary had other biological sons present at or near the crucifixion, why does Jesus hand her over to John — someone outside the family — rather than to his own brothers?
+      </div>
+    </div>
+  </div>
+
+  <div class="category-label">The Historical Testimony</div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <div><span class="section-title">How the Early Church Understood This</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="section-body">
+      <p>Mary's perpetual virginity was near-universally affirmed in the early Church, including by figures not otherwise known for Marian devotion. Notably, all three major Protestant Reformers held it:</p>
+      <table class="list-table">
+        <tr><th>Figure</th><th>Position</th></tr>
+        <tr><td>Martin Luther</td><td>Affirmed Mary's perpetual virginity throughout his life and preaching.</td></tr>
+        <tr><td>John Calvin</td><td>Did not treat the "brothers" as full biological siblings of Jesus; avoided firm statements against the traditional view.</td></tr>
+        <tr><td>Ulrich Zwingli</td><td>Explicitly affirmed the perpetual virginity as part of Mary's honor.</td></tr>
+      </table>
+      <div class="caution">
+        <strong>Useful Framing</strong>
+        This wasn't originally a Catholic-vs-Protestant dividing line at all — it only became contested much later, largely in American evangelicalism. Pointing out that the Reformers themselves held this view often lands better than any single Bible verse, since it reframes the question from "Catholic tradition vs. Scripture" to "a belief the Reformation itself never actually rejected."
+      </div>
+    </div>
+  </div>
+
+  <footer>Forged &amp; Faithful — Catholic Apologetics Reference</footer>
+</div>
+
+<script>
+function toggle(header) {
+  const section = header.parentElement;
+  section.classList.toggle('open');
+  const icon = header.querySelector('.toggle-icon');
+  icon.textContent = section.classList.contains('open') ? '−' : '+';
+}
+function setAll(open) {
+  document.querySelectorAll('.section').forEach(s => {
+    s.classList.toggle('open', open);
+    s.querySelector('.toggle-icon').textContent = open ? '−' : '+';
+  });
+}
+</script>
+</body>
+</html>
