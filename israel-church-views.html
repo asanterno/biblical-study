@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Israel &amp; the Church — Views Compared</title>
+<style>
+  :root { color-scheme: only light; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0f1c2e; color: #e8dfc8; font-family: 'EB Garamond', Georgia, serif; padding: 40px 20px; line-height: 1.65; }
+  @font-face { font-family: 'Cinzel'; src: local('Cinzel'); }
+  .wrap { max-width: 800px; margin: 0 auto; }
+  h1 { font-family: 'Cinzel', Georgia, serif; color: #d4af37; text-align: center; font-size: 1.9rem; letter-spacing: 0.03em; margin-bottom: 8px; text-transform: uppercase; }
+  .subtitle { text-align: center; color: #a89968; font-style: italic; margin-bottom: 30px; font-size: 1.05rem; }
+  .top-controls { display: flex; justify-content: center; gap: 12px; margin-bottom: 30px; flex-wrap: wrap; }
+  .ctrl-btn { font-family: 'Cinzel', Georgia, serif; font-size: 0.72rem; letter-spacing: 0.05em; text-transform: uppercase; color: #d4af37; background: #17263c; border: 1px solid #d4af37; border-radius: 4px; padding: 8px 14px; cursor: pointer; }
+  .ctrl-btn:hover { background: #1c2e48; }
+  .category-label { font-family: 'Cinzel', Georgia, serif; color: #d4af37; font-size: 0.95rem; letter-spacing: 0.08em; text-transform: uppercase; margin: 34px 0 14px 0; padding-bottom: 8px; border-bottom: 1px solid #35486a; }
+  .category-label:first-of-type { margin-top: 0; }
+
+  /* Spectrum bar */
+  .spectrum { display: flex; border-radius: 6px; overflow: hidden; margin-bottom: 10px; border: 1px solid #35486a; }
+  .spectrum div { flex: 1; text-align: center; padding: 10px 4px; font-family: 'Cinzel', Georgia, serif; font-size: 0.65rem; letter-spacing: 0.02em; color: #0f1c2e; font-weight: 700; }
+  .spec-1 { background: #b0563a; }
+  .spec-2 { background: #c98a4f; }
+  .spec-3 { background: #d4af37; color: #0f1c2e; }
+  .spec-4 { background: #8fae6b; }
+  .spectrum-note { text-align: center; font-size: 0.8rem; color: #a89968; font-style: italic; margin-bottom: 24px; }
+
+  .view-card { background: #17263c; border: 1px solid #35486a; border-radius: 6px; margin-bottom: 14px; overflow: hidden; }
+  .view-header { display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; cursor: pointer; user-select: none; }
+  .view-header:hover { background: #1c2e48; }
+  .view-title { font-family: 'Cinzel', Georgia, serif; color: #f0e6cc; font-size: 1.02rem; font-weight: 600; }
+  .view-tag { display: block; font-size: 0.78rem; color: #a89968; font-style: italic; margin-top: 2px; }
+  .toggle-icon { color: #d4af37; font-size: 1.3rem; transition: transform 0.25s ease; flex-shrink: 0; margin-left: 16px; }
+  .view-card.open .toggle-icon { transform: rotate(45deg); }
+  .view-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; padding: 0 20px; font-size: 0.96rem; color: #d8cba8; }
+  .view-card.open .view-body { max-height: 700px; padding: 0 20px 18px 20px; }
+  .view-body p { margin-bottom: 10px; }
+  .view-body p:last-child { margin-bottom: 0; }
+
+  .catholic-section { background: #1b2e1f; border: 1px solid #3a5c40; border-radius: 6px; margin-bottom: 14px; overflow: hidden; }
+  .catholic-section .view-header:hover { background: #223a28; }
+  .catholic-section .toggle-icon { color: #8fae6b; }
+  .catholic-section .view-title { color: #f0e6cc; }
+
+  .verse-quote { font-style: italic; color: #f0e6cc; border-left: 2px solid #d4af37; padding-left: 14px; margin: 10px 0; font-size: 0.96rem; }
+  .ccc-quote { font-style: italic; color: #f0e6cc; border-left: 2px solid #8fae6b; padding-left: 14px; margin: 10px 0; font-size: 0.96rem; }
+  .ccc-quote .attribution { display: block; font-style: normal; color: #a89968; font-size: 0.8rem; margin-top: 4px; }
+
+  .seed-question { background: #2a3d5c40; border: 1px solid #d4af3760; border-radius: 4px; padding: 12px 16px; margin-top: 12px; font-style: italic; color: #f0e6cc; }
+  .seed-question strong { font-style: normal; color: #d4af37; font-family: 'Cinzel', Georgia, serif; font-size: 0.7rem; letter-spacing: 0.05em; display: block; margin-bottom: 5px; text-transform: uppercase; }
+
+  .caution { background: #2a1c12; border-left: 3px solid #a06a3a; padding: 10px 16px; margin-top: 12px; font-size: 0.9rem; color: #d4b896; }
+  .caution strong { color: #d09a5c; font-family: 'Cinzel', Georgia, serif; font-size: 0.7rem; letter-spacing: 0.05em; display: block; margin-bottom: 4px; text-transform: uppercase; }
+
+  .list-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.88rem; }
+  .list-table th { font-family: 'Cinzel', Georgia, serif; color: #d4af37; text-align: left; padding: 6px 8px; font-size: 0.7rem; letter-spacing: 0.03em; text-transform: uppercase; border-bottom: 1px solid #35486a; }
+  .list-table td { padding: 6px 8px; border-bottom: 1px solid #2a3d5c; color: #d8cba8; vertical-align: top; }
+
+  footer { text-align: center; color: #6b7a94; font-size: 0.85rem; margin-top: 40px; font-style: italic; }
+  @media print {
+    body { background: white; color: #1a1a1a; }
+    .view-card, .catholic-section { break-inside: avoid; border-color: #999; background: white; }
+    .view-body { max-height: none !important; padding: 0 20px 18px 20px !important; }
+    .toggle-icon, .top-controls { display: none; }
+    h1, .view-title, .category-label { color: #1a1a1a; }
+    .seed-question, .caution { background: #f5f0e0; color: #333; }
+    .verse-quote, .ccc-quote { color: #1a1a1a; }
+    .list-table td, .list-table th { color: #1a1a1a; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Israel &amp; the Church</h1>
+  <p class="subtitle">The Major Views, and Where Catholic Teaching Actually Stands</p>
+
+  <div class="top-controls">
+    <button class="ctrl-btn" onclick="setAll(true)">Expand All</button>
+    <button class="ctrl-btn" onclick="setAll(false)">Collapse All</button>
+  </div>
+
+  <div class="category-label">The Spectrum</div>
+  <div class="spectrum">
+    <div class="spec-1">Hard Supersessionism</div>
+    <div class="spec-2">Soft Supersessionism</div>
+    <div class="spec-3">Catholic Fulfillment View</div>
+    <div class="spec-4">Dispensationalism</div>
+  </div>
+  <p class="spectrum-note">Left: Israel replaced entirely. Right: Israel and the Church run as two separate, parallel programs. Catholic teaching sits deliberately between both extremes.</p>
+
+  <div class="category-label">The Other Views</div>
+
+  <div class="view-card">
+    <div class="view-header" onclick="toggle(this)">
+      <div><span class="view-title">Hard (Punitive) Supersessionism</span><span class="view-tag">Israel rejected and replaced</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="view-body">
+      <p>The Church has fully and permanently replaced Israel as God's people. Israel's rejection of Christ is treated as forfeiting its covenant status entirely — the promises transfer to the Church, full stop, and Israel's ongoing existence carries no special theological significance.</p>
+      <p>Historically, this view fueled a great deal of Christian anti-Judaism over the centuries. It is the version of "replacement theology" most people mean when they use that phrase pejoratively, and virtually no mainstream tradition — Catholic, Orthodox, or Protestant — holds it in this strong form today.</p>
+    </div>
+  </div>
+
+  <div class="view-card">
+    <div class="view-header" onclick="toggle(this)">
+      <div><span class="view-title">Soft (Economic) Supersessionism</span><span class="view-tag">Israel's distinct role has ended</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="view-body">
+      <p>A gentler version: Israel isn't cursed or rejected, but its distinctive covenantal role and function have passed to the Church, which now fully carries forward what Israel once uniquely held. Old covenant structures (priesthood, sacrifice, temple) are described as "obsolete," and that obsolescence is extended, implicitly or explicitly, to Israel's own ongoing covenant status as a people.</p>
+      <p>Much of Reformed and evangelical covenant theology sits here, including — based on your notes — the general shape of Sam Shamoun's argument in the video you had me build notes on.</p>
+    </div>
+  </div>
+
+  <div class="view-card">
+    <div class="view-header" onclick="toggle(this)">
+      <div><span class="view-title">Dispensationalism</span><span class="view-tag">Two peoples, two programs</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="view-body">
+      <p>The opposite error, in Catholic and covenantal assessment: Israel and the Church are treated as two essentially separate peoples of God, each with its own distinct promises, destiny, and timeline — Israel's earthly and national, the Church's spiritual and heavenly. This is the view your Calvary Chapel friends most likely hold, and the one your existing covenant theology tools were built to address.</p>
+      <p>Common in Calvary Chapel, most non-denominational and Baptist churches shaped by dispensational teaching, and the theological engine behind most Christian Zionist political positions.</p>
+    </div>
+  </div>
+
+  <div class="category-label">The Catholic View</div>
+
+  <div class="catholic-section view-card open">
+    <div class="view-header" onclick="toggle(this)">
+      <div><span class="view-title">Fulfillment, Not Replacement</span><span class="view-tag">The Church's actual teaching</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="view-body">
+      <p>Christ fulfills the covenants made with Israel rather than voiding them. The Church doesn't replace Israel — the Church is the New Covenant community Israel's own covenants and prophets were pointing toward, now opened to Jew and Gentile together. Continuity, not substitution; one story reaching its intended goal, not one people being swapped out for another.</p>
+      <div class="seed-question">
+        <strong>The One Line That Anchors It</strong>
+        "As regards election, they are beloved for the sake of their forefathers. For the gifts and the calling of God are irrevocable." — Romans 11:28-29
+      </div>
+    </div>
+  </div>
+
+  <div class="catholic-section view-card">
+    <div class="view-header" onclick="toggle(this)">
+      <div><span class="view-title">Scripture Behind the Position</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="view-body">
+      <p class="verse-quote">"I ask, then, has God rejected his people? By no means!... God has not rejected his people whom he foreknew." — Romans 11:1-2</p>
+      <p class="verse-quote">"Some of the branches were broken off, and you, although a wild olive shoot, were grafted in among the others and now share in the nourishing root of the olive tree." — Romans 11:17</p>
+      <p>The single-tree image matters as much as any individual verse: one root, two kinds of branches. Not two trees. Grafting language inherently assumes the root — Israel's own covenant foundation — remains alive and load-bearing, not discarded and replaced by a new one.</p>
+      <p class="verse-quote">"Behold, the days are coming, declares the Lord, when I will establish a new covenant with the house of Israel and the house of Judah." — Hebrews 8:8, quoting Jeremiah 31:31</p>
+      <p>Worth noting carefully: the New Covenant in Hebrews 8 is explicitly made <em>with the same covenant partner</em> — Israel and Judah — not a different people replacing them. The covenant's form changes; who it's made with does not.</p>
+    </div>
+  </div>
+
+  <div class="catholic-section view-card">
+    <div class="view-header" onclick="toggle(this)">
+      <div><span class="view-title">The Catechism (CCC 839-840)</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="view-body">
+      <p class="ccc-quote">"...to the Jews 'belong the sonship, the glory, the covenants, the giving of the law, the worship, and the promises; to them belong the patriarchs, and of their race, according to the flesh, is the Christ.'"<span class="attribution">— CCC 839, quoting Romans 9:4-5</span></p>
+      <p class="ccc-quote">"...the Jewish faith, unlike other non-Christian religions, is already a response to God's revelation in the Old Covenant... the People of God of the Old Covenant [has] never been revoked."<span class="attribution">— CCC 839</span></p>
+      <p class="ccc-quote">"...'the gifts and the call of God are irrevocable.'"<span class="attribution">— CCC 839, again quoting Romans 11:29</span></p>
+      <p>The Catechism doesn't soften or hedge this — it states the Old Covenant's non-revocation plainly, and anchors it directly in the same Romans 11:29 text that's central to this entire question.</p>
+    </div>
+  </div>
+
+  <div class="catholic-section view-card">
+    <div class="view-header" onclick="toggle(this)">
+      <div><span class="view-title">Nostra Aetate &amp; the 2015 Vatican Document</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="view-body">
+      <p><em>Nostra Aetate</em> (Vatican II, 1965) explicitly rejects the idea that the Jewish people are rejected or accursed by God, and affirms that the Church draws sustenance from "the good olive tree onto which have been grafted the wild olive branches of the Gentiles" — directly borrowing Paul's own image from Romans 11.</p>
+      <p>The Vatican's 2015 document from the Commission for Religious Relations with the Jews is titled, not by accident, <em>"The Gifts and the Calling of God are Irrevocable"</em> — the same Romans 11:29 phrase. It states plainly that the Church "must not maintain that the Old Covenant has been abrogated or has become obsolete," and that the Church does not replace Israel or absorb its calling.</p>
+    </div>
+  </div>
+
+  <div class="catholic-section view-card">
+    <div class="view-header" onclick="toggle(this)">
+      <div><span class="view-title">Reconciling This with Hebrews 8's "Obsolete"</span></div>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="view-body">
+      <p class="verse-quote">"In speaking of a new covenant, he makes the first one obsolete. And what is becoming obsolete and growing old is ready to vanish away." — Hebrews 8:13</p>
+      <p>This is real, strong language, and it shouldn't be softened or explained away. The key move: Hebrews 7-10 is specifically discussing the <em>cultic/sacrificial covenant structure</em> — priesthood, temple sacrifice, the mechanics of atonement — not Israel's election or identity as a people. Those are two separate questions Hebrews doesn't fully distinguish on its own; the distinction comes from reading Hebrews 8 alongside Romans 11:29 and letting Paul's "irrevocable" clarify what "obsolete" does and doesn't cover.</p>
+      <div class="caution">
+        <strong>Be Honest About This</strong>
+        This harmonization is a legitimate, standard whole-canon theological move — not a contradiction of Hebrews — but it is a synthesis across two books, not something Hebrews 8 spells out by itself. Presenting it as if Hebrews 8 states the distinction explicitly oversells the text.
+      </div>
+    </div>
+  </div>
+
+  <div class="category-label">Quick Comparison</div>
+
+  <table class="list-table">
+    <tr><th>Question</th><th>Hard Supersessionism</th><th>Catholic View</th><th>Dispensationalism</th></tr>
+    <tr><td>Is Israel's covenant revoked?</td><td>Yes</td><td>No — irrevocable (Rom 11:29)</td><td>No — but treated as separate from the Church's</td></tr>
+    <tr><td>Does the Church replace Israel?</td><td>Yes, fully</td><td>No — grafted onto the same root</td><td>No — two distinct peoples/programs</td></tr>
+    <tr><td>Is there one covenant people or two?</td><td>One (the Church only)</td><td>One, in continuity across Testaments</td><td>Two, running in parallel</td></tr>
+    <tr><td>Old covenant structures (priesthood, sacrifice)</td><td>Obsolete, and so is Israel's status</td><td>Obsolete as cultic system; Israel's election stands</td><td>Awaiting future restoration alongside the Church age</td></tr>
+  </table>
+
+  <footer>Forged &amp; Faithful — Catholic Apologetics Reference</footer>
+</div>
+
+<script>
+function toggle(header) {
+  const card = header.parentElement;
+  card.classList.toggle('open');
+  const icon = header.querySelector('.toggle-icon');
+  icon.textContent = card.classList.contains('open') ? '−' : '+';
+}
+function setAll(open) {
+  document.querySelectorAll('.view-card').forEach(c => {
+    c.classList.toggle('open', open);
+    c.querySelector('.toggle-icon').textContent = open ? '−' : '+';
+  });
+}
+</script>
+</body>
+</html>
