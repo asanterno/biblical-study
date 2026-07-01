@@ -56,7 +56,27 @@
     padding: 0 28px;
     background-color: #0f1a2b;
   }
-  section{ margin-top: 56px; background-color: #0f1a2b; }
+  .jump{
+    max-width: 800px;
+    margin: 32px auto 0 auto;
+    padding: 0 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 10px;
+    justify-content: center;
+  }
+  .jump a{
+    font-family: 'Cinzel', serif;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #c9a04e;
+    text-decoration: none;
+    border: 1px solid #c9a04e55;
+    border-radius: 14px;
+    padding: 6px 12px;
+  }
+  section{ margin-top: 56px; background-color: #0f1a2b; scroll-margin-top: 20px; }
   .cat-eyebrow{
     font-family: 'Cinzel', serif;
     font-size: 12px;
@@ -108,6 +128,22 @@
     font-style: italic;
     line-height: 1.4;
   }
+  a.tool.pending{
+    border-style: dashed;
+    opacity: 0.6;
+  }
+  .pending-tag{
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #0f1a2b;
+    background-color: #c9a04e;
+    border-radius: 10px;
+    padding: 2px 8px;
+    margin-top: 8px;
+  }
   .divider{
     width: 100%;
     height: 1px;
@@ -135,9 +171,20 @@
   <div class="subtitle">A working library of apologetics tools, covenant theology references, and formation resources</div>
 </div>
 
+<div class="jump">
+  <a href="#foundations">Foundations</a>
+  <a href="#creed">Creed &amp; Trinity</a>
+  <a href="#covenant">Covenant &amp; Israel</a>
+  <a href="#scripture">Scripture &amp; Justification</a>
+  <a href="#sacraments">Sacraments</a>
+  <a href="#mary">Mary</a>
+  <a href="#authority">Church Authority</a>
+  <a href="#history">History &amp; Hard Questions</a>
+</div>
+
 <div class="wrap">
 
-  <section>
+  <section id="foundations">
     <div class="cat-eyebrow">Foundations</div>
     <h2>Getting Started</h2>
     <p class="cat-desc">Entry points for the formation journey.</p>
@@ -158,12 +205,42 @@
         <span class="tool-title">Theology Glossary</span>
         <span class="tool-desc">Key terms, defined plainly.</span>
       </a>
+      <a class="tool" href="ocia-essential-prayers.html">
+        <span class="tool-title">Essential Prayers</span>
+        <span class="tool-desc">Core prayers for OCIA formation.</span>
+      </a>
     </div>
   </section>
 
   <div class="divider"></div>
 
-  <section>
+  <section id="creed">
+    <div class="cat-eyebrow">Creed &amp; Trinity</div>
+    <h2>Nicaea &amp; the Early Church</h2>
+    <p class="cat-desc">How the Trinity was defined, defended, and handed down.</p>
+    <div class="links">
+      <a class="tool" href="council-of-nicaea.html">
+        <span class="tool-title">The Council of Nicaea</span>
+        <span class="tool-desc">The 325 AD council and its stakes.</span>
+      </a>
+      <a class="tool" href="nicene-creed-text.html">
+        <span class="tool-title">The Nicene Creed — Full Text</span>
+        <span class="tool-desc">Annotated line by line.</span>
+      </a>
+      <a class="tool" href="nicene-creed-timeline.html">
+        <span class="tool-title">Nicene Creed Timeline</span>
+        <span class="tool-desc">Nicaea to the Great Schism.</span>
+      </a>
+      <a class="tool" href="church-fathers-quotes.html">
+        <span class="tool-title">Early Church Fathers</span>
+        <span class="tool-desc">Filterable quote reference by topic.</span>
+      </a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section id="covenant">
     <div class="cat-eyebrow">Covenant Theology</div>
     <h2>Covenant &amp; Israel</h2>
     <p class="cat-desc">Covenant theology vs. dispensationalism — the core of the apologetics work.</p>
@@ -196,16 +273,101 @@
         <span class="tool-title">Jesus and the Future</span>
         <span class="tool-desc">Notes on the Köstenberger study.</span>
       </a>
+      <a class="tool pending" href="israel-church-views.html">
+        <span class="tool-title">Israel &amp; the Church — Views Compared</span>
+        <span class="tool-desc">Supersessionism, dispensationalism, and the Catholic fulfillment view, with CCC references.</span>
+        <span class="pending-tag">Add to repo</span>
+      </a>
     </div>
   </section>
 
   <div class="divider"></div>
 
-  <section>
+  <section id="scripture">
+    <div class="cat-eyebrow">Scripture &amp; Justification</div>
+    <h2>Faith, Works, and the Text</h2>
+    <p class="cat-desc">Working through the sharpest exegetical dividing line with Reformed friends.</p>
+    <div class="links">
+      <a class="tool" href="faith-alone-vs-james-2.html">
+        <span class="tool-title">Faith Alone vs. James 2</span>
+        <span class="tool-desc">Sola fide and the justification debate.</span>
+      </a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section id="sacraments">
+    <div class="cat-eyebrow">The Sacraments</div>
+    <h2>Sacramental Life</h2>
+    <p class="cat-desc">What the sacraments are, and the biblical case for each.</p>
+    <div class="links">
+      <a class="tool" href="eucharist-real-presence.html">
+        <span class="tool-title">The Eucharist &amp; the Real Presence</span>
+        <span class="tool-desc">John 6, the Last Supper, and the early Church.</span>
+      </a>
+      <a class="tool" href="confession.html">
+        <span class="tool-title">Confession</span>
+        <span class="tool-desc">Why go through a priest?</span>
+      </a>
+      <a class="tool" href="confirmation.html">
+        <span class="tool-title">Confirmation</span>
+        <span class="tool-desc">The sealing gift of the Spirit.</span>
+      </a>
+      <a class="tool" href="purgatory.html">
+        <span class="tool-title">Purgatory</span>
+        <span class="tool-desc">A finishing process, not a second chance.</span>
+      </a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section id="mary">
+    <div class="cat-eyebrow">Mary</div>
+    <h2>Marian Doctrine</h2>
+    <p class="cat-desc">The Marian dogmas, taken one at a time.</p>
+    <div class="links">
+      <a class="tool" href="perpetual-virginity.html">
+        <span class="tool-title">Perpetual Virginity</span>
+        <span class="tool-desc">The "brothers of Jesus" objection.</span>
+      </a>
+      <a class="tool" href="immaculate-conception.html">
+        <span class="tool-title">The Immaculate Conception</span>
+        <span class="tool-desc">The most misunderstood Catholic doctrine.</span>
+      </a>
+      <a class="tool" href="assumption-of-mary.html">
+        <span class="tool-title">The Assumption of Mary</span>
+        <span class="tool-desc">The weakest text, the strongest history.</span>
+      </a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section id="authority">
+    <div class="cat-eyebrow">Church Authority</div>
+    <h2>The Papacy</h2>
+    <p class="cat-desc">Petrine primacy and the case for the papal office.</p>
+    <div class="links">
+      <a class="tool" href="papacy-petrine-primacy.html">
+        <span class="tool-title">The Papacy &amp; Petrine Primacy</span>
+        <span class="tool-desc">Was Peter given unique authority?</span>
+      </a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section id="history">
     <div class="cat-eyebrow">History &amp; Apologetics</div>
     <h2>Hard Questions</h2>
     <p class="cat-desc">Facing difficult history honestly.</p>
     <div class="links">
+      <a class="tool" href="reformation-timeline.html">
+        <span class="tool-title">Timeline of the Reformation</span>
+        <span class="tool-desc">Luther to Trent.</span>
+      </a>
       <a class="tool" href="catholic_scandals.html">
         <span class="tool-title">Catholic Scandals</span>
         <span class="tool-desc">An honest historical reckoning.</span>
