@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Two Priesthoods — Levi and Melchizedek</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy-deep: #0a1420;
+    --navy: #101f33;
+    --navy-mid: #16283f;
+    --navy-light: #1e3450;
+    --gold: #c9a24b;
+    --gold-light: #e4c878;
+    --gold-dim: #8a6f34;
+    --parchment: #e9e2cf;
+    --parchment-dim: #a9a48f;
+    --wine: #7a2230;
+    --wine-light: #9c3040;
+    --line: rgba(201,162,75,0.25);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--navy-deep);
+    background-image:
+      radial-gradient(ellipse at 15% 0%, rgba(201,162,75,0.08) 0%, transparent 45%),
+      radial-gradient(ellipse at 85% 100%, rgba(122,34,48,0.10) 0%, transparent 50%);
+    color: var(--parchment);
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  .eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(10,20,32,0.94);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    gap: 4px;
+    padding: 14px 20px;
+    overflow-x: auto;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  nav button {
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--parchment-dim);
+    padding: 8px 14px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.25s;
+  }
+  nav button:hover, nav button:focus-visible {
+    color: var(--gold-light);
+    border-color: var(--line);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    text-align: center;
+    padding: 80px 24px 56px;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+  .hero-glyph {
+    font-size: 2.2rem;
+    color: var(--gold);
+    letter-spacing: 0.4em;
+    margin-bottom: 22px;
+  }
+  .hero h1 {
+    font-family: 'Cinzel Decorative', 'Cinzel', serif;
+    font-weight: 700;
+    font-size: clamp(2.1rem, 5.5vw, 3.6rem);
+    color: var(--gold-light);
+    line-height: 1.25;
+    max-width: 850px;
+    margin: 0 auto 20px;
+  }
+  .hero p.sub {
+    font-style: italic;
+    color: var(--parchment-dim);
+    font-size: 1.15rem;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .hero .ref {
+    margin-top: 24px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--gold-dim);
+  }
+
+  main { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+  section { padding: 72px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type { border-bottom: none; }
+
+  h2.section-title {
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+    color: var(--gold-light);
+    text-align: center;
+    margin-bottom: 8px;
+  }
+  p.section-lede {
+    text-align: center;
+    color: var(--parchment-dim);
+    max-width: 680px;
+    margin: 0 auto 48px;
+    font-style: italic;
+  }
+
+  /* ── LINEAGE SIGNATURE ELEMENT ── */
+  .lineage {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--line);
+    background: var(--navy);
+    position: relative;
+  }
+  .lineage::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: repeating-linear-gradient(180deg, var(--gold-dim) 0 6px, transparent 6px 14px);
+    opacity: 0.5;
+  }
+  .lineage-col { padding: 36px 30px; }
+  .lineage-col.levi { border-right: none; }
+  .lineage-head {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 6px;
+  }
+  .levi .lineage-head { color: var(--wine-light); }
+  .melch .lineage-head { color: var(--gold-light); }
+  .lineage-tag {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--parchment-dim);
+    font-style: italic;
+    margin-bottom: 32px;
+  }
+
+  .chain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .chain-node {
+    width: 100%;
+    max-width: 260px;
+    background: var(--navy-mid);
+    border: 1px solid var(--wine);
+    padding: 12px 16px;
+    text-align: center;
+    position: relative;
+  }
+  .chain-node .name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.95rem;
+    color: var(--parchment);
+  }
+  .chain-node .note {
+    font-size: 0.8rem;
+    color: var(--parchment-dim);
+    margin-top: 2px;
+  }
+  .chain-link {
+    height: 26px;
+    width: 1px;
+    background: var(--wine);
+  }
+  .chain-link.solid::after {
+    content: '↓';
+    display: block;
+    position: relative;
+    top: 6px;
+    color: var(--wine-light);
+    font-size: 0.8rem;
+  }
+
+  .melch-node {
+    width: 100%;
+    max-width: 260px;
+    background: var(--navy-mid);
+    border: 1px solid var(--gold);
+    padding: 16px 18px;
+    text-align: center;
+    box-shadow: 0 0 22px rgba(201,162,75,0.12);
+  }
+  .melch-node .name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.95rem;
+    color: var(--gold-light);
+  }
+  .melch-node .note {
+    font-size: 0.8rem;
+    color: var(--parchment-dim);
+    margin-top: 2px;
+  }
+  .oath-link {
+    height: 38px;
+    width: 1px;
+    background: repeating-linear-gradient(180deg, var(--gold) 0 5px, transparent 5px 10px);
+    position: relative;
+  }
+  .oath-label {
+    font-size: 0.68rem;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.1em;
+    color: var(--gold-dim);
+    text-align: center;
+    margin: 6px 0;
+    text-transform: uppercase;
+  }
+
+  .no-genealogy {
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--parchment-dim);
+    font-style: italic;
+    max-width: 240px;
+    margin: 14px auto 0;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 720px) {
+    .lineage { grid-template-columns: 1fr; }
+    .lineage::after { display: none; }
+    .lineage-col.levi { border-bottom: 1px solid var(--line); }
+  }
+
+  /* ── SCRIPTURE CARDS ── */
+  .card-grid { display: grid; gap: 20px; }
+  .verse-card {
+    background: var(--navy);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--gold-dim);
+    padding: 22px 26px;
+  }
+  .verse-card.wine-edge { border-left-color: var(--wine); }
+  .verse-card .ref-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .verse-card .verse-text {
+    font-style: italic;
+    color: var(--parchment);
+    margin-bottom: 12px;
+    font-size: 1.05rem;
+  }
+  .verse-card .commentary {
+    color: var(--parchment-dim);
+    font-size: 0.96rem;
+  }
+
+  /* ── COMPARISON TABLE ── */
+  table.compare {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+  }
+  table.compare th, table.compare td {
+    padding: 14px 18px;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.96rem;
+  }
+  table.compare th {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    background: var(--navy);
+  }
+  table.compare td.levi-cell { color: var(--parchment-dim); }
+  table.compare td.melch-cell { color: var(--parchment); }
+  table.compare tr:hover td { background: rgba(201,162,75,0.04); }
+
+  /* ── ACCORDION ── */
+  .accordion { border: 1px solid var(--line); margin-bottom: 12px; background: var(--navy); }
+  .accordion-toggle {
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--parchment);
+    font-family: 'Cinzel', serif;
+    font-size: 0.92rem;
+    letter-spacing: 0.03em;
+    text-align: left;
+    padding: 18px 22px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+  .accordion-toggle:hover { color: var(--gold-light); }
+  .accordion-toggle .plus {
+    color: var(--gold);
+    font-size: 1.1rem;
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+  .accordion.open .plus { transform: rotate(45deg); }
+  .accordion-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+    padding: 0 22px;
+  }
+  .accordion.open .accordion-body { padding: 0 22px 22px; }
+  .accordion-body p { color: var(--parchment-dim); margin-bottom: 12px; }
+  .accordion-body p:last-child { margin-bottom: 0; }
+  .accordion-body strong { color: var(--gold-light); font-weight: 500; }
+
+  /* ── SEEDS ── */
+  .seed {
+    background: var(--navy-mid);
+    border: 1px solid var(--gold-dim);
+    padding: 18px 22px;
+    margin-bottom: 14px;
+    font-style: italic;
+    color: var(--parchment);
+    position: relative;
+    padding-left: 42px;
+  }
+  .seed::before {
+    content: '?';
+    position: absolute;
+    left: 16px;
+    top: 16px;
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    font-style: normal;
+    font-size: 1.1rem;
+  }
+
+  footer {
+    text-align: center;
+    padding: 48px 24px 60px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <button data-target="lineage-section">The Two Lines</button>
+  <button data-target="levi-texts">Levitical Texts</button>
+  <button data-target="melch-texts">Melchizedek Texts</button>
+  <button data-target="hebrews-argument">Hebrews 7</button>
+  <button data-target="compare-table">Comparison</button>
+  <button data-target="seeds">Seed Questions</button>
+</nav>
+
+<div class="hero">
+  <div class="hero-glyph">✦ ✦ ✦</div>
+  <h1>Two Priesthoods, One Question:<br>By Blood, or By Oath?</h1>
+  <p class="sub">Aaron's line traces a genealogy. Melchizedek's line traces none — and that silence is the whole argument.</p>
+  <div class="ref">Genesis 14 · Psalm 110 · Hebrews 7</div>
+</div>
+
+<main>
+
+  <section id="lineage-section">
+    <h2 class="section-title">The Two Lines</h2>
+    <p class="section-lede">One priesthood is established by descent. The other is established by silence, then confirmed by oath.</p>
+
+    <div class="lineage">
+      <div class="lineage-col levi">
+        <div class="lineage-head">The Levitical Line</div>
+        <div class="lineage-tag">Priesthood by descent — Numbers 3, 1 Chronicles 6</div>
+        <div class="chain">
+          <div class="chain-node"><div class="name">Levi</div><div class="note">son of Jacob — Gen 29:34</div></div>
+          <div class="chain-link solid"></div>
+          <div class="chain-node"><div class="name">Kohath</div><div class="note">Num 3:19</div></div>
+          <div class="chain-link solid"></div>
+          <div class="chain-node"><div class="name">Amram</div><div class="note">Num 3:19, Ex 6:20</div></div>
+          <div class="chain-link solid"></div>
+          <div class="chain-node" style="border-color: var(--gold-dim);"><div class="name">Aaron</div><div class="note">Ex 28:1 — priesthood begins here</div></div>
+          <div class="chain-link solid"></div>
+          <div class="chain-node"><div class="name">Every priest after</div><div class="note">must prove this exact chain — Ezra 2:62</div></div>
+        </div>
+      </div>
+
+      <div class="lineage-col melch">
+        <div class="lineage-head">The Melchizedekian Line</div>
+        <div class="lineage-tag">Priesthood by appointment — Genesis 14, Psalm 110</div>
+        <div class="chain">
+          <div class="melch-node">
+            <div class="name">Melchizedek</div>
+            <div class="note">priest-king of Salem — Gen 14:18</div>
+          </div>
+          <div class="no-genealogy">"without father, without mother, without genealogy" — Heb 7:3. Not literally fatherless — the text simply records none. That absence is the point.</div>
+          <div class="oath-link"></div>
+          <div class="oath-label">Divine Oath — Ps 110:4</div>
+          <div class="melch-node">
+            <div class="name">Christ</div>
+            <div class="note">of the tribe of Judah, not Levi — Heb 7:14</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="levi-texts">
+    <h2 class="section-title">Establishing the Levitical Line</h2>
+    <p class="section-lede">Why lineage was not a formality but the entire legal basis of the office.</p>
+    <div class="card-grid">
+      <div class="verse-card wine-edge">
+        <div class="ref-tag">Exodus 28:1</div>
+        <div class="verse-text">"Then bring near to you Aaron your brother, and his sons with him, from among the people of Israel, to serve me as priests."</div>
+        <div class="commentary">The office is created by direct address to one man and his sons — a hereditary grant, not a role open to application.</div>
+      </div>
+      <div class="verse-card wine-edge">
+        <div class="ref-tag">Numbers 3:10</div>
+        <div class="verse-text">"And you shall appoint Aaron and his sons, and they shall guard their priesthood. But the stranger who comes near shall be put to death."</div>
+        <div class="commentary">The penalty clause shows how absolute the restriction was — this was never meant to be a permeable category.</div>
+      </div>
+      <div class="verse-card wine-edge">
+        <div class="ref-tag">Ezra 2:62</div>
+        <div class="verse-text">"These sought their registration among those enrolled in the genealogies, but they were not found there, so they were excluded from the priesthood as unclean."</div>
+        <div class="commentary">Centuries later, after the exile, men who believed themselves priests were disqualified for a documentation gap — proof the requirement was taken with total seriousness, not treated as symbolic.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="melch-texts">
+    <h2 class="section-title">Establishing the Melchizedekian Line</h2>
+    <p class="section-lede">A priesthood introduced with no ancestry, no successor, and no tribe — centuries before Levi existed.</p>
+    <div class="card-grid">
+      <div class="verse-card">
+        <div class="ref-tag">Genesis 14:18-20</div>
+        <div class="verse-text">"And Melchizedek king of Salem brought out bread and wine. He was priest of God Most High... And Abram gave him a tenth of everything."</div>
+        <div class="commentary">Abraham — the ancestor Levi himself descends from — submits to Melchizedek's priesthood by paying tithe. Hebrews will later argue this makes Melchizedek senior to a priesthood that doesn't exist yet.</div>
+      </div>
+      <div class="verse-card">
+        <div class="ref-tag">Psalm 110:4</div>
+        <div class="verse-text">"The LORD has sworn and will not change his mind, 'You are a priest forever after the order of Melchizedek.'"</div>
+        <div class="commentary">A messianic psalm applies Melchizedek's order — not Aaron's — to the coming king. The priesthood the Messiah holds was named a thousand years before Christ, and it was never the Levitical one.</div>
+      </div>
+      <div class="verse-card">
+        <div class="ref-tag">Hebrews 7:3</div>
+        <div class="verse-text">"He is without father or mother or genealogy, having neither beginning of days nor end of life, but resembling the Son of God he continues a priest forever."</div>
+        <div class="commentary">An argument from the text's silence: Genesis simply never records his lineage, his birth, or his death — unheard of for a priest in a culture obsessed with documented ancestry. Hebrews reads that gap as deliberate, a pattern built into the text pointing toward the Son.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="hebrews-argument">
+    <h2 class="section-title">The Argument of Hebrews 7</h2>
+    <p class="section-lede">Not abolition of priesthood — replacement of its basis.</p>
+
+    <div class="accordion">
+      <button class="accordion-toggle"><span>Why Jesus is disqualified under the old rule</span><span class="plus">+</span></button>
+      <div class="accordion-body">
+        <p>Hebrews 7:14 states it plainly: <strong>"Our Lord was descended from Judah, and in connection with that tribe Moses said nothing about priests."</strong> By the Levitical rule alone, wrong tribe ends the discussion — no exception clause exists in the Torah for a Judean priest.</p>
+        <p>This is why the argument can't simply graft Jesus onto the existing system. Hebrews has to establish an entirely different <em>basis</em> for priesthood before Jesus can hold the office at all.</p>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-toggle"><span>Abraham's tithe as a legal argument, not just a story</span><span class="plus">+</span></button>
+      <div class="accordion-body">
+        <p>Hebrews 7:9-10 makes an unusual move: <strong>"One might even say that Levi himself, who receives tithes, paid tithes through Abraham, for he was still in the loins of his ancestor when Melchizedek met him."</strong></p>
+        <p>The logic: Levi didn't exist yet at Genesis 14, but he existed <em>in seed form</em> within Abraham. So when Abraham tithed to Melchizedek, in a real sense the entire future Levitical order — priests included — submitted to Melchizedek before that order was even instituted. Seniority, not mere difference, is the claim.</p>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-toggle"><span>"Indestructible life" — appointment vs. inheritance</span><span class="plus">+</span></button>
+      <div class="accordion-body">
+        <p>Hebrews 7:16 draws the contrast directly: Levitical priests were made "on the basis of a legal requirement concerning bodily descent," but Christ was made priest "by the power of an indestructible life."</p>
+        <p>One priesthood runs on inheritance law. The other runs on resurrection. That's why Hebrews 7:23-24 can say Levitical priests "were prevented by death from continuing in office," while Christ "holds his priesthood permanently, because he continues forever."</p>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-toggle"><span>What Hebrews is <em>not</em> arguing</span><span class="plus">+</span></button>
+      <div class="accordion-body">
+        <p>The letter is not claiming priesthood itself was a mistake or is now obsolete as a category — it's arguing a <strong>specific</strong> priesthood (Levi's) has been superseded by an <strong>older, higher-ranking</strong> one (Melchizedek's) that was always destined to receive it back.</p>
+        <p>This matters for the Catholic reading of ongoing sacramental priesthood: Hebrews dismantles the Levitical basis for priesthood, not the concept of a priesthood mediating covenant to God's people.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="compare-table">
+    <h2 class="section-title">Side by Side</h2>
+    <table class="compare">
+      <tr><th>Basis</th><th>Levitical</th><th>Melchizedekian</th></tr>
+      <tr><td>Ref</td><td class="levi-cell">Numbers 3, 1 Chron 6</td><td class="melch-cell">Genesis 14, Psalm 110</td></tr>
+      <tr><td>Qualification</td><td class="levi-cell">Genealogical descent from Aaron</td><td class="melch-cell">Direct divine appointment / oath</td></tr>
+      <tr><td>Origin point</td><td class="levi-cell">Instituted at Sinai, ~1446 BC</td><td class="melch-cell">Attested at Genesis 14, centuries before Sinai</td></tr>
+      <tr><td>Continuity</td><td class="levi-cell">Broken repeatedly by death — needed constant replacement</td><td class="melch-cell">"He continues forever" — permanent, unrepeatable</td></tr>
+      <tr><td>Offering</td><td class="levi-cell">Animal sacrifice, repeated</td><td class="melch-cell">Bread and wine, once for all</td></tr>
+      <tr><td>Eligibility today</td><td class="levi-cell">Requires provable genealogy — Ezra 2:62</td><td class="melch-cell">Requires only the appointment itself</td></tr>
+      <tr><td>Relationship</td><td class="levi-cell">Tithed <em>to</em> Melchizedek through Abraham</td><td class="melch-cell">Received tithe — established as senior order</td></tr>
+    </table>
+  </section>
+
+  <section id="seeds">
+    <h2 class="section-title">Seed Questions</h2>
+    <p class="section-lede">For conversations where you're not trying to win, just trying to open the text together.</p>
+    <div class="seed">If priesthood in Israel required documented descent strict enough to disqualify men in Ezra's day — how does Jesus, from Judah, qualify to be a priest at all?</div>
+    <div class="seed">Why does Genesis go out of its way to record Melchizedek with no father, no mother, and no death — when every other figure in Genesis gets a genealogy?</div>
+    <div class="seed">If Psalm 110 says the Messiah's priesthood is "after the order of Melchizedek" — not Aaron's — what does that imply about which priesthood was always meant to be permanent?</div>
+    <div class="seed">Does Hebrews 7 read like it's abolishing priesthood altogether, or replacing one priesthood's basis with an older, higher one?</div>
+  </section>
+
+</main>
+
+<footer>Forged &amp; Faithful · Personal Study Reference · RSV-2CE</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.accordion-toggle').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var acc = btn.closest('.accordion');
+      var body = acc.querySelector('.accordion-body');
+      var isOpen = acc.classList.contains('open');
+      document.querySelectorAll('.accordion.open').forEach(function (other) {
+        if (other !== acc) {
+          other.classList.remove('open');
+          other.querySelector('.accordion-body').style.maxHeight = null;
+        }
+      });
+      if (isOpen) {
+        acc.classList.remove('open');
+        body.style.maxHeight = null;
+      } else {
+        acc.classList.add('open');
+        body.style.maxHeight = body.scrollHeight + 'px';
+      }
+    });
+  });
+
+  document.querySelectorAll('nav button[data-target]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var target = document.getElementById(btn.getAttribute('data-target'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+});
+</script>
+
+</body>
+</html>
