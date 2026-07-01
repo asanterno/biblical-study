@@ -446,6 +446,31 @@ header .sub {
 </style>
 </head>
 <body>
+<div style="max-width:820px;margin:0 auto 20px auto;padding:12px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #35486a55;font-family:Georgia,serif;">
+  <a href="index.html" style="color:#d4af37;text-decoration:none;font-size:0.85rem;letter-spacing:0.03em;white-space:nowrap;">&larr;&nbsp;Library</a>
+  <button onclick="shareThisPage()" style="font-family:Georgia,serif;background:#17263c;color:#d4af37;border:1px solid #d4af37;border-radius:4px;padding:6px 16px;font-size:0.78rem;letter-spacing:0.03em;cursor:pointer;">Share</button>
+</div>
+<script>
+function shareThisPage(){
+  var title = document.title;
+  var url = window.location.href;
+  if (navigator.share) {
+    navigator.share({title:title, url:url}).catch(function(){});
+  } else if (navigator.clipboard) {
+    navigator.clipboard.writeText(url).then(function(){
+      var btn = event.target;
+      var orig = btn.textContent;
+      btn.textContent = 'Copied!';
+      setTimeout(function(){ btn.textContent = orig; }, 1500);
+    }).catch(function(){
+      window.prompt('Copy this link:', url);
+    });
+  } else {
+    window.prompt('Copy this link:', url);
+  }
+}
+</script>
+
 
 <header>
   <div class="eyebrow">Catholic Formation · Reference Tool</div>
